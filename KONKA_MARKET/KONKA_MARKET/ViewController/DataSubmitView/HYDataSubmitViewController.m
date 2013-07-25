@@ -44,7 +44,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 50, 320, 340) style:UITableViewStyleGrouped];
+    mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 340) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
     
     mainTableView.delegate = self;
@@ -154,7 +154,6 @@
                         cell = [self createTabelViewCellForIndentifier:@"DropDownCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:2];
                         
                         [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        
                         self.cellLabel2.text = @"门店";
                         return cell;
                         break;

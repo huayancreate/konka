@@ -86,8 +86,8 @@
     self.unRegisterImg = [UIImage imageNamed:@"sales_no_reg.png"];
     self.RegisterImg = [UIImage imageNamed:@"sales_reg_all.png"];
     
-    [self.unRegistrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
-    [self.registrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
+    [self.unRegistrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
+    [self.registrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
     //[self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
     //[self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
     //[self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
@@ -95,8 +95,8 @@
 
 -(IBAction)unRegistrationAction:(id)sender
 {
-    [self.unRegistrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
-    [self.registrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
+    [self.unRegistrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
+    [self.registrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
 //    [self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
 //    [self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
@@ -105,8 +105,8 @@
 
 -(IBAction)registrationAction:(id)sender
 {
-    [self.unRegistrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
-    [self.registrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
+    [self.unRegistrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
+    [self.registrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
 //    [self.registrationBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
 //    [self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
