@@ -1229,10 +1229,6 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="searchTextField">UITextField</string>
 						<string key="tableViewCell">UITableViewCell</string>
-<<<<<<< HEAD
-						<string key="uiCancelModelLabel">UILabel</string>
-=======
->>>>>>> 9b6bb7ef66f431daf0e3daa097abfcfd9ce3ab56
 						<string key="uiLableModelName">UILabel</string>
 						<string key="uiModelSet">UIButton</string>
 						<string key="uiSearchBtn">UIButton</string>
@@ -1248,13 +1244,6 @@
 							<string key="name">tableViewCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
-<<<<<<< HEAD
-						<object class="IBToOneOutletInfo" key="uiCancelModelLabel">
-							<string key="name">uiCancelModelLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
-=======
->>>>>>> 9b6bb7ef66f431daf0e3daa097abfcfd9ce3ab56
 						<object class="IBToOneOutletInfo" key="uiLableModelName">
 							<string key="name">uiLableModelName</string>
 							<string key="candidateClassName">UILabel</string>
