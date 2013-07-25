@@ -43,6 +43,7 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 460}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="574477246"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -57,6 +58,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 10}, {320, 50}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="734689767"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -67,6 +69,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{15, 20}, {235, 30}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="163515205"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -103,6 +106,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{253, 18}, {55, 34}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="839045445"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -138,6 +142,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{20, 66}, {70, 34}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="153967460"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -159,6 +164,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{230, 66}, {70, 34}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="387418447"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -180,6 +186,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 416}, {160, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="676244170"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -201,6 +208,7 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{160, 416}, {160, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -219,6 +227,7 @@
 				</array>
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
+				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="597608477"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
@@ -281,6 +290,32 @@
 					<int key="connectionID">176</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">uiSearchBtn</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="163515205"/>
+					</object>
+					<int key="connectionID">207</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">search:</string>
+						<reference key="source" ref="163515205"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">208</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">up:</string>
+						<reference key="source" ref="839045445"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">209</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">modelSetAction:</string>
 						<reference key="source" ref="387418447"/>
@@ -297,6 +332,15 @@
 						<int key="IBEventType">7</int>
 					</object>
 					<int key="connectionID">178</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">down:</string>
+						<reference key="source" ref="153967460"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">210</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1123,7 +1167,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">206</int>
+			<int key="maxID">210</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1139,23 +1183,57 @@
 					<string key="className">HYModelConfigViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="down:">id</string>
 						<string key="modelSetAction:">id</string>
+						<string key="search:">id</string>
+						<string key="setDefaultModel:">id</string>
+						<string key="textFieldDidEndEditing:">id</string>
 						<string key="unmModelSetAction:">id</string>
+						<string key="up:">id</string>
+						<string key="updateViewConstraints:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="down:">
+							<string key="name">down:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="modelSetAction:">
 							<string key="name">modelSetAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="search:">
+							<string key="name">search:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="setDefaultModel:">
+							<string key="name">setDefaultModel:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="textFieldDidEndEditing:">
+							<string key="name">textFieldDidEndEditing:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="unmModelSetAction:">
 							<string key="name">unmModelSetAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="up:">
+							<string key="name">up:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="updateViewConstraints:">
+							<string key="name">updateViewConstraints:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="searchTextField">UITextField</string>
 						<string key="tableViewCell">UITableViewCell</string>
+						<string key="uiCancelModelLabel">UILabel</string>
+						<string key="uiLableModelName">UILabel</string>
 						<string key="uiModelSet">UIButton</string>
+						<string key="uiSearchBtn">UIButton</string>
+						<string key="uiSetModelBtn">UIButton</string>
 						<string key="uiUnModelSet">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1167,8 +1245,24 @@
 							<string key="name">tableViewCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="uiCancelModelLabel">
+							<string key="name">uiCancelModelLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="uiLableModelName">
+							<string key="name">uiLableModelName</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="uiModelSet">
 							<string key="name">uiModelSet</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="uiSearchBtn">
+							<string key="name">uiSearchBtn</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="uiSetModelBtn">
+							<string key="name">uiSetModelBtn</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="uiUnModelSet">

@@ -23,7 +23,21 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *uiLableModelName;
 
+@property (strong, nonatomic) IBOutlet UIButton *uiSearchBtn;
+
+@property (strong, nonatomic) IBOutlet UIButton *uiSetModelBtn;
+
+@property (strong, nonatomic) IBOutlet UILabel *uiCancelModelLabel;
 -(IBAction)modelSetAction:(id)sender;
 
 -(IBAction)unmModelSetAction:(id)sender;
+
+-(IBAction)setDefaultModel:(id)sender;
+
+-(IBAction)search:(id)sender;
+
+-(IBAction)up:(id)sender;
+
+-(IBAction)down:(id)sender;
+
 @end

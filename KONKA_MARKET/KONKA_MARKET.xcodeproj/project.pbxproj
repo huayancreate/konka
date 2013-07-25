@@ -34,7 +34,6 @@
 		2823F3B7179ABD16002DCC71 /* HYpercentTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2823F3B6179ABD16002DCC71 /* HYpercentTabelViewCell.xib */; };
 		28247451179E706400E93EA1 /* KonkaModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2824744A179E706400E93EA1 /* KonkaModel.xcdatamodeld */; };
 		28247465179E928400E93EA1 /* UserEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 28247464179E928400E93EA1 /* UserEntity.m */; };
-		28247468179E98CA00E93EA1 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 28247467179E98CA00E93EA1 /* BaseDataEntity.m */; };
 		282A56FD179460F90078524F /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 282A56FB179460F90078524F /* arrow_down.png */; };
 		282A56FE179460F90078524F /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 282A56FC179460F90078524F /* arrow_up.png */; };
 		282A5708179478820078524F /* HYSalesRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282A5706179478820078524F /* HYSalesRegistrationViewController.m */; };
@@ -86,6 +85,7 @@
 		285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
 		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
+		289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E791317A10BE500BA67D3 /* BaseDataEntity.m */; };
 		28D43662179394DC00C3F1B2 /* PasswordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28D43661179394DC00C3F1B2 /* PasswordList.plist */; };
 		28D43695179400BB00C3F1B2 /* UITableContract.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368C179400BB00C3F1B2 /* UITableContract.png */; };
 		28D43696179400BB00C3F1B2 /* UITableContract@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368D179400BB00C3F1B2 /* UITableContract@2x.png */; };
@@ -211,8 +211,6 @@
 		2824744B179E706400E93EA1 /* KonkaModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KonkaModel.xcdatamodel; sourceTree = "<group>"; };
 		28247463179E928400E93EA1 /* UserEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserEntity.h; sourceTree = "<group>"; };
 		28247464179E928400E93EA1 /* UserEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserEntity.m; sourceTree = "<group>"; };
-		28247466179E98CA00E93EA1 /* BaseDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataEntity.h; sourceTree = "<group>"; };
-		28247467179E98CA00E93EA1 /* BaseDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataEntity.m; sourceTree = "<group>"; };
 		282A56FB179460F90078524F /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_down.png; sourceTree = "<group>"; };
 		282A56FC179460F90078524F /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_up.png; sourceTree = "<group>"; };
 		282A5705179478820078524F /* HYSalesRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSalesRegistrationViewController.h; sourceTree = "<group>"; };
@@ -346,6 +344,8 @@
 		288C2A98179AEAA900EA8000 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		288C2A99179AEAA900EA8000 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
 		289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
+		289E791217A10BE500BA67D3 /* BaseDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataEntity.h; sourceTree = "<group>"; };
+		289E791317A10BE500BA67D3 /* BaseDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataEntity.m; sourceTree = "<group>"; };
 		28B24252179E4974009CE985 /* HYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLog.h; sourceTree = "<group>"; };
 		28D43661179394DC00C3F1B2 /* PasswordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PasswordList.plist; sourceTree = "<group>"; };
 		28D4368C179400BB00C3F1B2 /* UITableContract.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UITableContract.png; sourceTree = "<group>"; };
@@ -647,9 +647,9 @@
 		28247447179E706400E93EA1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				289E791217A10BE500BA67D3 /* BaseDataEntity.h */,
+				289E791317A10BE500BA67D3 /* BaseDataEntity.m */,
 				2824744A179E706400E93EA1 /* KonkaModel.xcdatamodeld */,
-				28247466179E98CA00E93EA1 /* BaseDataEntity.h */,
-				28247467179E98CA00E93EA1 /* BaseDataEntity.m */,
 				28247463179E928400E93EA1 /* UserEntity.h */,
 				28247464179E928400E93EA1 /* UserEntity.m */,
 				28FBA6D1179F7C7600CF4284 /* HYUserLoginModel.h */,
@@ -1374,9 +1374,9 @@
 				285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */,
 				28247451179E706400E93EA1 /* KonkaModel.xcdatamodeld in Sources */,
 				28247465179E928400E93EA1 /* UserEntity.m in Sources */,
-				28247468179E98CA00E93EA1 /* BaseDataEntity.m in Sources */,
 				28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */,
 				28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */,
+				289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

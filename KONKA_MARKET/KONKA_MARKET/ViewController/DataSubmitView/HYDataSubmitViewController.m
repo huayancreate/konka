@@ -83,8 +83,9 @@
     NSLog(@"getStoreList user_id %d", [user_id intValue]);
     KonkaManager *kkM = [[KonkaManager alloc] init];
     
-    self.userLogin.storeList = [kkM getStoreListByUserID:user_id ByType:@"storeList"];
+    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     
+    self.userLogin.storeList = [kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
 }
 
 

@@ -60,4 +60,7 @@
 
 // Call it for proper initialization
 - (UITableView *)initWithTextField:(UITextField *)textField inViewController:(UIViewController *) parentViewController withOptions:(NSDictionary *)options;
+
+- (void) hideOptionsView;
+- (void) showOptionsView;
 @end

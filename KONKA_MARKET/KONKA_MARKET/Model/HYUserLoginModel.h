@@ -19,5 +19,6 @@
 @property (nonatomic, retain) NSString *password;
 @property (nonatomic, retain) NSArray *modelList;
 @property (nonatomic, retain) NSMutableArray *modelNameList;
+@property (nonatomic, retain) NSMutableArray *modelNameCopyList;
 
 @end

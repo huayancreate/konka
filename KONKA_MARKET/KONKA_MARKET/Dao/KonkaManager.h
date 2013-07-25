@@ -23,6 +23,9 @@
 -(Boolean) isExistUserDataByID:(NSNumber *)user_id;
 -(void) updateDataPatch:(NSString *)dataPatch ByUserID:(NSNumber *)user_id;
 -(NSString *) selectDataPatchByUserID:(NSNumber *)user_id;
--(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type;
+-(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
+-(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name;
+
+-(void) updateModelListByName:(NSString *)name ByUserID:(NSNumber *)user_id;
 
 @end

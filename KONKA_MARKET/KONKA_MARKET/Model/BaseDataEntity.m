@@ -2,7 +2,7 @@
 //  BaseDataEntity.m
 //  KONKA_MARKET
 //
-//  Created by archon on 13-7-23.
+//  Created by archon on 13-7-25.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
@@ -13,9 +13,10 @@
 
 @dynamic addon1;
 @dynamic addon2;
-@dynamic name;
 @dynamic base_id;
-@dynamic user_id;
 @dynamic list_type;
+@dynamic name;
+@dynamic user_id;
+@dynamic flag;
 
 @end
