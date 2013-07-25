@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key> </key>
+	<array>
+		<string>账号管理</string>
+	</array>
+	<key>  </key>
+	<array>
+		<string>型号设定</string>
+		<string>产品销售提成设定</string>
+	</array>
+	<key>   </key>
+	<array>
+		<string>新版本检测</string>
+		<string>关于</string>
+	</array>
+</dict>
+</plist>
