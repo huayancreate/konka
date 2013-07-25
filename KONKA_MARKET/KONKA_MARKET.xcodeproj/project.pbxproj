@@ -49,7 +49,6 @@
 		284CAB1917990AD400943B7D /* head_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAB1817990AD400943B7D /* head_bg.png */; };
 		284CAB1D1799122900943B7D /* HYPasswordConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284CAB1B1799122900943B7D /* HYPasswordConfigViewController.m */; };
 		284CAB1E1799122900943B7D /* HYPasswordConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284CAB1C1799122900943B7D /* HYPasswordConfigViewController.xib */; };
-		2852706A179B834800A5DC21 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 28527069179B834800A5DC21 /* libCorePlot-CocoaTouch.a */; };
 		2857422D1794B6AB006E2DA2 /* remember1@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 285742221794B6AB006E2DA2 /* remember1@x2.png */; };
 		2857422E1794B6AB006E2DA2 /* remember2@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 285742231794B6AB006E2DA2 /* remember2@x2.png */; };
 		2857422F1794B6AB006E2DA2 /* loginbtn@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 285742241794B6AB006E2DA2 /* loginbtn@x2.png */; };
@@ -86,6 +85,7 @@
 		285A8A67179AE8BB00BE68BE /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A63179AE8BB00BE68BE /* EskLinePlot.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
+		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
 		28D43662179394DC00C3F1B2 /* PasswordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28D43661179394DC00C3F1B2 /* PasswordList.plist */; };
 		28D43695179400BB00C3F1B2 /* UITableContract.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368C179400BB00C3F1B2 /* UITableContract.png */; };
 		28D43696179400BB00C3F1B2 /* UITableContract@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368D179400BB00C3F1B2 /* UITableContract@2x.png */; };
@@ -230,7 +230,6 @@
 		284CAB1A1799122800943B7D /* HYPasswordConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPasswordConfigViewController.h; sourceTree = "<group>"; };
 		284CAB1B1799122900943B7D /* HYPasswordConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPasswordConfigViewController.m; sourceTree = "<group>"; };
 		284CAB1C1799122900943B7D /* HYPasswordConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYPasswordConfigViewController.xib; sourceTree = "<group>"; };
-		28527069179B834800A5DC21 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libCorePlot-CocoaTouch.a"; path = "../../Downloads/CorePlotSample-master/libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		285742221794B6AB006E2DA2 /* remember1@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remember1@x2.png"; sourceTree = "<group>"; };
 		285742231794B6AB006E2DA2 /* remember2@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remember2@x2.png"; sourceTree = "<group>"; };
 		285742241794B6AB006E2DA2 /* loginbtn@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginbtn@x2.png"; sourceTree = "<group>"; };
@@ -346,6 +345,7 @@
 		288C2A97179AEAA900EA8000 /* CPTXYTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTXYTheme.h; sourceTree = "<group>"; };
 		288C2A98179AEAA900EA8000 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		288C2A99179AEAA900EA8000 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
+		289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		28B24252179E4974009CE985 /* HYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLog.h; sourceTree = "<group>"; };
 		28D43661179394DC00C3F1B2 /* PasswordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PasswordList.plist; sourceTree = "<group>"; };
 		28D4368C179400BB00C3F1B2 /* UITableContract.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UITableContract.png; sourceTree = "<group>"; };
@@ -474,7 +474,6 @@
 				28DAE5AF1784037800F12366 /* ImageIO.framework in Frameworks */,
 				28DAE5AD1784036C00F12366 /* libicucore.dylib in Frameworks */,
 				28DAE5AB1784035B00F12366 /* libiconv.dylib in Frameworks */,
-				2852706A179B834800A5DC21 /* libCorePlot-CocoaTouch.a in Frameworks */,
 				28DAE5A91784033F00F12366 /* MobileCoreServices.framework in Frameworks */,
 				28DAE5A71784033100F12366 /* SystemConfiguration.framework in Frameworks */,
 				28DAE5A31784031700F12366 /* MessageUI.framework in Frameworks */,
@@ -484,6 +483,7 @@
 				28DAE36F1783F7B300F12366 /* Foundation.framework in Frameworks */,
 				28DAE3711783F7B300F12366 /* CoreGraphics.framework in Frameworks */,
 				28DAE3731783F7B300F12366 /* CoreData.framework in Frameworks */,
+				289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,8 +911,8 @@
 		28DAE36B1783F7B300F12366 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */,
 				2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */,
-				28527069179B834800A5DC21 /* libCorePlot-CocoaTouch.a */,
 				2857426A17950F87006E2DA2 /* Security.framework */,
 				281A8A1C17857023006AA1C6 /* CoreVideo.framework */,
 				281A8A1A1785701B006AA1C6 /* CoreMedia.framework */,
