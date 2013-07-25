@@ -15,6 +15,8 @@
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSDate *minimumDate;
 @property(nonatomic, strong) NSArray *disabledDates;
+@property(nonatomic, strong) NSNumber *flag;
+@property(nonatomic, strong) NSMutableArray *cellPercent;
 
 
 @end
@@ -39,6 +41,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
     topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
@@ -51,8 +55,50 @@
     
     [self.view addSubview:topTableView];
     
+    self.flag = [[NSNumber alloc] initWithInt:0];
     
+    [self getPeList:self.userLogin.user_id ByFlag:self.flag];
+
 }
+
+-(void) getPeList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+{
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    self.userLogin.peList = [kkM getPeListByUserID:user_id ByType:@"peList" ByFlag:flag];
+    
+    for (NSDictionary *dic in self.userLogin.peList)
+    {
+        NSMutableDictionary *cellDic = [[NSMutableDictionary alloc] init];
+        NSString *modelName = [self findModelNameByID:[dic objectForKey:@"addon2"]];
+        
+        [cellDic setValue:modelName forKey:@"modelName"];
+        [cellDic setObject:[dic objectForKey:@"name"] forKey:@"name"];
+        [cellDic setObject:[self findNumber:[dic objectForKey:@"addon2"]] forKey:@"num"];
+        [self.cellPercent addObject:cellDic];
+    }
+
+}
+
+-(NSString *)findNumber:(NSString *)addon2
+{
+    int i = 0;
+    for (NSDictionary *dic in self.userLogin.peList)
+    {
+        if([addon2 isEqualToString:[dic objectForKey:@"addon2"]])
+        {
+            i = i + 1;
+        }
+    }
+    return [NSString stringWithFormat:@"%d", i];
+}
+
+-(NSString *) findModelNameByID:(NSString *)addon2
+{
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    return [kkM findModelNameByID:self.userLogin.user_id ByName:addon2];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,8 +115,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    
-    return 1;
+    return [self.userLogin.peList count];
 }
 
 
@@ -80,12 +125,15 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CustomCellIdentifier =@"CellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
-    if (cell ==nil) {
-        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
-    }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
+    cell = [nib objectAtIndex:0];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    NSDictionary *cellLabel = [self.cellPercent objectAtIndex:indexPath.row];
+    
+    self.uiModelLabel.text = [cellLabel objectForKey:@"modelName"];
+    self.uiPercentage.text = [cellLabel objectForKey:@"name"];
+    self.uiNumber.text = [cellLabel objectForKey:@"num"];
     UIView *temp = [[UIView alloc] init];
     [cell setBackgroundView:temp];
     self.dateLabel.text = [super getNowDate];

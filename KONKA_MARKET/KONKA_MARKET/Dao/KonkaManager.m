@@ -210,6 +210,35 @@
     return userEntity.dataPatch;
 }
 
+-(NSString *)findModelNameByID:(NSNumber *)user_id ByName:(NSString *)addon2
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND base_id == %@", @"modelList", [user_id intValue], addon2];
+    //predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d", @"peList", [user_id intValue]];
+
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    BaseDataEntity *en = [result objectAtIndex:0];
+    
+    return en.name;
+
+}
+
+-(NSMutableArray *) getPeListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag
+{
+    return [self getStoreListByUserID:user_id ByType:type ByFlag:flag];
+}
+
 -(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag
 {
     if ([self managedObjectContext] == nil) {

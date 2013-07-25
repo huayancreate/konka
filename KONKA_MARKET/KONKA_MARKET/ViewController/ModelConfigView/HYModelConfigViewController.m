@@ -12,6 +12,7 @@
 @interface HYModelConfigViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic, strong) NSNumber *flag;
+@property (nonatomic, strong) NSMutableArray *percentageList;
 
 @end
 

@@ -17,5 +17,6 @@
 @synthesize password;
 @synthesize modelList;
 @synthesize modelNameList;
+@synthesize peList;
 
 @end
