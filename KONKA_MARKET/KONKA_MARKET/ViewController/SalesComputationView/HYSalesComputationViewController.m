@@ -16,6 +16,9 @@
 @property(nonatomic, strong) NSDateFormatter *dateFormatter;
 @property(nonatomic, strong) NSDate *minimumDate;
 @property(nonatomic, strong) NSArray *disabledDates;
+@property(nonatomic,strong) UIImage *selectImg;
+@property(nonatomic,strong) UIImage *unselectImg;
+
 
 @end
 
@@ -43,7 +46,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
-    topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, 320, 56) style:UITableViewStyleGrouped];
+    topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
     topTableView.dataSource = self;
@@ -57,25 +60,31 @@
     [self.view addSubview:topTableView];
     
     
-    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 62, 125, 40)];
+    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 46, 125, 40)];
     salesNum.text = @"销售总数量0台";
     salesNum.backgroundColor = [UIColor clearColor];
     
     
     [self.view addSubview:salesNum];
     
-    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(185, 62, 125, 40)];
+    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(185, 46, 125, 40)];
     salesMoney.text = @"销售总金额0元";
     [self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:salesMoney];
     
-    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
+    self.unselectImg=[UIImage imageNamed:@"sales_unselect.png"];
+    self.selectImg=[UIImage imageNamed:@"sales_select.png"];
     
-    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
+    [self.uiSizeBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+    [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+//    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
+//    
+//    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
     
     
     
@@ -115,14 +124,17 @@
     barPlot.delegate = self;
     [barPlot renderInLayer:barCorePlotView withTheme:defaultTheme];
     
-    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
-    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
-    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
-    
-    
-    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
+    [self.uiSizeBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+    [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+//    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
+//    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
+//    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
+//    
+//    
+//    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
 
     
 }
@@ -134,27 +146,33 @@
     linePlot.delegate = self;
     [linePlot renderInLayer:barCorePlotView withTheme:defaultTheme];
     
-    [self.uiModelBtn setBackgroundColor:[UIColor blueColor]];
-    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
-    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
-    
-    
-    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
+    [self.uiSizeBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    [self.uiModelBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+    [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+//    [self.uiModelBtn setBackgroundColor:[UIColor blueColor]];
+//    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
+//    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
+//    
+//    
+//    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
 
     
 }
 
 -(IBAction)yearsAction:(id)sender{
     
-    [self.uiYearsBtn setBackgroundColor:[UIColor blueColor]];
-    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
-    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
-    
-    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
+    [self.uiSizeBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    [self.uiYearsBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+//    [self.uiYearsBtn setBackgroundColor:[UIColor blueColor]];
+//    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
+//    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
+//    
+//    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiModelBtn.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiYearsBtn.titleLabel setTextColor:[UIColor blackColor]];
 
 }
 
@@ -169,7 +187,10 @@
         cell = [nib objectAtIndex:0];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
+    UIView *temp = [[UIView alloc] init];
+    [cell setBackgroundView:temp];
+    
     self.dateLabel.text = [super getNowDate];
     return  cell;
 }

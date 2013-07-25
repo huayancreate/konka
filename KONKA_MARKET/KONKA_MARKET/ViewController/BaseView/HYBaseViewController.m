@@ -60,7 +60,7 @@
     [self.components setSecond:-[self.components second]];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
     
     locManager = [[CLLocationManager alloc] init];
     locManager.delegate = self;

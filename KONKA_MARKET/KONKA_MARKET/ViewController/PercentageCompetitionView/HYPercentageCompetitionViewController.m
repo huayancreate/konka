@@ -39,7 +39,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 5, 320, 56) style:UITableViewStyleGrouped];
+    topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
     topTableView.dataSource = self;
@@ -86,6 +86,8 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    UIView *temp = [[UIView alloc] init];
+    [cell setBackgroundView:temp];
     self.dateLabel.text = [super getNowDate];
     return  cell;
 }
@@ -108,13 +110,13 @@
     calendar.delegate = self;
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
-    [self.dateFormatter setDateFormat:@"dd/MM/yyyy"];
-    self.minimumDate = [self.dateFormatter dateFromString:@"20/09/2012"];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"2012年9月"];
     
     self.disabledDates = @[
-                           [self.dateFormatter dateFromString:@"05/01/2013"],
-                           [self.dateFormatter dateFromString:@"06/01/2013"],
-                           [self.dateFormatter dateFromString:@"07/01/2013"]
+                           [self.dateFormatter dateFromString:@"2013年5月"],
+                           [self.dateFormatter dateFromString:@"2013年6月"],
+                           [self.dateFormatter dateFromString:@"2013年7月"]
                            ];
     
     calendar.onlyShowCurrentMonth = NO;

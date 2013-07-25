@@ -2,10 +2,10 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">11G63</string>
+		<string key="IBDocument.SystemVersion">12E55</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
-		<string key="IBDocument.AppKitVersion">1138.51</string>
-		<string key="IBDocument.HIToolboxVersion">569.00</string>
+		<string key="IBDocument.AppKitVersion">1187.39</string>
+		<string key="IBDocument.HIToolboxVersion">626.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			<string key="NS.object.0">2083</string>
@@ -50,7 +50,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">lst_bg.png</string>
+							<string key="NSResourceName">bg_data.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="574477246">
@@ -1229,7 +1229,10 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="searchTextField">UITextField</string>
 						<string key="tableViewCell">UITableViewCell</string>
+<<<<<<< HEAD
 						<string key="uiCancelModelLabel">UILabel</string>
+=======
+>>>>>>> 9b6bb7ef66f431daf0e3daa097abfcfd9ce3ab56
 						<string key="uiLableModelName">UILabel</string>
 						<string key="uiModelSet">UIButton</string>
 						<string key="uiSearchBtn">UIButton</string>
@@ -1245,10 +1248,13 @@
 							<string key="name">tableViewCell</string>
 							<string key="candidateClassName">UITableViewCell</string>
 						</object>
+<<<<<<< HEAD
 						<object class="IBToOneOutletInfo" key="uiCancelModelLabel">
 							<string key="name">uiCancelModelLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+=======
+>>>>>>> 9b6bb7ef66f431daf0e3daa097abfcfd9ce3ab56
 						<object class="IBToOneOutletInfo" key="uiLableModelName">
 							<string key="name">uiLableModelName</string>
 							<string key="candidateClassName">UILabel</string>
@@ -1290,8 +1296,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">lst_bg.png</string>
-			<string key="NS.object.0">{640, 1052}</string>
+			<string key="NS.key.0">bg_data.png</string>
+			<string key="NS.object.0">{640, 1048}</string>
 		</object>
 		<bool key="IBDocument.UseAutolayout">YES</bool>
 		<string key="IBCocoaTouchPluginVersion">2083</string>
