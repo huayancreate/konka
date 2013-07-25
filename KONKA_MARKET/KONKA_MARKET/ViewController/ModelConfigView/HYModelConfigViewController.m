@@ -12,7 +12,12 @@
 @interface HYModelConfigViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic, strong) NSNumber *flag;
+<<<<<<< HEAD
 @property (nonatomic, strong) NSMutableArray *percentageList;
+=======
+@property (nonatomic, strong) UIImage *unsetImg;
+@property (nonatomic, strong) UIImage *setImg;
+>>>>>>> 3e4918a6914ad07d5eb9a70ae1650d2b44664e0b
 
 @end
 
@@ -81,7 +86,7 @@
     
 
         
-    modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, 320, 260) style:UITableViewStyleGrouped];
+    modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, 260) style:UITableViewStyleGrouped];
     
     modelConfigTableView.delegate = self;
     modelConfigTableView.dataSource = self;
@@ -98,9 +103,15 @@
     
     [self.searchTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.uiModelSet setBackgroundColor:[UIColor blueColor]];
-    [self.uiModelSet.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiUnModelSet.titleLabel setTextColor:[UIColor blackColor]];
+    self.setImg=[UIImage imageNamed:@"model_set.png"];
+    self.unsetImg=[UIImage imageNamed:@"model_unset.png"];
+    
+    [self.uiModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
+    [self.uiUnModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
+    
+//    [self.uiModelSet setBackgroundColor:[UIColor blueColor]];
+//    [self.uiModelSet.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiUnModelSet.titleLabel setTextColor:[UIColor blackColor]];
     
 }
 
@@ -123,12 +134,15 @@
     
     [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:name ByFirstFlag:YES];
     
-    [self.uiModelSet setBackgroundColor:[UIColor blueColor]];
+    [self.uiModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
+    [self.uiUnModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
     
-    [self.uiUnModelSet setBackgroundColor:[UIColor clearColor]];
-    
-    [self.uiModelSet.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiUnModelSet.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiModelSet setBackgroundColor:[UIColor blueColor]];
+//    
+//    [self.uiUnModelSet setBackgroundColor:[UIColor clearColor]];
+//    
+//    [self.uiModelSet.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiUnModelSet.titleLabel setTextColor:[UIColor blackColor]];
     
     [self.modelConfigTableView reloadData];
 }
@@ -148,12 +162,15 @@
     
     [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:name ByFirstFlag:YES];
     
-    [self.uiModelSet setBackgroundColor:[UIColor clearColor]];
+    [self.uiModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
+    [self.uiUnModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
     
-    [self.uiUnModelSet setBackgroundColor:[UIColor blueColor]];
-    
-    [self.uiModelSet.titleLabel setTextColor:[UIColor blackColor]];
-    [self.uiUnModelSet.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiModelSet setBackgroundColor:[UIColor clearColor]];
+//    
+//    [self.uiUnModelSet setBackgroundColor:[UIColor blueColor]];
+//    
+//    [self.uiModelSet.titleLabel setTextColor:[UIColor blackColor]];
+//    [self.uiUnModelSet.titleLabel setTextColor:[UIColor blackColor]];
     
     [self.modelConfigTableView reloadData];
 
