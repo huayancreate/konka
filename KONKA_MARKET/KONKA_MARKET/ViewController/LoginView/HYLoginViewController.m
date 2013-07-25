@@ -253,7 +253,6 @@
             NSMutableDictionary *dicuser = [[NSMutableDictionary alloc] init];
             
             [dicuser setValue:[userJSON objectForKey:@"user_name"] forKey:@"user_name"];
-            NSLog(@"userJSON objectForKey:@user_name %@",[userJSON objectForKey:@"user_name"]);
             [dicuser setValue:[userJSON objectForKey:@"real_name"] forKey:@"real_name"];
             [dicuser setValue:[userJSON objectForKey:@"id"] forKey:@"user_id"];
             [dicuser setValue:[userJSON objectForKey:@"sid"] forKey:@"sid"];
@@ -428,12 +427,14 @@
 
     for(NSDictionary *innerObj in list)
     {
+        NSNumber *flagNumber = [[NSNumber alloc] initWithInt:0];
         [dicBase setValue:[innerObj objectForKey:@"addon1"] forKey:@"addon1"];
         [dicBase setValue:[innerObj objectForKey:@"addon2"] forKey:@"addon2"];
         [dicBase setValue:[innerObj objectForKey:@"id"] forKey:@"base_id"];
         [dicBase setValue:[innerObj objectForKey:@"name"] forKey:@"name"];
         [dicBase setValue:type forKey:@"list_type"];
         [dicBase setValue:userid forKey:@"user_id"];
+        [dicBase setValue:flagNumber forKey:@"flag"];
         [kkM insertBaseDataByParems:dicBase];
     }
 }

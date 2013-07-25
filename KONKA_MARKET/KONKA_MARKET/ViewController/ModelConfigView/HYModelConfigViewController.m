@@ -44,19 +44,11 @@
     return self;
 }
 
--(NSArray *) getStoreList:(NSNumber *)user_id
+-(void) getStoreList:(NSNumber *)user_id
 {
     KonkaManager *kkM = [[KonkaManager alloc] init];
     
-    return [kkM getStoreListByUserID:user_id ByType:@"modelList"];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    self.userLogin.modelList = [self getStoreList:self.userLogin.user_id];
+    self.userLogin.modelList = [kkM getStoreListByUserID:user_id ByType:@"modelList"];
     self.userLogin.modelNameList = [[NSMutableArray alloc] init];
     
     for (NSDictionary *dic in self.userLogin.modelList) {
@@ -64,6 +56,16 @@
         [self.userLogin.modelNameList addObject:[NSString stringWithFormat:@"%@", [dic objectForKey:@"name"]]];
         NSLog(@"self.userLogin.modelNameList %@", [self.userLogin.modelNameList objectAtIndex:0]);
     }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    [self getStoreList:self.userLogin.user_id];
+    
+
         
     modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 110, 320, 260) style:UITableViewStyleGrouped];
     
