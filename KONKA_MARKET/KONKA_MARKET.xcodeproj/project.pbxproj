@@ -112,6 +112,7 @@
 		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
 		289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E791317A10BE500BA67D3 /* BaseDataEntity.m */; };
 		28AD1B1217A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD1B1117A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib */; };
+		28AD1B1317A258A2004D8D70 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 281A8A0D17856FA7006AA1C6 /* libzbar.a */; };
 		28D43662179394DC00C3F1B2 /* PasswordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28D43661179394DC00C3F1B2 /* PasswordList.plist */; };
 		28D43695179400BB00C3F1B2 /* UITableContract.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368C179400BB00C3F1B2 /* UITableContract.png */; };
 		28D43696179400BB00C3F1B2 /* UITableContract@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368D179400BB00C3F1B2 /* UITableContract@2x.png */; };
@@ -526,6 +527,7 @@
 				281A8A1B1785701B006AA1C6 /* CoreMedia.framework in Frameworks */,
 				28DAE5B11784038800F12366 /* CoreText.framework in Frameworks */,
 				28DAE5AF1784037800F12366 /* ImageIO.framework in Frameworks */,
+				28AD1B1317A258A2004D8D70 /* libzbar.a in Frameworks */,
 				28DAE5AD1784036C00F12366 /* libicucore.dylib in Frameworks */,
 				28DAE5AB1784035B00F12366 /* libiconv.dylib in Frameworks */,
 				28DAE5A91784033F00F12366 /* MobileCoreServices.framework in Frameworks */,
