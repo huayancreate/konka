@@ -16,6 +16,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel1;
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel2;
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel3;
+@property (strong, nonatomic) IBOutlet UILabel *cellLabel4;
 @end
 
 @interface HYTableViewCell : UITableViewCell
@@ -27,4 +28,5 @@
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel1;
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel2;
 @property (strong, nonatomic) IBOutlet UILabel *cellLabel3;
+@property (strong, nonatomic) IBOutlet UILabel *cellLabel4;
 @end

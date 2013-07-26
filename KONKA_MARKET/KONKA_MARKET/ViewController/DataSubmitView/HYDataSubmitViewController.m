@@ -15,6 +15,7 @@
 
 @interface HYDataSubmitViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
+@property (nonatomic, strong) UITextField *theTextField;
 
 
 @end
@@ -26,12 +27,12 @@
 @synthesize LabelTextTableViewCell;
 @synthesize cellImage;
 @synthesize cellLabel1;
-@synthesize dropTableView;
 @synthesize cellLabel2;
 @synthesize cellLabel3;
 @synthesize dropDownTableView;
-@synthesize autoText;
-
+@synthesize cellLabel4;
+@synthesize theTextField = _textField;
+@synthesize autoCompleter = _autoCompleter;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -41,7 +42,7 @@
         [options setValue:[NSNumber numberWithBool:YES] forKey:ACOCaseSensitive];
         [options setValue:nil forKey:ACOUseSourceFont];
         
-        _autoCompleter = [[AutocompletionTableView alloc] initWithTextField:self.cellTextField inViewController:self withOptions:options];
+        _autoCompleter = [[AutocompletionTableView alloc] initWithTextField:self.theTextField inViewController:self withOptions:options];
         _autoCompleter.autoCompleteDelegate = self;
     }
     return _autoCompleter;
@@ -54,6 +55,14 @@
         // Custom initialization
     }
     return self;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (tableView == dropDownTableView)
+    {
+        self.cellLabel3.text = [self.userLogin.storeList objectAtIndex:indexPath.row];
+        [dropDownTableView removeFromSuperview];
+    }
 }
 
 - (void)viewDidLoad
@@ -86,14 +95,21 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     self.navigationItem.rightBarButtonItem  = rightButton;
     
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
-    gesture.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:gesture];
+//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
+//    gesture.numberOfTapsRequired = 1;
+//    [self.view addGestureRecognizer:gesture];
     
     [self getStoreList:self.userLogin.user_id];
     
     NSNumber *flag = [[NSNumber alloc] initWithInt:1];
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
+    
+    CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
+    self.theTextField = [[UITextField alloc] initWithFrame:textFieldRect];
+    
+    [self.theTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+    
+    [self.theTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
    
 }
 
@@ -102,6 +118,7 @@
 {
     KonkaManager *kkM = [[KonkaManager alloc] init];
     self.userLogin.modelNameStoreList = [kkM getAllModelNameListByUserID:user_id ByFlag:flag];
+    NSLog(@"getAllModelNameList %d" , [self.userLogin.modelNameStoreList count]);
 }
 
 - (void) getStoreList:(NSNumber *)user_id
@@ -170,8 +187,16 @@
 
 -(void)storeSelectAction:(UIGestureRecognizer *)gestureRecognizer
 {
+    dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(102, 90, 175, 132) style:UITableViewStylePlain];
+    dropDownTableView.scrollEnabled = YES;
     
-    [dropDownView openAnimation];
+    dropDownTableView.delegate = self;
+    dropDownTableView.dataSource = self;
+    
+    [self.view addSubview:dropDownTableView];
+    
+    UIView *tempView = [[UIView alloc] init];
+    [mainTableView setBackgroundView:tempView];
 }
 
 
@@ -179,11 +204,9 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    HYTableViewCell *cell = nil;
+    UITableViewCell *cell = nil;
     UITapGestureRecognizer *singleTap = nil;
     NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
-    UITextField *test = [[UITextField alloc] init];
-    
     
     if (tableView == dropDownTableView)
     {
@@ -206,18 +229,15 @@
                         self.cellLabel3.userInteractionEnabled = YES;
                         singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storeSelectAction:)];
                         [self.cellLabel3 addGestureRecognizer:singleTap];
-                        
                         self.cellLabel2.text = @"门店";
                         return cell;
                         break;
                     case 1:
                         break;
                     case 2:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        cell.cellTextField = [[UITextField alloc] init];
-                        [cell.cellTextField addTarget:self action:@selector(alertTest:) forControlEvents:UIControlEventTouchUpInside];
-                        self.cellLabel.text = @"型号";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.theTextField;
+                        self.cellLabel4.text = @"型号";
                         return cell;
                         break;
                     case 3:
@@ -347,17 +367,6 @@
 // Textfield value changed, store the new value.
 - (void)textFieldDidEndEditing:(UITextField *)textField {
 
-}
-
--(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    NSCharacterSet *cs;
-    cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS]invertedSet];
-    
-    NSString *filtered = [[string componentsSeparatedByCharactersInSet:cs]componentsJoinedByString:@""];
-    
-    BOOL canChange = [string isEqualToString:filtered];
-    
-    return canChange;
 }
 
 //- (void) imagePickerController: (UIImagePickerController*) reader
