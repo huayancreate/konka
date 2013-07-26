@@ -8,8 +8,9 @@
 
 #import "HYBaseViewController.h"
 #import "HYTableViewCell.h"
+#import "AutocompletionTableView.h"
 
-@interface HYCompetitionSalesViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,HYTableViewCell>{
+@interface HYCompetitionSalesViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate,HYTableViewCell,AutocompletionTableViewDelegate>{
 
 }
 

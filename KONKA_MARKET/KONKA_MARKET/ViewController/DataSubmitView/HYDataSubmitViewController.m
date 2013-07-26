@@ -16,6 +16,7 @@
 @interface HYDataSubmitViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic, strong) UITextField *theTextField;
+@property (nonatomic, strong) UILabel *stroeName;
 
 
 @end
@@ -33,6 +34,7 @@
 @synthesize cellLabel4;
 @synthesize theTextField = _textField;
 @synthesize autoCompleter = _autoCompleter;
+@synthesize stroeName;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -60,7 +62,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView == dropDownTableView)
     {
-        self.cellLabel3.text = [self.userLogin.storeList objectAtIndex:indexPath.row];
+        NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:indexPath.row];
+        self.cellLabel3.text = [dic objectForKey:@"name"];
         [dropDownTableView removeFromSuperview];
     }
 }
@@ -110,6 +113,10 @@
     [self.theTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     
     [self.theTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    CGRect labelFieldRect = CGRectMake(120, 145, 175, 30);
+    stroeName = [[UILabel alloc] initWithFrame:labelFieldRect];
+    
    
 }
 
