@@ -197,6 +197,7 @@
 -(IBAction)dataPick:(id)sender
 {
     CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+    
     self.calendar = calendar;
     calendar.delegate = self;
     
