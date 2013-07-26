@@ -90,7 +90,7 @@
     
     
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"conform.png"];
+    UIImage *backButtonImage = [UIImage imageNamed:@"right.png"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];

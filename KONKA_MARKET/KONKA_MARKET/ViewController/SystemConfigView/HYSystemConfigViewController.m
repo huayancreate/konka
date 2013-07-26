@@ -10,6 +10,7 @@
 #import "HYModelConfigViewController.h"
 #import "HYPercentageConfigViewController.h"
 #import "HYPasswordConfigViewController.h"
+#import "HYAboutViewController.h"
 
 @interface HYSystemConfigViewController ()
 
@@ -126,6 +127,13 @@
         modelView.title = @"型号设定";
         [self.navigationController pushViewController:modelView animated:YES];
     }
+    
+    if([cell.textLabel.text isEqualToString:@"关于"]){
+        HYAboutViewController *aboutView = [[HYAboutViewController alloc]init];
+        aboutView.title = @"关于";
+        [self.navigationController pushViewController:aboutView animated:YES];
+    }
+
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 

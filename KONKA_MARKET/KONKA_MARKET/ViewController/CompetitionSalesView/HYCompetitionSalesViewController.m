@@ -41,7 +41,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"conform.png"];
+    UIImage *backButtonImage = [UIImage imageNamed:@"right.png"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
