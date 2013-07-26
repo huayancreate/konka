@@ -16,7 +16,7 @@
 @interface HYDataSubmitViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic, strong) UITextField *theTextField;
-@property (nonatomic, strong) UILabel *stroeName;
+@property (nonatomic, strong) UILabel *storeName;
 
 
 @end
@@ -34,7 +34,8 @@
 @synthesize cellLabel4;
 @synthesize theTextField = _textField;
 @synthesize autoCompleter = _autoCompleter;
-@synthesize stroeName;
+@synthesize storeName;
+@synthesize uibgLabel;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -63,7 +64,9 @@
     if (tableView == dropDownTableView)
     {
         NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:indexPath.row];
-        self.cellLabel3.text = [dic objectForKey:@"name"];
+        NSLog(@"indexPath.row %d", indexPath.row);
+        NSLog(@"indexPath.row %@", [dic objectForKey:@"name"]);
+        storeName.text = [dic objectForKey:@"name"];
         [dropDownTableView removeFromSuperview];
     }
 }
@@ -98,9 +101,10 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     self.navigationItem.rightBarButtonItem  = rightButton;
     
-//    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
-//    gesture.numberOfTapsRequired = 1;
-//    [self.view addGestureRecognizer:gesture];
+    self.uibgLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard:)];
+    gesture.numberOfTapsRequired = 1;
+    [self.uibgLabel addGestureRecognizer:gesture];
     
     [self getStoreList:self.userLogin.user_id];
     
@@ -114,8 +118,16 @@
     
     [self.theTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    CGRect labelFieldRect = CGRectMake(120, 145, 175, 30);
-    stroeName = [[UILabel alloc] initWithFrame:labelFieldRect];
+    CGRect labelFieldRect = CGRectMake(0, 0, 175, 30);
+    
+    storeName = [[UILabel alloc] initWithFrame:labelFieldRect];
+    
+    NSDictionary *dic = [self.userLogin.storeList objectAtIndex:0];
+    storeName.userInteractionEnabled = YES;
+    UITapGestureRecognizer *singleTap = nil;
+    singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storeSelectAction:)];
+    [storeName addGestureRecognizer:singleTap];
+    storeName.text = [dic objectForKey:@"name"];
     
    
 }
@@ -194,7 +206,7 @@
 
 -(void)storeSelectAction:(UIGestureRecognizer *)gestureRecognizer
 {
-    dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(102, 90, 175, 132) style:UITableViewStylePlain];
+    dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(107, 90, 175, 132) style:UITableViewStylePlain];
     dropDownTableView.scrollEnabled = YES;
     
     dropDownTableView.delegate = self;
@@ -203,7 +215,8 @@
     [self.view addSubview:dropDownTableView];
     
     UIView *tempView = [[UIView alloc] init];
-    [mainTableView setBackgroundView:tempView];
+    [dropDownTableView setBackgroundView:tempView];
+
 }
 
 
@@ -212,7 +225,6 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = nil;
-    UITapGestureRecognizer *singleTap = nil;
     NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
     
     if (tableView == dropDownTableView)
@@ -231,12 +243,9 @@
             case 0:
                 switch (indexPath.row) {
                     case 0:
-                        cell = [self createTabelViewCellForIndentifier:@"DropDownCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:2];                        self.cellLabel3.text = [dic objectForKey:@"name"];
-                        
-                        self.cellLabel3.userInteractionEnabled = YES;
-                        singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storeSelectAction:)];
-                        [self.cellLabel3 addGestureRecognizer:singleTap];
-                        self.cellLabel2.text = @"门店";
+                        cell = [self createTabelViewCellForIndentifier:@"DropDownCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = storeName;
+                        self.cellLabel4.text = @"门店";
                         return cell;
                         break;
                     case 1:
@@ -426,9 +435,9 @@
     [UIView commitAnimations];
 }
 
--(void)hidenKeyboard
+-(void)hidenKeyboard:(UIGestureRecognizer *)gestureRecognizer
 {
-    [self resumeView];
+    //[self resumeView];
 }
 
 #pragma mark - AutoCompleteTableViewDelegate

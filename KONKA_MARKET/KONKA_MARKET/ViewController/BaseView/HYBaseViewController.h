@@ -38,6 +38,7 @@
 
 -(void) endRequest:(NSString *)msg;
 -(void) cancelButtonClick:(id)sender;
+-(void) setResizeForKeyboard;
 -(void) alertMsg:(NSString *)msg forTittle:(NSString *)tittle;
 -(NSString *) getNowDate;
 -(NSString *) getUpMonthDate:(NSString *) currentDate;

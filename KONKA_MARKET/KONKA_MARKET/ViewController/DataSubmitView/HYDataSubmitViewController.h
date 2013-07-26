@@ -24,6 +24,7 @@
 @property (nonatomic,strong) UITableView *mainTableView;
 @property (nonatomic, strong) UITableView *dropTableView;
 @property (nonatomic, strong) UITableView *dropDownTableView;
+@property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 
 - (IBAction)hisAction:(id)sender;
 

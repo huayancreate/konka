@@ -207,4 +207,8 @@
     NSLog(@"错误 %@",errorMessage);
 }
 
+-(void)setResizeForKeyboard
+{
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+}
 @end

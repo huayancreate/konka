@@ -157,7 +157,7 @@
     if(tableView == downLoadTabelView)
     {
         NSLog(@"downLoadTabelView %d", [self.userLogin.peList count]);
-        static NSString *CustomCellIdentifier =@"CellIdentifier";
+        static NSString *CustomCellIdentifier =@"PercentCellIdentifier";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYPercentageCompetitionTabelViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];

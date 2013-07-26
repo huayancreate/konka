@@ -105,6 +105,7 @@
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
 		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
 		289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E791317A10BE500BA67D3 /* BaseDataEntity.m */; };
+		28AD1B1217A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD1B1117A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib */; };
 		28D43662179394DC00C3F1B2 /* PasswordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28D43661179394DC00C3F1B2 /* PasswordList.plist */; };
 		28D43695179400BB00C3F1B2 /* UITableContract.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368C179400BB00C3F1B2 /* UITableContract.png */; };
 		28D43696179400BB00C3F1B2 /* UITableContract@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368D179400BB00C3F1B2 /* UITableContract@2x.png */; };
@@ -385,7 +386,7 @@
 		289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		289E791217A10BE500BA67D3 /* BaseDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataEntity.h; sourceTree = "<group>"; };
 		289E791317A10BE500BA67D3 /* BaseDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataEntity.m; sourceTree = "<group>"; };
-		289E791517A124FA00BA67D3 /* HYPercentageCompetitionTabelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYPercentageCompetitionTabelViewCell.xib; sourceTree = "<group>"; };
+		28AD1B1117A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYPercentageCompetitionTabelViewCell.xib; sourceTree = "<group>"; };
 		28B24252179E4974009CE985 /* HYLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYLog.h; sourceTree = "<group>"; };
 		28D43661179394DC00C3F1B2 /* PasswordList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PasswordList.plist; sourceTree = "<group>"; };
 		28D4368C179400BB00C3F1B2 /* UITableContract.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UITableContract.png; sourceTree = "<group>"; };
@@ -1270,6 +1271,7 @@
 		28F18FB61797BE3F00E82991 /* BaseViewXIB */ = {
 			isa = PBXGroup;
 			children = (
+				28AD1B1117A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib */,
 				285CB8E91797DEEC004A7D7E /* HYTableViewCell.h */,
 				285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */,
 				28F18FB71797BE3F00E82991 /* HYTableViewCell.xib */,
@@ -1278,7 +1280,6 @@
 				28F18FBA1797BE3F00E82991 /* TopTableViewCell.m */,
 				28F18FBB1797BE3F00E82991 /* TopTableViewCell.xib */,
 				2823F3B6179ABD16002DCC71 /* HYpercentTabelViewCell.xib */,
-				289E791517A124FA00BA67D3 /* HYPercentageCompetitionTabelViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -1427,6 +1428,7 @@
 				18FF848B17A1252600BDD590 /* model_set_defaul.png in Resources */,
 				18FF848C17A1252600BDD590 /* model_unset.png in Resources */,
 				18FF848E17A1389400BDD590 /* right.png in Resources */,
+				28AD1B1217A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

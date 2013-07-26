@@ -21,6 +21,9 @@
 @synthesize cellLabel1;
 @synthesize uinewpassword;
 @synthesize uirepeatpassword;
+@synthesize cellLabel2;
+@synthesize cellLabel3;
+@synthesize cellLabel4;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
