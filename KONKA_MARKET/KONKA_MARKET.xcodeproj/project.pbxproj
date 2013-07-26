@@ -57,6 +57,7 @@
 		282A5708179478820078524F /* HYSalesRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282A5706179478820078524F /* HYSalesRegistrationViewController.m */; };
 		282A5709179478820078524F /* HYSalesRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282A5707179478820078524F /* HYSalesRegistrationViewController.xib */; };
 		2831155D1797B11E00DF6AF1 /* AutocompletionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */; };
+		2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831DBC917A186C700EC22CE /* DropDownView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */; };
 		284CAAFC1798E37600943B7D /* btn_qr.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFB1798E37600943B7D /* btn_qr.png */; };
 		284CAAFE1798F0F900943B7D /* btn_set_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFD1798F0F900943B7D /* btn_set_white.png */; };
@@ -104,7 +105,6 @@
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
 		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
 		289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E791317A10BE500BA67D3 /* BaseDataEntity.m */; };
-		289E791617A124FA00BA67D3 /* HYPercentageCompetitionTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 289E791517A124FA00BA67D3 /* HYPercentageCompetitionTabelViewCell.xib */; };
 		28D43662179394DC00C3F1B2 /* PasswordList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28D43661179394DC00C3F1B2 /* PasswordList.plist */; };
 		28D43695179400BB00C3F1B2 /* UITableContract.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368C179400BB00C3F1B2 /* UITableContract.png */; };
 		28D43696179400BB00C3F1B2 /* UITableContract@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28D4368D179400BB00C3F1B2 /* UITableContract@2x.png */; };
@@ -255,6 +255,8 @@
 		282A5707179478820078524F /* HYSalesRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSalesRegistrationViewController.xib; sourceTree = "<group>"; };
 		2831155B1797B11E00DF6AF1 /* AutocompletionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutocompletionTableView.h; sourceTree = "<group>"; };
 		2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompletionTableView.m; sourceTree = "<group>"; };
+		2831DBC817A186C700EC22CE /* DropDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownView.h; sourceTree = "<group>"; };
+		2831DBC917A186C700EC22CE /* DropDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownView.m; sourceTree = "<group>"; };
 		2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		284CAAFB1798E37600943B7D /* btn_qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_qr.png; sourceTree = "<group>"; };
 		284CAAFD1798F0F900943B7D /* btn_set_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_set_white.png; path = ../datasubmit/btn_set_white.png; sourceTree = "<group>"; };
@@ -1166,6 +1168,8 @@
 		28DAE5321783FAF700F12366 /* Utily */ = {
 			isa = PBXGroup;
 			children = (
+				2831DBC817A186C700EC22CE /* DropDownView.h */,
+				2831DBC917A186C700EC22CE /* DropDownView.m */,
 				28B24252179E4974009CE985 /* HYLog.h */,
 				285A8A5F179AE8BB00BE68BE /* Plot */,
 				2821DBB9179718F900B77C26 /* CKCalendarView.h */,
@@ -1414,9 +1418,6 @@
 				18FF847917A1166400BDD590 /* sales_unselect.png in Resources */,
 				18FF847A17A1166400BDD590 /* sales_select.png in Resources */,
 				18FF847D17A11C3600BDD590 /* percent_setting.png in Resources */,
-<<<<<<< HEAD
-				289E791617A124FA00BA67D3 /* HYPercentageCompetitionTabelViewCell.xib in Resources */,
-=======
 				18FF848617A1252600BDD590 /* model_bg_set.png in Resources */,
 				18FF848717A1252600BDD590 /* model_search.png in Resources */,
 				18FF848817A1252600BDD590 /* model_search_txt.png in Resources */,
@@ -1425,7 +1426,6 @@
 				18FF848B17A1252600BDD590 /* model_set_defaul.png in Resources */,
 				18FF848C17A1252600BDD590 /* model_unset.png in Resources */,
 				18FF848E17A1389400BDD590 /* right.png in Resources */,
->>>>>>> 3e4918a6914ad07d5eb9a70ae1650d2b44664e0b
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1488,6 +1488,7 @@
 				28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */,
 				28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */,
 				289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */,
+				2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

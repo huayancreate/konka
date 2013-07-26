@@ -17,7 +17,8 @@
 @property (strong, nonatomic) IBOutlet UILabel *uiModelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *uiNumber;
 @property (strong, nonatomic) IBOutlet UILabel *uiPercentage;
-@property (strong, nonatomic) IBOutlet UITableView *uiDownTabelView;
+
+@property (strong, nonatomic) IBOutlet UITableView *downLoadTabelView;
 
 -(IBAction)percentageConfigAction:(id)sender;
 

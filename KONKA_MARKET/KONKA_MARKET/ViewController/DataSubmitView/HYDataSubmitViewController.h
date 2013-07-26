@@ -8,8 +8,13 @@
 
 #import "HYBaseViewController.h"
 #import "HYTableViewCell.h"
+#import "DropDownView.h"
+#import "AutocompletionTableView.h"
 
-@interface HYDataSubmitViewController : HYBaseViewController<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,HYTableViewCell>{
+@interface HYDataSubmitViewController : HYBaseViewController<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,HYTableViewCell,DropDownViewDelegate,AutocompletionTableViewDelegate>{
+    
+    DropDownView *dropDownView;
+    NSArray *arrayData;
 
 }
 
@@ -22,6 +27,8 @@
 
 @property (nonatomic,strong) UITableView *mainTableView;
 @property (nonatomic, strong) UITableView *dropTableView;
+@property (nonatomic, strong) UITableView *dropDownTableView;
+@property (nonatomic, strong) UITextField *autoText;
 
 - (IBAction)hisAction:(id)sender;
 

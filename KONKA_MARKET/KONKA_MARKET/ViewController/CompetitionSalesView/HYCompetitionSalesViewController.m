@@ -52,6 +52,18 @@
     
     UIView *tempView = [[UIView alloc] init];
     [self.mainTableView setBackgroundView:tempView];
+    
+    [self getStoreList:self.userLogin.user_id];
+}
+
+- (void) getStoreList:(NSNumber *)user_id
+{
+    NSLog(@"getStoreList user_id %d", [user_id intValue]);
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
+    
+    self.userLogin.storeList = [kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
 }
 
 -(void)submit:(id)sender{
@@ -95,20 +107,16 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = nil;
+    NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
     switch (indexPath.row) {
         case 0:
-            cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-            self.cellLabel.text = @"门店";
+            cell = [self createTabelViewCellForIndentifier:@"DropDownCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:2];
+            self.cellLabel3.text = [dic objectForKey:@"name"];
+            self.cellLabel2.text = @"门店";
             return cell;
             break;
         case 1:
             cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             
             [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             self.cellLabel.text = @"品牌";
@@ -118,15 +126,11 @@
             cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
             
             [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             self.cellLabel.text = @"型号";
             return cell;
             break;
         case 3:
             cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             
             [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             self.cellLabel.text = @"数量";
@@ -136,15 +140,11 @@
             cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
             
             [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             self.cellLabel.text = @"金额";
             return cell;
             break;
         case 5:
             cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-            
-            [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             
             [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
             self.cellLabel.text = @"备注";

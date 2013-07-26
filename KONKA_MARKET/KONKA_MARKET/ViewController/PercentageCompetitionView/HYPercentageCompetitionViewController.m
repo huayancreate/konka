@@ -26,6 +26,7 @@
 @synthesize tableViewCell;
 @synthesize dateBtn;
 @synthesize dateLabel;
+@synthesize downLoadTabelView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +52,12 @@
     UIView *tempView = [[UIView alloc] init];
     [topTableView setBackgroundView:tempView];
     
+    UIView *tempView1 = [[UIView alloc] init];
+    [downLoadTabelView setBackgroundView:tempView1];
+    
+    downLoadTabelView.delegate = self;
+    downLoadTabelView.dataSource = self;
+    
     topTableView.scrollEnabled = NO;
     
     [self.view addSubview:topTableView];
@@ -66,6 +73,9 @@
     KonkaManager *kkM = [[KonkaManager alloc] init];
     self.userLogin.peList = [kkM getPeListByUserID:user_id ByType:@"peList" ByFlag:flag];
     
+    
+    self.cellPercent = [[NSMutableArray alloc] init];
+    
     for (NSDictionary *dic in self.userLogin.peList)
     {
         NSMutableDictionary *cellDic = [[NSMutableDictionary alloc] init];
@@ -73,31 +83,33 @@
         
         [cellDic setValue:modelName forKey:@"modelName"];
         [cellDic setObject:[dic objectForKey:@"name"] forKey:@"name"];
-        [cellDic setObject:[self findNumber:[dic objectForKey:@"addon2"]] forKey:@"num"];
+        [cellDic setObject:@"1台" forKey:@"num"];
+        NSLog(@"downLoadTabelView %@", [cellDic objectForKey:@"modelName"]);
+        NSLog(@"downLoadTabelView %@台", [cellDic objectForKey:@"name"]);
+        NSLog(@"downLoadTabelView %@", [cellDic objectForKey:@"num"]);
         [self.cellPercent addObject:cellDic];
     }
 
 }
 
--(NSString *)findNumber:(NSString *)addon2
-{
-    int i = 0;
-    for (NSDictionary *dic in self.userLogin.peList)
-    {
-        if([addon2 isEqualToString:[dic objectForKey:@"addon2"]])
-        {
-            i = i + 1;
-        }
-    }
-    return [NSString stringWithFormat:@"%d", i];
-}
+//-(NSString *)findNumber:(NSString *)addon2
+//{
+//    int i = 0;
+//    for (NSDictionary *dic in self.userLogin.peList)
+//    {
+//        if([addon2 isEqualToString:[dic objectForKey:@"addon2"]])
+//        {
+//            i = i + 1;
+//        }
+//    }
+//    return [NSString stringWithFormat:@"%d", i];
+//}
 
 -(NSString *) findModelNameByID:(NSString *)addon2
 {
     KonkaManager *kkM = [[KonkaManager alloc] init];
     return [kkM findModelNameByID:self.userLogin.user_id ByName:addon2];
 }
-
 
 
 - (void)didReceiveMemoryWarning
@@ -108,14 +120,17 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    
+
     return 1;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.userLogin.peList count];
+    if (tableView == downLoadTabelView){
+        return [self.userLogin.peList count];
+    }
+    return 1;
 }
 
 
@@ -123,21 +138,41 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CustomCellIdentifier =@"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
-    NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
-    cell = [nib objectAtIndex:0];
     
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    NSDictionary *cellLabel = [self.cellPercent objectAtIndex:indexPath.row];
+    if (tableView == topTableView)
+    {
+        static NSString *CustomCellIdentifier =@"CellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        UIView *temp = [[UIView alloc] init];
+        [cell setBackgroundView:temp];
+        self.dateLabel.text = [super getNowDate];
+        return  cell;
+    }
     
-    self.uiModelLabel.text = [cellLabel objectForKey:@"modelName"];
-    self.uiPercentage.text = [cellLabel objectForKey:@"name"];
-    self.uiNumber.text = [cellLabel objectForKey:@"num"];
-    UIView *temp = [[UIView alloc] init];
-    [cell setBackgroundView:temp];
-    self.dateLabel.text = [super getNowDate];
-    return  cell;
+    if(tableView == downLoadTabelView)
+    {
+        NSLog(@"downLoadTabelView %d", [self.userLogin.peList count]);
+        static NSString *CustomCellIdentifier =@"CellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYPercentageCompetitionTabelViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        NSDictionary *cellLabel = [self.cellPercent objectAtIndex:indexPath.row];
+        self.uiModelLabel.text = [cellLabel objectForKey:@"modelName"];
+        self.uiPercentage.text = [cellLabel objectForKey:@"name"];
+        self.uiNumber.text = [cellLabel objectForKey:@"num"];
+        
+        NSLog(@"downLoadTabelView %@", [cellLabel objectForKey:@"modelName"]);
+        NSLog(@"downLoadTabelView %@", [cellLabel objectForKey:@"name"]);
+        NSLog(@"downLoadTabelView %@", [cellLabel objectForKey:@"num"]);
+        return cell;
+    }
+
 }
 
 -(IBAction)upMoth:(id)sender

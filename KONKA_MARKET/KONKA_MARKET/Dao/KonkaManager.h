@@ -25,9 +25,12 @@
 -(NSString *) selectDataPatchByUserID:(NSNumber *)user_id;
 -(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
 -(NSMutableArray *) getPeListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
--(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name;
+-(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int)page;
 
--(void) updateModelListByName:(NSString *)name ByUserID:(NSNumber *)user_id;
+-(NSMutableArray *) getAllModelNameListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag;
+
+
+-(void) updateModelListFlag:(NSNumber *)flag ByName:(NSString *)name ByUserID:(NSNumber *)user_id;
 
 -(NSString *) findModelNameByID:(NSNumber *)user_id ByName:(NSString *)addon2;
 

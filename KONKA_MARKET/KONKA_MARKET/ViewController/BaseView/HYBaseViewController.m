@@ -23,6 +23,7 @@
 @synthesize parentView;
 @synthesize locManager;
 @synthesize userLogin;
+@synthesize newpassword;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -67,6 +68,8 @@
     locManager.desiredAccuracy = kCLLocationAccuracyBest;
     //[locManager startUpdatingLocation];
     
+    newpassword = self.userLogin.password;
+    
     [self startTimer];
 }
 
@@ -92,6 +95,7 @@
 
 -(void)backButtonAction:(id)sender
 {
+    self.userLogin.password = newpassword;
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
 }
 

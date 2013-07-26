@@ -20,6 +20,7 @@
 @property (nonatomic, retain) NSArray *modelList;
 @property (nonatomic, retain) NSMutableArray *modelNameList;
 @property (nonatomic, retain) NSMutableArray *modelNameCopyList;
+@property (nonatomic, retain) NSMutableArray *modelNameStoreList;
 @property (nonatomic, retain) NSArray *peList;
 
 @end

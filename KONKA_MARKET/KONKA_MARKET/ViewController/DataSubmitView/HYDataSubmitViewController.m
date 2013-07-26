@@ -14,6 +14,7 @@
 
 
 @interface HYDataSubmitViewController ()
+@property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 
 
 @end
@@ -28,7 +29,23 @@
 @synthesize dropTableView;
 @synthesize cellLabel2;
 @synthesize cellLabel3;
+@synthesize dropDownTableView;
+@synthesize autoText;
 
+
+- (AutocompletionTableView *)autoCompleter
+{
+    if (!_autoCompleter)
+    {
+        NSMutableDictionary *options = [NSMutableDictionary dictionaryWithCapacity:2];
+        [options setValue:[NSNumber numberWithBool:YES] forKey:ACOCaseSensitive];
+        [options setValue:nil forKey:ACOUseSourceFont];
+        
+        _autoCompleter = [[AutocompletionTableView alloc] initWithTextField:self.cellTextField inViewController:self withOptions:options];
+        _autoCompleter.autoCompleteDelegate = self;
+    }
+    return _autoCompleter;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,7 +92,16 @@
     
     [self getStoreList:self.userLogin.user_id];
     
+    NSNumber *flag = [[NSNumber alloc] initWithInt:1];
+    [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
    
+}
+
+
+-(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+{
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    self.userLogin.modelNameStoreList = [kkM getAllModelNameListByUserID:user_id ByFlag:flag];
 }
 
 - (void) getStoreList:(NSNumber *)user_id
@@ -124,6 +150,10 @@
                 break;
         }
     }
+    if(tableView == dropDownTableView)
+    {
+        return [self.userLogin.storeList count];
+    }
     return 5;
 }
 
@@ -131,13 +161,17 @@
 
     HYTableViewCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier: indentifier];
-    if (cell == nil){
-        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:nibName owner:self options:nil];
-        cell = [nib objectAtIndex:index];
-    }
+    NSArray *nib=[[NSBundle mainBundle]loadNibNamed:nibName owner:self options:nil];
+    cell = [nib objectAtIndex:index];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 
+}
+
+-(void)storeSelectAction:(UIGestureRecognizer *)gestureRecognizer
+{
+    
+    [dropDownView openAnimation];
 }
 
 
@@ -146,14 +180,31 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = nil;
+    UITapGestureRecognizer *singleTap = nil;
+    NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
+    
+    if (tableView == dropDownTableView)
+    {
+        cell = [tableView dequeueReusableCellWithIdentifier: @"LabelTextCellIdentifier"];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:indexPath.row];
+        self.cellLabel.text = [dic objectForKey:@"name"];
+        return cell;
+    }
+    
+    
     if (tableView == mainTableView) {
         switch (indexPath.section) {
             case 0:
                 switch (indexPath.row) {
                     case 0:
-                        cell = [self createTabelViewCellForIndentifier:@"DropDownCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:2];
+                        cell = [self createTabelViewCellForIndentifier:@"DropDownCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:2];                        self.cellLabel3.text = [dic objectForKey:@"name"];
                         
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+                        self.cellLabel3.userInteractionEnabled = YES;
+                        singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storeSelectAction:)];
+                        [self.cellLabel3 addGestureRecognizer:singleTap];
+                        
                         self.cellLabel2.text = @"门店";
                         return cell;
                         break;
@@ -161,9 +212,7 @@
                         break;
                     case 2:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-
+                        self.autoText = self.cellTextField;
                         self.cellLabel.text = @"型号";
                         return cell;
                         break;
@@ -335,6 +384,7 @@
 
     HYSalesRegistrationViewController *srView = [[HYSalesRegistrationViewController alloc] init];
     
+    srView.title = @"上报历史";
     [self.navigationController pushViewController:srView animated:YES];
 }
 
@@ -355,6 +405,18 @@
 -(void)hidenKeyboard
 {
     [self resumeView];
+}
+
+#pragma mark - AutoCompleteTableViewDelegate
+
+- (NSArray*) autoCompletion:(AutocompletionTableView*) completer suggestionsFor:(NSString*) string{
+    // with the prodided string, build a new array with suggestions - from DB, from a service, etc.
+    return self.userLogin.modelNameStoreList;
+}
+
+- (void) autoCompletion:(AutocompletionTableView*) completer didSelectAutoCompleteSuggestionWithIndex:(NSInteger) index{
+    // invoked when an available suggestion is selected
+    NSLog(@"%@ - Suggestion chosen: %d", completer, index);
 }
 
 @end

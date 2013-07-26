@@ -34,6 +34,7 @@
 @property (nonatomic, retain)  NSString *titlename;
 @property (nonatomic, retain) HYBaseViewController *parentView;
 @property (nonatomic, strong) HYUserLoginModel *userLogin;
+@property (nonatomic, strong) NSString *newpassword;
 
 -(void) endRequest:(NSString *)msg;
 -(void) cancelButtonClick:(id)sender;

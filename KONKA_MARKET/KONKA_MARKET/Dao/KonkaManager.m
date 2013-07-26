@@ -271,7 +271,7 @@
 }
 
 
--(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name
+-(NSMutableArray *) getAllModelNameListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
     if ([self managedObjectContext] == nil) {
         return nil;
@@ -281,10 +281,38 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     NSPredicate * predicate = nil;
-    if (name == nil){
+    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND flag = %d", @"modelList", [user_id intValue], [flag intValue]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    NSMutableArray *result1 = [[NSMutableArray alloc] init];
+    
+    for (BaseDataEntity *en in result) {
+        [result1 addObject:en.name];
+    }
+    return result1;
+}
+
+-(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int)page
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    [fetchRequest setFetchLimit:20];
+    [fetchRequest setFetchOffset:page * 20];
+    NSPredicate * predicate = nil;
+    if (name == nil)
+    {
+        NSLog(@"111");
         predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND flag = %d", type, [user_id intValue], [flag intValue]];
     }else
     {
+        NSLog(@"222");
         predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND flag = %d AND name like %@", type, [user_id intValue], [flag intValue], name];
     }
     [fetchRequest setPredicate:predicate];
@@ -306,7 +334,7 @@
     return result1;
 }
 
--(void) updateModelListByName:(NSString *)name ByUserID:(NSNumber *)user_id
+-(void) updateModelListFlag:(NSNumber *)flag ByName:(NSString *)name ByUserID:(NSNumber *)user_id
 {
     
     if ([self managedObjectContext] == nil) {
@@ -323,7 +351,6 @@
     NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     
     BaseDataEntity *base = [result objectAtIndex:0];
-    NSNumber *flag = [[NSNumber alloc] initWithInt:1];
     base.flag = flag;
     [self saveContext];
 }

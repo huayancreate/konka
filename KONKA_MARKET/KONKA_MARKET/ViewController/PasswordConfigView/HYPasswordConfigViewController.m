@@ -101,6 +101,8 @@
 
 -(void)endRequest:(NSString *)msg
 {
+    self.newpassword = self.uirepeatpassword.text;
+    self.userLogin.password = self.newpassword;
     if ([msg isEqualToString:@"success"])
     {
         [super alertMsg:@"修改成功" forTittle:@"修改密码"];

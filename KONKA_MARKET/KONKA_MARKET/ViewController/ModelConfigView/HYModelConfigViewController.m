@@ -12,12 +12,10 @@
 @interface HYModelConfigViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic, strong) NSNumber *flag;
-<<<<<<< HEAD
 @property (nonatomic, strong) NSMutableArray *percentageList;
-=======
 @property (nonatomic, strong) UIImage *unsetImg;
 @property (nonatomic, strong) UIImage *setImg;
->>>>>>> 3e4918a6914ad07d5eb9a70ae1650d2b44664e0b
+@property (nonatomic) int page;
 
 @end
 
@@ -54,23 +52,24 @@
     return self;
 }
 
--(void) getModelList:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)name ByFirstFlag:(Boolean) firstFlag;
+-(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
     KonkaManager *kkM = [[KonkaManager alloc] init];
     
-    self.userLogin.modelList = [kkM getModelListByUserID:user_id ByType:@"modelList" ByFlag:flag ByName:name];
+    self.userLogin.modelNameCopyList = [kkM getAllModelNameListByUserID:user_id ByFlag:self.flag];
+}
+
+-(void) getModelListLimit:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int) page
+{
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    self.userLogin.modelList = [kkM getModelListByUserID:user_id ByType:@"modelList" ByFlag:flag ByName:name ByPage:page];
+    
     self.userLogin.modelNameList = [[NSMutableArray alloc] init];
-    if(firstFlag)
-    {
-        self.userLogin.modelNameCopyList = [[NSMutableArray alloc] init];
-    }
+
     for (NSDictionary *dic in self.userLogin.modelList) {
         NSLog(@"[dic objectForKey:@name] %@", [dic objectForKey:@"name"]);
         [self.userLogin.modelNameList addObject:[NSString stringWithFormat:@"%@", [dic objectForKey:@"name"]]];
-        if(firstFlag)
-        {
-            [self.userLogin.modelNameCopyList addObject:[NSString stringWithFormat:@"%@", [dic objectForKey:@"name"]]];
-        }
         NSLog(@"self.userLogin.modelNameList %@", [self.userLogin.modelNameList objectAtIndex:0]);
     }
     NSLog(@"self.userLogin.modelNameList count %d", [self.userLogin.modelNameList count]);
@@ -82,10 +81,14 @@
     // Do any additional setup after loading the view from its nib.
     self.flag = [[NSNumber alloc] initWithInt:0];
     
-    [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:nil ByFirstFlag:true];
+    self.page = 0;
     
-
-        
+    // 自动补全
+    [self getAllModelNameList:self.userLogin.user_id ByFlag:self.flag];
+    
+    // 分页
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:nil ByPage:self.page];
+    
     modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, 260) style:UITableViewStyleGrouped];
     
     modelConfigTableView.delegate = self;
@@ -123,6 +126,7 @@
 
 -(IBAction)modelSetAction:(id)sender
 {
+    self.page = 0;
     self.flag = [[NSNumber alloc] initWithInt:0];
     
     NSString *name = nil;
@@ -132,7 +136,7 @@
         name = [NSString stringWithFormat:@"%@%@", name, @"*"];
     }
     
-    [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:name ByFirstFlag:YES];
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:name ByPage:self.page];
     
     [self.uiModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
     [self.uiUnModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
@@ -150,6 +154,7 @@
 -(IBAction)unmModelSetAction:(id)sender
 {
     
+    self.page = 0;
     self.flag = [[NSNumber alloc] initWithInt:1];
     
     NSString *name = nil;
@@ -160,7 +165,7 @@
         name = [NSString stringWithFormat:@"%@%@", name, @"*"];
     }
     
-    [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:name ByFirstFlag:YES];
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:name ByPage:self.page];
     
     [self.uiModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
     [self.uiUnModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
@@ -234,6 +239,7 @@
 
 -(IBAction)setDefaultModel:(id)sender
 {
+    self.page = 0;
     UIButton *btnTag = (UIButton *)sender;
     NSString *name = [self.userLogin.modelNameList objectAtIndex:btnTag.tag];
     
@@ -247,44 +253,97 @@
     
     KonkaManager *kkM = [[KonkaManager alloc] init];
     
+    NSNumber *tempFlag = [[NSNumber alloc] initWithInt:1];
    
-    [kkM updateModelListByName:name ByUserID:self.userLogin.user_id];
+    [kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
     
-    [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:str ByFirstFlag:true];
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
     
     [self.modelConfigTableView reloadData];
 
 }
 
--(IBAction)search:(id)sender
+-(IBAction)unSetDefaultModel:(id)sender
 {
-    if (self.searchTextField.text.length == 0){
-        [super alertMsg:@"搜索内容不能为空！" forTittle:@"提示"];
-        return;
-    }
-
-    NSLog(@"self.searchTextField.text %@",self.searchTextField.text);
+    self.page = 0;
+    UIButton *btnTag = (UIButton *)sender;
+    NSString *name = [self.userLogin.modelNameList objectAtIndex:btnTag.tag];
     
     NSString *str = nil;
     
-    str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-    str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+    if (self.searchTextField.text.length != 0)
+    {
+        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
+        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+    }
     
-    [self getModelList:self.userLogin.user_id ByFlag:self.flag ByName:str ByFirstFlag:false];
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    NSNumber *tempFlag = [[NSNumber alloc] initWithInt:0];
+    
+    [kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
+    
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    
+    [self.modelConfigTableView reloadData];
+}
+
+-(IBAction)search:(id)sender
+{
+    NSLog(@"self.searchTextField.text %@",self.searchTextField.text);
+    
+    NSString *str = nil;
+    if (self.searchTextField.text.length != 0){
+    
+        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
+        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+    }
+    
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
     [_autoCompleter hideOptionsView];
     [self.modelConfigTableView reloadData];
 }
 
 -(IBAction)up:(id)sender
 {
-//    [self.modelConfigTableView scrollToRowAtIndexPath:10
-//                          atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+    
+    NSString *str = nil;
+    if (self.searchTextField.text.length != 0)
+    {
+        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
+        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+    }
+    if (self.page == 0)
+    {
+        self.page = 0;
+    }else
+    {
+        self.page = self.page - 1;
+    }
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    [self.modelConfigTableView reloadData];
 }
 
 -(IBAction)down:(id)sender
 {
-//    [self.modelConfigTableView scrollToRowAtIndexPath:10
-//                                     atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    NSString *str = nil;
+    
+    if (self.searchTextField.text.length != 0)
+    {
+        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
+        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+    }
+    
+    if([self.userLogin.modelList count] < 20)
+    {
+        self.page = 0;
+    }else
+    {
+        self.page = self.page + 1;
+    }
+    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    [self.modelConfigTableView reloadData];
 }
 
 @end

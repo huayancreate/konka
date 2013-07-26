@@ -18,5 +18,6 @@
 @synthesize modelList;
 @synthesize modelNameList;
 @synthesize peList;
+@synthesize modelNameStoreList;
 
 @end

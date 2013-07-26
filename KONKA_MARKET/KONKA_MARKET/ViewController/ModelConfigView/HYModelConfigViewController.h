@@ -34,6 +34,8 @@
 
 -(IBAction)setDefaultModel:(id)sender;
 
+-(IBAction)unSetDefaultModel:(id)sender;
+
 -(IBAction)search:(id)sender;
 
 -(IBAction)up:(id)sender;
