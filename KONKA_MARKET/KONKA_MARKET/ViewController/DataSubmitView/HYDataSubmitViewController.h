@@ -9,8 +9,9 @@
 #import "HYBaseViewController.h"
 #import "HYTableViewCell.h"
 #import "AutocompletionTableView.h"
+#import "ZBarSDK.h"
 
-@interface HYDataSubmitViewController : HYBaseViewController<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,HYTableViewCell,AutocompletionTableViewDelegate>{
+@interface HYDataSubmitViewController : HYBaseViewController<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,HYTableViewCell,AutocompletionTableViewDelegate,ZBarReaderDelegate>{
 
 }
 
