@@ -43,5 +43,6 @@
 -(NSString *) getNowDate;
 -(NSString *) getUpMonthDate:(NSString *) currentDate;
 -(NSString *) getDownMonthDate:(NSString *) currentDate;
-
+-(NSString *) getFirstDayFromMoth:(NSString *)date;
+-(NSString *) getLastDayFromMoth:(NSString *)date;
 @end

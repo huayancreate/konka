@@ -207,6 +207,16 @@
     NSLog(@"错误 %@",errorMessage);
 }
 
+-(NSString *) getFirstDayFromMoth:(NSString *)date
+{
+    return @"2013-07-01";
+}
+
+-(NSString *) getLastDayFromMoth:(NSString *)date
+{
+    return @"2013-7-31";
+}
+
 -(void)setResizeForKeyboard
 {
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];

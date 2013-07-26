@@ -16,6 +16,8 @@
 @property(nonatomic, strong) NSArray *disabledDates;
 @property(nonatomic, strong) UIImage *unRegisterImg;
 @property(nonatomic, strong) UIImage *RegisterImg;
+@property(nonatomic, strong) NSString *status;
+@property(nonatomic, strong) JSONDecoder* decoder;
 
 @end
 
@@ -28,6 +30,7 @@
 @synthesize dateBtn;
 @synthesize tableViewCell;
 @synthesize dateLabel;
+@synthesize decoder;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,10 +44,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    decoder = [[JSONDecoder alloc] init];
     //dataItems=[[NSMutableArray alloc]initWithObjects:@"中国",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",nil];
     
     
     // Do any additional setup after loading the view from its nib.
+    self.status = @"0";
     topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
@@ -88,6 +93,8 @@
     
     [self.unRegistrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
     [self.registrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
+    
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:@"11"] endTime:[super getLastDayFromMoth:@"11"]];
     //[self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
     //[self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
     //[self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
@@ -181,6 +188,54 @@
     }
 
 }
+
+-(void) getHisDataByStartTime:(NSString *)startTime endTime:(NSString *) endTime
+{
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",self.status,@"status",@"1",@"type",startTime,@"starttime",endTime,@"endtime",@"GetHis",@"method",nil];
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:LoadDataApi]];
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+}
+
+-(void) endRequest:(NSString *)msg
+{
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSArray* json = [decoder objectWithData:data];
+    
+    
+    NSDictionary *dic = [json objectAtIndex:0];
+    
+    NSLog(@"id ,%@" , [dic objectForKey:@"id"]);
+    NSLog(@"subcomp_id ,%@" , [dic objectForKey:@"subcomp_id"]);
+    NSLog(@"subcomp_name ,%@" , [dic objectForKey:@"subcomp_name"]);
+    NSLog(@"dept_id ,%@" , [dic objectForKey:@"dept_id"]);
+    NSLog(@"dept_name ,%@" , [dic objectForKey:@"dept_name"]);
+    NSLog(@"num ,%@" , [dic objectForKey:@"num"]);
+    NSLog(@"SINGLE_PRICE ,%@" , [dic objectForKey:@"SINGLE_PRICE"]);
+    NSLog(@"sale_date ,%@" , [dic objectForKey:@"sale_date"]);
+    NSLog(@"model_name ,%@" , [dic objectForKey:@"model_name"]);
+    NSLog(@"all_price ,%@" , [dic objectForKey:@"all_price"]);
+    NSLog(@"MEMO ,%@" , [dic objectForKey:@"MEMO"]);
+    NSLog(@"REPORT_ID ,%@" , [dic objectForKey:@"REPORT_ID"]);
+    NSLog(@"REPORT_NAME ,%@" , [dic objectForKey:@"REPORT_NAME"]);
+    NSLog(@"REPORT_DATE ,%@" , [dic objectForKey:@"REPORT_DATE"]);
+    NSLog(@"REALNAME ,%@" , [dic objectForKey:@"REALNAME"]);
+    NSLog(@"PHONENUM ,%@" , [dic objectForKey:@"PHONENUM"]);
+    NSLog(@"ADDRESSS ,%@" , [dic objectForKey:@"ADDRESSS"]);
+    NSLog(@"MASTERCODE ,%@" , [dic objectForKey:@"MASTERCODE"]);
+    NSLog(@"STATUS ,%@" , [dic objectForKey:@"STATUS"]);
+    NSLog(@"IS_DEL ,%@" , [dic objectForKey:@"IS_DEL"]);
+    NSLog(@"R_SN ,%@" , [dic objectForKey:@"R_SN"]);
+    
+}
+
+-(void) endFailedRequest:(NSString *)msg
+{
+    [super alertMsg:msg forTittle:@"错误"];
+}
+
 
 
 -(IBAction)upMoth:(id)sender
