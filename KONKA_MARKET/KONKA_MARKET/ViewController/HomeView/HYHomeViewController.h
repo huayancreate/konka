@@ -12,4 +12,6 @@
 
 -(IBAction)retail:(id)sender;
 
+-(IBAction)sysconfigAction:(id)sender;
+
 @end

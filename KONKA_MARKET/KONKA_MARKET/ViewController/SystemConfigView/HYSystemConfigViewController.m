@@ -114,9 +114,11 @@
     }
     
     if([cell.textLabel.text isEqualToString:@"型号设定"]){
-        HYModelConfigViewController *modelView = [[HYModelConfigViewController alloc]init];
-        modelView.title = @"型号设定";
-        [self.navigationController pushViewController:modelView animated:YES];
+        HYModelConfigViewController *modelConfigView = [[HYModelConfigViewController alloc] init];
+        modelConfigView.userLogin = self.userLogin;
+        modelConfigView.title = @"型号设定";
+        
+        [self.navigationController pushViewController:modelConfigView animated:YES];
     }
     
     if([cell.textLabel.text isEqualToString:@"产品销售提成设定"]){

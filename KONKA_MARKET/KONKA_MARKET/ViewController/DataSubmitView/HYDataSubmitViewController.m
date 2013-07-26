@@ -179,9 +179,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    UITableViewCell *cell = nil;
+    HYTableViewCell *cell = nil;
     UITapGestureRecognizer *singleTap = nil;
     NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
+    UITextField *test = [[UITextField alloc] init];
+    
     
     if (tableView == dropDownTableView)
     {
@@ -212,7 +214,9 @@
                         break;
                     case 2:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        self.autoText = self.cellTextField;
+                        
+                        cell.cellTextField = [[UITextField alloc] init];
+                        [cell.cellTextField addTarget:self action:@selector(alertTest:) forControlEvents:UIControlEventTouchUpInside];
                         self.cellLabel.text = @"型号";
                         return cell;
                         break;
@@ -308,8 +312,12 @@
     cell.textLabel.adjustsFontSizeToFitWidth = NO;
     
     return cell;
-    
-    
+}
+
+
+-(void)alertTest:(id) sender
+{
+    [super alertMsg:@"111" forTittle:@"111"];
 }
 
 -(void)scanCamera:(UIGestureRecognizer *)gestureRecognizer

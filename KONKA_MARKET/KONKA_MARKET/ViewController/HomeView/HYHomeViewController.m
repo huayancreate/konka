@@ -44,13 +44,12 @@
     
     self.navigationItem.rightBarButtonItem  = rightButton;
     
-    
-    
-    UIButton *logoView = [[UIButton alloc] initWithFrame:CGRectMake(0,0,45,35)];
-    [logoView setBackgroundImage:[UIImage imageNamed:@"logo.png"] forState:UIControlStateNormal];
-    [logoView setUserInteractionEnabled:NO];
-    
-    self.navigationItem.titleView = logoView;
+    UIImage *backButtonImage = [UIImage imageNamed:@"logo.png"];
+    UIButton *someButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 220, 35)];
+    [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+    [someButton setHighlighted:NO];
+    self.navigationItem.leftBarButtonItem  = leftButton;
     
 }
 
@@ -83,5 +82,16 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     [super viewWillAppear:animated];
 }
+
+-(void) sysconfigAction:(id)sender
+{
+    HYSystemConfigViewController *sysconfigView = [[HYSystemConfigViewController alloc] init];
+    sysconfigView.userLogin = self.userLogin;
+    NSLog(@"系统设置  selectRightAction self.userLogin.user_name %@",self.userLogin.user_name);
+    sysconfigView.title = @"系统设置";
+    [self.navigationController pushViewController:sysconfigView animated:YES];
+}
+
+
 
 @end
