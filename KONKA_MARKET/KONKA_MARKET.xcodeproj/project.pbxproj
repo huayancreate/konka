@@ -11,6 +11,8 @@
 		18E3DF7217A25ECA00C9FF02 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */; };
 		18E3DF7317A25ECA00C9FF02 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */; };
 		18E3DF7417A25ECA00C9FF02 /* right_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF7017A25ECA00C9FF02 /* right_arrow@2x.png */; };
+		18E3DF7917A2606B00C9FF02 /* HYAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E3DF7717A2606B00C9FF02 /* HYAboutViewController.m */; };
+		18E3DF7A17A2606B00C9FF02 /* HYAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF7817A2606B00C9FF02 /* HYAboutViewController.xib */; };
 		18FF846617A0F96D00BDD590 /* bg_data.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846517A0F96D00BDD590 /* bg_data.png */; };
 		18FF846E17A1013600BDD590 /* sales_no_reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846817A1013600BDD590 /* sales_no_reg.png */; };
 		18FF846F17A1013600BDD590 /* sales_reg_all.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846917A1013600BDD590 /* sales_reg_all.png */; };
@@ -183,6 +185,9 @@
 		18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
 		18E3DF7017A25ECA00C9FF02 /* right_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "right_arrow@2x.png"; sourceTree = "<group>"; };
+		18E3DF7617A2606B00C9FF02 /* HYAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAboutViewController.h; sourceTree = "<group>"; };
+		18E3DF7717A2606B00C9FF02 /* HYAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAboutViewController.m; sourceTree = "<group>"; };
+		18E3DF7817A2606B00C9FF02 /* HYAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYAboutViewController.xib; sourceTree = "<group>"; };
 		18FF846517A0F96D00BDD590 /* bg_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_data.png; sourceTree = "<group>"; };
 		18FF846817A1013600BDD590 /* sales_no_reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_no_reg.png; sourceTree = "<group>"; };
 		18FF846917A1013600BDD590 /* sales_reg_all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_reg_all.png; sourceTree = "<group>"; };
@@ -548,6 +553,16 @@
 				18E3DF7017A25ECA00C9FF02 /* right_arrow@2x.png */,
 			);
 			path = calendar;
+			sourceTree = "<group>";
+		};
+		18E3DF7517A2605600C9FF02 /* AboutView */ = {
+			isa = PBXGroup;
+			children = (
+				18E3DF7617A2606B00C9FF02 /* HYAboutViewController.h */,
+				18E3DF7717A2606B00C9FF02 /* HYAboutViewController.m */,
+				18E3DF7817A2606B00C9FF02 /* HYAboutViewController.xib */,
+			);
+			path = AboutView;
 			sourceTree = "<group>";
 		};
 		18FF846717A1003600BDD590 /* salesregister */ = {
@@ -1120,6 +1135,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18E3DF7517A2605600C9FF02 /* AboutView */,
 				28DAE5151783FAF700F12366 /* HomeView */,
 				2821DBB3179713D900B77C26 /* PercentageCofingView */,
 				2821DBA51796E5B600B77C26 /* ModelConfigView */,
@@ -1453,6 +1469,7 @@
 				18E3DF7217A25ECA00C9FF02 /* left_arrow@2x.png in Resources */,
 				18E3DF7317A25ECA00C9FF02 /* right_arrow.png in Resources */,
 				18E3DF7417A25ECA00C9FF02 /* right_arrow@2x.png in Resources */,
+				18E3DF7A17A2606B00C9FF02 /* HYAboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1516,6 +1533,7 @@
 				28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */,
 				289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */,
 				2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */,
+				18E3DF7917A2606B00C9FF02 /* HYAboutViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
