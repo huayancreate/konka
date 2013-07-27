@@ -16,8 +16,8 @@
 @property(nonatomic, strong) NSArray *disabledDates;
 @property(nonatomic, strong) UIImage *unRegisterImg;
 @property(nonatomic, strong) UIImage *RegisterImg;
-@property(nonatomic, strong) NSString *status;
 @property(nonatomic, strong) JSONDecoder* decoder;
+@property(nonatomic, strong) NSString *currentDate;
 
 @end
 
@@ -31,6 +31,18 @@
 @synthesize tableViewCell;
 @synthesize dateLabel;
 @synthesize decoder;
+@synthesize status;
+@synthesize uiCellLabelModelName;
+@synthesize uiCellLabelNum;
+@synthesize uiCellLabelPrice;
+@synthesize uiCellLabelStoreName;
+@synthesize uiCellLabelTime;
+@synthesize uiCellAllLabelModelName;
+@synthesize uiCellAllLabelNum;
+@synthesize uiCellAllLabelPrice;
+@synthesize uiCellAllLabelStoreName;
+@synthesize uiCellAllLabelTime;
+@synthesize currentDate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,10 +58,15 @@
     [super viewDidLoad];
     decoder = [[JSONDecoder alloc] init];
     //dataItems=[[NSMutableArray alloc]initWithObjects:@"中国",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",nil];
-    [self getHisDataByStartTime:[super getFirstDayFromMoth:@"11"] endTime:[super getLastDayFromMoth:@"11"]];
+    status = @"0";
+    
+    currentDate = [super getNowDate];
+    
+    [super hudprogress:@"正在获取数据"];
+    
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
     
     // Do any additional setup after loading the view from its nib.
-    self.status = @"0";
     topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
@@ -64,14 +81,14 @@
     [self.view addSubview:topTableView];
     
     
-    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 125, 40)];
+    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 145, 40)];
     salesNum.text = @"销售总数量0台";
     salesNum.backgroundColor = [UIColor clearColor];
 
     
     [self.view addSubview:salesNum];
     
-    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(185, 45, 125, 40)];
+    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(170, 45, 140, 40)];
     salesMoney.text = @"销售总金额0元";
     [self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];
@@ -98,10 +115,17 @@
     //[self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
 }
 
+
 -(IBAction)unRegistrationAction:(id)sender
 {
     [self.unRegistrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
     [self.registrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
+    
+    self.status = @"0";
+    
+    [super hudprogress:@"正在获取数据"];
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
+    
 //    [self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
 //    [self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
@@ -112,7 +136,14 @@
 {
     [self.unRegistrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
     [self.registrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
-//    [self.registrationBtn setBackgroundColor:[UIColor blueColor]];
+
+    self.status = @"1";
+    
+    [super hudprogress:@"正在获取数据"];
+    
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
+    
+    //    [self.registrationBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
 //    [self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
 //    [self.unRegistrationBtn setBackgroundColor:[UIColor clearColor]];
@@ -139,8 +170,7 @@
         return 1;
     }
     if (tableView == downTableView){
-        return 0;
-        //return [dataItems count];
+        return [self.userLogin.salesRegisterList count];
     }
     return 0;
 }
@@ -166,16 +196,39 @@
     }
     
     if (tableView == downTableView) {
-        static NSString *SectionTableMyTag=@"dong";
+        static NSString *SectionTableMyTag=@"CellSalesRegisterIdentifier";
         UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-        //如果当前cell没被实例(程序一开始就会运行下面的循环，直到屏幕上所显示的单元格格全被实例化了为止，没有显示在屏幕上的单元格将会根据定义好的标记去寻找可以重用的空间来存放自己的值)
-        if (cell==nil) {
-            cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYSalesRegistrationTableViewCell" owner:self options:nil];
+        if ([self.status isEqualToString:@"0"])
+        {
+            cell = [nib objectAtIndex:0];
+            NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
+            uiCellLabelStoreName.text = [dic objectForKey:@"dept_name"];
+            NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+            uiCellLabelNum.text = [numberFormatter stringFromNumber:[dic objectForKey:@"num"]];
+            uiCellLabelPrice.text = [numberFormatter stringFromNumber:[dic objectForKey:@"all_price"]];
+            uiCellLabelTime.text = [dic objectForKey:@"sale_date"];
+            uiCellLabelModelName.text = [dic objectForKey:@"model_name"];
+        }else
+        {
+            cell = [nib objectAtIndex:1];
+            NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
+            uiCellAllLabelStoreName.text = [dic objectForKey:@"dept_name"];
+            NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+            uiCellAllLabelNum.text = [numberFormatter stringFromNumber:[dic objectForKey:@"num"]];
+            uiCellAllLabelPrice.text = [numberFormatter stringFromNumber:[dic objectForKey:@"all_price"]];
+            uiCellAllLabelTime.text = [dic objectForKey:@"sale_date"];
+            uiCellAllLabelModelName.text = [dic objectForKey:@"model_name"];
         }
-        NSUInteger row=[indexPath row];
-        cell.textLabel.text=[dataItems objectAtIndex:row];
+
         return cell;
     }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat
+{
+    return 70;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -189,9 +242,12 @@
 
 -(void) getHisDataByStartTime:(NSString *)startTime endTime:(NSString *) endTime
 {
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",self.status,@"status",@"1",@"type",startTime,@"starttime",endTime,@"endtime",@"GetHis",@"method",nil];
+    NSLog(@"status %@", status);
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"GetHis",@"method",self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"1",@"type",startTime,@"starttime",endTime,@"endtime", status ,@"status",nil];
     
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:LoadDataApi]];
+    
+    NSLog(@"GetHis params %@", params);
     
     [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
 }
@@ -200,45 +256,62 @@
 {
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSArray* json = [decoder objectWithData:data];
+    NSArray *json = [decoder objectWithData:data];
     
-    
-    //todo bug xuwei
     if ([json count] == 0)
     {
+        salesNum.text = @"销售总数量0台";
+        salesMoney.text = @"销售总金额0元";
+        [self.userLogin.salesRegisterList removeAllObjects];
+        [downTableView reloadData];
+        [HUD hide:YES];
         return;
     }
-        
-    NSDictionary *dic = [json objectAtIndex:0];
     
-    NSLog(@"id ,%@" , [dic objectForKey:@"id"]);
-    NSLog(@"subcomp_id ,%@" , [dic objectForKey:@"subcomp_id"]);
-    NSLog(@"subcomp_name ,%@" , [dic objectForKey:@"subcomp_name"]);
-    NSLog(@"dept_id ,%@" , [dic objectForKey:@"dept_id"]);
-    NSLog(@"dept_name ,%@" , [dic objectForKey:@"dept_name"]);
-    NSLog(@"num ,%@" , [dic objectForKey:@"num"]);
-    NSLog(@"SINGLE_PRICE ,%@" , [dic objectForKey:@"SINGLE_PRICE"]);
-    NSLog(@"sale_date ,%@" , [dic objectForKey:@"sale_date"]);
-    NSLog(@"model_name ,%@" , [dic objectForKey:@"model_name"]);
-    NSLog(@"all_price ,%@" , [dic objectForKey:@"all_price"]);
-    NSLog(@"MEMO ,%@" , [dic objectForKey:@"MEMO"]);
-    NSLog(@"REPORT_ID ,%@" , [dic objectForKey:@"REPORT_ID"]);
-    NSLog(@"REPORT_NAME ,%@" , [dic objectForKey:@"REPORT_NAME"]);
-    NSLog(@"REPORT_DATE ,%@" , [dic objectForKey:@"REPORT_DATE"]);
-    NSLog(@"REALNAME ,%@" , [dic objectForKey:@"REALNAME"]);
-    NSLog(@"PHONENUM ,%@" , [dic objectForKey:@"PHONENUM"]);
-    NSLog(@"ADDRESSS ,%@" , [dic objectForKey:@"ADDRESSS"]);
-    NSLog(@"MASTERCODE ,%@" , [dic objectForKey:@"MASTERCODE"]);
-    NSLog(@"STATUS ,%@" , [dic objectForKey:@"STATUS"]);
-    NSLog(@"IS_DEL ,%@" , [dic objectForKey:@"IS_DEL"]);
-    NSLog(@"R_SN ,%@" , [dic objectForKey:@"R_SN"]);
+    [self calNumAndPrice:json];
     
     
+    self.userLogin.salesRegisterList = [[NSMutableArray alloc] initWithArray:json];
+    [downTableView reloadData];
+    
+    NSLog(@"self.userLogin.salesAllNum ,%@",self.userLogin.salesAllNum );
+    
+    salesNum.text = self.userLogin.salesAllNum;
+    salesMoney.text = self.userLogin.salesAllPrice;
+    
+    [HUD hide:YES];
     
 }
 
+-(void) calNumAndPrice:(NSArray *)json
+{
+    NSNumber *allNum = [[NSNumber alloc] initWithInt:0];
+    NSNumber *allPrice;
+    
+    for (NSDictionary *dic in json) {
+        NSNumber *num = [dic objectForKey:@"num"];
+        NSNumber *price = [dic objectForKey:@"all_price"];
+        allNum = [NSNumber numberWithInt:[allNum intValue] + [num intValue]];
+        allPrice = [NSNumber numberWithFloat:[allPrice floatValue] + [price floatValue]];
+    }
+    NSString *preNum = @"销售总数量";
+    NSString *prePrice = @"销售总数量";
+    
+//    string = [string1 stringByAppendingString:string2];
+    self.userLogin.salesAllNum = [preNum stringByAppendingString:[allNum stringValue]];
+    self.userLogin.salesAllNum = [self.userLogin.salesAllNum stringByAppendingString:@"台"];
+  //  [self.userLogin.salesAllNum stringByAppendingString:@"台"];
+    NSLog(@"self.userLogin.salesAllNum ,%@" ,self.userLogin.salesAllNum);
+
+    self.userLogin.salesAllPrice = [prePrice stringByAppendingString:[allPrice stringValue]];
+    self.userLogin.salesAllPrice = [self.userLogin.salesAllPrice stringByAppendingString:@"元"];
+
+}
+
+
 -(void) endFailedRequest:(NSString *)msg
 {
+    [HUD hide:YES];
     [super alertMsg:msg forTittle:@"错误"];
 }
 
@@ -246,13 +319,19 @@
 
 -(IBAction)upMoth:(id)sender
 {
+    [super hudprogress:@"正在获取数据"];
+    currentDate = [super getUpMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getUpMonthDate:self.dateLabel.text];
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
+
 }
 
 -(IBAction)downMoth:(id)sender
 {
+    [super hudprogress:@"正在获取数据"];
+    currentDate = [super getDownMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getDownMonthDate:self.dateLabel.text];
-    
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
 }
 
 -(IBAction)dataPick:(id)sender
@@ -280,8 +359,13 @@
 }
 
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+    
     NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
     self.dateLabel.text = backStr;
+    [super hudprogress:@"正在获取数据"];
+    currentDate = backStr;
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
+    NSLog(@"currentDate ,%@" , currentDate);
     [calendar removeFromSuperview];
 }
 

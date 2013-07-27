@@ -11,7 +11,9 @@
 #import "AutocompletionTableView.h"
 #import "ZBarSDK.h"
 
-@interface HYDataSubmitViewController : HYBaseViewController<UITextFieldDelegate,UITableViewDelegate,UITableViewDataSource,HYTableViewCell,AutocompletionTableViewDelegate,ZBarReaderDelegate>{
+@interface HYDataSubmitViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,HYTableViewCell,AutocompletionTableViewDelegate,ZBarReaderDelegate>{
+    
+    CGSize _tableViewContentSize;
 
 }
 
@@ -28,5 +30,12 @@
 @property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 
 - (IBAction)hisAction:(id)sender;
+
+- (void)keyboardWillShow:(NSNotification*)notification;
+- (void)keyboardDidShow:(NSNotification*)notification;
+- (void)keyboardWillHide:(NSNotification*)notification;
+- (void)keyboardDidHide:(NSNotification*)notification;
+- (void)hideKeyboard;
+- (void)scrollCellToMiddlePosition:(UITextField*)textField;
 
 @end

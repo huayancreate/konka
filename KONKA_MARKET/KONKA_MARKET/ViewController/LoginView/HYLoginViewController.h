@@ -8,7 +8,7 @@
 
 #import "HYBaseViewController.h"
 
-@interface HYLoginViewController : HYBaseViewController<UITextFieldDelegate>{
+@interface HYLoginViewController : HYBaseViewController{
     NSMutableArray *imgArray;
 
 }

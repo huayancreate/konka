@@ -18,7 +18,7 @@
 #import "HYAppUtily.h"
 #import "HYUserLoginModel.h"
 
-@interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate>
+@interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate,UITextFieldDelegate>
 {
     NSString *title;
     MBProgressHUD *HUD;
@@ -45,4 +45,7 @@
 -(NSString *) getDownMonthDate:(NSString *) currentDate;
 -(NSString *) getFirstDayFromMoth:(NSString *)date;
 -(NSString *) getLastDayFromMoth:(NSString *)date;
+-(void) hudprogress:(NSString *)showText;
+
+
 @end

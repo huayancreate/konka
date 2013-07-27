@@ -15,8 +15,27 @@
 
 @interface HYDataSubmitViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
-@property (nonatomic, strong) UITextField *theTextField;
 @property (nonatomic, strong) UILabel *storeName;
+@property (nonatomic, strong) UITextField *memo;
+@property (nonatomic, strong) UITextField *saleAllPrice;
+@property (nonatomic, strong) UITextField *selectChoice2;
+@property (nonatomic, strong) UITextField *salesCount;
+@property (nonatomic, strong) UITextField *salesPrice;
+@property (nonatomic, strong) UITextField *realName;
+@property (nonatomic, strong) UITextField *phoneNum;
+@property (nonatomic, strong) UITextField *address;
+@property (nonatomic, strong) UITextField *mastercode;
+@property (nonatomic, strong) NSString *submitMemo;
+@property (nonatomic, strong) NSString *submitSaleTime;
+@property (nonatomic, strong) NSString *submitSelectChoice2;
+@property (nonatomic, strong) NSString *submitStoreID;
+@property (nonatomic, strong) NSString *submitSalesCount;
+@property (nonatomic, strong) NSString *submitSalesPrice;
+@property (nonatomic, strong) NSString *submitRealname;
+@property (nonatomic, strong) NSString *submitPhonenum;
+@property (nonatomic, strong) NSString *submitAddress;
+@property (nonatomic, strong) NSString *submitMastercode;
+
 
 
 @end
@@ -32,10 +51,28 @@
 @synthesize cellLabel3;
 @synthesize dropDownTableView;
 @synthesize cellLabel4;
-@synthesize theTextField = _textField;
+@synthesize selectChoice2 = _textField;
 @synthesize autoCompleter = _autoCompleter;
 @synthesize storeName;
 @synthesize uibgLabel;
+@synthesize submitMemo;
+@synthesize submitSaleTime;
+@synthesize submitSelectChoice2;
+@synthesize submitStoreID;
+@synthesize submitSalesCount;
+@synthesize submitSalesPrice;
+@synthesize submitRealname;
+@synthesize submitPhonenum;
+@synthesize submitAddress;
+@synthesize submitMastercode;
+@synthesize memo;
+@synthesize salesCount;
+@synthesize salesPrice;
+@synthesize saleAllPrice;
+@synthesize realName;
+@synthesize phoneNum;
+@synthesize address;
+@synthesize mastercode;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -45,7 +82,7 @@
         [options setValue:[NSNumber numberWithBool:YES] forKey:ACOCaseSensitive];
         [options setValue:nil forKey:ACOUseSourceFont];
         
-        _autoCompleter = [[AutocompletionTableView alloc] initWithTextField:self.theTextField inViewController:self withOptions:options];
+        _autoCompleter = [[AutocompletionTableView alloc] initWithTextField:self.selectChoice2 inViewController:self withOptions:options];
         _autoCompleter.autoCompleteDelegate = self;
     }
     return _autoCompleter;
@@ -75,6 +112,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+    [mainTableView addGestureRecognizer:gestureRecognizer];
+    gestureRecognizer.cancelsTouchesInView = NO;
+    
+    
     
     mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 340) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
@@ -112,11 +155,30 @@
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
     
     CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
-    self.theTextField = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.realName = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.phoneNum = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.address = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.mastercode = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.salesCount = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.salesPrice = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     
-    [self.theTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+    [self.memo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.realName addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.phoneNum addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.phoneNum setKeyboardType:UIKeyboardTypeNumberPad];
     
-    [self.theTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.address addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.mastercode addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.salesPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
+    [self.selectChoice2 addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+    [self.selectChoice2 addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    
     
     CGRect labelFieldRect = CGRectMake(0, 0, 175, 30);
     
@@ -131,7 +193,6 @@
     
    
 }
-
 
 -(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
@@ -153,7 +214,12 @@
 
 - (void) submit:(id)sender
 {
+    //TODO 组装数据
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"11",@"memo",nil];
     
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataSubmitApi]];
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -252,36 +318,32 @@
                         break;
                     case 2:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.theTextField;
+                        cell.accessoryView = self.selectChoice2;
                         self.cellLabel4.text = @"型号";
                         return cell;
                         break;
                     case 3:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"数量";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.salesCount;
+                        self.cellLabel4.text = @"数量";
                         return cell;
                         break;
                     case 4:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"单价";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.salesPrice;
+                        self.cellLabel4.text = @"单价";
                         return cell;
                         break;
                     case 5:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"金额";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.saleAllPrice;
+                        self.cellLabel4.text = @"金额";
                         return cell;
                         break;
                     case 6:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"备注";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.memo;
+                        self.cellLabel4.text = @"备注";
                         return cell;
                         break;
                 }
@@ -289,31 +351,27 @@
             case 1:
                 switch (indexPath.row) {
                     case 0:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"顾客姓名";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.realName;
+                        self.cellLabel4.text = @"顾客姓名";
                         return cell;
                         break;
                     case 1:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"顾客电话";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.phoneNum;
+                        self.cellLabel4.text = @"顾客电话";
                         return cell;
                         break;
                     case 2:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"顾客地址";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.address;
+                        self.cellLabel4.text = @"顾客地址";
                         return cell;
                         break;
                     case 3:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:0];
-                        
-                        [self.cellTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-                        self.cellLabel.text = @"顾客身份证";
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.mastercode;
+                        self.cellLabel4.text = @"顾客身份证";
                         return cell;
                         break;
                 }
@@ -380,11 +438,6 @@
     // [sender resignFirstResponder];
 }
 
-// Textfield value changed, store the new value.
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-
-}
-
 - (void) imagePickerController: (UIImagePickerController*) reader
  didFinishPickingMediaWithInfo: (NSDictionary*) info
 {
@@ -443,24 +496,6 @@
     [self.navigationController pushViewController:srView animated:YES];
 }
 
--(void)resumeView
-{
-    NSTimeInterval animationDuration=0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    float width = self.view.frame.size.width;
-    float height = self.view.frame.size.height;
-    //如果当前View是父视图，则Y为20个像素高度，如果当前View为其他View的子视图，则动态调节Y的高度
-    float Y = 0.0f;
-    CGRect rect=CGRectMake(0.0f,Y,width,height);
-    self.view.frame=rect;
-    [UIView commitAnimations];
-}
-
--(void)hidenKeyboard:(UIGestureRecognizer *)gestureRecognizer
-{
-    //[self resumeView];
-}
 
 #pragma mark - AutoCompleteTableViewDelegate
 
@@ -472,6 +507,10 @@
 - (void) autoCompletion:(AutocompletionTableView*) completer didSelectAutoCompleteSuggestionWithIndex:(NSInteger) index{
     // invoked when an available suggestion is selected
     NSLog(@"%@ - Suggestion chosen: %d", completer, index);
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
 }
 
 @end

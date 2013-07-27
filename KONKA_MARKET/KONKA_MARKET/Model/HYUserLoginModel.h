@@ -22,5 +22,8 @@
 @property (nonatomic, retain) NSMutableArray *modelNameCopyList;
 @property (nonatomic, retain) NSMutableArray *modelNameStoreList;
 @property (nonatomic, retain) NSArray *peList;
+@property (nonatomic, retain) NSMutableArray *salesRegisterList;
+@property (nonatomic, retain) NSString *salesAllNum;
+@property (nonatomic, retain) NSString *salesAllPrice;
 
 @end

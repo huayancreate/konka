@@ -179,8 +179,8 @@
     }else if (sender == self.uiPassword){
         [self hidenKeyboard];
     }
-    
-    [self hudprogress];
+    [self checkUsernamePassword];
+    [super hudprogress:@"正在进行系统登陆"];
      
 }
 
@@ -191,23 +191,10 @@
     {
         return;
     }
-    
-    [self hudprogress];
+    [self checkUsernamePassword];    
+    [super hudprogress:@"正在进行系统登陆"];
 }
 
--(void) hudprogress
-{
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:HUD];
-    
-    [self checkUsernamePassword];
-	
-	HUD.delegate = self;
-	HUD.labelText = @"正在进行系统登陆";
-	HUD.square = YES;
-	
-    [HUD show:YES];
-}
 
 -(void) viewWillAppear:(BOOL)animated
 {

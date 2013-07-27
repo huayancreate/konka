@@ -31,12 +31,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *uiModelBtn;
 @property (strong, nonatomic) IBOutlet UIButton *uiYearsBtn;
 
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelStoreName;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelTime;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelModelName;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelNum;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelPrice;
-
 -(IBAction)sizeAction:(id)sender;
 
 -(IBAction)modelAction:(id)sender;

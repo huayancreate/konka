@@ -19,5 +19,6 @@
 @synthesize modelNameList;
 @synthesize peList;
 @synthesize modelNameStoreList;
+@synthesize salesRegisterList;
 
 @end

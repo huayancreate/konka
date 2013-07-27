@@ -38,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
 	// Do any additional setup after loading the view.
     UIImage *backButtonImage = [UIImage imageNamed:@"back_white.png"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
@@ -149,20 +150,30 @@
 }
 
 -(NSString *) getNowDate{
-    NSDate *date = [self.cal dateByAddingComponents:self.components toDate:[[NSDate alloc] init] options:0];
+    NSDate *dateTime = [[NSDate alloc] init];
+    NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
+    
+    
+    
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    [self.components setMonth:([self.components month])];
+    NSDate *date = [self.cal dateFromComponents:self.components];
     NSString * s = [self.dateFormatter stringFromDate:date];
+    NSLog(@"getNowDate s %@", s);
     return s;
 }
 
 -(NSString *) getUpMonthDate:(NSString *) currentDate{
+    
     NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
-    
     self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
-    
     [self.components setMonth:([self.components month] - 1)];
     NSDate *date = [self.cal dateFromComponents:self.components];
-    
     NSString * s = [self.dateFormatter stringFromDate:date];
+    NSLog(@"getUpMonthDate %@", s);
     return s;
 }
 
@@ -173,11 +184,10 @@
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
     [self.components setSecond:-[self.components second]];
-    
     [self.components setMonth:([self.components month] + 1)];
     NSDate *date = [self.cal dateFromComponents:self.components];
-    
     NSString * s = [self.dateFormatter stringFromDate:date];
+    NSLog(@"getDownMonthDate %@", s);
     return s;
 }
 
@@ -207,18 +217,54 @@
     NSLog(@"错误 %@",errorMessage);
 }
 
--(NSString *) getFirstDayFromMoth:(NSString *)date
+-(NSString *) getFirstDayFromMoth:(NSString *)currentDate
 {
-    return @"2013-07-01";
+    
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    
+    [self.components setMonth:([self.components month])];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    NSLog(@"getFirstDayFromMoth, %@" , s);
+    return s;
 }
 
--(NSString *) getLastDayFromMoth:(NSString *)date
+-(NSString *) getLastDayFromMoth:(NSString *)currentDate
 {
-    return @"2013-7-31";
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    
+    [self.components setMonth:([self.components month]) + 1];
+    [self.components setDay:([self.components day]) - 1];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    NSLog(@"getLastDayFromMoth, %@" , s);
+    return s;
 }
 
--(void)setResizeForKeyboard
+-(void) hudprogress:(NSString *)showText
 {
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+	[self.navigationController.view addSubview:HUD];
+	
+	HUD.delegate = self;
+	HUD.labelText = showText;
+	HUD.square = YES;
+	
+    [HUD show:YES];
 }
+
 @end

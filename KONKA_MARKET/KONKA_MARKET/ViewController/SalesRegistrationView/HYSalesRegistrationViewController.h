@@ -26,6 +26,20 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *registrationBtn;
 
+@property(nonatomic, strong) NSString *status;
+
+@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelStoreName;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelTime;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelModelName;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelNum;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelPrice;
+
+@property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelStoreName;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelTime;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelModelName;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelNum;
+@property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelPrice;
+
 -(IBAction)unRegistrationAction:(id)sender;
 
 -(IBAction)registrationAction:(id)sender;
