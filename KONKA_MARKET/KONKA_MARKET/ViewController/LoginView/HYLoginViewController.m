@@ -273,12 +273,14 @@
             
         }else{
             // 如果有userID,更新部分数据
+            [kkM updateUserInfoByUserID:user_id UserName:[userJSON objectForKey:@"user_name"] RealName:[userJSON objectForKey:@"real_name"] Sid:[userJSON objectForKey:@"sid"] department:[userJSON objectForKey:@"department"]];
             NSString *selectDataPatch = [kkM selectDataPatchByUserID:user_id];
+            
             NSLog(@"selectDataPatch %@", selectDataPatch);
             // 获取本地dataPatch和网络dataPatch比较
             // 相等获取type = 1 newData
             // 不相等 更新本地数据 newDataNow type=0
-            type = [NSNumber numberWithInt:1];
+            type = [NSNumber numberWithInt:0];
             methodName = @"newDataNow";
             
             NSLog(@"userJSON objectForKey:@user_name %@",[userJSON objectForKey:@"user_name"]);
@@ -379,28 +381,33 @@
         return;
     }else{
         // 设置BaseData
+        
+        // 删除BaseDataByUserID
+        
+        [kkM deleteAllBaseDataByUserID:user_id];
+        
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
         
         NSDictionary* json = [decoder objectWithData:data];
         
-//        NSArray* backList = [json objectForKey:@"backList"];
-//        NSArray* brandList = [json objectForKey:@"brandList"];
-//        NSArray* goodList = [json objectForKey:@"goodList"];
-//        NSArray* ideaList = [json objectForKey:@"ideaList"];
+        NSArray* backList = [json objectForKey:@"backList"];
+        NSArray* brandList = [json objectForKey:@"brandList"];
+        NSArray* goodList = [json objectForKey:@"goodList"];
+        NSArray* ideaList = [json objectForKey:@"ideaList"];
         NSArray* modelList = [json objectForKey:@"modelList"];
         NSArray* peList = [json objectForKey:@"peList"];
-//        NSArray* plList = [json objectForKey:@"plList"];
+        NSArray* plList = [json objectForKey:@"plList"];
         NSArray* storeList = [json objectForKey:@"storeList"];
         
         
         
-//        [self runLoopSets:backList Type:@"backList" UserID:user_id];
-//        [self runLoopSets:brandList Type:@"brandList" UserID:user_id];
-//        [self runLoopSets:goodList Type:@"goodList" UserID:user_id];
-//        [self runLoopSets:ideaList Type:@"ideaList" UserID:user_id];
+        [self runLoopSets:backList Type:@"backList" UserID:user_id];
+        [self runLoopSets:brandList Type:@"brandList" UserID:user_id];
+        [self runLoopSets:goodList Type:@"goodList" UserID:user_id];
+        [self runLoopSets:ideaList Type:@"ideaList" UserID:user_id];
         [self runLoopSets:modelList Type:@"modelList" UserID:user_id];
         [self runLoopSets:peList Type:@"peList" UserID:user_id];
-//        [self runLoopSets:plList Type:@"plList" UserID:user_id];
+        [self runLoopSets:plList Type:@"plList" UserID:user_id];
         [self runLoopSets:storeList Type:@"storeList" UserID:user_id];
         
         

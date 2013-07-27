@@ -46,7 +46,7 @@
     [super viewDidLoad];
     decoder = [[JSONDecoder alloc] init];
     //dataItems=[[NSMutableArray alloc]initWithObjects:@"中国",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",nil];
-    
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:@"11"] endTime:[super getLastDayFromMoth:@"11"]];
     
     // Do any additional setup after loading the view from its nib.
     self.status = @"0";
@@ -93,8 +93,6 @@
     
     [self.unRegistrationBtn setBackgroundImage:self.RegisterImg forState:UIControlStateNormal];
     [self.registrationBtn setBackgroundImage:self.unRegisterImg forState:UIControlStateNormal];
-    
-    [self getHisDataByStartTime:[super getFirstDayFromMoth:@"11"] endTime:[super getLastDayFromMoth:@"11"]];
     //[self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
     //[self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
     //[self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
@@ -205,6 +203,12 @@
     NSArray* json = [decoder objectWithData:data];
     
     
+    //todo bug xuwei
+    if ([json count] == 0)
+    {
+        return;
+    }
+        
     NSDictionary *dic = [json objectAtIndex:0];
     
     NSLog(@"id ,%@" , [dic objectForKey:@"id"]);
@@ -228,6 +232,8 @@
     NSLog(@"STATUS ,%@" , [dic objectForKey:@"STATUS"]);
     NSLog(@"IS_DEL ,%@" , [dic objectForKey:@"IS_DEL"]);
     NSLog(@"R_SN ,%@" , [dic objectForKey:@"R_SN"]);
+    
+    
     
 }
 

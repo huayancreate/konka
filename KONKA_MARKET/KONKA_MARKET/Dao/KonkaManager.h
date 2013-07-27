@@ -34,4 +34,8 @@
 
 -(NSString *) findModelNameByID:(NSNumber *)user_id ByName:(NSString *)addon2;
 
+-(void)updateUserInfoByUserID:(NSNumber *)user_id UserName:(NSString *)user_name RealName:(NSString *)real_name Sid:(NSString *)sid department:(NSString *)department;
+
+-(void)deleteAllBaseDataByUserID:(NSNumber *)user_id;
+
 @end

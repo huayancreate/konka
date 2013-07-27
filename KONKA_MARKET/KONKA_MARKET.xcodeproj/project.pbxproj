@@ -112,6 +112,7 @@
 		285A8A67179AE8BB00BE68BE /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A63179AE8BB00BE68BE /* EskLinePlot.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
+		2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */; };
 		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
 		289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E791317A10BE500BA67D3 /* BaseDataEntity.m */; };
 		28AD1B1217A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD1B1117A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib */; };
@@ -329,6 +330,7 @@
 		285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskPlotTheme.m; sourceTree = "<group>"; };
 		285CB8E91797DEEC004A7D7E /* HYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTableViewCell.h; sourceTree = "<group>"; };
 		285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTableViewCell.m; sourceTree = "<group>"; };
+		2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSalesRegistrationTableViewCell.xib; sourceTree = "<group>"; };
 		288C2A50179AEAA900EA8000 /* _CPTFillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CPTFillColor.h; sourceTree = "<group>"; };
 		288C2A51179AEAA900EA8000 /* _CPTFillGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CPTFillGradient.h; sourceTree = "<group>"; };
 		288C2A52179AEAA900EA8000 /* _CPTFillImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CPTFillImage.h; sourceTree = "<group>"; };
@@ -1335,6 +1337,7 @@
 				28F18FBA1797BE3F00E82991 /* TopTableViewCell.m */,
 				28F18FBB1797BE3F00E82991 /* TopTableViewCell.xib */,
 				2823F3B6179ABD16002DCC71 /* HYpercentTabelViewCell.xib */,
+				2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -1492,6 +1495,7 @@
 				18E3DF7F17A26BE500C9FF02 /* about_line.png in Resources */,
 				18E3DF8117A270C800C9FF02 /* percent_save.png in Resources */,
 				18E3DF8317A2742A00C9FF02 /* right.png in Resources */,
+				2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

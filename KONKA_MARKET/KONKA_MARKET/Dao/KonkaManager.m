@@ -355,4 +355,52 @@
     [self saveContext];
 }
 
+-(void)updateUserInfoByUserID:(NSNumber *)user_id UserName:(NSString *)user_name RealName:(NSString *)real_name Sid:(NSString *)sid department:(NSString *)department
+{
+    if ([self managedObjectContext] == nil) {
+        return;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"UserEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"user_id == %d", [user_id intValue]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    UserEntity *en = [result objectAtIndex:0];
+    
+    en.real_name = real_name;
+    en.user_name = user_name;
+    en.sid = sid;
+    en.department = department;
+    
+    [self saveContext];
+    
+}
+
+-(void)deleteAllBaseDataByUserID:(NSNumber *)user_id
+{
+    if ([self managedObjectContext] == nil) {
+        return;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"user_id == %d", [user_id intValue]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    for (BaseDataEntity *en in result)
+    {
+        [self.managedObjectContext deleteObject:en];
+    }
+    
+    [self saveContext];
+}
+
 @end
