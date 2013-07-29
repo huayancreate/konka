@@ -38,7 +38,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
 	// Do any additional setup after loading the view.
     UIImage *backButtonImage = [UIImage imageNamed:@"back_white.png"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
@@ -72,6 +71,12 @@
     newpassword = self.userLogin.password;
     
     [self startTimer];
+    
+}
+
+-(void)firstHandle:(UIGestureRecognizer *)gestureRecognizer
+{
+    [self.view endEditing:TRUE]; 
 }
 
 - (void)stopTimer
@@ -152,9 +157,6 @@
 -(NSString *) getNowDate{
     NSDate *dateTime = [[NSDate alloc] init];
     NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
-    
-    
-    
     self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
@@ -163,6 +165,22 @@
     NSDate *date = [self.cal dateFromComponents:self.components];
     NSString * s = [self.dateFormatter stringFromDate:date];
     NSLog(@"getNowDate s %@", s);
+    return s;
+}
+
+-(NSString *) getNowDateYYYYMMDD{
+    NSDate *dateTime = [[NSDate alloc] init];
+    NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    [self.components setMonth:([self.components month])];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    NSLog(@"getNowDateYYYYMMDD s %@", s);
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
     return s;
 }
 
@@ -265,6 +283,22 @@
 	HUD.square = YES;
 	
     [HUD show:YES];
+}
+
+
+-(void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	keyBoardController=[[UIKeyboardViewController alloc] initWithControllerDelegate:self];
+	[keyBoardController addToolbarToKeyboard];
+}
+
+-(void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	//MCRelease(keyBoardController);
+}
+
+- (IBAction)textFieldDoneEditing:(id)sender{
+    [sender resignFirstResponder];
 }
 
 @end

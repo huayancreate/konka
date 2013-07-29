@@ -24,6 +24,7 @@
 @synthesize cellLabel2;
 @synthesize cellLabel3;
 @synthesize cellLabel4;
+@synthesize uibgLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,6 +56,15 @@
     
     UIView *tempView = [[UIView alloc] init];
     [self.mainTabelView setBackgroundView:tempView];
+    
+    
+    self.uibgLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.uibgLabel addGestureRecognizer:gesture];
+    
+    
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.mainTabelView addGestureRecognizer:singleTap1];
     
 }
 

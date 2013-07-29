@@ -17,6 +17,7 @@
 @end
 
 @implementation HYSystemConfigViewController
+@synthesize uibgLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -134,9 +135,34 @@
         [self.navigationController pushViewController:aboutView animated:YES];
     }
 
+    if([cell.textLabel.text isEqualToString:@"新版本检测"]){
+        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        
+        // Set determinate mode
+        HUD.mode = MBProgressHUDModeDeterminate;
+        
+        HUD.delegate = self;
+        HUD.labelText = @"正在检查版本";
+        
+        // myProgressTask uses the HUD instance to update progress
+        [HUD showWhileExecuting:@selector(myProgressTask) onTarget:self withObject:nil animated:YES];
+    }
+    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
+- (void)myProgressTask {
+	// This just increases the progress indicator in a loop
+	float progress = 0.0f;
+	while (progress < 1.0f) {
+		progress += 0.03f;
+		HUD.progress = progress;
+		usleep(50000);
+	}
+    
+    [super alertMsg:@"已经是最新版本" forTittle:@"消息"];
+}
 
 
 @end

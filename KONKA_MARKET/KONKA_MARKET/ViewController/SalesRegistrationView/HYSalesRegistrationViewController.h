@@ -39,6 +39,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelModelName;
 @property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelNum;
 @property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelPrice;
+@property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 
 -(IBAction)unRegistrationAction:(id)sender;
 

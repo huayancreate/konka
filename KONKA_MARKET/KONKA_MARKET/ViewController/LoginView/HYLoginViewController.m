@@ -59,10 +59,6 @@
     
     self.uiPassword.secureTextEntry = YES;
     
-    UIBarButtonItem *backItem=[[UIBarButtonItem alloc]init];
-    backItem.title=@"注销";
-    self.navigationItem.backBarButtonItem = backItem;
-    
     UIImageView *imgvpass=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"passwordimg"]];
     self.uiPassword.leftView = imgvpass;
     self.uiPassword.rightViewMode = UITextFieldViewModeAlways;
@@ -108,9 +104,8 @@
     self.password = self.uiPassword.text;
     
     
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard)];
-    gesture.numberOfTapsRequired = 1;
-    [self.view addGestureRecognizer:gesture];
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.view addGestureRecognizer:singleTap1];
 
 }
 
@@ -145,19 +140,6 @@
         self.uiPassword.text = thePassword;
     }
     
-    if (sender == self.uiUsername) {
-        [self.uiPassword becomeFirstResponder];
-    }else if (sender == self.uiPassword){
-        [self hidenKeyboard];
-    }
-    
-}
-
--(void)hidenKeyboard
-{
-    [self.uiUsername resignFirstResponder];
-    [self.uiPassword resignFirstResponder];
-    [self resumeView];
 }
 
 // Workaround to hide keyboard when Done is tapped
@@ -166,19 +148,9 @@
     
     if(![self checkTextisNull])
      {
-         if (sender == self.uiUsername) {
-             [self.uiPassword becomeFirstResponder];
-         }else if (sender == self.uiPassword){
-             [self hidenKeyboard];
-         }
+
          return;
      }
-    
-    if (sender == self.uiUsername) {
-        [self.uiPassword becomeFirstResponder];
-    }else if (sender == self.uiPassword){
-        [self hidenKeyboard];
-    }
     [self checkUsernamePassword];
     [super hudprogress:@"正在进行系统登陆"];
      
@@ -475,35 +447,6 @@
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults removeObjectForKey:@"user_name"];
     }
-}
-
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    NSTimeInterval animationDuration=0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    float width = self.view.frame.size.width;
-    float height = self.view.frame.size.height;
-    //上移30个单位，按实际情况设置
-    CGRect rect=CGRectMake(0.0f,-20,width,height);
-    self.view.frame=rect;
-    [UIView commitAnimations];
-    return YES;
-}
-
-
--(void)resumeView
-{
-    NSTimeInterval animationDuration=0.30f;
-    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
-    [UIView setAnimationDuration:animationDuration];
-    float width = self.view.frame.size.width;
-    float height = self.view.frame.size.height;
-    //如果当前View是父视图，则Y为20个像素高度，如果当前View为其他View的子视图，则动态调节Y的高度
-    float Y = 0.0f;
-    CGRect rect=CGRectMake(0.0f,Y,width,height);
-    self.view.frame=rect;
-    [UIView commitAnimations];
 }
 
 @end

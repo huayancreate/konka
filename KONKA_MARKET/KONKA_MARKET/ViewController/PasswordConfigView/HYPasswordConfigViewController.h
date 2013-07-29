@@ -16,5 +16,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *mainTabelView;
 @property (strong, nonatomic) UITextField *uinewpassword;
 @property (strong, nonatomic) UITextField *uirepeatpassword;
+@property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 
 @end

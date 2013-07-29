@@ -30,6 +30,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *uiSizeBtn;
 @property (strong, nonatomic) IBOutlet UIButton *uiModelBtn;
 @property (strong, nonatomic) IBOutlet UIButton *uiYearsBtn;
+@property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 
 -(IBAction)sizeAction:(id)sender;
 

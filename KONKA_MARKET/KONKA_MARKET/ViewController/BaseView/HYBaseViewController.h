@@ -17,8 +17,9 @@
 #import "MBProgressHUD.h"
 #import "HYAppUtily.h"
 #import "HYUserLoginModel.h"
+#import "UIKeyboardViewController.h"
 
-@interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate,UITextFieldDelegate>
+@interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate,UITextFieldDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
 {
     NSString *title;
     MBProgressHUD *HUD;
@@ -28,7 +29,11 @@
     HYBaseViewController *parentView;
     
     CLLocationManager *locManager;
+    
+    UIKeyboardViewController *keyBoardController;
 }
+
+-(IBAction)textFieldDoneEditing:(id)sender;
 
 @property (nonatomic, retain) CLLocationManager *locManager;
 @property (nonatomic, retain)  NSString *titlename;
@@ -41,6 +46,7 @@
 -(void) setResizeForKeyboard;
 -(void) alertMsg:(NSString *)msg forTittle:(NSString *)tittle;
 -(NSString *) getNowDate;
+-(NSString *) getNowDateYYYYMMDD;
 -(NSString *) getUpMonthDate:(NSString *) currentDate;
 -(NSString *) getDownMonthDate:(NSString *) currentDate;
 -(NSString *) getFirstDayFromMoth:(NSString *)date;

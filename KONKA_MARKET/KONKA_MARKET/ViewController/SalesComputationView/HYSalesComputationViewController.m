@@ -30,6 +30,7 @@
 @synthesize tableViewCell;
 @synthesize dateLabel;
 @synthesize barCorePlotView;
+@synthesize uibgLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -80,6 +81,12 @@
     [self.uiSizeBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    
+    
+    self.uibgLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.uibgLabel addGestureRecognizer:gesture];
+    
 //    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
 //    
 //    [self.uiSizeBtn.titleLabel setTextColor:[UIColor blackColor]];

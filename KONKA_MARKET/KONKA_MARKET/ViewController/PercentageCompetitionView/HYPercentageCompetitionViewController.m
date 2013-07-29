@@ -215,6 +215,8 @@
     
     HYPercentageConfigViewController *retailView = [[HYPercentageConfigViewController alloc] init];
     
+    retailView.title = @"提成设定";
+    retailView.userLogin = self.userLogin;
     [self.navigationController pushViewController:retailView animated:YES];
 
 }

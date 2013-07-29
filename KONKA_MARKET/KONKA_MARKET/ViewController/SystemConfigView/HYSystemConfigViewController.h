@@ -16,5 +16,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableViewGroup;
 
+@property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 
 @end

@@ -20,5 +20,8 @@
 @synthesize peList;
 @synthesize modelNameStoreList;
 @synthesize salesRegisterList;
+@synthesize brandList;
+@synthesize brandNameList;
+@synthesize dataSubmit;
 
 @end

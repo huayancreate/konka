@@ -15,6 +15,7 @@
 @property (nonatomic, retain) NSString *real_name;
 @property (nonatomic, retain) NSNumber *user_id;
 @property (nonatomic, retain) NSArray *storeList;
+@property (nonatomic, retain) NSArray *brandList;
 @property (nonatomic, retain) NSString *department;
 @property (nonatomic, retain) NSString *password;
 @property (nonatomic, retain) NSArray *modelList;
@@ -25,5 +26,7 @@
 @property (nonatomic, retain) NSMutableArray *salesRegisterList;
 @property (nonatomic, retain) NSString *salesAllNum;
 @property (nonatomic, retain) NSString *salesAllPrice;
+@property (nonatomic, retain) NSMutableArray *brandNameList;
+@property (nonatomic, retain) NSDictionary *dataSubmit;
 
 @end

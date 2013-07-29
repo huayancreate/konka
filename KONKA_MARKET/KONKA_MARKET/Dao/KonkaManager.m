@@ -228,15 +228,106 @@
     
     NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
     
+    if ([result count] == 0)
+    {
+        return nil;
+    }
+    
     BaseDataEntity *en = [result objectAtIndex:0];
     
     return en.name;
 
 }
 
+-(NSString *)findStoreID:(NSNumber *)user_id ByName:(NSString *)name
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND name == %@", @"storeList", [user_id intValue], name];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    if ([result count] == 0)
+    {
+        return nil;
+    }
+    
+    BaseDataEntity *en = [result objectAtIndex:0];
+    
+    return en.base_id;
+}
+
+-(NSString *)findModelID:(NSNumber *)user_id ByName:(NSString *)name
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND name == %@", @"modelList", [user_id intValue], name];
+    //predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d", @"peList", [user_id intValue]];
+    
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    if ([result count] == 0)
+    {
+        return nil;
+    }
+    
+    BaseDataEntity *en = [result objectAtIndex:0];
+    
+    return en.base_id;
+}
+
 -(NSMutableArray *) getPeListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag
 {
     return [self getStoreListByUserID:user_id ByType:type ByFlag:flag];
+}
+
+-(NSMutableArray *) getBrandListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND flag = %d", @"brandList", [user_id intValue], [flag intValue]];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    NSMutableArray *result1 = [[NSMutableArray alloc] init];
+    
+    for (BaseDataEntity *en in result) {
+        [result1 addObject:en.addon2];
+    }
+    
+    NSMutableArray *categoryArray = [[NSMutableArray alloc] init];
+    for (unsigned i = 0; i < [result1 count]; i++){
+        if ([categoryArray containsObject:[result1 objectAtIndex:i]] == NO){
+            [categoryArray addObject:[result1 objectAtIndex:i]];
+        }
+    }
+    return categoryArray;
+
 }
 
 -(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag
@@ -291,7 +382,36 @@
     for (BaseDataEntity *en in result) {
         [result1 addObject:en.name];
     }
+    NSLog(@"RESUALT1 ,%d", [result1 count]);
     return result1;
+}
+
+-(NSMutableArray *)getBrandNameListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)brandName
+{
+    brandName = [NSString stringWithFormat:@"%@%@", @"*", brandName];
+    brandName = [NSString stringWithFormat:@"%@%@", brandName, @"*"];
+    NSLog(@"brandName %@", brandName);
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND flag = %d AND name like %@ ", @"brandList", [user_id intValue], [flag intValue],brandName];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    NSMutableArray *result1 = [[NSMutableArray alloc] init];
+    
+    for (BaseDataEntity *en in result) {
+        [result1 addObject:en.name];
+    }
+    NSLog(@"getBrandNameListByUserID ,%d", [result1 count]);
+    return result1;
+
 }
 
 -(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int)page

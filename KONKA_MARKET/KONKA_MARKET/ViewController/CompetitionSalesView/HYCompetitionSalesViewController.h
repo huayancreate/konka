@@ -18,6 +18,9 @@
 - (IBAction)textFieldFinished:(id)sender ;
 
 @property (strong, nonatomic) IBOutlet UITableView *mainTableView;
+@property (strong, nonatomic) IBOutlet UIImageView *uibglabel;
+@property (nonatomic, strong) UITableView *dropDownTableView;
+@property (nonatomic, strong) UITableView *brandSelectTableView;
 
 - (IBAction)hisAction:(id)sender;
 

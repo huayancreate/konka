@@ -68,6 +68,16 @@
 		2831155D1797B11E00DF6AF1 /* AutocompletionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */; };
 		2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831DBC917A186C700EC22CE /* DropDownView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */; };
+		283AF85517A51828005E08D4 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85217A51828005E08D4 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85417A51828005E08D4 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		283AF85B17A570E4005E08D4 /* HYScrollPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85917A570E4005E08D4 /* HYScrollPageViewController.m */; };
+		283AF85C17A570E4005E08D4 /* HYScrollPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283AF85A17A570E4005E08D4 /* HYScrollPageViewController.xib */; };
+		283BB02D17A57BD900E2012D /* SliderPageControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 283BB02A17A57BD900E2012D /* SliderPageControl.bundle */; };
+		283BB02E17A57BD900E2012D /* SliderPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 283BB02C17A57BD900E2012D /* SliderPageControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		283BB03417A57E1400E2012D /* guide_login_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03017A57E1400E2012D /* guide_login_1.jpg */; };
+		283BB03517A57E1400E2012D /* guide_sell_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03117A57E1400E2012D /* guide_sell_3.jpg */; };
+		283BB03617A57E1400E2012D /* guide_set_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03217A57E1400E2012D /* guide_set_2.jpg */; };
+		283BB03717A57E1400E2012D /* guide_setother_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03317A57E1400E2012D /* guide_setother_4.jpg */; };
 		284CAAFC1798E37600943B7D /* btn_qr.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFB1798E37600943B7D /* btn_qr.png */; };
 		284CAAFE1798F0F900943B7D /* btn_set_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFD1798F0F900943B7D /* btn_set_white.png */; };
 		284CAB001798F7EB00943B7D /* lst_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFF1798F7EB00943B7D /* lst_bg.png */; };
@@ -280,6 +290,20 @@
 		2831DBC817A186C700EC22CE /* DropDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownView.h; sourceTree = "<group>"; };
 		2831DBC917A186C700EC22CE /* DropDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownView.m; sourceTree = "<group>"; };
 		2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		283AF85117A51828005E08D4 /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
+		283AF85217A51828005E08D4 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
+		283AF85317A51828005E08D4 /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
+		283AF85417A51828005E08D4 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
+		283AF85817A570E4005E08D4 /* HYScrollPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYScrollPageViewController.h; sourceTree = "<group>"; };
+		283AF85917A570E4005E08D4 /* HYScrollPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYScrollPageViewController.m; sourceTree = "<group>"; };
+		283AF85A17A570E4005E08D4 /* HYScrollPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYScrollPageViewController.xib; sourceTree = "<group>"; };
+		283BB02A17A57BD900E2012D /* SliderPageControl.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SliderPageControl.bundle; sourceTree = "<group>"; };
+		283BB02B17A57BD900E2012D /* SliderPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderPageControl.h; sourceTree = "<group>"; };
+		283BB02C17A57BD900E2012D /* SliderPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderPageControl.m; sourceTree = "<group>"; };
+		283BB03017A57E1400E2012D /* guide_login_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_login_1.jpg; sourceTree = "<group>"; };
+		283BB03117A57E1400E2012D /* guide_sell_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_sell_3.jpg; sourceTree = "<group>"; };
+		283BB03217A57E1400E2012D /* guide_set_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_set_2.jpg; sourceTree = "<group>"; };
+		283BB03317A57E1400E2012D /* guide_setother_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_setother_4.jpg; sourceTree = "<group>"; };
 		284CAAFB1798E37600943B7D /* btn_qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_qr.png; sourceTree = "<group>"; };
 		284CAAFD1798F0F900943B7D /* btn_set_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = btn_set_white.png; path = ../datasubmit/btn_set_white.png; sourceTree = "<group>"; };
 		284CAAFF1798F7EB00943B7D /* lst_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lst_bg.png; sourceTree = "<group>"; };
@@ -825,6 +849,48 @@
 			path = Autocompletion;
 			sourceTree = "<group>";
 		};
+		283AF85017A51828005E08D4 /* UIKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				283AF85117A51828005E08D4 /* UIKeyboardView.h */,
+				283AF85217A51828005E08D4 /* UIKeyboardView.m */,
+				283AF85317A51828005E08D4 /* UIKeyboardViewController.h */,
+				283AF85417A51828005E08D4 /* UIKeyboardViewController.m */,
+			);
+			path = UIKeyboard;
+			sourceTree = "<group>";
+		};
+		283AF85717A570BF005E08D4 /* ScrollPageView */ = {
+			isa = PBXGroup;
+			children = (
+				283AF85817A570E4005E08D4 /* HYScrollPageViewController.h */,
+				283AF85917A570E4005E08D4 /* HYScrollPageViewController.m */,
+				283AF85A17A570E4005E08D4 /* HYScrollPageViewController.xib */,
+			);
+			path = ScrollPageView;
+			sourceTree = "<group>";
+		};
+		283BB02917A57BD900E2012D /* SliderPageControl */ = {
+			isa = PBXGroup;
+			children = (
+				283BB02A17A57BD900E2012D /* SliderPageControl.bundle */,
+				283BB02B17A57BD900E2012D /* SliderPageControl.h */,
+				283BB02C17A57BD900E2012D /* SliderPageControl.m */,
+			);
+			path = SliderPageControl;
+			sourceTree = "<group>";
+		};
+		283BB02F17A57E1400E2012D /* guide */ = {
+			isa = PBXGroup;
+			children = (
+				283BB03017A57E1400E2012D /* guide_login_1.jpg */,
+				283BB03117A57E1400E2012D /* guide_sell_3.jpg */,
+				283BB03217A57E1400E2012D /* guide_set_2.jpg */,
+				283BB03317A57E1400E2012D /* guide_setother_4.jpg */,
+			);
+			path = guide;
+			sourceTree = "<group>";
+		};
 		284CAAFA1798E35B00943B7D /* datasubmit */ = {
 			isa = PBXGroup;
 			children = (
@@ -849,6 +915,7 @@
 		285741DC1794B2DF006E2DA2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				283BB02F17A57E1400E2012D /* guide */,
 				18E3DF7B17A262C200C9FF02 /* about */,
 				18E3DF6C17A25ECA00C9FF02 /* calendar */,
 				18FF847E17A1252600BDD590 /* modelconfig */,
@@ -1114,6 +1181,8 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				283BB02917A57BD900E2012D /* SliderPageControl */,
+				283AF85017A51828005E08D4 /* UIKeyboard */,
 				288C2A4F179AEAA900EA8000 /* CorePlotHeaders */,
 				2831155A1797B11E00DF6AF1 /* Autocompletion */,
 				28D4368B179400BB00C3F1B2 /* VPPDropDown */,
@@ -1156,6 +1225,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				283AF85717A570BF005E08D4 /* ScrollPageView */,
 				18E3DF7517A2605600C9FF02 /* AboutView */,
 				28DAE5151783FAF700F12366 /* HomeView */,
 				2821DBB3179713D900B77C26 /* PercentageCofingView */,
@@ -1496,6 +1566,12 @@
 				18E3DF8117A270C800C9FF02 /* percent_save.png in Resources */,
 				18E3DF8317A2742A00C9FF02 /* right.png in Resources */,
 				2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */,
+				283AF85C17A570E4005E08D4 /* HYScrollPageViewController.xib in Resources */,
+				283BB02D17A57BD900E2012D /* SliderPageControl.bundle in Resources */,
+				283BB03417A57E1400E2012D /* guide_login_1.jpg in Resources */,
+				283BB03517A57E1400E2012D /* guide_sell_3.jpg in Resources */,
+				283BB03617A57E1400E2012D /* guide_set_2.jpg in Resources */,
+				283BB03717A57E1400E2012D /* guide_setother_4.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1560,6 +1636,10 @@
 				289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */,
 				2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */,
 				18E3DF7917A2606B00C9FF02 /* HYAboutViewController.m in Sources */,
+				283AF85517A51828005E08D4 /* UIKeyboardView.m in Sources */,
+				283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */,
+				283AF85B17A570E4005E08D4 /* HYScrollPageViewController.m in Sources */,
+				283BB02E17A57BD900E2012D /* SliderPageControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

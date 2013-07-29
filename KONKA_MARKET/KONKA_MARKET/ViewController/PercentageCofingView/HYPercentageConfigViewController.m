@@ -9,6 +9,7 @@
 #import "HYPercentageConfigViewController.h"
 
 @interface HYPercentageConfigViewController ()
+@property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 
 @end
 
@@ -19,6 +20,23 @@
 @synthesize uiPercentLabel;
 @synthesize uiPercentCellLabel;
 @synthesize percentString;
+@synthesize uiModelTextField = _textField;
+@synthesize autoCompleter = _autoCompleter;
+
+
+- (AutocompletionTableView *)autoCompleter
+{
+    if (!_autoCompleter)
+    {
+        NSMutableDictionary *options = [NSMutableDictionary dictionaryWithCapacity:2];
+        [options setValue:[NSNumber numberWithBool:YES] forKey:ACOCaseSensitive];
+        [options setValue:nil forKey:ACOUseSourceFont];
+        
+        _autoCompleter = [[AutocompletionTableView alloc] initWithTextField:self.uiModelTextField inViewController:self withOptions:options];
+        _autoCompleter.autoCompleteDelegate = self;
+    }
+    return _autoCompleter;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +51,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    NSNumber *flag = [[NSNumber alloc] initWithInt:1];
+    // 自动补全
+    [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
+
     
     UIView *tempView = [[UIView alloc] init];
     [mainTableView setBackgroundView:tempView];
@@ -54,6 +76,14 @@
     [self.uiPercentTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     self.percentString = @"固定提成";
+    
+}
+
+-(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+{
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    self.userLogin.modelNameCopyList = [kkM getAllModelNameListByUserID:user_id ByFlag:flag];
 }
 
 - (IBAction)textFieldFinished:(id)sender {
@@ -166,5 +196,15 @@
     return true;
 }
 
+#pragma mark - AutoCompleteTableViewDelegate
+- (NSArray*) autoCompletion:(AutocompletionTableView*) completer suggestionsFor:(NSString*) string{
+    // with the prodided string, build a new array with suggestions - from DB, from a service, etc.
+    return self.userLogin.modelNameCopyList;
+}
+
+- (void) autoCompletion:(AutocompletionTableView*) completer didSelectAutoCompleteSuggestionWithIndex:(NSInteger) index{
+    // invoked when an available suggestion is selected
+    NSLog(@"%@ - Suggestion chosen: %d", completer, index);
+}
 
 @end

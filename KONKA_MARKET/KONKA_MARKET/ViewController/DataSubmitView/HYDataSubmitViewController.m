@@ -10,7 +10,8 @@
 #import "HYSalesRegistrationViewController.h"
 #import "KonkaManager.h"
 
-#define NUMBERS @".0123456789\n"
+#define NUMBERS @"0123456789\n"
+#define NUMBERSPERIOD @"0123456789.\n"
 
 
 @interface HYDataSubmitViewController ()
@@ -112,13 +113,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
-    [mainTableView addGestureRecognizer:gestureRecognizer];
-    gestureRecognizer.cancelsTouchesInView = NO;
-    
-    
-    
     mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 340) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
     
@@ -129,8 +123,6 @@
     
     UIView *tempView = [[UIView alloc] init];
     [mainTableView setBackgroundView:tempView];
-    
-    
     
     
     UIImage *backButtonImage = [UIImage imageNamed:@"right.png"];
@@ -144,11 +136,6 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     self.navigationItem.rightBarButtonItem  = rightButton;
     
-    self.uibgLabel.userInteractionEnabled = YES;
-    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hidenKeyboard:)];
-    gesture.numberOfTapsRequired = 1;
-    [self.uibgLabel addGestureRecognizer:gesture];
-    
     [self getStoreList:self.userLogin.user_id];
     
     NSNumber *flag = [[NSNumber alloc] initWithInt:1];
@@ -157,6 +144,10 @@
     CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
     self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];
     self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.memo.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    
+    
     self.realName = [[UITextField alloc] initWithFrame:textFieldRect];
     self.phoneNum = [[UITextField alloc] initWithFrame:textFieldRect];
     self.address = [[UITextField alloc] initWithFrame:textFieldRect];
@@ -165,6 +156,14 @@
     self.salesPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     
+    self.salesCount.text = @"1";
+    
+    [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
+    [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
+    [self.salesPrice setKeyboardType:UIKeyboardTypeDecimalPad];
+    [self.phoneNum setKeyboardType:UIKeyboardTypeNamePhonePad];
+    
+    
     [self.memo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.realName addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.phoneNum addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -172,9 +171,17 @@
     
     [self.address addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.mastercode addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+
+    
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
+    
     [self.salesPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.salesPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
+    
     [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
+    
     
     [self.selectChoice2 addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.selectChoice2 addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
@@ -190,6 +197,23 @@
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storeSelectAction:)];
     [storeName addGestureRecognizer:singleTap];
     storeName.text = [dic objectForKey:@"name"];
+    
+    self.uibgLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.uibgLabel addGestureRecognizer:gesture];
+    
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.mainTableView addGestureRecognizer:singleTap1];
+    
+    if (self.userLogin.dataSubmit != nil)
+    {
+        NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+        storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
+        salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"all_price"]];
+        self.selectChoice2.text = [self.userLogin.dataSubmit objectForKey:@"model_name"];
+    }
     
    
 }
@@ -215,11 +239,94 @@
 - (void) submit:(id)sender
 {
     //TODO 组装数据
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"11",@"memo",nil];
+    [super hudprogress:@"数据提交中"];
+    
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    submitSelectChoice2 = [kkM findModelID:self.userLogin.user_id ByName:self.selectChoice2.text];
+    
+    submitStoreID = [kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
+    
+    if (self.memo.text == nil)
+    {
+        submitMemo = @"";
+    }else
+    {
+        submitMemo = self.memo.text;
+    }
+    
+    if (self.saleAllPrice.text == nil)
+    {
+        submitSalesPrice = @"";
+    }else
+    {
+        submitSalesPrice = self.saleAllPrice.text;
+    }
+    
+    if (self.salesCount.text == nil)
+    {
+        submitSalesCount = @"";
+    }else
+    {
+        submitSalesCount = self.salesCount.text;
+    }
+    
+    if (self.realName.text == nil)
+    {
+        submitRealname = @"";
+    }else
+    {
+        submitRealname = self.realName.text;
+    }
+    
+    if (self.phoneNum.text == nil)
+    {
+        submitPhonenum = @"";
+    }else
+    {
+        submitPhonenum = self.phoneNum.text;
+    }
+    
+    if (self.address.text == nil)
+    {
+        submitAddress = @"";
+    }else
+    {
+        submitAddress = self.address.text;
+    }
+    
+    if (self.mastercode.text == nil)
+    {
+        submitMastercode = @"";
+    }else
+    {
+        submitMastercode = self.mastercode.text;
+    }
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",nil];
+    
+    NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataSubmitApi]];
     
     [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+}
+
+-(void) endFailedRequest:(NSString *)msg
+{
+
+}
+
+-(void) endRequest:(NSString *)msg
+{
+    [HUD hide:YES];
+    if ([msg isEqualToString:@"success"])
+    {
+        [super alertMsg:@"提交成功" forTittle:@"消息"];
+    }else
+    {
+        [super alertMsg:msg forTittle:@"消息"];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -460,28 +567,6 @@
     [[reader presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
-//- (void) imagePickerController: (UIImagePickerController*) reader
-// didFinishPickingMediaWithInfo: (NSDictionary*) info
-//{
-//    // ADD: get the decode results
-//    id<NSFastEnumeration> results =
-//    [info objectForKey: ZBarReaderControllerResults];
-//    ZBarSymbol *symbol = nil;
-//    for(symbol in results)
-//        // EXAMPLE: just grab the first barcode
-//        break;
-//    
-//    // EXAMPLE: do something useful with the barcode data
-//    //resultText.text = symbol.data;
-//    
-//    // EXAMPLE: do something useful with the barcode image
-//    //resultImage.image =
-//    //[info objectForKey: UIImagePickerControllerOriginalImage];
-//    
-//    // ADD: dismiss the controller (NB dismiss from the *reader*!)
-//    [[reader presentingViewController] dismissViewControllerAnimated:YES completion:nil];
-//}
-
 - (BOOL) shouldAutorotateToInterfaceOrientation: (UIInterfaceOrientation) orient
 {
     return(YES);
@@ -491,7 +576,7 @@
 - (IBAction)hisAction:(id)sender{
 
     HYSalesRegistrationViewController *srView = [[HYSalesRegistrationViewController alloc] init];
-    
+    srView.userLogin = self.userLogin;
     srView.title = @"上报历史";
     [self.navigationController pushViewController:srView animated:YES];
 }
@@ -511,6 +596,38 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
+    if (textField == self.salesPrice)
+    {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *temp = [f numberFromString:self.salesPrice.text];
+        NSNumber *count = [f numberFromString:self.salesCount.text];
+        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
+        
+        self.saleAllPrice.text = [f stringFromNumber:temp];
+    }
+    
+    if (textField == self.saleAllPrice)
+    {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
+        NSNumber *count = [f numberFromString:self.salesCount.text];
+        temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
+        
+        self.salesPrice.text = [f stringFromNumber:temp];
+    }
+    
+    if (textField == self.salesCount)
+    {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *temp = [f numberFromString:self.salesPrice.text];
+        NSNumber *count = [f numberFromString:self.salesCount.text];
+        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
+        
+        self.saleAllPrice.text = [f stringFromNumber:temp];
+    }
 }
 
 @end

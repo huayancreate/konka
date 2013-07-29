@@ -8,6 +8,7 @@
 
 #import "HYAppDelegate.h"
 #import "HYLoginViewController.h"
+#import "HYScrollPageViewController.h"
 
 @implementation HYAppDelegate
 
@@ -31,6 +32,9 @@
     // Override point for customization after application launch.
 
     HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
+    
+//    HYScrollPageViewController *scrollView = [[HYScrollPageViewController alloc]initWithNibName:@"HYScrollPageViewController" bundle:nil];
+    
     self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
     self.window.rootViewController = self.navController;
 

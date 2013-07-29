@@ -7,6 +7,7 @@
 //
 
 #import "HYSalesRegistrationViewController.h"
+#import "HYDataSubmitViewController.h"
 
 @interface HYSalesRegistrationViewController ()
 
@@ -113,6 +114,11 @@
     //[self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
     //[self.unRegistrationBtn.titleLabel setTextColor:[UIColor blackColor]];
     //[self.registrationBtn.titleLabel setTextColor:[UIColor blackColor]];
+    
+    self.uibgLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.uibgLabel addGestureRecognizer:gesture];
+    
 }
 
 
@@ -234,7 +240,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
     if (tableView == downTableView){
-        [super alertMsg:[dataItems objectAtIndex:indexPath.row] forTittle:@"消息"];
+        NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
+        self.userLogin.dataSubmit = dic;
+        HYDataSubmitViewController *dataSubmit = [[HYDataSubmitViewController alloc]init];
+        dataSubmit.userLogin = self.userLogin;
+        dataSubmit.title = @"数据上报";
+        
+        [self.navigationController pushViewController:dataSubmit animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
     }
 

@@ -24,6 +24,7 @@
 -(void) updateDataPatch:(NSString *)dataPatch ByUserID:(NSNumber *)user_id;
 -(NSString *) selectDataPatchByUserID:(NSNumber *)user_id;
 -(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
+-(NSMutableArray *) getBrandListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag;
 -(NSMutableArray *) getPeListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
 -(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int)page;
 
@@ -34,8 +35,13 @@
 
 -(NSString *) findModelNameByID:(NSNumber *)user_id ByName:(NSString *)addon2;
 
+-(NSString *) findModelID:(NSNumber *)user_id ByName:(NSString *)name;
+
+-(NSString *) findStoreID:(NSNumber *)user_id ByName:(NSString *)name;
+
 -(void)updateUserInfoByUserID:(NSNumber *)user_id UserName:(NSString *)user_name RealName:(NSString *)real_name Sid:(NSString *)sid department:(NSString *)department;
 
 -(void)deleteAllBaseDataByUserID:(NSNumber *)user_id;
 
+-(NSMutableArray *)getBrandNameListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)brandName;
 @end

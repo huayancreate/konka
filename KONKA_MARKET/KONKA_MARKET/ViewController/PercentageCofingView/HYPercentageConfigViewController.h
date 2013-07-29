@@ -7,8 +7,9 @@
 //
 
 #import "HYBaseViewController.h"
+#import "AutocompletionTableView.h"
 
-@interface HYPercentageConfigViewController : HYBaseViewController<UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface HYPercentageConfigViewController : HYBaseViewController<UITableViewDataSource,UITableViewDelegate,AutocompletionTableViewDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *mainTableView;
 @property (strong, nonatomic) IBOutlet UIButton *uiFixed;
