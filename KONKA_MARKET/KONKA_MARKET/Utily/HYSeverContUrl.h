@@ -17,3 +17,5 @@
 #define TestApi @"http://220.178.14.98:8080/konka-wd/MobileStatistic.do"
 
 #define LoginApi @"/m/l.do"
+
+#define scrollViewImageApi @"/webservice/KonkaArticleImgInterface.do"

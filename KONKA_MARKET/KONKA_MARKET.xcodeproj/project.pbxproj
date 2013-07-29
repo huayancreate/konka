@@ -65,6 +65,10 @@
 		282A56FE179460F90078524F /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 282A56FC179460F90078524F /* arrow_up.png */; };
 		282A5708179478820078524F /* HYSalesRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282A5706179478820078524F /* HYSalesRegistrationViewController.m */; };
 		282A5709179478820078524F /* HYSalesRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282A5707179478820078524F /* HYSalesRegistrationViewController.xib */; };
+		282BAE3017A60BE600988D92 /* konka_production_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2C17A60BE600988D92 /* konka_production_01.jpg */; };
+		282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2D17A60BE600988D92 /* konka_production_02.jpg */; };
+		282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2E17A60BE600988D92 /* konka_production_03.jpg */; };
+		282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2F17A60BE600988D92 /* konka_production_04.jpg */; };
 		2831155D1797B11E00DF6AF1 /* AutocompletionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */; };
 		2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831DBC917A186C700EC22CE /* DropDownView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */; };
@@ -175,7 +179,6 @@
 		28DAE5AD1784036C00F12366 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE5AC1784036C00F12366 /* libicucore.dylib */; };
 		28DAE5AF1784037800F12366 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE5AE1784037700F12366 /* ImageIO.framework */; };
 		28DAE5B11784038800F12366 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE5B01784038700F12366 /* CoreText.framework */; };
-		28DAE5B51784040600F12366 /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE5B41784040600F12366 /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28DAE5B9178407D400F12366 /* HYHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE5B7178407D400F12366 /* HYHomeViewController.m */; };
 		28DAE5BA178407D400F12366 /* HYHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28DAE5B8178407D400F12366 /* HYHomeViewController.xib */; };
 		28DAE5C517840F0500F12366 /* HYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE5C317840F0500F12366 /* HYLoginViewController.m */; };
@@ -285,6 +288,10 @@
 		282A5705179478820078524F /* HYSalesRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSalesRegistrationViewController.h; sourceTree = "<group>"; };
 		282A5706179478820078524F /* HYSalesRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSalesRegistrationViewController.m; sourceTree = "<group>"; };
 		282A5707179478820078524F /* HYSalesRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSalesRegistrationViewController.xib; sourceTree = "<group>"; };
+		282BAE2C17A60BE600988D92 /* konka_production_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_01.jpg; sourceTree = "<group>"; };
+		282BAE2D17A60BE600988D92 /* konka_production_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_02.jpg; sourceTree = "<group>"; };
+		282BAE2E17A60BE600988D92 /* konka_production_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_03.jpg; sourceTree = "<group>"; };
+		282BAE2F17A60BE600988D92 /* konka_production_04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_04.jpg; sourceTree = "<group>"; };
 		2831155B1797B11E00DF6AF1 /* AutocompletionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutocompletionTableView.h; sourceTree = "<group>"; };
 		2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompletionTableView.m; sourceTree = "<group>"; };
 		2831DBC817A186C700EC22CE /* DropDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownView.h; sourceTree = "<group>"; };
@@ -516,8 +523,6 @@
 		28DAE5AC1784036C00F12366 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		28DAE5AE1784037700F12366 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		28DAE5B01784038700F12366 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		28DAE5B31784040600F12366 /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
-		28DAE5B41784040600F12366 /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		28DAE5B6178407D400F12366 /* HYHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYHomeViewController.h; sourceTree = "<group>"; };
 		28DAE5B7178407D400F12366 /* HYHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYHomeViewController.m; sourceTree = "<group>"; };
 		28DAE5B8178407D400F12366 /* HYHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYHomeViewController.xib; sourceTree = "<group>"; };
@@ -840,6 +845,17 @@
 			path = SalesRegistrationView;
 			sourceTree = "<group>";
 		};
+		282BAE2B17A60BE600988D92 /* logoAdv */ = {
+			isa = PBXGroup;
+			children = (
+				282BAE2C17A60BE600988D92 /* konka_production_01.jpg */,
+				282BAE2D17A60BE600988D92 /* konka_production_02.jpg */,
+				282BAE2E17A60BE600988D92 /* konka_production_03.jpg */,
+				282BAE2F17A60BE600988D92 /* konka_production_04.jpg */,
+			);
+			path = logoAdv;
+			sourceTree = "<group>";
+		};
 		2831155A1797B11E00DF6AF1 /* Autocompletion */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +931,7 @@
 		285741DC1794B2DF006E2DA2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				282BAE2B17A60BE600988D92 /* logoAdv */,
 				283BB02F17A57E1400E2012D /* guide */,
 				18E3DF7B17A262C200C9FF02 /* about */,
 				18E3DF6C17A25ECA00C9FF02 /* calendar */,
@@ -1187,7 +1204,6 @@
 				2831155A1797B11E00DF6AF1 /* Autocompletion */,
 				28D4368B179400BB00C3F1B2 /* VPPDropDown */,
 				281A89F517856FA6006AA1C6 /* ZBarSDK */,
-				28DAE5B21784040600F12366 /* Regex */,
 				28DAE5701783FECE00F12366 /* http */,
 				28DAE4811783F8DC00F12366 /* JSONKit */,
 				28DAE4C21783F8DD00F12366 /* SDWebData */,
@@ -1364,15 +1380,6 @@
 				28DAE5881783FECF00F12366 /* Reachability.m */,
 			);
 			path = ASIHttpRequest;
-			sourceTree = "<group>";
-		};
-		28DAE5B21784040600F12366 /* Regex */ = {
-			isa = PBXGroup;
-			children = (
-				28DAE5B31784040600F12366 /* RegexKitLite.h */,
-				28DAE5B41784040600F12366 /* RegexKitLite.m */,
-			);
-			path = Regex;
 			sourceTree = "<group>";
 		};
 		28DAE5C117840F0500F12366 /* LoginView */ = {
@@ -1572,6 +1579,10 @@
 				283BB03517A57E1400E2012D /* guide_sell_3.jpg in Resources */,
 				283BB03617A57E1400E2012D /* guide_set_2.jpg in Resources */,
 				283BB03717A57E1400E2012D /* guide_setother_4.jpg in Resources */,
+				282BAE3017A60BE600988D92 /* konka_production_01.jpg in Resources */,
+				282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */,
+				282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */,
+				282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1605,7 +1616,6 @@
 				28DAE597178400A000F12366 /* HYAppUtily.m in Sources */,
 				28DAE59A1784010000F12366 /* HYUIDevice+Help.m in Sources */,
 				28DAE59D1784015700F12366 /* HYNSString+MD5Addition.m in Sources */,
-				28DAE5B51784040600F12366 /* RegexKitLite.m in Sources */,
 				28DAE5B9178407D400F12366 /* HYHomeViewController.m in Sources */,
 				28DAE5C517840F0500F12366 /* HYLoginViewController.m in Sources */,
 				28DAE5CA17850E4E00F12366 /* HYRetailViewController.m in Sources */,

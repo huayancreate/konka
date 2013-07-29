@@ -8,10 +8,13 @@
 
 #import "HYBaseViewController.h"
 
-@interface HYHomeViewController : HYBaseViewController
+@interface HYHomeViewController : HYBaseViewController<UIScrollViewDelegate>
 
 -(IBAction)retail:(id)sender;
 
 -(IBAction)sysconfigAction:(id)sender;
 
+@property (strong, nonatomic) IBOutlet UIScrollView *uiAdvLogoScrollView;
+@property (strong,nonatomic)NSMutableArray *slideImages;
+@property (strong,nonatomic)UIPageControl *pageControl;
 @end

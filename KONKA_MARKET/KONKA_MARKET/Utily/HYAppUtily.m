@@ -7,7 +7,6 @@
 //
 
 #import "HYAppUtily.h"
-#import "RegexKitLite.h"
 
 @implementation HYAppUtily
 

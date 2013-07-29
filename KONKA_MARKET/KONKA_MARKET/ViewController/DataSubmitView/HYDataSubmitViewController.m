@@ -398,10 +398,9 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = nil;
-    NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
-    
     if (tableView == dropDownTableView)
     {
+        NSDictionary *dic = (NSDictionary *)[self.userLogin.storeList objectAtIndex:0];
         cell = [tableView dequeueReusableCellWithIdentifier: @"LabelTextCellIdentifier"];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
