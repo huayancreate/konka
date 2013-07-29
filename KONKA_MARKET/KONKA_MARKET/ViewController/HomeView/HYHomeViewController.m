@@ -34,7 +34,7 @@
     // Do any additional setup after loading the view from its nib.
     // 初始化广告滚屏
     // 定时器 循环
-    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
     uiAdvLogoScrollView.bounces = YES;
     uiAdvLogoScrollView.pagingEnabled = YES;
     uiAdvLogoScrollView.userInteractionEnabled = YES;
@@ -59,19 +59,19 @@
     for (int i = 0;i<[slideImages count];i++)
     {
         UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[slideImages objectAtIndex:i]]];
-        imageView.frame = CGRectMake((320 * i) + 320, 0, 320, 138);
+        imageView.frame = CGRectMake((320 * i) + 320, 0, 320, 115);
         [uiAdvLogoScrollView addSubview:imageView]; // 首页是第0页,默认从第1页开始的。所以+320。。。
     }
     // 取数组最后一张图片 放在第0页
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[slideImages objectAtIndex:([slideImages count]-1)]]];
-    imageView.frame = CGRectMake(0, 0, 320, 138); // 添加最后1页在首页 循环
+    imageView.frame = CGRectMake(0, 0, 320, 115); // 添加最后1页在首页 循环
     [uiAdvLogoScrollView addSubview:imageView];
     // 取数组第一张图片 放在最后1页
     imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[slideImages objectAtIndex:0]]];
-    imageView.frame = CGRectMake((320 * ([slideImages count] + 1)) , 0, 320, 138); // 添加第1页在最后 循环
+    imageView.frame = CGRectMake((320 * ([slideImages count] + 1)) , 0, 320, 115); // 添加第1页在最后 循环
     [uiAdvLogoScrollView addSubview:imageView];
     
-    [uiAdvLogoScrollView setContentSize:CGSizeMake(320 * ([slideImages count] + 2), 0)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
+    [uiAdvLogoScrollView setContentSize:CGSizeMake(320 * ([slideImages count] + 2), 1)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
     [uiAdvLogoScrollView setContentOffset:CGPointMake(0, 0)];
     [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320,0,320,138) animated:NO]; // 默认从序号1位置放第1页 ，序号0位置位置放第4页
     
@@ -179,7 +179,5 @@
     sysconfigView.title = @"系统设置";
     [self.navigationController pushViewController:sysconfigView animated:YES];
 }
-
-
 
 @end

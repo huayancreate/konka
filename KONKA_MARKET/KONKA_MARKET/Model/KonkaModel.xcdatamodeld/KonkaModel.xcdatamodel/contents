@@ -9,6 +9,12 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="PercentEntity" representedClassName="PercentEntity" syncable="YES">
+        <attribute name="model_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="percent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="percent_stype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES">
         <attribute name="dataPatch" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
@@ -20,5 +26,6 @@
     <elements>
         <element name="BaseDataEntity" positionX="-3962" positionY="-900" width="128" height="150"/>
         <element name="UserEntity" positionX="-3816" positionY="-900" width="128" height="135"/>
+        <element name="PercentEntity" positionX="160" positionY="192" width="128" height="105"/>
     </elements>
 </model>

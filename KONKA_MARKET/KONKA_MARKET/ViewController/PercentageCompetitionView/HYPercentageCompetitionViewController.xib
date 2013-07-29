@@ -1314,55 +1314,27 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">HYPercentageCompetitionViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="dataPick:">id</string>
-						<string key="downMoth:">id</string>
-						<string key="percentageConfigAction:">id</string>
-						<string key="upMoth:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="dataPick:">
-							<string key="name">dataPick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="downMoth:">
-							<string key="name">downMoth:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="percentageConfigAction:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">percentageConfigAction:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">percentageConfigAction:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">percentageConfigAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="upMoth:">
-							<string key="name">upMoth:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="dateBtn">UIButton</string>
-						<string key="dateLabel">UILabel</string>
 						<string key="downLoadTabelView">UITableView</string>
-						<string key="tableViewCell">UITableViewCell</string>
 						<string key="uiModelLabel">UILabel</string>
 						<string key="uiNumber">UILabel</string>
 						<string key="uiPercentage">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="dateBtn">
-							<string key="name">dateBtn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="dateLabel">
-							<string key="name">dateLabel</string>
-							<string key="candidateClassName">UILabel</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="downLoadTabelView">
 							<string key="name">downLoadTabelView</string>
 							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tableViewCell">
-							<string key="name">tableViewCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="uiModelLabel">
 							<string key="name">uiModelLabel</string>

@@ -97,7 +97,6 @@
     modelConfigTableView.scrollEnabled = YES;
     
     UIView *tempView = [[UIView alloc] init];
-    
     [modelConfigTableView setBackgroundView:tempView];
     
     [self.view addSubview:modelConfigTableView];

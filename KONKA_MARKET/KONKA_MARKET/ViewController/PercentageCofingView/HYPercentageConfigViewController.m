@@ -10,6 +10,7 @@
 
 @interface HYPercentageConfigViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
+@property (nonatomic) Boolean percentFlag;
 
 @end
 
@@ -22,6 +23,9 @@
 @synthesize percentString;
 @synthesize uiModelTextField = _textField;
 @synthesize autoCompleter = _autoCompleter;
+@synthesize percentFlag;
+@synthesize uibgLabel;
+@synthesize uibgLabel1;
 
 
 - (AutocompletionTableView *)autoCompleter
@@ -51,9 +55,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    percentFlag = true;
+    
     NSNumber *flag = [[NSNumber alloc] initWithInt:1];
     // 自动补全
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
+    
+    [self getPercentListByUserID:self.userLogin.user_id];
 
     
     UIView *tempView = [[UIView alloc] init];
@@ -71,11 +79,23 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
     
-    [self.uiModelTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.uiPercentTextField addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.uiModelTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
+    [self.uiPercentTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     self.percentString = @"固定提成";
+    
+    self.uibgLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.uibgLabel addGestureRecognizer:gesture];
+    
+    self.uibgLabel1.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.uibgLabel1 addGestureRecognizer:gesture1];
+    
+    self.mainTableView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *gesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.mainTableView addGestureRecognizer:gesture2];
     
 }
 
@@ -107,7 +127,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     
-    return [dyArray count];
+    return [self.userLogin.percentList count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -121,20 +141,20 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CustomCellIdentifier =@"PercentCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
-    if (cell ==nil) {
-        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYpercentTabelViewCell" owner:self options:nil];
+    NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYpercentTabelViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
-    }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    self.uiModelLabel.text = self.uiModelTextField.text;
-    self.uiPercentCellLabel.text = self.uiPercentTextField.text;
-    self.uiPercentLabel.text = self.percentString;
+    NSDictionary *dic = [self.userLogin.percentList objectAtIndex:indexPath.row];
+    self.uiModelLabel.text = [dic objectForKey:@"model_name"];
+    self.uiPercentCellLabel.text = [dic objectForKey:@"percent_style"];
+    self.uiPercentLabel.text = [dic objectForKey:@"percent"];
     return  cell;
 }
 
 
 -(IBAction)fixedAction:(id)sender
 {
+    percentFlag = true;
     [self.uiFixed setBackgroundColor:[UIColor blueColor]];
     [self.uiPercent setBackgroundColor:[UIColor clearColor]];
     self.percentString = @"固定提成";
@@ -145,12 +165,19 @@
 
 -(IBAction)percentAction:(id)sender
 {
+    percentFlag = false;
     [self.uiFixed setBackgroundColor:[UIColor clearColor]];
     [self.uiPercent setBackgroundColor:[UIColor blueColor]];
      self.percentString = @"按比例提成";
     [self.uiFixed.titleLabel setTextColor:[UIColor blackColor]];
     [self.uiPercent.titleLabel setTextColor:[UIColor blackColor]];
     
+    
+}
+
+-(Boolean)checkModelName:(NSString *)name
+{
+    return [self.userLogin.modelNameCopyList containsObject:name];
 }
 
 -(IBAction)saveAction:(id)sender
@@ -161,22 +188,36 @@
         return;
     }
     
-    [self.mainTableView beginUpdates];
+    if (![self checkModelName:self.uiModelTextField.text])
+    {
+        [super alertMsg:@"型号不在基础数据范围内！" forTittle:@"消息"];
+        return;
+    }
+    if (!percentFlag)
+    {
+        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber *temp = [f numberFromString:uiPercentCellLabel.text];
+        if ([temp floatValue] > 100)
+        {
+            [super alertMsg:@"比例不能大于100！" forTittle:@"消息"];
+            return;
+        }
+    }
+
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    [kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:self.percentString];
     
-    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+    [self getPercentListByUserID:self.userLogin.user_id];
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.mainTableView reloadData];
     
-    [indexPaths addObject: indexPath];
-    
-    [dyArray addObject:@"111"];
-    
-    
-    
-    [self.mainTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
-    
-    [self.mainTableView endUpdates];
-    
+}
+
+-(void)getPercentListByUserID:(NSNumber *)user_id
+{
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    self.userLogin.percentList = [kkM getAllPercentByUserID:user_id];
 }
 
 -(BOOL) checkTextisNull
@@ -205,6 +246,12 @@
 - (void) autoCompletion:(AutocompletionTableView*) completer didSelectAutoCompleteSuggestionWithIndex:(NSInteger) index{
     // invoked when an available suggestion is selected
     NSLog(@"%@ - Suggestion chosen: %d", completer, index);
+}
+
+-(void)firstHandle:(UIGestureRecognizer *)gestureRecognizer
+{
+    [_autoCompleter hideOptionsView];
+    [self.view endEditing:TRUE];
 }
 
 @end

@@ -9,7 +9,7 @@
 #import "HYBaseViewController.h"
 #import "AutocompletionTableView.h"
 
-@interface HYModelConfigViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,AutocompletionTableViewDelegate>
+@interface HYModelConfigViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,AutocompletionTableViewDelegate,UIScrollViewDelegate>
 
 @property (nonatomic,strong) UITableView *modelConfigTableView;
 

@@ -79,6 +79,9 @@
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
     [self.uiremember addGestureRecognizer:singleTap];
     
+    self.uirememberLabel.userInteractionEnabled = YES;
+    [self.uirememberLabel addGestureRecognizer:singleTap];
+    
     
     //TODO 读取最后一个用户名
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];

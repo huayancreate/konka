@@ -28,5 +28,6 @@
 @property (nonatomic, retain) NSString *salesAllPrice;
 @property (nonatomic, retain) NSMutableArray *brandNameList;
 @property (nonatomic, retain) NSDictionary *dataSubmit;
+@property (nonatomic, retain) NSMutableArray *percentList;
 
 @end

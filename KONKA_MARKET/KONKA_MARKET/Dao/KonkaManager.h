@@ -10,6 +10,7 @@
 #import <CoreData/CoreData.h>
 #import "UserEntity.h"
 #import "BaseDataEntity.h"
+#import "PercentEntity.h"
 
 @interface KonkaManager : NSObject
 {
@@ -36,6 +37,7 @@
 -(NSString *) findModelNameByID:(NSNumber *)user_id ByName:(NSString *)addon2;
 
 -(NSString *) findModelID:(NSNumber *)user_id ByName:(NSString *)name;
+-(NSString *) findBrandID:(NSNumber *)user_id ByName:(NSString *)name;
 
 -(NSString *) findStoreID:(NSNumber *)user_id ByName:(NSString *)name;
 
@@ -44,4 +46,10 @@
 -(void)deleteAllBaseDataByUserID:(NSNumber *)user_id;
 
 -(NSMutableArray *)getBrandNameListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)brandName;
+
+-(void)insertPercentData:(NSNumber *)user_id ModelName:(NSString *)modeName Percent:(NSString *)percent PercentStyle:(NSString *)percentStyle;
+
+-(NSMutableArray *)getAllPercentByUserID:(NSNumber *)user_id;
+
+
 @end

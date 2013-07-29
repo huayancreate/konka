@@ -71,6 +71,10 @@
 		282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2F17A60BE600988D92 /* konka_production_04.jpg */; };
 		2831155D1797B11E00DF6AF1 /* AutocompletionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */; };
 		2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831DBC917A186C700EC22CE /* DropDownView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2834BD9F17A61FD300B4F025 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9C17A61FD300B4F025 /* about.png */; };
+		2834BDA017A61FD300B4F025 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9D17A61FD300B4F025 /* setting.png */; };
+		2834BDA117A61FD300B4F025 /* switchuser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9E17A61FD300B4F025 /* switchuser.png */; };
+		2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BDA217A6217400B4F025 /* menu_refresh.png */; };
 		2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */; };
 		283AF85517A51828005E08D4 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85217A51828005E08D4 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85417A51828005E08D4 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -196,6 +200,22 @@
 		28F91186179676990072703C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91185179676990072703C /* MBProgressHUD.m */; };
 		28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBA6CF179F7C2900CF4284 /* KonkaManager.m */; };
 		28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBA6D2179F7C7600CF4284 /* HYUserLoginModel.m */; };
+		28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FFABAC17A63353009DDF28 /* HYRetailsTableViewCell.xib */; };
+		28FFABB017A63C2B009DDF28 /* PercentEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABAF17A63C2B009DDF28 /* PercentEntity.m */; };
+		28FFABB917A64A8C009DDF28 /* WSColumnChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABB317A64A8C009DDF28 /* WSColumnChartView.m */; };
+		28FFABBA17A64A8C009DDF28 /* WSPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABB617A64A8C009DDF28 /* WSPieChartView.m */; };
+		28FFABBB17A64A8C009DDF28 /* WSPieChartWithMotionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABB817A64A8C009DDF28 /* WSPieChartWithMotionView.m */; };
+		28FFABC417A64B63009DDF28 /* WSBaseChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABBF17A64B63009DDF28 /* WSBaseChartView.m */; };
+		28FFABC517A64B63009DDF28 /* WSChartObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABC117A64B63009DDF28 /* WSChartObject.m */; };
+		28FFABC617A64B63009DDF28 /* WSGlobalCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABC317A64B63009DDF28 /* WSGlobalCore.m */; };
+		28FFABD817A64BB3009DDF28 /* WSAreaLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABC917A64BB3009DDF28 /* WSAreaLayer.m */; };
+		28FFABD917A64BB3009DDF28 /* WSBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABCB17A64BB3009DDF28 /* WSBarLayer.m */; };
+		28FFABDA17A64BB3009DDF28 /* WSColumnLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABCD17A64BB3009DDF28 /* WSColumnLayer.m */; };
+		28FFABDB17A64BB3009DDF28 /* WSCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABCF17A64BB3009DDF28 /* WSCoordinateLayer.m */; };
+		28FFABDC17A64BB3009DDF28 /* WSLegendLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD117A64BB3009DDF28 /* WSLegendLayer.m */; };
+		28FFABDD17A64BB3009DDF28 /* WSLineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD317A64BB3009DDF28 /* WSLineLayer.m */; };
+		28FFABDE17A64BB3009DDF28 /* WSScatterLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD517A64BB3009DDF28 /* WSScatterLayer.m */; };
+		28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -296,6 +316,10 @@
 		2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompletionTableView.m; sourceTree = "<group>"; };
 		2831DBC817A186C700EC22CE /* DropDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownView.h; sourceTree = "<group>"; };
 		2831DBC917A186C700EC22CE /* DropDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownView.m; sourceTree = "<group>"; };
+		2834BD9C17A61FD300B4F025 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		2834BD9D17A61FD300B4F025 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		2834BD9E17A61FD300B4F025 /* switchuser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchuser.png; sourceTree = "<group>"; };
+		2834BDA217A6217400B4F025 /* menu_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_refresh.png; sourceTree = "<group>"; };
 		2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		283AF85117A51828005E08D4 /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
 		283AF85217A51828005E08D4 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
@@ -549,6 +573,38 @@
 		28FBA6CF179F7C2900CF4284 /* KonkaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KonkaManager.m; sourceTree = "<group>"; };
 		28FBA6D1179F7C7600CF4284 /* HYUserLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYUserLoginModel.h; sourceTree = "<group>"; };
 		28FBA6D2179F7C7600CF4284 /* HYUserLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYUserLoginModel.m; sourceTree = "<group>"; };
+		28FFABAC17A63353009DDF28 /* HYRetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailsTableViewCell.xib; sourceTree = "<group>"; };
+		28FFABAE17A63C2B009DDF28 /* PercentEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PercentEntity.h; sourceTree = "<group>"; };
+		28FFABAF17A63C2B009DDF28 /* PercentEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PercentEntity.m; sourceTree = "<group>"; };
+		28FFABB217A64A8C009DDF28 /* WSColumnChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSColumnChartView.h; sourceTree = "<group>"; };
+		28FFABB317A64A8C009DDF28 /* WSColumnChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSColumnChartView.m; sourceTree = "<group>"; };
+		28FFABB517A64A8C009DDF28 /* WSPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSPieChartView.h; sourceTree = "<group>"; };
+		28FFABB617A64A8C009DDF28 /* WSPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSPieChartView.m; sourceTree = "<group>"; };
+		28FFABB717A64A8C009DDF28 /* WSPieChartWithMotionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSPieChartWithMotionView.h; sourceTree = "<group>"; };
+		28FFABB817A64A8C009DDF28 /* WSPieChartWithMotionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSPieChartWithMotionView.m; sourceTree = "<group>"; };
+		28FFABBD17A64B63009DDF28 /* WSBaseChartDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBaseChartDelegate.h; sourceTree = "<group>"; };
+		28FFABBE17A64B63009DDF28 /* WSBaseChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBaseChartView.h; sourceTree = "<group>"; };
+		28FFABBF17A64B63009DDF28 /* WSBaseChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSBaseChartView.m; sourceTree = "<group>"; };
+		28FFABC017A64B63009DDF28 /* WSChartObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSChartObject.h; sourceTree = "<group>"; };
+		28FFABC117A64B63009DDF28 /* WSChartObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSChartObject.m; sourceTree = "<group>"; };
+		28FFABC217A64B63009DDF28 /* WSGlobalCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSGlobalCore.h; sourceTree = "<group>"; };
+		28FFABC317A64B63009DDF28 /* WSGlobalCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSGlobalCore.m; sourceTree = "<group>"; };
+		28FFABC817A64BB3009DDF28 /* WSAreaLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSAreaLayer.h; sourceTree = "<group>"; };
+		28FFABC917A64BB3009DDF28 /* WSAreaLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSAreaLayer.m; sourceTree = "<group>"; };
+		28FFABCA17A64BB3009DDF28 /* WSBarLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSBarLayer.h; sourceTree = "<group>"; };
+		28FFABCB17A64BB3009DDF28 /* WSBarLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSBarLayer.m; sourceTree = "<group>"; };
+		28FFABCC17A64BB3009DDF28 /* WSColumnLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSColumnLayer.h; sourceTree = "<group>"; };
+		28FFABCD17A64BB3009DDF28 /* WSColumnLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSColumnLayer.m; sourceTree = "<group>"; };
+		28FFABCE17A64BB3009DDF28 /* WSCoordinateLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSCoordinateLayer.h; sourceTree = "<group>"; };
+		28FFABCF17A64BB3009DDF28 /* WSCoordinateLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSCoordinateLayer.m; sourceTree = "<group>"; };
+		28FFABD017A64BB3009DDF28 /* WSLegendLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLegendLayer.h; sourceTree = "<group>"; };
+		28FFABD117A64BB3009DDF28 /* WSLegendLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLegendLayer.m; sourceTree = "<group>"; };
+		28FFABD217A64BB3009DDF28 /* WSLineLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSLineLayer.h; sourceTree = "<group>"; };
+		28FFABD317A64BB3009DDF28 /* WSLineLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSLineLayer.m; sourceTree = "<group>"; };
+		28FFABD417A64BB3009DDF28 /* WSScatterLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSScatterLayer.h; sourceTree = "<group>"; };
+		28FFABD517A64BB3009DDF28 /* WSScatterLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSScatterLayer.m; sourceTree = "<group>"; };
+		28FFABD617A64BB3009DDF28 /* WSTopLeftCoordinateLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSTopLeftCoordinateLayer.h; sourceTree = "<group>"; };
+		28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSTopLeftCoordinateLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -822,6 +878,8 @@
 				28247464179E928400E93EA1 /* UserEntity.m */,
 				28FBA6D1179F7C7600CF4284 /* HYUserLoginModel.h */,
 				28FBA6D2179F7C7600CF4284 /* HYUserLoginModel.m */,
+				28FFABAE17A63C2B009DDF28 /* PercentEntity.h */,
+				28FFABAF17A63C2B009DDF28 /* PercentEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -863,6 +921,17 @@
 				2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */,
 			);
 			path = Autocompletion;
+			sourceTree = "<group>";
+		};
+		2834BD9B17A61FD300B4F025 /* systemconfig */ = {
+			isa = PBXGroup;
+			children = (
+				2834BDA217A6217400B4F025 /* menu_refresh.png */,
+				2834BD9C17A61FD300B4F025 /* about.png */,
+				2834BD9D17A61FD300B4F025 /* setting.png */,
+				2834BD9E17A61FD300B4F025 /* switchuser.png */,
+			);
+			path = systemconfig;
 			sourceTree = "<group>";
 		};
 		283AF85017A51828005E08D4 /* UIKeyboard */ = {
@@ -931,6 +1000,7 @@
 		285741DC1794B2DF006E2DA2 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				2834BD9B17A61FD300B4F025 /* systemconfig */,
 				282BAE2B17A60BE600988D92 /* logoAdv */,
 				283BB02F17A57E1400E2012D /* guide */,
 				18E3DF7B17A262C200C9FF02 /* about */,
@@ -1198,6 +1268,10 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				28FFABC717A64BB3009DDF28 /* Chart Layers */,
+				28FFABBC17A64B63009DDF28 /* Global */,
+				28FFABB117A64A8C009DDF28 /* Column Chart */,
+				28FFABB417A64A8C009DDF28 /* Pie Chart */,
 				283BB02917A57BD900E2012D /* SliderPageControl */,
 				283AF85017A51828005E08D4 /* UIKeyboard */,
 				288C2A4F179AEAA900EA8000 /* CorePlotHeaders */,
@@ -1415,8 +1489,66 @@
 				28F18FBB1797BE3F00E82991 /* TopTableViewCell.xib */,
 				2823F3B6179ABD16002DCC71 /* HYpercentTabelViewCell.xib */,
 				2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */,
+				28FFABAC17A63353009DDF28 /* HYRetailsTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
+			sourceTree = "<group>";
+		};
+		28FFABB117A64A8C009DDF28 /* Column Chart */ = {
+			isa = PBXGroup;
+			children = (
+				28FFABB217A64A8C009DDF28 /* WSColumnChartView.h */,
+				28FFABB317A64A8C009DDF28 /* WSColumnChartView.m */,
+			);
+			path = "Column Chart";
+			sourceTree = "<group>";
+		};
+		28FFABB417A64A8C009DDF28 /* Pie Chart */ = {
+			isa = PBXGroup;
+			children = (
+				28FFABB517A64A8C009DDF28 /* WSPieChartView.h */,
+				28FFABB617A64A8C009DDF28 /* WSPieChartView.m */,
+				28FFABB717A64A8C009DDF28 /* WSPieChartWithMotionView.h */,
+				28FFABB817A64A8C009DDF28 /* WSPieChartWithMotionView.m */,
+			);
+			path = "Pie Chart";
+			sourceTree = "<group>";
+		};
+		28FFABBC17A64B63009DDF28 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				28FFABBD17A64B63009DDF28 /* WSBaseChartDelegate.h */,
+				28FFABBE17A64B63009DDF28 /* WSBaseChartView.h */,
+				28FFABBF17A64B63009DDF28 /* WSBaseChartView.m */,
+				28FFABC017A64B63009DDF28 /* WSChartObject.h */,
+				28FFABC117A64B63009DDF28 /* WSChartObject.m */,
+				28FFABC217A64B63009DDF28 /* WSGlobalCore.h */,
+				28FFABC317A64B63009DDF28 /* WSGlobalCore.m */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		28FFABC717A64BB3009DDF28 /* Chart Layers */ = {
+			isa = PBXGroup;
+			children = (
+				28FFABC817A64BB3009DDF28 /* WSAreaLayer.h */,
+				28FFABC917A64BB3009DDF28 /* WSAreaLayer.m */,
+				28FFABCA17A64BB3009DDF28 /* WSBarLayer.h */,
+				28FFABCB17A64BB3009DDF28 /* WSBarLayer.m */,
+				28FFABCC17A64BB3009DDF28 /* WSColumnLayer.h */,
+				28FFABCD17A64BB3009DDF28 /* WSColumnLayer.m */,
+				28FFABCE17A64BB3009DDF28 /* WSCoordinateLayer.h */,
+				28FFABCF17A64BB3009DDF28 /* WSCoordinateLayer.m */,
+				28FFABD017A64BB3009DDF28 /* WSLegendLayer.h */,
+				28FFABD117A64BB3009DDF28 /* WSLegendLayer.m */,
+				28FFABD217A64BB3009DDF28 /* WSLineLayer.h */,
+				28FFABD317A64BB3009DDF28 /* WSLineLayer.m */,
+				28FFABD417A64BB3009DDF28 /* WSScatterLayer.h */,
+				28FFABD517A64BB3009DDF28 /* WSScatterLayer.m */,
+				28FFABD617A64BB3009DDF28 /* WSTopLeftCoordinateLayer.h */,
+				28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */,
+			);
+			path = "Chart Layers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1583,6 +1715,11 @@
 				282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */,
 				282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */,
 				282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */,
+				2834BD9F17A61FD300B4F025 /* about.png in Resources */,
+				2834BDA017A61FD300B4F025 /* setting.png in Resources */,
+				2834BDA117A61FD300B4F025 /* switchuser.png in Resources */,
+				2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */,
+				28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1650,6 +1787,21 @@
 				283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */,
 				283AF85B17A570E4005E08D4 /* HYScrollPageViewController.m in Sources */,
 				283BB02E17A57BD900E2012D /* SliderPageControl.m in Sources */,
+				28FFABB017A63C2B009DDF28 /* PercentEntity.m in Sources */,
+				28FFABB917A64A8C009DDF28 /* WSColumnChartView.m in Sources */,
+				28FFABBA17A64A8C009DDF28 /* WSPieChartView.m in Sources */,
+				28FFABBB17A64A8C009DDF28 /* WSPieChartWithMotionView.m in Sources */,
+				28FFABC417A64B63009DDF28 /* WSBaseChartView.m in Sources */,
+				28FFABC517A64B63009DDF28 /* WSChartObject.m in Sources */,
+				28FFABC617A64B63009DDF28 /* WSGlobalCore.m in Sources */,
+				28FFABD817A64BB3009DDF28 /* WSAreaLayer.m in Sources */,
+				28FFABD917A64BB3009DDF28 /* WSBarLayer.m in Sources */,
+				28FFABDA17A64BB3009DDF28 /* WSColumnLayer.m in Sources */,
+				28FFABDB17A64BB3009DDF28 /* WSCoordinateLayer.m in Sources */,
+				28FFABDC17A64BB3009DDF28 /* WSLegendLayer.m in Sources */,
+				28FFABDD17A64BB3009DDF28 /* WSLineLayer.m in Sources */,
+				28FFABDE17A64BB3009DDF28 /* WSScatterLayer.m in Sources */,
+				28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

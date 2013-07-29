@@ -113,7 +113,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 340) style:UITableViewStyleGrouped];
+    mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 380) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
     
     mainTableView.delegate = self;
@@ -146,8 +146,6 @@
     self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
     self.memo.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-    
-    
     self.realName = [[UITextField alloc] initWithFrame:textFieldRect];
     self.phoneNum = [[UITextField alloc] initWithFrame:textFieldRect];
     self.address = [[UITextField alloc] initWithFrame:textFieldRect];
@@ -157,6 +155,8 @@
     self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     
     self.salesCount.text = @"1";
+    saleAllPrice.text = @"0.0";
+    salesPrice.text = @"0.0";
     
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
@@ -207,6 +207,11 @@
     
     if (self.userLogin.dataSubmit != nil)
     {
+        storeName.enabled = false;
+        salesCount.enabled = false;
+        saleAllPrice.enabled = false;
+        self.selectChoice2.enabled = false;
+        self.salesPrice.enabled = false;
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
         salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
@@ -303,7 +308,7 @@
         submitMastercode = self.mastercode.text;
     }
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"0",@"data_source",nil];
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
@@ -314,7 +319,7 @@
 
 -(void) endFailedRequest:(NSString *)msg
 {
-
+    [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
 }
 
 -(void) endRequest:(NSString *)msg
@@ -323,6 +328,20 @@
     if ([msg isEqualToString:@"success"])
     {
         [super alertMsg:@"提交成功" forTittle:@"消息"];
+        self.selectChoice2.text = nil;
+        salesCount.text = @"1";
+        saleAllPrice.text = @"0.0";
+        salesPrice.text = @"0.0";
+        memo.text = nil;
+        realName.text = nil;
+        address.text = nil;
+        phoneNum.text = nil;
+        mastercode.text = nil;
+        if (self.userLogin.dataSubmit != nil)
+        {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+        }
+        
     }else
     {
         [super alertMsg:msg forTittle:@"消息"];

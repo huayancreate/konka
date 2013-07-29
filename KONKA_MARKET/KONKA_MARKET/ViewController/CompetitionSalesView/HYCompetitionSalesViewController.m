@@ -14,11 +14,16 @@
 @property (nonatomic, strong) UILabel *storeName;
 @property (nonatomic, strong) UILabel *brandName;
 @property (nonatomic, strong) UITextField *selectChoice2;
-@property (nonatomic, strong) UITextField *memo;
 @property (nonatomic, strong) UITextField *saleAllPrice;
 @property (nonatomic, strong) UITextField *salesCount;
 @property (nonatomic, strong) UITextField *salesPrice;
 @property (nonatomic, strong) UITextField *currentTextField;
+
+@property (nonatomic, strong) NSString *submitSaleTime;
+@property (nonatomic, strong) NSString *submitSelectChoice2;
+@property (nonatomic, strong) NSString *submitStoreID;
+@property (nonatomic, strong) NSString *submitSalesCount;
+@property (nonatomic, strong) NSString *submitSalesPrice;
 
 @end
 
@@ -38,11 +43,15 @@
 @synthesize brandSelectTableView;
 @synthesize storeName;
 @synthesize brandName;
-@synthesize memo;
 @synthesize salesCount;
 @synthesize salesPrice;
 @synthesize saleAllPrice;
 @synthesize currentTextField;
+@synthesize submitSaleTime;
+@synthesize submitSelectChoice2;
+@synthesize submitStoreID;
+@synthesize submitSalesCount;
+@synthesize submitSalesPrice;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -75,7 +84,7 @@
     [self getStoreList:self.userLogin.user_id];
     
     [self getBrandList:self.userLogin.user_id];
-    
+     
     NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     [self getBrandNameList:self.userLogin.user_id ByFlag:flag ByName:[self.userLogin.brandList objectAtIndex:0]];
     
@@ -99,10 +108,7 @@
     [self getStoreList:self.userLogin.user_id];
     
     CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
-    self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.memo.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.salesCount = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];    self.salesCount = [[UITextField alloc] initWithFrame:textFieldRect];
     self.salesPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     
@@ -111,9 +117,6 @@
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
     [self.salesPrice setKeyboardType:UIKeyboardTypeDecimalPad];
-    
-    
-    [self.memo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
@@ -156,6 +159,8 @@
     
 }
 
+
+
 -(void) getBrandNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)_brandName
 {
     KonkaManager *kkM = [[KonkaManager alloc] init];
@@ -190,8 +195,62 @@
 }
 
 -(void)submit:(id)sender{
+    
+    [super hudprogress:@"数据提交中"];
+    
+    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    submitSelectChoice2 = [kkM findBrandID:self.userLogin.user_id ByName:self.selectChoice2.text];
+    
+    submitStoreID = [kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
+    
+    if (self.saleAllPrice.text == nil)
+    {
+        submitSalesPrice = @"";
+    }else
+    {
+        submitSalesPrice = self.saleAllPrice.text;
+    }
+    
+    if (self.salesCount.text == nil)
+    {
+        submitSalesCount = @"";
+    }else
+    {
+        submitSalesCount = self.salesCount.text;
+    }
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit05",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitSelectChoice2,@"select-choice-2",@"0",@"data_source",nil];
+    
+    NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataSubmitApi]];
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
 
 }
+
+-(void) endFailedRequest:(NSString *)msg
+{
+    [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
+}
+
+-(void) endRequest:(NSString *)msg
+{
+    [HUD hide:YES];
+    if ([msg isEqualToString:@"success"])
+    {
+        [super alertMsg:@"提交成功" forTittle:@"消息"];
+        self.selectChoice2.text = nil;
+        salesCount.text = @"1";
+        saleAllPrice.text = @"0.0";
+        salesPrice.text = @"0.0";
+    }else
+    {
+        [super alertMsg:msg forTittle:@"消息"];
+    }
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -345,12 +404,6 @@
                 cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
                 cell.accessoryView = self.saleAllPrice;
                 self.cellLabel4.text = @"金额";
-                return cell;
-                break;
-            case 6:
-                cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                cell.accessoryView = self.memo;
-                self.cellLabel4.text = @"备注";
                 return cell;
                 break;
 

@@ -23,4 +23,10 @@
 -(IBAction)percentageAction:(id)sender;
 
 -(IBAction)modelConfigAction:(id)sender;
+
+@property (nonatomic, strong) IBOutlet UILabel *uiNameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *uiDetailNameLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *uiImage;
+@property (nonatomic, strong) IBOutlet UITableView *mainTableView;
+
 @end

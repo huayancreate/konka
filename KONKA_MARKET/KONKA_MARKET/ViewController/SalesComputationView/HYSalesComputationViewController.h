@@ -9,17 +9,10 @@
 #import "HYBaseViewController.h"
 #import "TopTableViewCell.h"
 #import "CKCalendarView.h"
-#import "EskBarPlot.h"
-#import "EskLinePlot.h"
 
-@interface HYSalesComputationViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,TopTabelViewCell,CKCalendarDelegate,EskBarPlotDelegate, EskLinePlotDelegate>
+@interface HYSalesComputationViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,TopTabelViewCell,CKCalendarDelegate>
 {
-@private
-    EskBarPlot *barPlot;
-    EskLinePlot *linePlot;
 }
-@property (strong, nonatomic) IBOutlet CPTGraphHostingView *barCorePlotView;
-
 
 @property (nonatomic,strong) UITableView *topTableView;
 
@@ -31,6 +24,7 @@
 @property (strong, nonatomic) IBOutlet UIButton *uiModelBtn;
 @property (strong, nonatomic) IBOutlet UIButton *uiYearsBtn;
 @property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
+@property (strong, nonatomic) IBOutlet UIView *chartView;
 
 -(IBAction)sizeAction:(id)sender;
 

@@ -89,7 +89,7 @@
     
     [self.view addSubview:salesNum];
     
-    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(170, 45, 140, 40)];
+    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 160, 40)];
     salesMoney.text = @"销售总金额0元";
     [self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];

@@ -44,8 +44,6 @@
     self.mykey = arr;
     
     UIView *tempView = [[UIView alloc] init];
-    UIColor *color = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"lst_bg.png"]];
-    [tempView setBackgroundColor:color];
     [self.tableViewGroup setBackgroundView:tempView];
 }
 
@@ -74,34 +72,55 @@
 }
 //向屏幕显示。
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    //获得所在分区的行数
     NSInteger row=[indexPath row];
-    //获得分区值
     NSInteger section=[indexPath section];
-    //利用分区获得键值
     NSString *key=[self.mykey objectAtIndex:section];
-    //利用键值获得其所对应的值
     NSArray *MySectionArr=[self.resource objectForKey:key];
-    //定义标记，用于标记单元格
     static NSString *SectionTableMyTag=@"dong";
     UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-    //如果当前cell没被实例(程序一开始就会运行下面的循环，直到屏幕上所显示的单元格格全被实例化了为止，没有显示在屏幕上的单元格将会根据定义好的标记去寻找可以重用的空间来存放自己的值)
-    if (cell==nil) {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
-    }
+
+    cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
     cell.textLabel.text=[MySectionArr objectAtIndex:row];
+    UIImage *image = nil;
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.row) {
+                case 0:
+                    image = [UIImage imageNamed:@"switchuser.png"];
+                    cell.imageView.image = image;
+                    break;
+            }
+
+            break;
+        case 1:
+            switch (indexPath.row) {
+                case 0:
+                    image = [UIImage imageNamed:@"setting.png"];
+                    cell.imageView.image = image;
+                    break;
+                case 1:
+                    image = [UIImage imageNamed:@"setting.png"];
+                    cell.imageView.image = image;
+                    break;
+            }
+
+            break;
+        case 2:
+            switch (indexPath.row) {
+                case 0:
+                    image = [UIImage imageNamed:@"menu_refresh.png"];
+                    cell.imageView.image = image;
+                    break;
+                case 1:
+                    image = [UIImage imageNamed:@"about.png"];
+                    cell.imageView.image = image;
+                    break;
+            }
+            break;
+    }
     
     return  cell;
     
-}
-//把每个分区打上标记key
--(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    NSString *key=[self.mykey objectAtIndex:section];
-    return key;
-}
-//在单元格最右放添加索引
--(NSArray*)sectionIndexTitlesForTableView:(UITableView *)tableView{
-    return self.mykey;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

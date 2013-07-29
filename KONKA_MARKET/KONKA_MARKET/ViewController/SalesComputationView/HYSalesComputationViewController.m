@@ -7,7 +7,8 @@
 //
 
 #import "HYSalesComputationViewController.h"
-#import "EskPlotTheme.h"
+#import "WSPieChartWithMotionView.h"
+#import "WSChartObject.h"
 
 @interface HYSalesComputationViewController ()
 
@@ -18,6 +19,9 @@
 @property(nonatomic, strong) NSArray *disabledDates;
 @property(nonatomic,strong) UIImage *selectImg;
 @property(nonatomic,strong) UIImage *unselectImg;
+@property (nonatomic, strong) NSMutableDictionary *pieData;
+@property (nonatomic, strong) NSMutableDictionary *pieData2;
+@property (nonatomic, strong) WSPieChartWithMotionView *pieChart;
 
 
 @end
@@ -29,8 +33,9 @@
 @synthesize dateBtn;
 @synthesize tableViewCell;
 @synthesize dateLabel;
-@synthesize barCorePlotView;
 @synthesize uibgLabel;
+@synthesize pieData,pieData2,pieChart;
+@synthesize chartView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -96,14 +101,59 @@
     
     
     //TODO PLOT
+    [self createPieChart];
     
-    EskPlotTheme *defaultTheme = [[EskPlotTheme alloc] init];
-    
-    barPlot = [[EskBarPlot alloc] init];
-    barPlot.delegate = self;
-    [barPlot renderInLayer:barCorePlotView withTheme:defaultTheme];
-
 }
+
+- (void)createPieChart
+{
+    NSMutableArray *arr = [self createPieData];
+    NSDictionary *colorDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor redColor],@"Liverpool",
+                               [UIColor purpleColor],@"MU",
+                               [UIColor greenColor],@"Chelsea",
+                               [UIColor orangeColor],@"ManCity",
+                               [UIColor yellowColor],@"RealMadri",
+                               [UIColor brownColor],@"Barcelona",
+                               [UIColor blueColor],@"ACMilan",nil];
+    
+    pieChart = [[WSPieChartWithMotionView alloc] initWithFrame:CGRectMake(0, 0, 280, 280)];
+    pieChart.touchEnabled = YES;
+    pieChart.openEnabled = YES;
+    pieChart.showShadow = YES;
+    pieChart.hasLegends = NO;
+    [pieChart drawChart:arr withColor:colorDict];
+    pieChart.backgroundColor = [UIColor clearColor];
+    [self.chartView addSubview:pieChart];
+    [self.chartView setBackgroundColor:[UIColor clearColor]];
+}
+
+- (NSMutableArray*)createPieData
+{
+    WSChartObject *lfcObj = [[WSChartObject alloc] init];
+    lfcObj.name = @"Liverpool";
+    lfcObj.pieValue = arc4random() % 500+10;
+    WSChartObject *chObj = [[WSChartObject alloc] init];
+    chObj.name = @"Chelsea";
+    chObj.pieValue = arc4random() % 500 + 140;
+    WSChartObject *muObj = [[WSChartObject alloc] init];
+    muObj.name = @"MU";
+    muObj.pieValue = arc4random() % 300 + 30;
+    WSChartObject *mcObj = [[WSChartObject alloc] init];
+    mcObj.name = @"ManCity";
+    mcObj.pieValue = arc4random() % 400 + 150;
+    WSChartObject *rmObj = [[WSChartObject alloc] init];
+    rmObj.name = @"RealMadri";
+    rmObj.pieValue = arc4random() % 400 + 50;
+    WSChartObject *bcObj = [[WSChartObject alloc] init];
+    bcObj.name = @"Barcelona";
+    bcObj.pieValue = arc4random() % 400 + 200;
+    WSChartObject *acObj = [[WSChartObject alloc] init];
+    acObj.name = @"ACMilan";
+    acObj.pieValue = arc4random() % 400 + 100;
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithObjects:lfcObj,chObj,muObj,mcObj,rmObj,bcObj,acObj, nil];
+    return arr;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -125,11 +175,6 @@
 }
 
 -(IBAction)sizeAction:(id)sender{
-    EskPlotTheme *defaultTheme = [[EskPlotTheme alloc] init];
-    
-    barPlot = [[EskBarPlot alloc] init];
-    barPlot.delegate = self;
-    [barPlot renderInLayer:barCorePlotView withTheme:defaultTheme];
     
     [self.uiSizeBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
@@ -147,12 +192,6 @@
 }
 
 -(IBAction)modelAction:(id)sender{
-    EskPlotTheme *defaultTheme = [[EskPlotTheme alloc] init];
-    
-    linePlot = [[EskLinePlot alloc] init];
-    linePlot.delegate = self;
-    [linePlot renderInLayer:barCorePlotView withTheme:defaultTheme];
-    
     [self.uiSizeBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiModelBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];

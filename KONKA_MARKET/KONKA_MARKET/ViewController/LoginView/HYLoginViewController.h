@@ -23,6 +23,8 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *uiremember;
 
+@property (weak, nonatomic) IBOutlet UILabel *uirememberLabel;
+
 @property (nonatomic) Boolean flag;
 
 @property (weak,nonatomic) NSString *userName;
