@@ -77,8 +77,7 @@
     NSString *key=[self.mykey objectAtIndex:section];
     NSArray *MySectionArr=[self.resource objectForKey:key];
     static NSString *SectionTableMyTag=@"dong";
-    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-
+    UITableViewCell *cell = nil;
     cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
     cell.textLabel.text=[MySectionArr objectAtIndex:row];
     UIImage *image = nil;
@@ -155,33 +154,27 @@
     }
 
     if([cell.textLabel.text isEqualToString:@"新版本检测"]){
-        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-        [self.navigationController.view addSubview:HUD];
-        
-        // Set determinate mode
-        HUD.mode = MBProgressHUDModeDeterminate;
-        
-        HUD.delegate = self;
-        HUD.labelText = @"正在检查版本";
-        
-        // myProgressTask uses the HUD instance to update progress
-        [HUD showWhileExecuting:@selector(myProgressTask) onTarget:self withObject:nil animated:YES];
+        [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3];
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
-- (void)myProgressTask {
-	// This just increases the progress indicator in a loop
-	float progress = 0.0f;
-	while (progress < 1.0f) {
-		progress += 0.03f;
-		HUD.progress = progress;
-		usleep(50000);
-	}
+static float progress = 0.0f;
+
+- (void)increaseProgress {
+    progress+=0.1f;
+    [SVProgressHUD showProgress:progress status:@"正在检查版本..."];
     
-    [super alertMsg:@"已经是最新版本" forTittle:@"消息"];
+    if(progress < 1.0f)
+        [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3];
+    else
+        [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.4f];
 }
 
+-(void)dismiss{
+    [SVProgressHUD dismiss];
+    [super alertMsg:@"已经是最新版本" forTittle:@"消息"];
+}
 
 @end

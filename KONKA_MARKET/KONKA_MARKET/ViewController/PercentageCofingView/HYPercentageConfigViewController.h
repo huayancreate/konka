@@ -19,6 +19,7 @@
 @property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *uibgLabel1;
 
+
 -(IBAction)fixedAction:(id)sender;
 
 -(IBAction)percentAction:(id)sender;

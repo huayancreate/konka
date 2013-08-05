@@ -63,7 +63,7 @@
     
     currentDate = [super getNowDate];
     
-    [super hudprogress:@"正在获取数据"];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     
     [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
     
@@ -84,12 +84,14 @@
     
     salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 145, 40)];
     salesNum.text = @"销售总数量0台";
+    salesNum.font = [UIFont boldSystemFontOfSize:12];
     salesNum.backgroundColor = [UIColor clearColor];
 
     
     [self.view addSubview:salesNum];
     
     salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 160, 40)];
+    salesMoney.font = [UIFont boldSystemFontOfSize:12];
     salesMoney.text = @"销售总金额0元";
     [self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];
@@ -129,7 +131,8 @@
     
     self.status = @"0";
     
-    [super hudprogress:@"正在获取数据"];
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
     
 //    [self.unRegistrationBtn setBackgroundColor:[UIColor blueColor]];
@@ -145,7 +148,8 @@
 
     self.status = @"1";
     
-    [super hudprogress:@"正在获取数据"];
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     
     [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
     
@@ -276,7 +280,7 @@
         salesMoney.text = @"销售总金额0元";
         [self.userLogin.salesRegisterList removeAllObjects];
         [downTableView reloadData];
-        [HUD hide:YES];
+        [SVProgressHUD dismiss];
         return;
     }
     
@@ -291,7 +295,7 @@
     salesNum.text = self.userLogin.salesAllNum;
     salesMoney.text = self.userLogin.salesAllPrice;
     
-    [HUD hide:YES];
+    [SVProgressHUD dismiss];
     
 }
 
@@ -307,7 +311,7 @@
         allPrice = [NSNumber numberWithFloat:[allPrice floatValue] + [price floatValue]];
     }
     NSString *preNum = @"销售总数量";
-    NSString *prePrice = @"销售总数量";
+    NSString *prePrice = @"销售总金额";
     
 //    string = [string1 stringByAppendingString:string2];
     self.userLogin.salesAllNum = [preNum stringByAppendingString:[allNum stringValue]];
@@ -323,15 +327,14 @@
 
 -(void) endFailedRequest:(NSString *)msg
 {
-    [HUD hide:YES];
+    [SVProgressHUD dismiss];
     [super alertMsg:msg forTittle:@"错误"];
 }
 
-
-
 -(IBAction)upMoth:(id)sender
 {
-    [super hudprogress:@"正在获取数据"];
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     currentDate = [super getUpMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getUpMonthDate:self.dateLabel.text];
     [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
@@ -340,7 +343,8 @@
 
 -(IBAction)downMoth:(id)sender
 {
-    [super hudprogress:@"正在获取数据"];
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     currentDate = [super getDownMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getDownMonthDate:self.dateLabel.text];
     [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
@@ -374,7 +378,7 @@
     
     NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
     self.dateLabel.text = backStr;
-    [super hudprogress:@"正在获取数据"];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     currentDate = backStr;
     [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
     NSLog(@"currentDate ,%@" , currentDate);

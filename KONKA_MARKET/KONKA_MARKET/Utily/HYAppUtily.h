@@ -8,7 +8,6 @@
 
 #import <Foundation/Foundation.h>
 #include <sys/xattr.h>
-#include "HYUIDevice+Help.h"
 
 @interface HYAppUtily : NSObject{
     

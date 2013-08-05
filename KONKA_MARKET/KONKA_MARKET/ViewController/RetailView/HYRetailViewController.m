@@ -129,6 +129,7 @@
         case 0:
             dataSubmit = [[HYDataSubmitViewController alloc]init];
             dataSubmit.userLogin = self.userLogin;
+            self.userLogin.dataSubmit = nil;
             dataSubmit.title = @"数据上报";
             [self.navigationController pushViewController:dataSubmit animated:YES];
             break;

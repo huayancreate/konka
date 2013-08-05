@@ -74,14 +74,13 @@
     [self.uiFixed.titleLabel setTextColor:[UIColor blackColor]];
     [self.uiPercent.titleLabel setTextColor:[UIColor blackColor]];
     
-    dyArray = [[NSMutableArray alloc] init];
-    
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
     
     
     [self.uiModelTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.uiPercentTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    self.uiPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
     
     self.percentString = @"固定提成";
     
@@ -100,10 +99,8 @@
 }
 
 -(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
-{
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    
-    self.userLogin.modelNameCopyList = [kkM getAllModelNameListByUserID:user_id ByFlag:flag];
+{    
+    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:flag];
 }
 
 - (IBAction)textFieldFinished:(id)sender {
@@ -139,16 +136,15 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CustomCellIdentifier =@"PercentCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+    UITableViewCell *cell = nil;
     NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYpercentTabelViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDictionary *dic = [self.userLogin.percentList objectAtIndex:indexPath.row];
     self.uiModelLabel.text = [dic objectForKey:@"model_name"];
-    self.uiPercentCellLabel.text = [dic objectForKey:@"percent_style"];
-    self.uiPercentLabel.text = [dic objectForKey:@"percent"];
-    return  cell;
+    self.uiPercentCellLabel.text = [dic objectForKey:@"percent"];
+    self.uiPercentLabel.text = [dic objectForKey:@"percent_style"];
+    return cell;
 }
 
 
@@ -204,20 +200,21 @@
             return;
         }
     }
+    
+    [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
 
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    [kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:self.percentString];
+    [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:self.percentString];
     
     [self getPercentListByUserID:self.userLogin.user_id];
     
     [self.mainTableView reloadData];
+    [SVProgressHUD dismiss];
     
 }
 
 -(void)getPercentListByUserID:(NSNumber *)user_id
 {
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    self.userLogin.percentList = [kkM getAllPercentByUserID:user_id];
+    self.userLogin.percentList = [self.kkM getAllPercentByUserID:user_id];
 }
 
 -(BOOL) checkTextisNull

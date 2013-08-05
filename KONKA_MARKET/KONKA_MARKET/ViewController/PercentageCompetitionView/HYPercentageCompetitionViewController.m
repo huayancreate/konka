@@ -70,8 +70,7 @@
 
 -(void) getPeList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    self.userLogin.peList = [kkM getPeListByUserID:user_id ByType:@"peList" ByFlag:flag];
+    self.userLogin.peList = [self.kkM getPeListByUserID:user_id ByType:@"peList" ByFlag:flag];
     
     
     self.cellPercent = [[NSMutableArray alloc] init];
@@ -107,8 +106,7 @@
 
 -(NSString *) findModelNameByID:(NSString *)addon2
 {
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    return [kkM findModelNameByID:self.userLogin.user_id ByName:addon2];
+    return [self.kkM findModelNameByID:self.userLogin.user_id ByName:addon2];
 }
 
 

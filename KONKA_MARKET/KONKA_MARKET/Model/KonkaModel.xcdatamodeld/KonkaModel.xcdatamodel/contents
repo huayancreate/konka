@@ -25,7 +25,7 @@
     </entity>
     <elements>
         <element name="BaseDataEntity" positionX="-3962" positionY="-900" width="128" height="150"/>
-        <element name="UserEntity" positionX="-3816" positionY="-900" width="128" height="135"/>
         <element name="PercentEntity" positionX="160" positionY="192" width="128" height="105"/>
+        <element name="UserEntity" positionX="-3816" positionY="-900" width="128" height="135"/>
     </elements>
 </model>

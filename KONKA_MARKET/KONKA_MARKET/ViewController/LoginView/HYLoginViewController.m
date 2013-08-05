@@ -15,7 +15,6 @@
 {
     JSONDecoder* decoder;
     NSNumber * user_id;
-    KonkaManager *kkM;
 }
 
 @end
@@ -25,6 +24,8 @@
 @synthesize password;
 @synthesize imgArray;
 @synthesize flag;
+@synthesize uiPassword;
+@synthesize uiUsername;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,14 +48,16 @@
     // 初始化照片列表
     
     decoder = [[JSONDecoder alloc] init];
-    kkM = [[KonkaManager alloc] init];
+    self.kkM = [[KonkaManager alloc] init];
     
     
     self.uiUsername.delegate = self;
     
     self.uiPassword.delegate = self;
     
-    self.flag = true;
+    self.flag = false;
+    
+    [self.uiremember setImage:[imgArray objectAtIndex:0]];
     
     
     self.uiPassword.secureTextEntry = YES;
@@ -66,14 +69,6 @@
     UIImageView *imguser=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userimg"]];
     self.uiPassword.leftView = imguser;
     self.uiPassword.rightViewMode = UITextFieldViewModeAlways;
-    
-    [self.uiUsername addTarget:self action:@selector(textFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    
-    [self.uiPassword addTarget:self action:@selector(userPasstextFieldFinished:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    
-    
-    
     
     self.uiremember.userInteractionEnabled = YES;
     UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
@@ -128,37 +123,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-// Workaround to hide keyboard when Done is tapped
-- (IBAction)textFieldFinished:(id)sender {
+- (void)alttextFieldDidEndEditing:(UITextField *)textField
+{
     
-    self.userName = self.uiUsername.text;
-    
-    NSError *localError;
-    NSString *msg = self.uiUsername.text;
-    
-    if ([msg length] != 0){
-        NSString *thePassword = [SFHFKeychainUtils getPasswordForUsername:msg
-                                                    andServiceName:ServiceName
-                                                    error:&localError];
-        self.uiPassword.text = thePassword;
+    if (textField == self.uiUsername)
+    {
+        self.userName = self.uiUsername.text;
+        
+        NSError *localError;
+        NSString *msg = self.uiUsername.text;
+        
+        if ([msg length] != 0){
+            NSString *thePassword = [SFHFKeychainUtils getPasswordForUsername:msg
+                                                               andServiceName:ServiceName
+                                                                        error:&localError];
+            self.uiPassword.text = thePassword;
+        }
+        
+        [self.uiPassword becomeFirstResponder];
     }
     
 }
-
-// Workaround to hide keyboard when Done is tapped
-- (IBAction)userPasstextFieldFinished:(id)sender {
-    self.password = self.uiPassword.text;
-    
-    if(![self checkTextisNull])
-     {
-
-         return;
-     }
-    [self checkUsernamePassword];
-    [super hudprogress:@"正在进行系统登陆"];
-     
-}
-
 
 - (IBAction)login:(id)sender
 {
@@ -166,8 +151,8 @@
     {
         return;
     }
-    [self checkUsernamePassword];    
-    [super hudprogress:@"正在进行系统登陆"];
+    [self checkUsernamePassword];
+    [SVProgressHUD showWithStatus:@"正在进行系统登陆..." maskType:SVProgressHUDMaskTypeGradient];
 }
 
 
@@ -180,13 +165,14 @@
 
 -(void) endFailedRequest:(NSString *)msg
 {
-    [HUD hide:YES];
+    [SVProgressHUD dismiss];
     [super alertMsg:msg forTittle:@"错误"];
 }
 
 -(void) endRequest:(NSString *)msg
 {
     NSLog(@"MSG endRequest%@",msg );
+    [SVProgressHUD dismiss];
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     
     NSDictionary* json = [decoder objectWithData:data];
@@ -196,7 +182,7 @@
     
     if (status == success){
         [self rememberMe];
-        HUD.labelText = @"正在获取基础数据";
+        [SVProgressHUD showWithStatus:@"正在获取基础数据..." maskType:SVProgressHUDMaskTypeGradient];
         
         NSDictionary *userJSON = [json objectForKey:@"user"];
 
@@ -208,7 +194,7 @@
         
         user_id = [userJSON objectForKey:@"id"];
         
-        if (![kkM isExistUserDataByID:user_id])
+        if (![self.kkM isExistUserDataByID:user_id])
         {
             // 如果没有userID,插入数据
             // 获取最新BaseData newDataNow 保存数据 type=0
@@ -221,7 +207,7 @@
             [dicuser setValue:[userJSON objectForKey:@"dataPatch"] forKey:@"dataPatch"];
             [dicuser setValue:[userJSON objectForKey:@"department"] forKey:@"department"];
             
-            [kkM insertUserDataByParems:dicuser];
+            [self.kkM insertUserDataByParems:dicuser];
             [self setUserLoginInfo:userJSON];
             
             dataPatch = @"1";
@@ -235,8 +221,8 @@
             
         }else{
             // 如果有userID,更新部分数据
-            [kkM updateUserInfoByUserID:user_id UserName:[userJSON objectForKey:@"user_name"] RealName:[userJSON objectForKey:@"real_name"] Sid:[userJSON objectForKey:@"sid"] department:[userJSON objectForKey:@"department"]];
-            NSString *selectDataPatch = [kkM selectDataPatchByUserID:user_id];
+            [self.kkM updateUserInfoByUserID:user_id UserName:[userJSON objectForKey:@"user_name"] RealName:[userJSON objectForKey:@"real_name"] Sid:[userJSON objectForKey:@"sid"] department:[userJSON objectForKey:@"department"]];
+            NSString *selectDataPatch = [self.kkM selectDataPatchByUserID:user_id];
             
             NSLog(@"selectDataPatch %@", selectDataPatch);
             // 获取本地dataPatch和网络dataPatch比较
@@ -258,7 +244,7 @@
         
         
     }else{
-        [HUD hide:YES];
+        [SVProgressHUD dismiss];
         [super alertMsg:[json objectForKey:@"msg"] forTittle:@"消息"];
     }
 }
@@ -331,7 +317,7 @@
     
     NSLog(@"endLoadBaseDataRequest %@",msg);
     if (msg.length == 0){
-        [HUD hide:YES];
+        [SVProgressHUD dismiss];
         NSLog(@"dataPatch exist");
         HYHomeViewController *homeview = [[HYHomeViewController alloc] init];
         
@@ -346,7 +332,7 @@
         
         // 删除BaseDataByUserID
         
-        [kkM deleteAllBaseDataByUserID:user_id];
+        [self.kkM deleteAllBaseDataByUserID:user_id];
         
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
         
@@ -375,12 +361,12 @@
         
         NSString* dataPatch = [json objectForKey:@"dataPatch"];
         NSLog(@"remote dataPatch %@",dataPatch);
-        [kkM updateDataPatch:dataPatch ByUserID:user_id];
+        [self.kkM updateDataPatch:dataPatch ByUserID:user_id];
         
         NSLog(@"BASE INSERT");
         
         //TODO 存储数据
-        [HUD hide:YES];
+        [SVProgressHUD dismiss];
         
         HYHomeViewController *homeview = [[HYHomeViewController alloc] init];
         
@@ -406,7 +392,7 @@
         [dicBase setValue:type forKey:@"list_type"];
         [dicBase setValue:userid forKey:@"user_id"];
         [dicBase setValue:flagNumber forKey:@"flag"];
-        [kkM insertBaseDataByParems:dicBase];
+        [self.kkM insertBaseDataByParems:dicBase];
     }
 }
 

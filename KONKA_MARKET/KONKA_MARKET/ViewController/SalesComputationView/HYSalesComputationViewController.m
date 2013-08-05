@@ -7,8 +7,8 @@
 //
 
 #import "HYSalesComputationViewController.h"
-#import "WSPieChartWithMotionView.h"
-#import "WSChartObject.h"
+//#import "WSPieChartWithMotionView.h"
+//#import "WSChartObject.h"
 
 @interface HYSalesComputationViewController ()
 
@@ -19,9 +19,14 @@
 @property(nonatomic, strong) NSArray *disabledDates;
 @property(nonatomic,strong) UIImage *selectImg;
 @property(nonatomic,strong) UIImage *unselectImg;
-@property (nonatomic, strong) NSMutableDictionary *pieData;
-@property (nonatomic, strong) NSMutableDictionary *pieData2;
-@property (nonatomic, strong) WSPieChartWithMotionView *pieChart;
+@property(nonatomic,strong) NSString *type;
+@property(nonatomic, strong) NSString *currentDate;
+@property(nonatomic, strong) JSONDecoder* decoder;
+@property(nonatomic, strong) NSMutableArray *labelArray;
+@property(nonatomic, strong) CPTPieChart *pieChart;
+//@property (nonatomic, strong) NSMutableDictionary *pieData;
+//@property (nonatomic, strong) NSMutableDictionary *pieData2;
+//@property (nonatomic, strong) WSPieChartWithMotionView *pieChart;
 
 
 @end
@@ -34,9 +39,14 @@
 @synthesize tableViewCell;
 @synthesize dateLabel;
 @synthesize uibgLabel;
-@synthesize pieData,pieData2,pieChart;
+//@synthesize pieData,pieData2,pieChart;
 @synthesize chartView;
-
+@synthesize graph,pieData;
+@synthesize type;
+@synthesize currentDate;
+@synthesize decoder;
+@synthesize labelArray;
+@synthesize pieChart;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,6 +62,16 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
+    self.type = @"1";
+    
+    decoder = [[JSONDecoder alloc] init];
+    pieChart = [[CPTPieChart alloc] init];
+    
+    self.pieData = [[NSMutableArray alloc] init];
+    self.labelArray = [[NSMutableArray alloc] init];
+    
+    currentDate = [super getNowDate];
+    
     topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
@@ -66,15 +86,17 @@
     [self.view addSubview:topTableView];
     
     
-    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 46, 125, 40)];
+    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 145, 40)];
     salesNum.text = @"销售总数量0台";
+    salesNum.font = [UIFont boldSystemFontOfSize:12];
     salesNum.backgroundColor = [UIColor clearColor];
     
     
     [self.view addSubview:salesNum];
     
-    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(185, 46, 125, 40)];
+    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 160, 40)];
     salesMoney.text = @"销售总金额0元";
+    salesMoney.font = [UIFont boldSystemFontOfSize:12];
     [self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];
     
@@ -100,60 +122,143 @@
     
     
     
+    
+//    [self createPieChart];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    
     //TODO PLOT
-    [self createPieChart];
+    graph = [[CPTXYGraph alloc] initWithFrame:self.chartView.frame];
+    graph.delegate = self;
+    self.chartView.hostedGraph = graph;
+    
+    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    
+    
+    
+    [self createPie];
+}
+
+-(void) getLoadDataStartTime:(NSString *)starttime EndTime:(NSString *)endtime
+{
+    //TODO 获取数据
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"GetStatistic",@"method",self.type,@"type",starttime,@"starttime",endtime,@"endtime",nil];
+    
+    
+    NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataStatisticApi]];
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+}
+
+-(void) endFailedRequest:(NSString *)msg
+{
+    [SVProgressHUD dismiss];
+    [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
+}
+
+-(void) endRequest:(NSString *)msg
+{
+    [SVProgressHUD dismiss];
+    if ([self.type isEqualToString:@"1"] || [self.type isEqualToString:@"2"])
+    {
+        NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+        
+        NSArray *json = [decoder objectWithData:data];
+        
+        if ([json count] == 0)
+        {
+            salesNum.text = @"销售总数量0台";
+            salesMoney.text = @"销售总金额0元";
+            [SVProgressHUD dismiss];
+            return;
+        }
+        int count = 0;
+        double count1 = 0.0;
+        //[graph removePlot:pieChart];
+        [self.pieData removeAllObjects];
+        [self.labelArray removeAllObjects];
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (NSDictionary *dic in json)
+        {
+            NSArray *arr = [dic objectForKey:@"data"];
+            [self.labelArray addObject:[dic objectForKey:@"label"]];
+            for(NSArray *ar in arr) {
+                NSNumber *temp = ar[0];
+                NSNumber *temp1 = ar[1];
+                count = count + [temp intValue];
+                count1 = count1 + [temp1 doubleValue];
+                [tempArr addObject:temp];
+            }
+        }
+        for (NSNumber *nu in tempArr) {
+            NSString *tempcount = [nu stringValue];
+           //[self.pieData addObject:[NSNumber numberWithDouble: (tempcount / count) * 100]];
+            NSDecimalNumber *multiplierNumber = [NSDecimalNumber decimalNumberWithString:tempcount];
+            NSDecimalNumber *multiplicandNumber = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d",count]];
+            NSDecimalNumber *product = [multiplierNumber decimalNumberByDividingBy:multiplicandNumber];
+            NSString *objA = [NSString stringWithFormat:@"%.1f", [product doubleValue] * 100];
+            NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+            NSLog(@"objA %@",objA);
+            NSNumber *nud = [nf numberFromString:objA];
+            [self.pieData addObject:[NSNumber numberWithDouble:[nud doubleValue]]];
+        }
+        NSString *preNum = @"销售总数量";
+        NSString *prePrice = @"销售总金额";
+        preNum = [preNum stringByAppendingString:[NSString stringWithFormat:@"%d",count]];
+        preNum = [preNum stringByAppendingString:@"台"];
+        
+        prePrice = [prePrice stringByAppendingString:[NSString stringWithFormat:@"%.2f",count1]];
+        prePrice = [prePrice stringByAppendingString:@"元"];
+        salesNum.text = preNum;
+        salesMoney.text = prePrice;
+        
+        [graph reloadData];
+    }
+}
+
+
+-(void)createPie
+{
+    pieChart.delegate = self;
+    pieChart.dataSource = self;
+    pieChart.pieRadius = 100.0;
+    pieChart.identifier = @"PieChart1";
+    pieChart.startAngle = M_PI_4;
+    pieChart.sliceDirection = CPTPieDirectionCounterClockwise;
+    [self.chartView setAllowPinchScaling:YES];
+    [graph addPlot:pieChart];
+}
+
+-(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
+{
+    return [self.pieData count];
+}
+
+-(NSNumber *)numberForPlot:(CPTPlot *)plot field:(NSUInteger)fieldEnum recordIndex:(NSUInteger)index
+{
+	return [self.pieData objectAtIndex:index];
+}
+
+-(CPTLayer*)dataLabelForPlot:(CPTPlot *)plot recordIndex:(NSUInteger)index
+
+{
+    CPTTextLayer *label    = [[CPTTextLayer alloc] initWithText:self.labelArray[index]];
+    
+    CPTMutableTextStyle *textStyle =[label.textStyle mutableCopy];
+    
+    textStyle.color = [CPTColor lightGrayColor];
+    
+    label.textStyle = textStyle;
+    return label;
     
 }
 
-- (void)createPieChart
+-(void)pieChart:(CPTPieChart *)plot sliceWasSelectedAtRecordIndex:(NSUInteger)index
 {
-    NSMutableArray *arr = [self createPieData];
-    NSDictionary *colorDict = [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor redColor],@"Liverpool",
-                               [UIColor purpleColor],@"MU",
-                               [UIColor greenColor],@"Chelsea",
-                               [UIColor orangeColor],@"ManCity",
-                               [UIColor yellowColor],@"RealMadri",
-                               [UIColor brownColor],@"Barcelona",
-                               [UIColor blueColor],@"ACMilan",nil];
-    
-    pieChart = [[WSPieChartWithMotionView alloc] initWithFrame:CGRectMake(0, 0, 280, 280)];
-    pieChart.touchEnabled = YES;
-    pieChart.openEnabled = YES;
-    pieChart.showShadow = YES;
-    pieChart.hasLegends = NO;
-    [pieChart drawChart:arr withColor:colorDict];
-    pieChart.backgroundColor = [UIColor clearColor];
-    [self.chartView addSubview:pieChart];
-    [self.chartView setBackgroundColor:[UIColor clearColor]];
+    //[super alertMsg:@"11" forTittle:@"11"];
+    [graph reloadData];
 }
-
-- (NSMutableArray*)createPieData
-{
-    WSChartObject *lfcObj = [[WSChartObject alloc] init];
-    lfcObj.name = @"Liverpool";
-    lfcObj.pieValue = arc4random() % 500+10;
-    WSChartObject *chObj = [[WSChartObject alloc] init];
-    chObj.name = @"Chelsea";
-    chObj.pieValue = arc4random() % 500 + 140;
-    WSChartObject *muObj = [[WSChartObject alloc] init];
-    muObj.name = @"MU";
-    muObj.pieValue = arc4random() % 300 + 30;
-    WSChartObject *mcObj = [[WSChartObject alloc] init];
-    mcObj.name = @"ManCity";
-    mcObj.pieValue = arc4random() % 400 + 150;
-    WSChartObject *rmObj = [[WSChartObject alloc] init];
-    rmObj.name = @"RealMadri";
-    rmObj.pieValue = arc4random() % 400 + 50;
-    WSChartObject *bcObj = [[WSChartObject alloc] init];
-    bcObj.name = @"Barcelona";
-    bcObj.pieValue = arc4random() % 400 + 200;
-    WSChartObject *acObj = [[WSChartObject alloc] init];
-    acObj.name = @"ACMilan";
-    acObj.pieValue = arc4random() % 400 + 100;
-    NSMutableArray *arr = [[NSMutableArray alloc] initWithObjects:lfcObj,chObj,muObj,mcObj,rmObj,bcObj,acObj, nil];
-    return arr;
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -179,6 +284,14 @@
     [self.uiSizeBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    
+    self.type = @"1";
+    
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    
+    [graph reloadData];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
@@ -195,6 +308,14 @@
     [self.uiSizeBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiModelBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    
+    self.type = @"2";
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    
+    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    
+    [graph reloadData];
 //    [self.uiModelBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
@@ -212,6 +333,8 @@
     [self.uiSizeBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+    
+    self.type = @"3";
 //    [self.uiYearsBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
@@ -243,18 +366,25 @@
 
 -(IBAction)upMoth:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = [super getUpMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getUpMonthDate:self.dateLabel.text];
+    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    
 }
 
 -(IBAction)downMoth:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = [super getDownMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getDownMonthDate:self.dateLabel.text];
-    
+    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
 }
 
 -(IBAction)dataPick:(id)sender
 {
     CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+    
     self.calendar = calendar;
     calendar.delegate = self;
     
@@ -262,23 +392,27 @@
     [self.dateFormatter setDateFormat:@"yyyy年MM月"];
     self.minimumDate = [self.dateFormatter dateFromString:@"2012年12月"];
     
-//    self.disabledDates = @[
-//                           [self.dateFormatter dateFromString:@"05/01/2013"],
-//                           [self.dateFormatter dateFromString:@"06/01/2013"],
-//                           [self.dateFormatter dateFromString:@"07/01/2013"]
-//                           ];
+    //    self.disabledDates = @[
+    //                           [self.dateFormatter dateFromString:@"05/01/2013"],
+    //                           [self.dateFormatter dateFromString:@"06/01/2013"],
+    //                           [self.dateFormatter dateFromString:@"07/01/2013"]
+    //                           ];
     
     calendar.onlyShowCurrentMonth = NO;
     calendar.adaptHeightToNumberOfWeeksInMonth = YES;
     
     calendar.frame = CGRectMake(10, 10, 300, 320);
     [self.view addSubview:calendar];
-    
 }
 
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+    
     NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
     self.dateLabel.text = backStr;
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = backStr;
+    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    NSLog(@"currentDate ,%@" , currentDate);
     [calendar removeFromSuperview];
 }
 

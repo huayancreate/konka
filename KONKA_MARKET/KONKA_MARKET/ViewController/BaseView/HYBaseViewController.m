@@ -24,6 +24,9 @@
 @synthesize locManager;
 @synthesize userLogin;
 @synthesize newpassword;
+@synthesize kkM;
+@synthesize title;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +42,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.kkM = [[KonkaManager alloc] init];
     UIImage *backButtonImage = [UIImage imageNamed:@"back_white.png"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
@@ -213,17 +217,17 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
-    CLLocationCoordinate2D locat = [newLocation coordinate];
-    float lattitude = locat.latitude;
-    float longitude = locat.longitude;
-    float horizon = newLocation.horizontalAccuracy;
-    float vertical = newLocation.verticalAccuracy;
-    NSString *strShow = [[NSString alloc] initWithFormat:
-                         @"currentpos: 经度＝%f 维度＝%f 水平准确读＝%f 垂直准确度＝%f ",
-                         lattitude, longitude, horizon, vertical];
+//    CLLocationCoordinate2D locat = [newLocation coordinate];
+//    float lattitude = locat.latitude;
+//    float longitude = locat.longitude;
+//    float horizon = newLocation.horizontalAccuracy;
+//    float vertical = newLocation.verticalAccuracy;
+//    NSString *strShow = [[NSString alloc] initWithFormat:
+//                         @"currentpos: 经度＝%f 维度＝%f 水平准确读＝%f 垂直准确度＝%f ",
+//                         lattitude, longitude, horizon, vertical];
     
     //TODO 提交
-    NSLog(@"经纬度 %@",strShow);
+//    NSLog(@"经纬度 %@",strShow);
 }
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error{
@@ -272,19 +276,6 @@
     NSLog(@"getLastDayFromMoth, %@" , s);
     return s;
 }
-
--(void) hudprogress:(NSString *)showText
-{
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
-	[self.navigationController.view addSubview:HUD];
-	
-	HUD.delegate = self;
-	HUD.labelText = showText;
-	HUD.square = YES;
-	
-    [HUD show:YES];
-}
-
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];

@@ -8,7 +8,6 @@
 
 #import "HYAppDelegate.h"
 #import "HYLoginViewController.h"
-#import "HYScrollPageViewController.h"
 
 @implementation HYAppDelegate
 

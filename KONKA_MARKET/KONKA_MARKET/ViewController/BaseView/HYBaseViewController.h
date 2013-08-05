@@ -14,15 +14,14 @@
 #import "HYConstants.h"
 #import "ZBarSDK.h"
 #import "JSONKit.h"
-#import "MBProgressHUD.h"
 #import "HYAppUtily.h"
 #import "HYUserLoginModel.h"
 #import "UIKeyboardViewController.h"
+#import "SVProgressHUD.h"
 
-@interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,MBProgressHUDDelegate,CLLocationManagerDelegate,UITextFieldDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
+@interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,CLLocationManagerDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
 {
     NSString *title;
-    MBProgressHUD *HUD;
     
 	long long expectedLength;
 	long long currentLength;
@@ -40,10 +39,10 @@
 @property (nonatomic, retain) HYBaseViewController *parentView;
 @property (nonatomic, strong) HYUserLoginModel *userLogin;
 @property (nonatomic, strong) NSString *newpassword;
+@property (nonatomic, strong) KonkaManager *kkM;
 
 -(void) endRequest:(NSString *)msg;
 -(void) cancelButtonClick:(id)sender;
--(void) setResizeForKeyboard;
 -(void) alertMsg:(NSString *)msg forTittle:(NSString *)tittle;
 -(NSString *) getNowDate;
 -(NSString *) getNowDateYYYYMMDD;
@@ -51,7 +50,4 @@
 -(NSString *) getDownMonthDate:(NSString *) currentDate;
 -(NSString *) getFirstDayFromMoth:(NSString *)date;
 -(NSString *) getLastDayFromMoth:(NSString *)date;
--(void) hudprogress:(NSString *)showText;
-
-
 @end

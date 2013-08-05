@@ -12,6 +12,8 @@
 
 #define DataSubmitApi @"/MobileSubmit.do"
 
+#define DataStatisticApi @"/MobileStatistic.do"
+
 #define LoadDataApi @"/MobileList.do"
 
 #define TestApi @"http://220.178.14.98:8080/konka-wd/MobileStatistic.do"

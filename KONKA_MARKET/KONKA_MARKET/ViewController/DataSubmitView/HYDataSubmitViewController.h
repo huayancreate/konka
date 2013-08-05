@@ -11,16 +11,9 @@
 #import "AutocompletionTableView.h"
 #import "ZBarSDK.h"
 
-@interface HYDataSubmitViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,HYTableViewCell,AutocompletionTableViewDelegate,ZBarReaderDelegate>{
+@interface HYDataSubmitViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,HYTableViewCell,AutocompletionTableViewDelegate,ZBarReaderDelegate,UITextFieldDelegate>{
 
 }
-
-// Creates a textfield with the specified text and placeholder text
--(UITextField*) makeTextField: (NSString*)text
-                  placeholder: (NSString*)placeholder  ;
-
-// Handles UIControlEventEditingDidEndOnExit
-- (IBAction)textFieldFinished:(id)sender;
 
 @property (nonatomic,strong) UITableView *mainTableView;
 @property (nonatomic, strong) UITableView *dropTableView;

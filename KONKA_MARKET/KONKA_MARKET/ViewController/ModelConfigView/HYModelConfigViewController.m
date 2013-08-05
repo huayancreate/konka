@@ -54,16 +54,12 @@
 
 -(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    
-    self.userLogin.modelNameCopyList = [kkM getAllModelNameListByUserID:user_id ByFlag:self.flag];
+    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:self.flag];
 }
 
 -(void) getModelListLimit:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int) page
 {
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    
-    self.userLogin.modelList = [kkM getModelListByUserID:user_id ByType:@"modelList" ByFlag:flag ByName:name ByPage:page];
+    self.userLogin.modelList = [self.kkM getModelListByUserID:user_id ByType:@"modelList" ByFlag:flag ByName:name ByPage:page];
     
     self.userLogin.modelNameList = [[NSMutableArray alloc] init];
 
@@ -79,6 +75,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.kkM = [[KonkaManager alloc] init];
+    
     self.flag = [[NSNumber alloc] initWithInt:0];
     
     self.page = 0;
@@ -202,12 +200,9 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CustomCellIdentifier =@"ModelCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+    UITableViewCell *cell = nil;
     NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"ModelConfigTabelViewCell" owner:self options:nil];
-    
     NSNumber *one = [[NSNumber alloc] initWithInt:1];
-    
     NSNumber *zero = [[NSNumber alloc] initWithInt:0];
     cell = [nib objectAtIndex:[self.flag intValue]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -250,15 +245,16 @@
         str = [NSString stringWithFormat:@"%@%@", str, @"*"];
     }
     
-    KonkaManager *kkM = [[KonkaManager alloc] init];
+    [SVProgressHUD showWithStatus:@"正在更新..." maskType:SVProgressHUDMaskTypeGradient];
     
     NSNumber *tempFlag = [[NSNumber alloc] initWithInt:1];
    
-    [kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
+    [self.kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
     
     [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
     
     [self.modelConfigTableView reloadData];
+    [SVProgressHUD dismiss];
 
 }
 
@@ -276,15 +272,17 @@
         str = [NSString stringWithFormat:@"%@%@", str, @"*"];
     }
     
-    KonkaManager *kkM = [[KonkaManager alloc] init];
+    
+    [SVProgressHUD showWithStatus:@"正在更新..." maskType:SVProgressHUDMaskTypeGradient];
     
     NSNumber *tempFlag = [[NSNumber alloc] initWithInt:0];
     
-    [kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
+    [self.kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
     
     [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
     
     [self.modelConfigTableView reloadData];
+    [SVProgressHUD dismiss];
 }
 
 -(IBAction)search:(id)sender

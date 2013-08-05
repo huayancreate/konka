@@ -8,22 +8,22 @@
 
 #import "HYBaseViewController.h"
 
-@interface HYLoginViewController : HYBaseViewController{
+@interface HYLoginViewController : HYBaseViewController<UITextFieldDelegate>{
     NSMutableArray *imgArray;
 
 }
 
 -(IBAction)login:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UITextField *uiUsername;
+@property (strong, nonatomic) IBOutlet UITextField *uiUsername;
 
-@property (weak, nonatomic) IBOutlet UITextField *uiPassword;
+@property (strong, nonatomic) IBOutlet UITextField *uiPassword;
 
-@property (weak, nonatomic) IBOutlet UIButton *loginBtn;
+@property (strong, nonatomic) IBOutlet UIButton *loginBtn;
 
-@property (weak, nonatomic) IBOutlet UIImageView *uiremember;
+@property (strong, nonatomic) IBOutlet UIImageView *uiremember;
 
-@property (weak, nonatomic) IBOutlet UILabel *uirememberLabel;
+@property (strong, nonatomic) IBOutlet UILabel *uirememberLabel;
 
 @property (nonatomic) Boolean flag;
 

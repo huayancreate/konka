@@ -124,9 +124,8 @@
     UIView *tempView = [[UIView alloc] init];
     [mainTableView setBackgroundView:tempView];
     
-    
     UIImage *backButtonImage = [UIImage imageNamed:@"right.png"];
-    CGRect frameimg = CGRectMake(0, 0, 20, 24);
+    CGRect frameimg = CGRectMake(0, 0, 32, 24);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
     
@@ -153,6 +152,9 @@
     self.salesCount = [[UITextField alloc] initWithFrame:textFieldRect];
     self.salesPrice = [[UITextField alloc] initWithFrame:textFieldRect];
     self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
+    
+    self.salesPrice.delegate = self;
+    self.saleAllPrice.delegate = self;
     
     self.salesCount.text = @"1";
     saleAllPrice.text = @"0.0";
@@ -197,6 +199,7 @@
     singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(storeSelectAction:)];
     [storeName addGestureRecognizer:singleTap];
     storeName.text = [dic objectForKey:@"name"];
+    [storeName setBackgroundColor:[UIColor clearColor]];
     
     self.uibgLabel.userInteractionEnabled = YES;
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
@@ -213,10 +216,13 @@
         self.selectChoice2.enabled = false;
         self.salesPrice.enabled = false;
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setUsesGroupingSeparator:NO];
         storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
         salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
         saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"all_price"]];
+        NSLog(@"saleAllPrice.text %@",saleAllPrice.text);
+        salesPrice.text = [self calPrice];
         self.selectChoice2.text = [self.userLogin.dataSubmit objectForKey:@"model_name"];
     }
     
@@ -225,32 +231,27 @@
 
 -(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    self.userLogin.modelNameStoreList = [kkM getAllModelNameListByUserID:user_id ByFlag:flag];
+    self.userLogin.modelNameStoreList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:flag];
     NSLog(@"getAllModelNameList %d" , [self.userLogin.modelNameStoreList count]);
 }
 
 - (void) getStoreList:(NSNumber *)user_id
 {
     NSLog(@"getStoreList user_id %d", [user_id intValue]);
-    KonkaManager *kkM = [[KonkaManager alloc] init];
-    
     NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     
-    self.userLogin.storeList = [kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
+    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
 }
 
 
 - (void) submit:(id)sender
 {
     //TODO 组装数据
-    [super hudprogress:@"数据提交中"];
+    [SVProgressHUD showWithStatus:@"数据提交中..." maskType:SVProgressHUDMaskTypeGradient];
     
-    KonkaManager *kkM = [[KonkaManager alloc] init];
+    submitSelectChoice2 = [self.kkM findModelID:self.userLogin.user_id ByName:self.selectChoice2.text];
     
-    submitSelectChoice2 = [kkM findModelID:self.userLogin.user_id ByName:self.selectChoice2.text];
-    
-    submitStoreID = [kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
+    submitStoreID = [self.kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
     
     if (self.memo.text == nil)
     {
@@ -308,7 +309,7 @@
         submitMastercode = self.mastercode.text;
     }
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"0",@"data_source",nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",nil];
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
@@ -317,14 +318,16 @@
     [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
 }
 
+
 -(void) endFailedRequest:(NSString *)msg
 {
+    [SVProgressHUD dismiss];
     [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
 }
 
 -(void) endRequest:(NSString *)msg
 {
-    [HUD hide:YES];
+    [SVProgressHUD dismiss];
     if ([msg isEqualToString:@"success"])
     {
         [super alertMsg:@"提交成功" forTittle:@"消息"];
@@ -396,18 +399,27 @@
 
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (tableView == dropDownTableView)
+    {
+        return 0;
+    }
+    return 10;
+}
+
 -(void)storeSelectAction:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (dropDownTableView != nil)
+    {
+        [dropDownTableView removeFromSuperview];
+        dropDownTableView = nil;
+    }
     dropDownTableView = [[UITableView alloc] initWithFrame:CGRectMake(107, 90, 175, 132) style:UITableViewStylePlain];
     dropDownTableView.scrollEnabled = YES;
     
     dropDownTableView.delegate = self;
     dropDownTableView.dataSource = self;
-    
     [self.view addSubview:dropDownTableView];
-    
-    UIView *tempView = [[UIView alloc] init];
-    [dropDownTableView setBackgroundView:tempView];
 
 }
 
@@ -533,12 +545,6 @@
     return cell;
 }
 
-
--(void)alertTest:(id) sender
-{
-    [super alertMsg:@"111" forTittle:@"111"];
-}
-
 -(void)scanCamera:(UIGestureRecognizer *)gestureRecognizer
 {
     ZBarReaderViewController *reader = [ZBarReaderViewController new];
@@ -599,6 +605,20 @@
     [self.navigationController pushViewController:srView animated:YES];
 }
 
+-(NSString *)calPrice
+{
+    NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+    [f setNumberStyle:NSNumberFormatterDecimalStyle];
+    [f setUsesGroupingSeparator:NO];
+    NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
+    NSLog(@"[f stringFromNumber:temp] ,%@",[f stringFromNumber:temp]);
+    NSNumber *count = [f numberFromString:self.salesCount.text];
+    temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
+    
+    NSLog(@"[f stringFromNumber:temp] ,%@",[f stringFromNumber:temp]);
+    return [f stringFromNumber:temp];
+}
+
 
 #pragma mark - AutoCompleteTableViewDelegate
 
@@ -614,38 +634,106 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == self.salesPrice)
+    if (textField == self.salesCount)
     {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        [f setUsesGroupingSeparator:NO];
         NSNumber *temp = [f numberFromString:self.salesPrice.text];
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
         
         self.saleAllPrice.text = [f stringFromNumber:temp];
     }
-    
     if (textField == self.saleAllPrice)
     {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        [f setUsesGroupingSeparator:NO];
         NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
         
         self.salesPrice.text = [f stringFromNumber:temp];
     }
-    
-    if (textField == self.salesCount)
+    if (textField == self.salesPrice)
     {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        [f setUsesGroupingSeparator:NO];
         NSNumber *temp = [f numberFromString:self.salesPrice.text];
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
         
         self.saleAllPrice.text = [f stringFromNumber:temp];
     }
+}
+
+-(void)firstHandle:(UIGestureRecognizer *)gestureRecognizer
+{
+    [dropDownTableView removeFromSuperview];
+    [self.view endEditing:TRUE];
+}
+
+#pragma mark -
+#pragma mark UITextField
+- (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.saleAllPrice || textField == self.salesPrice) {
+        NSScanner      *scanner    = [NSScanner scannerWithString:string];
+        NSCharacterSet *numbers;
+        NSRange         pointRange = [textField.text rangeOfString:@"."];
+        
+        if ( (pointRange.length > 0) && (pointRange.location < range.location  || pointRange.location > range.location + range.length) )
+        {
+            numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        }
+        else
+        {
+            numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
+        }
+        
+        if ( [textField.text isEqualToString:@""] && [string isEqualToString:@"."] )
+        {
+            return NO;
+        }
+        
+        short remain = 2; //默认保留2位小数
+        
+        NSString *tempStr = [textField.text stringByAppendingString:string];
+        NSUInteger strlen = [tempStr length];
+        if(pointRange.length > 0 && pointRange.location > 0){ //判断输入框内是否含有“.”。
+            if([string isEqualToString:@"."]){ //当输入框内已经含有“.”时，如果再输入“.”则被视为无效。
+                return NO;
+            }
+            if(strlen > 0 && (strlen - pointRange.location) > remain+1){ //当输入框内已经含有“.”，当字符串长度减去小数点前面的字符串长度大于需要要保留的小数点位数，则视当次输入无效。
+                return NO;
+            }
+        }
+        
+        NSRange zeroRange = [textField.text rangeOfString:@"0"];
+        if(zeroRange.length == 1 && zeroRange.location == 0){ //判断输入框第一个字符是否为“0”
+            if(![string isEqualToString:@"0"] && ![string isEqualToString:@"."] && [textField.text length] == 1){ //当输入框只有一个字符并且字符为“0”时，再输入不为“0”或者“.”的字符时，则将此输入替换输入框的这唯一字符。
+                textField.text = string;
+                return NO;
+            }else{
+                if(pointRange.length == 0 && pointRange.location > 0){ //当输入框第一个字符为“0”时，并且没有“.”字符时，如果当此输入的字符为“0”，则视当此输入无效。
+                    if([string isEqualToString:@"0"]){
+                        return NO;
+                    }
+                }
+            }
+        }
+        
+        NSString *buffer;
+        if ( ![scanner scanCharactersFromSet:numbers intoString:&buffer] && ([string length] != 0) )
+        {
+            return NO;
+        }
+        
+    }
+    
+    return YES;
 }
 
 @end

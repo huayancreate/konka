@@ -78,8 +78,6 @@
 		2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */; };
 		283AF85517A51828005E08D4 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85217A51828005E08D4 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85417A51828005E08D4 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		283AF85B17A570E4005E08D4 /* HYScrollPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85917A570E4005E08D4 /* HYScrollPageViewController.m */; };
-		283AF85C17A570E4005E08D4 /* HYScrollPageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283AF85A17A570E4005E08D4 /* HYScrollPageViewController.xib */; };
 		283BB02D17A57BD900E2012D /* SliderPageControl.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 283BB02A17A57BD900E2012D /* SliderPageControl.bundle */; };
 		283BB02E17A57BD900E2012D /* SliderPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 283BB02C17A57BD900E2012D /* SliderPageControl.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		283BB03417A57E1400E2012D /* guide_login_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03017A57E1400E2012D /* guide_login_1.jpg */; };
@@ -131,6 +129,8 @@
 		285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
 		2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */; };
+		289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 289D87ED17AEDE2B00DDAB68 /* SVProgressHUD.bundle */; };
+		289D87F117AEDE2B00DDAB68 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D87EF17AEDE2B00DDAB68 /* SVProgressHUD.m */; };
 		289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */; };
 		289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 289E791317A10BE500BA67D3 /* BaseDataEntity.m */; };
 		28AD1B1217A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD1B1117A24871004D8D70 /* HYPercentageCompetitionTabelViewCell.xib */; };
@@ -171,8 +171,6 @@
 		28DAE5931783FECF00F12366 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE5881783FECF00F12366 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28DAE5941783FECF00F12366 /* DataProcessing.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE58A1783FECF00F12366 /* DataProcessing.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28DAE597178400A000F12366 /* HYAppUtily.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE596178400A000F12366 /* HYAppUtily.m */; };
-		28DAE59A1784010000F12366 /* HYUIDevice+Help.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE599178400FF00F12366 /* HYUIDevice+Help.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		28DAE59D1784015700F12366 /* HYNSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE59C1784015600F12366 /* HYNSString+MD5Addition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28DAE59F178402C200F12366 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE59E178402C200F12366 /* CFNetwork.framework */; };
 		28DAE5A11784030700F12366 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE5A01784030600F12366 /* libz.1.2.5.dylib */; };
 		28DAE5A31784031700F12366 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE5A21784031600F12366 /* MessageUI.framework */; };
@@ -197,7 +195,6 @@
 		28F18FBF1797BE3F00E82991 /* TopTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F18FBB1797BE3F00E82991 /* TopTableViewCell.xib */; };
 		28F18FC81797CD4600E82991 /* HYDataSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F18FC61797CD4600E82991 /* HYDataSubmitViewController.m */; };
 		28F18FC91797CD4600E82991 /* HYDataSubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F18FC71797CD4600E82991 /* HYDataSubmitViewController.xib */; };
-		28F91186179676990072703C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F91185179676990072703C /* MBProgressHUD.m */; };
 		28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBA6CF179F7C2900CF4284 /* KonkaManager.m */; };
 		28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FBA6D2179F7C7600CF4284 /* HYUserLoginModel.m */; };
 		28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28FFABAC17A63353009DDF28 /* HYRetailsTableViewCell.xib */; };
@@ -325,9 +322,6 @@
 		283AF85217A51828005E08D4 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
 		283AF85317A51828005E08D4 /* UIKeyboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardViewController.h; sourceTree = "<group>"; };
 		283AF85417A51828005E08D4 /* UIKeyboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardViewController.m; sourceTree = "<group>"; };
-		283AF85817A570E4005E08D4 /* HYScrollPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYScrollPageViewController.h; sourceTree = "<group>"; };
-		283AF85917A570E4005E08D4 /* HYScrollPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYScrollPageViewController.m; sourceTree = "<group>"; };
-		283AF85A17A570E4005E08D4 /* HYScrollPageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYScrollPageViewController.xib; sourceTree = "<group>"; };
 		283BB02A17A57BD900E2012D /* SliderPageControl.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SliderPageControl.bundle; sourceTree = "<group>"; };
 		283BB02B17A57BD900E2012D /* SliderPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SliderPageControl.h; sourceTree = "<group>"; };
 		283BB02C17A57BD900E2012D /* SliderPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SliderPageControl.m; sourceTree = "<group>"; };
@@ -460,6 +454,9 @@
 		288C2A97179AEAA900EA8000 /* CPTXYTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CPTXYTheme.h; sourceTree = "<group>"; };
 		288C2A98179AEAA900EA8000 /* NSDecimalNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDecimalNumberExtensions.h; sourceTree = "<group>"; };
 		288C2A99179AEAA900EA8000 /* NSNumberExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSNumberExtensions.h; sourceTree = "<group>"; };
+		289D87ED17AEDE2B00DDAB68 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		289D87EE17AEDE2B00DDAB68 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		289D87EF17AEDE2B00DDAB68 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libCorePlot-CocoaTouch.a"; sourceTree = "<group>"; };
 		289E791217A10BE500BA67D3 /* BaseDataEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataEntity.h; sourceTree = "<group>"; };
 		289E791317A10BE500BA67D3 /* BaseDataEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataEntity.m; sourceTree = "<group>"; };
@@ -533,10 +530,6 @@
 		28DAE58A1783FECF00F12366 /* DataProcessing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataProcessing.m; sourceTree = "<group>"; };
 		28DAE595178400A000F12366 /* HYAppUtily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAppUtily.h; sourceTree = "<group>"; };
 		28DAE596178400A000F12366 /* HYAppUtily.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAppUtily.m; sourceTree = "<group>"; };
-		28DAE598178400FF00F12366 /* HYUIDevice+Help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYUIDevice+Help.h"; sourceTree = "<group>"; };
-		28DAE599178400FF00F12366 /* HYUIDevice+Help.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYUIDevice+Help.m"; sourceTree = "<group>"; };
-		28DAE59B1784015600F12366 /* HYNSString+MD5Addition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "HYNSString+MD5Addition.h"; sourceTree = "<group>"; };
-		28DAE59C1784015600F12366 /* HYNSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "HYNSString+MD5Addition.m"; sourceTree = "<group>"; };
 		28DAE59E178402C200F12366 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		28DAE5A01784030600F12366 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		28DAE5A21784031600F12366 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -567,8 +560,6 @@
 		28F18FC51797CD4600E82991 /* HYDataSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDataSubmitViewController.h; sourceTree = "<group>"; };
 		28F18FC61797CD4600E82991 /* HYDataSubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDataSubmitViewController.m; sourceTree = "<group>"; };
 		28F18FC71797CD4600E82991 /* HYDataSubmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDataSubmitViewController.xib; sourceTree = "<group>"; };
-		28F91184179676990072703C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		28F91185179676990072703C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		28FBA6CE179F7C2800CF4284 /* KonkaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KonkaManager.h; sourceTree = "<group>"; };
 		28FBA6CF179F7C2900CF4284 /* KonkaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KonkaManager.m; sourceTree = "<group>"; };
 		28FBA6D1179F7C7600CF4284 /* HYUserLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYUserLoginModel.h; sourceTree = "<group>"; };
@@ -945,16 +936,6 @@
 			path = UIKeyboard;
 			sourceTree = "<group>";
 		};
-		283AF85717A570BF005E08D4 /* ScrollPageView */ = {
-			isa = PBXGroup;
-			children = (
-				283AF85817A570E4005E08D4 /* HYScrollPageViewController.h */,
-				283AF85917A570E4005E08D4 /* HYScrollPageViewController.m */,
-				283AF85A17A570E4005E08D4 /* HYScrollPageViewController.xib */,
-			);
-			path = ScrollPageView;
-			sourceTree = "<group>";
-		};
 		283BB02917A57BD900E2012D /* SliderPageControl */ = {
 			isa = PBXGroup;
 			children = (
@@ -1176,6 +1157,16 @@
 			path = CorePlotHeaders;
 			sourceTree = "<group>";
 		};
+		289D87EC17AEDE2B00DDAB68 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				289D87ED17AEDE2B00DDAB68 /* SVProgressHUD.bundle */,
+				289D87EE17AEDE2B00DDAB68 /* SVProgressHUD.h */,
+				289D87EF17AEDE2B00DDAB68 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
+			sourceTree = "<group>";
+		};
 		28D4368B179400BB00C3F1B2 /* VPPDropDown */ = {
 			isa = PBXGroup;
 			children = (
@@ -1268,6 +1259,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				289D87EC17AEDE2B00DDAB68 /* SVProgressHUD */,
 				28FFABC717A64BB3009DDF28 /* Chart Layers */,
 				28FFABBC17A64B63009DDF28 /* Global */,
 				28FFABB117A64A8C009DDF28 /* Column Chart */,
@@ -1315,7 +1307,6 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				283AF85717A570BF005E08D4 /* ScrollPageView */,
 				18E3DF7517A2605600C9FF02 /* AboutView */,
 				28DAE5151783FAF700F12366 /* HomeView */,
 				2821DBB3179713D900B77C26 /* PercentageCofingView */,
@@ -1392,17 +1383,11 @@
 				285A8A5F179AE8BB00BE68BE /* Plot */,
 				2821DBB9179718F900B77C26 /* CKCalendarView.h */,
 				2821DBBA179718F900B77C26 /* CKCalendarView.m */,
-				28F91184179676990072703C /* MBProgressHUD.h */,
-				28F91185179676990072703C /* MBProgressHUD.m */,
 				28DAE5431783FAF800F12366 /* UtiliyView */,
 				28DAE5CE17851CC100F12366 /* HYConstants.h */,
 				28DAE56C1783FCA800F12366 /* HYSeverContUrl.h */,
 				28DAE595178400A000F12366 /* HYAppUtily.h */,
 				28DAE596178400A000F12366 /* HYAppUtily.m */,
-				28DAE598178400FF00F12366 /* HYUIDevice+Help.h */,
-				28DAE599178400FF00F12366 /* HYUIDevice+Help.m */,
-				28DAE59B1784015600F12366 /* HYNSString+MD5Addition.h */,
-				28DAE59C1784015600F12366 /* HYNSString+MD5Addition.m */,
 				2857426717950E7B006E2DA2 /* SFHFKeychainUtils.h */,
 				2857426817950E7B006E2DA2 /* SFHFKeychainUtils.m */,
 			);
@@ -1705,7 +1690,6 @@
 				18E3DF8117A270C800C9FF02 /* percent_save.png in Resources */,
 				18E3DF8317A2742A00C9FF02 /* right.png in Resources */,
 				2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */,
-				283AF85C17A570E4005E08D4 /* HYScrollPageViewController.xib in Resources */,
 				283BB02D17A57BD900E2012D /* SliderPageControl.bundle in Resources */,
 				283BB03417A57E1400E2012D /* guide_login_1.jpg in Resources */,
 				283BB03517A57E1400E2012D /* guide_sell_3.jpg in Resources */,
@@ -1720,6 +1704,7 @@
 				2834BDA117A61FD300B4F025 /* switchuser.png in Resources */,
 				2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */,
 				28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */,
+				289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1751,8 +1736,6 @@
 				28DAE5931783FECF00F12366 /* Reachability.m in Sources */,
 				28DAE5941783FECF00F12366 /* DataProcessing.m in Sources */,
 				28DAE597178400A000F12366 /* HYAppUtily.m in Sources */,
-				28DAE59A1784010000F12366 /* HYUIDevice+Help.m in Sources */,
-				28DAE59D1784015700F12366 /* HYNSString+MD5Addition.m in Sources */,
 				28DAE5B9178407D400F12366 /* HYHomeViewController.m in Sources */,
 				28DAE5C517840F0500F12366 /* HYLoginViewController.m in Sources */,
 				28DAE5CA17850E4E00F12366 /* HYRetailViewController.m in Sources */,
@@ -1761,7 +1744,6 @@
 				28D4369A179400BB00C3F1B2 /* VPPDropDownElement.m in Sources */,
 				282A5708179478820078524F /* HYSalesRegistrationViewController.m in Sources */,
 				2857426917950E7B006E2DA2 /* SFHFKeychainUtils.m in Sources */,
-				28F91186179676990072703C /* MBProgressHUD.m in Sources */,
 				2821DB9D1796DF7B00B77C26 /* HYSalesComputationViewController.m in Sources */,
 				2821DBA31796E24E00B77C26 /* HYPercentageCompetitionViewController.m in Sources */,
 				2821DBA91796E5C500B77C26 /* HYModelConfigViewController.m in Sources */,
@@ -1785,7 +1767,6 @@
 				18E3DF7917A2606B00C9FF02 /* HYAboutViewController.m in Sources */,
 				283AF85517A51828005E08D4 /* UIKeyboardView.m in Sources */,
 				283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */,
-				283AF85B17A570E4005E08D4 /* HYScrollPageViewController.m in Sources */,
 				283BB02E17A57BD900E2012D /* SliderPageControl.m in Sources */,
 				28FFABB017A63C2B009DDF28 /* PercentEntity.m in Sources */,
 				28FFABB917A64A8C009DDF28 /* WSColumnChartView.m in Sources */,
@@ -1802,6 +1783,7 @@
 				28FFABDD17A64BB3009DDF28 /* WSLineLayer.m in Sources */,
 				28FFABDE17A64BB3009DDF28 /* WSScatterLayer.m in Sources */,
 				28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */,
+				289D87F117AEDE2B00DDAB68 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

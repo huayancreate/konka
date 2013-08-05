@@ -20,26 +20,26 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "KONKA_MARKET/ViewController/PercentageCofingView/HYPercentageConfigViewController.m"
-         timestampString = "396772068.915174"
+         filePath = "KONKA_MARKET/Dao/KonkaManager.m"
+         timestampString = "396935188.65557"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "211"
-         endingLineNumber = "211"
-         landmarkName = "-saveAction:"
+         startingLineNumber = "584"
+         endingLineNumber = "584"
+         landmarkName = "-insertPercentData:ModelName:Percent:PercentStyle:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "KONKA_MARKET/Dao/KonkaManager.m"
-         timestampString = "396772185.875276"
+         filePath = "KONKA_MARKET/ViewController/CompetitionSalesView/HYCompetitionSalesViewController.m"
+         timestampString = "397336773.200429"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "563"
-         endingLineNumber = "563"
-         landmarkName = "-insertPercentData:ModelName:Percent:PercentStyle:"
+         startingLineNumber = "460"
+         endingLineNumber = "460"
+         landmarkName = "-textFieldDidEndEditing:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
