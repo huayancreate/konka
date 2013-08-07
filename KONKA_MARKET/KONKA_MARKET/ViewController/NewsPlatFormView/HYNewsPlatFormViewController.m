@@ -35,9 +35,9 @@
 //    [self.view addSubview:setButtonShadowImageView];
     //[setButtonShadowImageView release];
     
-//    UIImageView *topShadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 44, 320, 5)];
-    //[topShadowImageView setImage:[UIImage imageNamed:@"top_background_shadow.png"]];
-//    [self.view addSubview:topShadowImageView];
+    UIImageView *topShadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 44, 320, 5)];
+    [topShadowImageView setImage:[UIImage imageNamed:@"top_background_shadow.png"]];
+    [self.view addSubview:topShadowImageView];
     //[topShadowImageView release];
     
     [self.view addSubview:[TopScrollView shareInstance]];

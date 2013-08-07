@@ -331,6 +331,7 @@
 
 -(void) endLoadBaseDataRequest:(NSString *)msg
 {
+    [self.locManager startUpdatingLocation];
     
     NSLog(@"endLoadBaseDataRequest %@",msg);
     if (msg.length == 0){

@@ -63,5 +63,6 @@
 -(NSString *) getLastDayFromMoth:(NSString *)date;
 -(NSString *) getFirstDayFromYear:(NSString *)date;
 -(NSString *) getLastDayFromYear:(NSString *)date;
+-(void)updateGPS;
 
 @end

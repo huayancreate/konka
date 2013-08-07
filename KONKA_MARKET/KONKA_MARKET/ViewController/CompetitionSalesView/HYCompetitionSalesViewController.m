@@ -182,6 +182,10 @@
     
 }
 
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+}
+
 
 
 -(void) getBrandNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)_brandName

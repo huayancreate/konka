@@ -253,7 +253,7 @@
         self.userLogin.dataSubmit = dic;
         HYDataSubmitViewController *dataSubmit = [[HYDataSubmitViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
-        dataSubmit.title = @"数据上报";
+        dataSubmit.title = @"销售登记";
         
         [self.navigationController pushViewController:dataSubmit animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
