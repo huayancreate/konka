@@ -8,9 +8,10 @@
 
 #import "HYHomeViewController.h"
 #import "HYRetailViewController.h"
-#import "HYSystemConfigViewController.h"
+#import "HYSystemConfigViewController.h"    
 #import "HYOAViewController.h"
 #import "HYNewsPlatFormViewController.h"
+#import "HYOARetailViewController.h"
 
 @interface HYHomeViewController ()
 
@@ -169,11 +170,11 @@
 
 -(IBAction)oaAction:(id)sender
 {
-    HYOAViewController *oaView = [[HYOAViewController alloc] init];
-    oaView.userLogin = self.userLogin;
-    oaView.title = @"协同办公";
+    HYOARetailViewController  *oaRetailView = [[HYOARetailViewController alloc] init];
+    oaRetailView.userLogin = self.userLogin;
+    oaRetailView.title = @"协同办公";
     
-    [self.navigationController pushViewController:oaView animated:YES];
+    [self.navigationController pushViewController:oaRetailView animated:YES];
 }
 
 -(IBAction)newsAction:(id)sender

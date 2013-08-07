@@ -25,7 +25,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        // Cust om initialization
     }
     return self;
 }
