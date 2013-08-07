@@ -14,6 +14,9 @@
 @property (nonatomic, strong) NSDateComponents *components;
 @property (nonatomic, strong) NSDateFormatter * dateFormatter;
 @property (nonatomic, strong) NSTimer *_timer;
+@property (nonatomic) float lattitude;
+@property (nonatomic) float longitude;
+@property (nonatomic) int flagcount;
 
 
 @end
@@ -26,6 +29,9 @@
 @synthesize newpassword;
 @synthesize kkM;
 @synthesize title;
+@synthesize lattitude;
+@synthesize longitude;
+@synthesize flagcount;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +40,7 @@
     if (self) {
         // Custom initialization
         self.userLogin = [[HYUserLoginModel alloc] init];
+        self.flagcount = 0;
     }
     return self;
 }
@@ -102,7 +109,30 @@
 - (void)onTimer
 {
     //[self stopTimer];
-    [locManager startUpdatingLocation];
+    [self updateGPS];
+}
+
+-(void) updateGPS
+{
+    NSLog(@"%f,%f" ,lattitude,longitude);
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"SaveGPSInfo",@"method",[NSString stringWithFormat:@"%f", lattitude],@"X",[NSString stringWithFormat:@"%f", longitude],@"Y",nil];
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataGPSUpdateApi]];
+    
+    ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+    [request setDelegate:self];
+    if (params) {
+        NSArray *array = [params allKeys];
+        for (int i= 0; i <[array count]; i++) {
+            [request setPostValue:[params objectForKey:[array objectAtIndex:i]] forKey:[array objectAtIndex:i]];
+        }
+        
+    }
+    [request setDidFinishSelector:@selector(endGPSFin:)];
+    [request setDidFailSelector:@selector(endGPSFail:)];
+    [request setPersistentConnectionTimeoutSeconds:15];
+    [request setNumberOfTimesToRetryOnTimeout:1];
+    [request startAsynchronous];
 }
 
 
@@ -140,7 +170,7 @@
 
 -(void) endRequest:(NSString *)msg
 {
-    //
+    NSLog(@"msg %@", msg);
 }
 
 -(void) cancelButtonClick:(id)sender
@@ -271,19 +301,43 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
     CLLocationCoordinate2D locat = [newLocation coordinate];
-    float lattitude = locat.latitude;
-    float longitude = locat.longitude;
+    self.lattitude = locat.latitude;
+    self.longitude = locat.longitude;
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"SaveGPSInfo",@"method",[NSString stringWithFormat:@"%f", lattitude],@"X",[NSString stringWithFormat:@"%f", longitude],@"Y",nil];
-    
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataGPSUpdateApi]];
-    
-    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
-
+    if (self.flagcount == 0)
+    {
+        [self updateGPS];
+        self.flagcount = self.flagcount + 1;
+    }
     
     //TODO 提交
 //    NSLog(@"经纬度 %@",strShow);
 }
+
+
+- (void) endGPSFin:(ASIHTTPRequest *)request
+{
+    NSString *responsestring = [request responseString];
+    //NSLog(@"responsestring:%@",responsestring);
+    [self performSelectorOnMainThread:@selector(endGPSFinString:) withObject:responsestring waitUntilDone:YES];
+    
+    // 存储basedata
+    
+}
+
+- (void) endGPSFail:(ASIHTTPRequest *)request
+{
+    NSString *responsestring = @"服务器连接失败";
+    [self performSelectorOnMainThread:@selector(endGPSFinString:) withObject:responsestring waitUntilDone:YES];
+}
+
+-(void)endGPSFinString:(NSString *)msg
+{
+    
+}
+
+
+
 - (void)locationManager:(CLLocationManager *)manager
        didFailWithError:(NSError *)error{
     NSString *errorMessage;

@@ -355,6 +355,31 @@
         params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",nil];
     }else
     {
+        if ([self.realName.text isEqualToString:@""])
+        {
+            [super errorMsg:@"顾客姓名不能为空！"];
+            return;
+        }
+        if ([self.phoneNum.text isEqualToString:@""])
+        {
+            [super errorMsg:@"顾客电话不能为空！"];
+            return;
+        }
+        if (self.realName.text == nil)
+        {
+            submitRealname = @"";
+        }else
+        {
+            submitRealname = self.realName.text;
+        }
+        
+        if (self.phoneNum.text == nil)
+        {
+            submitPhonenum = @"";
+        }else
+        {
+            submitPhonenum = self.phoneNum.text;
+        }
         params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",self.dataID,@"id",nil];
     }
     
