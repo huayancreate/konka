@@ -9,6 +9,7 @@
 #import "HYAboutViewController.h"
 
 @interface HYAboutViewController ()
+@property (strong, nonatomic) IBOutlet UILabel *uiLabelDevVersion;
 
 @end
 
@@ -27,6 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.uiLabelDevVersion.text = DevVersion;
 }
 
 - (void)didReceiveMemoryWarning

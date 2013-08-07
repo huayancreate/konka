@@ -15,3 +15,5 @@
 #define ServiceName @"com.hy.konkamarket"
 
 #define GPSUpdateTimer 6000
+
+#define DevVersion @"开发版本:1.0.0.201308071332"
