@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEA17B21C9B00C8B394 /* blackArrow.png */; };
+		189F0BF517B21C9B00C8B394 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */; };
+		189F0BF617B21C9B00C8B394 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEC17B21C9B00C8B394 /* blueArrow.png */; };
+		189F0BF717B21C9B00C8B394 /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BED17B21C9B00C8B394 /* blueArrow@2x.png */; };
+		189F0BF817B21C9B00C8B394 /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEE17B21C9B00C8B394 /* grayArrow.png */; };
+		189F0BF917B21C9B00C8B394 /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEF17B21C9B00C8B394 /* grayArrow@2x.png */; };
+		189F0BFA17B21C9B00C8B394 /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BF017B21C9B00C8B394 /* whiteArrow.png */; };
+		189F0BFB17B21C9B00C8B394 /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BF117B21C9B00C8B394 /* whiteArrow@2x.png */; };
+		189F0BFC17B21C9B00C8B394 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0BF317B21C9B00C8B394 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		189F0C0117B21CD000C8B394 /* HYOAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0BFF17B21CD000C8B394 /* HYOAViewController.m */; };
+		189F0C0217B21CD000C8B394 /* HYOAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C0017B21CD000C8B394 /* HYOAViewController.xib */; };
 		18E3DF7117A25ECA00C9FF02 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */; };
 		18E3DF7217A25ECA00C9FF02 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */; };
 		18E3DF7317A25ECA00C9FF02 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */; };
@@ -225,6 +236,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		189F0BEA17B21C9B00C8B394 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		189F0BEC17B21C9B00C8B394 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		189F0BED17B21C9B00C8B394 /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		189F0BEE17B21C9B00C8B394 /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		189F0BEF17B21C9B00C8B394 /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		189F0BF017B21C9B00C8B394 /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		189F0BF117B21C9B00C8B394 /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		189F0BF217B21C9B00C8B394 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		189F0BF317B21C9B00C8B394 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		189F0BFE17B21CD000C8B394 /* HYOAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAViewController.h; sourceTree = "<group>"; };
+		189F0BFF17B21CD000C8B394 /* HYOAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAViewController.m; sourceTree = "<group>"; };
+		189F0C0017B21CD000C8B394 /* HYOAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAViewController.xib; sourceTree = "<group>"; };
 		18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
 		18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
@@ -651,6 +675,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		189F0BE817B21C9B00C8B394 /* EGOableView */ = {
+			isa = PBXGroup;
+			children = (
+				189F0BE917B21C9B00C8B394 /* EGORefreshImages */,
+				189F0BF217B21C9B00C8B394 /* EGORefreshTableHeaderView.h */,
+				189F0BF317B21C9B00C8B394 /* EGORefreshTableHeaderView.m */,
+			);
+			path = EGOableView;
+			sourceTree = "<group>";
+		};
+		189F0BE917B21C9B00C8B394 /* EGORefreshImages */ = {
+			isa = PBXGroup;
+			children = (
+				189F0BEA17B21C9B00C8B394 /* blackArrow.png */,
+				189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */,
+				189F0BEC17B21C9B00C8B394 /* blueArrow.png */,
+				189F0BED17B21C9B00C8B394 /* blueArrow@2x.png */,
+				189F0BEE17B21C9B00C8B394 /* grayArrow.png */,
+				189F0BEF17B21C9B00C8B394 /* grayArrow@2x.png */,
+				189F0BF017B21C9B00C8B394 /* whiteArrow.png */,
+				189F0BF117B21C9B00C8B394 /* whiteArrow@2x.png */,
+			);
+			path = EGORefreshImages;
+			sourceTree = "<group>";
+		};
+		189F0BFD17B21CD000C8B394 /* OAView */ = {
+			isa = PBXGroup;
+			children = (
+				189F0BFE17B21CD000C8B394 /* HYOAViewController.h */,
+				189F0BFF17B21CD000C8B394 /* HYOAViewController.m */,
+				189F0C0017B21CD000C8B394 /* HYOAViewController.xib */,
+			);
+			path = OAView;
+			sourceTree = "<group>";
+		};
 		18E3DF6C17A25ECA00C9FF02 /* calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1312,6 +1371,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				189F0BE817B21C9B00C8B394 /* EGOableView */,
 				282FDF4F17B13BDD0018DC76 /* SIAlertView */,
 				289D87EC17AEDE2B00DDAB68 /* SVProgressHUD */,
 				28FFABC717A64BB3009DDF28 /* Chart Layers */,
@@ -1361,6 +1421,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				189F0BFD17B21CD000C8B394 /* OAView */,
 				28086B3517B15C1B0044E67B /* CompetitionSalesHisView */,
 				18E3DF7517A2605600C9FF02 /* AboutView */,
 				28DAE5151783FAF700F12366 /* HomeView */,
@@ -1768,6 +1829,15 @@
 				28086B3F17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib in Resources */,
 				28086B4117B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib in Resources */,
 				282161C517B1EF070090C027 /* HYNewsPlantTabelViewCell.xib in Resources */,
+				189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */,
+				189F0BF517B21C9B00C8B394 /* blackArrow@2x.png in Resources */,
+				189F0BF617B21C9B00C8B394 /* blueArrow.png in Resources */,
+				189F0BF717B21C9B00C8B394 /* blueArrow@2x.png in Resources */,
+				189F0BF817B21C9B00C8B394 /* grayArrow.png in Resources */,
+				189F0BF917B21C9B00C8B394 /* grayArrow@2x.png in Resources */,
+				189F0BFA17B21C9B00C8B394 /* whiteArrow.png in Resources */,
+				189F0BFB17B21C9B00C8B394 /* whiteArrow@2x.png in Resources */,
+				189F0C0217B21CD000C8B394 /* HYOAViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1850,6 +1920,8 @@
 				282FDF4A17B0DC200018DC76 /* HYCalculatePercentage.m in Sources */,
 				282FDF5417B13BDD0018DC76 /* SIAlertView.m in Sources */,
 				28086B3E17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m in Sources */,
+				189F0BFC17B21C9B00C8B394 /* EGORefreshTableHeaderView.m in Sources */,
+				189F0C0117B21CD000C8B394 /* HYOAViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
