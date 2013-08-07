@@ -10,6 +10,7 @@
 
 @interface HYAboutViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *uiLabelDevVersion;
+@property (strong, nonatomic) IBOutlet UILabel *uiLabelURL;
 
 @end
 
@@ -29,6 +30,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.uiLabelDevVersion.text = DevVersion;
+    self.uiLabelURL.text = BaseURL;
 }
 
 - (void)didReceiveMemoryWarning
