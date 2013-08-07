@@ -93,7 +93,10 @@
 
 - (void)startTimer
 {
-    self._timer = [NSTimer scheduledTimerWithTimeInterval:GPSUpdateTimer target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
+    if (self._timer == nil)
+    {
+        self._timer = [NSTimer scheduledTimerWithTimeInterval:GPSUpdateTimer target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
+    }
 }
 
 - (void)onTimer
