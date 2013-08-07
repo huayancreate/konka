@@ -166,7 +166,7 @@
 -(void) getLoadDataStartTime:(NSString *)starttime EndTime:(NSString *)endtime
 {
     //TODO 获取数据
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"GetStatistic",@"method",self.type,@"type",starttime,@"starttime",endtime,@"endtime",nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"GetStatistic",@"method",self.type,@"type",starttime,@"startime",endtime,@"endtime",nil];
     
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);

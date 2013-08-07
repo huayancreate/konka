@@ -92,7 +92,7 @@
 
 -(void) getHisDataByStartTime:(NSString *)startTime endTime:(NSString *) endTime
 {
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"GetHis",@"method",self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"1",@"type",startTime,@"starttime",endTime,@"endtime", @"1" ,@"status",nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"GetHis",@"method",self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"1",@"type",startTime,@"startime",endTime,@"endtime", @"1" ,@"status",nil];
     
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:LoadDataApi]];
     
