@@ -157,6 +157,7 @@
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCompetitionSalesHisTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
+        cell.userInteractionEnabled = NO; 
         NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
         uiCellLabelStoreName.text = [dic objectForKey:@"dept_name"];
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
