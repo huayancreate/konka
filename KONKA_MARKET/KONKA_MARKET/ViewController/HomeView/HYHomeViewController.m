@@ -10,6 +10,7 @@
 #import "HYRetailViewController.h"
 #import "HYSystemConfigViewController.h"
 #import "HYOAViewController.h"
+#import "HYNewsPlatFormViewController.h"
 
 @interface HYHomeViewController ()
 
@@ -173,6 +174,15 @@
     oaView.title = @"协同办公";
     
     [self.navigationController pushViewController:oaView animated:YES];
+}
+
+-(IBAction)newsAction:(id)sender
+{
+    HYNewsPlatFormViewController *newsView = [[HYNewsPlatFormViewController alloc] init];
+    newsView.userLogin = self.userLogin;
+    newsView.title = @"资讯平台";
+    
+    [self.navigationController pushViewController:newsView animated:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated

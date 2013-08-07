@@ -22,6 +22,9 @@
 #import "SIAlertView.h"
 #import "DataProcessing.h"
 #import "EGORefreshTableHeaderView.h"
+#import "RootScrollView.h"
+#import "TopScrollView.h"
+
 
 @interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,CLLocationManagerDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
 {

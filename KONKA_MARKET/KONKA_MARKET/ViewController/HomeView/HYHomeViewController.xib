@@ -637,6 +637,15 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">newsAction:</string>
+						<reference key="source" ref="724823779"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">1698</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">sysconfigAction:</string>
 						<reference key="source" ref="622329725"/>
 						<reference key="destination" ref="372490531"/>
@@ -2973,7 +2982,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1697</int>
+			<int key="maxID">1698</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3000,11 +3009,16 @@
 					<string key="className">HYHomeViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="newsAction:">id</string>
 						<string key="oaAction:">id</string>
 						<string key="retail:">id</string>
 						<string key="sysconfigAction:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="newsAction:">
+							<string key="name">newsAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="oaAction:">
 							<string key="name">oaAction:</string>
 							<string key="candidateClassName">id</string>

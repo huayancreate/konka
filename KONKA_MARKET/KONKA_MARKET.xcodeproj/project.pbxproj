@@ -18,6 +18,17 @@
 		189F0BFC17B21C9B00C8B394 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0BF317B21C9B00C8B394 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		189F0C0117B21CD000C8B394 /* HYOAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0BFF17B21CD000C8B394 /* HYOAViewController.m */; };
 		189F0C0217B21CD000C8B394 /* HYOAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C0017B21CD000C8B394 /* HYOAViewController.xib */; };
+		189F0C1117B2223900C8B394 /* HYNewsPlatFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C0F17B2223900C8B394 /* HYNewsPlatFormViewController.m */; };
+		189F0C1217B2223900C8B394 /* HYNewsPlatFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C1017B2223900C8B394 /* HYNewsPlatFormViewController.xib */; };
+		189F0C1A17B22D9800C8B394 /* Globle.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C1517B22D9800C8B394 /* Globle.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		189F0C1B17B22D9800C8B394 /* RootScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C1717B22D9800C8B394 /* RootScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		189F0C1C17B22D9800C8B394 /* TopScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C1917B22D9800C8B394 /* TopScrollView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		189F0C1D17B230C500C8B394 /* Globle.h in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C1417B22D9800C8B394 /* Globle.h */; };
+		189F0C1E17B230C500C8B394 /* RootScrollView.h in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C1617B22D9800C8B394 /* RootScrollView.h */; };
+		189F0C1F17B230C500C8B394 /* TopScrollView.h in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C1817B22D9800C8B394 /* TopScrollView.h */; };
+		189F0C2317B233A600C8B394 /* red_line_and_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C2017B233A500C8B394 /* red_line_and_shadow.png */; };
+		189F0C2417B233A600C8B394 /* top_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C2117B233A500C8B394 /* top_background.png */; };
+		189F0C2517B233A600C8B394 /* top_channelbutton_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C2217B233A600C8B394 /* top_channelbutton_shadow.png */; };
 		18E3DF7117A25ECA00C9FF02 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */; };
 		18E3DF7217A25ECA00C9FF02 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */; };
 		18E3DF7317A25ECA00C9FF02 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */; };
@@ -249,6 +260,18 @@
 		189F0BFE17B21CD000C8B394 /* HYOAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAViewController.h; sourceTree = "<group>"; };
 		189F0BFF17B21CD000C8B394 /* HYOAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAViewController.m; sourceTree = "<group>"; };
 		189F0C0017B21CD000C8B394 /* HYOAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAViewController.xib; sourceTree = "<group>"; };
+		189F0C0E17B2223900C8B394 /* HYNewsPlatFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYNewsPlatFormViewController.h; sourceTree = "<group>"; };
+		189F0C0F17B2223900C8B394 /* HYNewsPlatFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYNewsPlatFormViewController.m; sourceTree = "<group>"; };
+		189F0C1017B2223900C8B394 /* HYNewsPlatFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYNewsPlatFormViewController.xib; sourceTree = "<group>"; };
+		189F0C1417B22D9800C8B394 /* Globle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globle.h; sourceTree = "<group>"; };
+		189F0C1517B22D9800C8B394 /* Globle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globle.m; sourceTree = "<group>"; };
+		189F0C1617B22D9800C8B394 /* RootScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootScrollView.h; sourceTree = "<group>"; };
+		189F0C1717B22D9800C8B394 /* RootScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootScrollView.m; sourceTree = "<group>"; };
+		189F0C1817B22D9800C8B394 /* TopScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopScrollView.h; sourceTree = "<group>"; };
+		189F0C1917B22D9800C8B394 /* TopScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopScrollView.m; sourceTree = "<group>"; };
+		189F0C2017B233A500C8B394 /* red_line_and_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_line_and_shadow.png; sourceTree = "<group>"; };
+		189F0C2117B233A500C8B394 /* top_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_background.png; sourceTree = "<group>"; };
+		189F0C2217B233A600C8B394 /* top_channelbutton_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_channelbutton_shadow.png; sourceTree = "<group>"; };
 		18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
 		18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
@@ -708,6 +731,32 @@
 				189F0C0017B21CD000C8B394 /* HYOAViewController.xib */,
 			);
 			path = OAView;
+			sourceTree = "<group>";
+		};
+		189F0C0D17B2221E00C8B394 /* NewsPlatFormView */ = {
+			isa = PBXGroup;
+			children = (
+				189F0C0E17B2223900C8B394 /* HYNewsPlatFormViewController.h */,
+				189F0C0F17B2223900C8B394 /* HYNewsPlatFormViewController.m */,
+				189F0C1017B2223900C8B394 /* HYNewsPlatFormViewController.xib */,
+			);
+			path = NewsPlatFormView;
+			sourceTree = "<group>";
+		};
+		189F0C1317B22D9800C8B394 /* SlideSwitch */ = {
+			isa = PBXGroup;
+			children = (
+				189F0C2017B233A500C8B394 /* red_line_and_shadow.png */,
+				189F0C2117B233A500C8B394 /* top_background.png */,
+				189F0C2217B233A600C8B394 /* top_channelbutton_shadow.png */,
+				189F0C1417B22D9800C8B394 /* Globle.h */,
+				189F0C1517B22D9800C8B394 /* Globle.m */,
+				189F0C1617B22D9800C8B394 /* RootScrollView.h */,
+				189F0C1717B22D9800C8B394 /* RootScrollView.m */,
+				189F0C1817B22D9800C8B394 /* TopScrollView.h */,
+				189F0C1917B22D9800C8B394 /* TopScrollView.m */,
+			);
+			path = SlideSwitch;
 			sourceTree = "<group>";
 		};
 		18E3DF6C17A25ECA00C9FF02 /* calendar */ = {
@@ -1371,6 +1420,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				189F0C1317B22D9800C8B394 /* SlideSwitch */,
 				189F0BE817B21C9B00C8B394 /* EGOableView */,
 				282FDF4F17B13BDD0018DC76 /* SIAlertView */,
 				289D87EC17AEDE2B00DDAB68 /* SVProgressHUD */,
@@ -1421,6 +1471,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				189F0C0D17B2221E00C8B394 /* NewsPlatFormView */,
 				189F0BFD17B21CD000C8B394 /* OAView */,
 				28086B3517B15C1B0044E67B /* CompetitionSalesHisView */,
 				18E3DF7517A2605600C9FF02 /* AboutView */,
@@ -1838,6 +1889,10 @@
 				189F0BFA17B21C9B00C8B394 /* whiteArrow.png in Resources */,
 				189F0BFB17B21C9B00C8B394 /* whiteArrow@2x.png in Resources */,
 				189F0C0217B21CD000C8B394 /* HYOAViewController.xib in Resources */,
+				189F0C1217B2223900C8B394 /* HYNewsPlatFormViewController.xib in Resources */,
+				189F0C2317B233A600C8B394 /* red_line_and_shadow.png in Resources */,
+				189F0C2417B233A600C8B394 /* top_background.png in Resources */,
+				189F0C2517B233A600C8B394 /* top_channelbutton_shadow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1848,6 +1903,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				189F0C1D17B230C500C8B394 /* Globle.h in Sources */,
+				189F0C1E17B230C500C8B394 /* RootScrollView.h in Sources */,
+				189F0C1F17B230C500C8B394 /* TopScrollView.h in Sources */,
 				28DAE37B1783F7B300F12366 /* main.m in Sources */,
 				28DAE37F1783F7B300F12366 /* HYAppDelegate.m in Sources */,
 				28DAE3881783F7B300F12366 /* KONKA_MARKET.xcdatamodeld in Sources */,
@@ -1922,6 +1980,10 @@
 				28086B3E17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m in Sources */,
 				189F0BFC17B21C9B00C8B394 /* EGORefreshTableHeaderView.m in Sources */,
 				189F0C0117B21CD000C8B394 /* HYOAViewController.m in Sources */,
+				189F0C1117B2223900C8B394 /* HYNewsPlatFormViewController.m in Sources */,
+				189F0C1A17B22D9800C8B394 /* Globle.m in Sources */,
+				189F0C1B17B22D9800C8B394 /* RootScrollView.m in Sources */,
+				189F0C1C17B22D9800C8B394 /* TopScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

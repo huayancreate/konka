@@ -19,4 +19,5 @@
 @property (strong,nonatomic)UIPageControl *pageControl;
 
 -(IBAction)oaAction:(id)sender;
+-(IBAction)newsAction:(id)sender;
 @end
