@@ -9,6 +9,7 @@
 #import "HYHomeViewController.h"
 #import "HYRetailViewController.h"
 #import "HYSystemConfigViewController.h"
+#import "HYOAViewController.h"
 
 @interface HYHomeViewController ()
 
@@ -163,6 +164,15 @@
     retailView.title = @"零售通";
     
     [self.navigationController pushViewController:retailView animated:YES];
+}
+
+-(IBAction)oaAction:(id)sender
+{
+    HYOAViewController *oaView = [[HYOAViewController alloc] init];
+    oaView.userLogin = self.userLogin;
+    oaView.title = @"协同办公";
+    
+    [self.navigationController pushViewController:oaView animated:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated

@@ -21,6 +21,7 @@
 #import "HYCalculatePercentage.h"
 #import "SIAlertView.h"
 #import "DataProcessing.h"
+#import "EGORefreshTableHeaderView.h"
 
 @interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,CLLocationManagerDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
 {

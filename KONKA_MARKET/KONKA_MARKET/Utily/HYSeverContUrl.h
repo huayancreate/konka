@@ -24,3 +24,5 @@
 #define LoginApi @"/m/l.do"
 
 #define scrollViewImageApi @"/webservice/KonkaArticleImgInterface.do"
+
+#define OaAPi @""
