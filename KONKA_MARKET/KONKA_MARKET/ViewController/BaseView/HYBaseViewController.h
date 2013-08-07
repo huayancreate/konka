@@ -20,6 +20,7 @@
 #import "SVProgressHUD.h"
 #import "HYCalculatePercentage.h"
 #import "SIAlertView.h"
+#import "DataProcessing.h"
 
 @interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,CLLocationManagerDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
 {

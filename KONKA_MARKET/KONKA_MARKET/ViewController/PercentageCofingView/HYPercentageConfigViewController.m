@@ -58,7 +58,7 @@
     // Do any additional setup after loading the view from its nib.
     percentFlag = true;
     
-    NSNumber *flag = [[NSNumber alloc] initWithInt:1];
+    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     // 自动补全
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
     

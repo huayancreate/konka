@@ -68,7 +68,7 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
-    self.type = @"1";
+    self.type = @"2";
     
     decoder = [[JSONDecoder alloc] init];
     pieChart = [[CPTPieChart alloc] init];
@@ -342,7 +342,7 @@
         [self.view addSubview:topTableView];
     }
     
-    self.type = @"1";
+    self.type = @"2";
     
     currentDate = self.dateLabel.text;
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
@@ -373,7 +373,7 @@
     }
     
     currentDate = self.dateLabel.text;
-    self.type = @"2";
+    self.type = @"1";
     
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     

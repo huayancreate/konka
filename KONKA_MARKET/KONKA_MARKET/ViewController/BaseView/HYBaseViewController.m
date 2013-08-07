@@ -98,7 +98,7 @@
 
 - (void)onTimer
 {
-    [self stopTimer];
+    //[self stopTimer];
     [locManager startUpdatingLocation];
 }
 
@@ -267,14 +267,16 @@
 - (void)locationManager:(CLLocationManager *)manager
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
-//    CLLocationCoordinate2D locat = [newLocation coordinate];
-//    float lattitude = locat.latitude;
-//    float longitude = locat.longitude;
-//    float horizon = newLocation.horizontalAccuracy;
-//    float vertical = newLocation.verticalAccuracy;
-//    NSString *strShow = [[NSString alloc] initWithFormat:
-//                         @"currentpos: 经度＝%f 维度＝%f 水平准确读＝%f 垂直准确度＝%f ",
-//                         lattitude, longitude, horizon, vertical];
+    CLLocationCoordinate2D locat = [newLocation coordinate];
+    float lattitude = locat.latitude;
+    float longitude = locat.longitude;
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"SaveGPSInfo",@"method",[NSString stringWithFormat:@"%f", lattitude],@"X",[NSString stringWithFormat:@"%f", longitude],@"Y",nil];
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataGPSUpdateApi]];
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+
     
     //TODO 提交
 //    NSLog(@"经纬度 %@",strShow);
