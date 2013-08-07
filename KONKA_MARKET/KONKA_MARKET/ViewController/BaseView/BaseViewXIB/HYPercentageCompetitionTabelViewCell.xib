@@ -90,7 +90,7 @@
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">销售数量：</string>
+								<string key="IBUIText">提成方式：</string>
 								<reference key="IBUITextColor" ref="526297404"/>
 								<reference key="IBUIHighlightedColor" ref="397838333"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -126,6 +126,7 @@
 								<string key="NSFrame">{{237, 33}, {63, 21}}</string>
 								<reference key="NSSuperview" ref="486853931"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -862,6 +863,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">HYBaseViewController</string>
 					<string key="superclassName">UIViewController</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">textFieldDoneEditing:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">textFieldDoneEditing:</string>
+						<object class="IBActionInfo" key="NS.object.0">
+							<string key="name">textFieldDoneEditing:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/HYBaseViewController.h</string>
@@ -871,18 +883,19 @@
 					<string key="className">HYPercentageCompetitionViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="dataPick:">id</string>
 						<string key="downMoth:">id</string>
+						<string key="downYear:">id</string>
 						<string key="percentageConfigAction:">id</string>
 						<string key="upMoth:">id</string>
+						<string key="upYear:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="dataPick:">
-							<string key="name">dataPick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="downMoth:">
 							<string key="name">downMoth:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="downYear:">
+							<string key="name">downYear:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="percentageConfigAction:">
@@ -893,24 +906,26 @@
 							<string key="name">upMoth:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="upYear:">
+							<string key="name">upYear:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="dateBtn">UIButton</string>
-						<string key="dateLabel">UILabel</string>
 						<string key="downLoadTabelView">UITableView</string>
 						<string key="tableViewCell">UITableViewCell</string>
 						<string key="uiModelLabel">UILabel</string>
+						<string key="uiNumLabel">UILabel</string>
 						<string key="uiNumber">UILabel</string>
 						<string key="uiPercentage">UILabel</string>
+						<string key="uiPercentageLabel">UILabel</string>
+						<string key="uiPriceLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="dateBtn">
 							<string key="name">dateBtn</string>
 							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="dateLabel">
-							<string key="name">dateLabel</string>
-							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="downLoadTabelView">
 							<string key="name">downLoadTabelView</string>
@@ -924,12 +939,24 @@
 							<string key="name">uiModelLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="uiNumLabel">
+							<string key="name">uiNumLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="uiNumber">
 							<string key="name">uiNumber</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="uiPercentage">
 							<string key="name">uiPercentage</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="uiPercentageLabel">
+							<string key="name">uiPercentageLabel</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="uiPriceLabel">
+							<string key="name">uiPriceLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 					</dictionary>

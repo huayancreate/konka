@@ -20,8 +20,6 @@
 
 @property (nonatomic,strong) UILabel *salesMoney;
 
-@property (nonatomic,strong) NSMutableArray *dataItems;
-
 @property (strong, nonatomic) IBOutlet UIButton *unRegistrationBtn;
 
 @property (strong, nonatomic) IBOutlet UIButton *registrationBtn;
@@ -40,9 +38,11 @@
 @property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelNum;
 @property (strong, nonatomic) IBOutlet UILabel *uiCellAllLabelPrice;
 @property (strong, nonatomic) IBOutlet UIImageView *uibgLabel;
+@property(nonatomic, strong) UILabel *dateLabel;
 
 -(IBAction)unRegistrationAction:(id)sender;
 
 -(IBAction)registrationAction:(id)sender;
 
+-(void)getHisDataByStartTime:(NSString *)starttime endTime:(NSString *)starttime;
 @end

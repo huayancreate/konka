@@ -137,7 +137,7 @@
             
             salesSubmit = [[HYSalesRegistrationViewController alloc] init];
             salesSubmit.userLogin = self.userLogin;
-            salesSubmit.title = @"上报历史";
+            salesSubmit.title = @"销售登记";
             
             [self.navigationController pushViewController:salesSubmit animated:YES];
 
@@ -159,7 +159,7 @@
         case 4:
             percentageView = [[HYPercentageCompetitionViewController alloc] init];
             percentageView.userLogin = self.userLogin;
-            percentageView.title = @"提成预算";
+            percentageView.title = @"提成测算";
             
             [self.navigationController pushViewController:percentageView animated:YES];
             break;

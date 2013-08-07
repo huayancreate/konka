@@ -16,7 +16,10 @@
 @property(nonatomic, strong) NSDate *minimumDate;
 @property(nonatomic, strong) NSArray *disabledDates;
 @property(nonatomic, strong) NSNumber *flag;
+@property(nonatomic, strong) JSONDecoder* decoder;
 @property(nonatomic, strong) NSMutableArray *cellPercent;
+@property(nonatomic, strong) UILabel *dateLabel;
+@property(nonatomic, strong) NSString *currentDate;
 
 
 @end
@@ -25,8 +28,13 @@
 @synthesize topTableView;
 @synthesize tableViewCell;
 @synthesize dateBtn;
-@synthesize dateLabel;
 @synthesize downLoadTabelView;
+@synthesize dateLabel;
+@synthesize uiNumLabel;
+@synthesize uiPercentageLabel;
+@synthesize uiPriceLabel;
+@synthesize decoder;
+@synthesize currentDate;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,11 +51,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.flag = [[NSNumber alloc] initWithInt:0];
+    
+    decoder = [[JSONDecoder alloc] init];
+    
+    self.cellPercent = [[NSMutableArray alloc] init];
+    
     
     topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
     topTableView.dataSource = self;
+    
+    dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
+    [dateLabel setBackgroundColor:[UIColor clearColor]];
+    
+    
+    [topTableView addSubview:dateLabel];
     
     UIView *tempView = [[UIView alloc] init];
     [topTableView setBackgroundView:tempView];
@@ -61,19 +81,94 @@
     topTableView.scrollEnabled = NO;
     
     [self.view addSubview:topTableView];
-    
-    self.flag = [[NSNumber alloc] initWithInt:0];
+
     
     [self getPeList:self.userLogin.user_id ByFlag:self.flag];
+    
+    currentDate = [super getNowDate];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
+}
 
+-(void) getHisDataByStartTime:(NSString *)startTime endTime:(NSString *) endTime
+{
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"GetHis",@"method",self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"1",@"type",startTime,@"starttime",endTime,@"endtime", @"1" ,@"status",nil];
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:LoadDataApi]];
+    
+    NSLog(@"GetHis params %@", params);
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+}
+
+-(void) endRequest:(NSString *)msg
+{
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSArray *json = [decoder objectWithData:data];
+    
+    if ([json count] == 0)
+    {
+        self.uiNumLabel.text = @"0台";
+        self.uiPercentageLabel.text = @"0元";
+        self.uiPriceLabel.text = @"0元";
+        [SVProgressHUD dismiss];
+        return;
+    }
+    
+    NSLog(@"json count %d" , [json count]);
+    
+    [self calPercentage:json];
+    
+    [SVProgressHUD dismiss];
+    
+}
+
+
+-(void) calPercentage:(NSArray *)json
+{
+    HYCalculatePercentage *hyc = [[HYCalculatePercentage alloc] init];
+    hyc.percentList = [[NSMutableArray alloc] init];
+    
+    hyc.allnum = [[NSNumber alloc] initWithDouble:0];
+    hyc.percentPrice = [[NSDecimalNumber alloc] initWithDouble:0];
+    hyc.allprice = [[NSDecimalNumber alloc] initWithDouble:0];
+    hyc.salesList = json;
+    
+    NSArray *pelist = [self.kkM getPeListByUserID:self.userLogin.user_id ByType:@"peList" ByFlag:self.flag];
+    
+    NSArray *temppercentlist = [self.kkM getAllPercentByUserID:self.userLogin.user_id];
+    
+    for (NSDictionary *dic in pelist)
+    {
+        NSMutableDictionary *perDic = [[NSMutableDictionary alloc] init];
+        NSString *modelName = [self findModelNameByID:[dic objectForKey:@"addon2"]];
+        [perDic setValue:modelName forKey:@"modelname"];
+        [perDic setValue:[dic objectForKey:@"name"] forKey:@"percent"];
+        [perDic setValue:[dic objectForKey:@"addon1"] forKey:@"percentStyle"];
+        [hyc.percentList addObject:perDic];
+    }
+    
+    for (NSDictionary *dic in temppercentlist)
+    {
+        NSMutableDictionary *perDic = [[NSMutableDictionary alloc] init];
+        [perDic setValue:[dic objectForKey:@"model_name"] forKey:@"modelname"];
+        [perDic setValue:[dic objectForKey:@"percent"] forKey:@"percent"];
+        [perDic setValue:[dic objectForKey:@"percent_style"] forKey:@"percentStyle"];
+        [hyc.percentList addObject:perDic];
+    }
+    
+    [hyc cal];
+    
+    
+    self.uiNumLabel.text = [[hyc.allnum stringValue] stringByAppendingString:@"台"];
+    self.uiPercentageLabel.text = [[NSString stringWithFormat:@"%.2f", [hyc.percentPrice doubleValue]] stringByAppendingString:@"元"];
+    self.uiPriceLabel.text = [[NSString stringWithFormat:@"%.2f", [hyc.allprice doubleValue]] stringByAppendingString:@"元"];
 }
 
 -(void) getPeList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
     self.userLogin.peList = [self.kkM getPeListByUserID:user_id ByType:@"peList" ByFlag:flag];
-    
-    
-    self.cellPercent = [[NSMutableArray alloc] init];
     
     for (NSDictionary *dic in self.userLogin.peList)
     {
@@ -81,14 +176,19 @@
         NSString *modelName = [self findModelNameByID:[dic objectForKey:@"addon2"]];
         
         [cellDic setValue:modelName forKey:@"modelName"];
-        [cellDic setObject:[dic objectForKey:@"name"] forKey:@"name"];
-        [cellDic setObject:@"1台" forKey:@"num"];
+        [cellDic setValue:[dic objectForKey:@"name"] forKey:@"name"];
+        if ([[dic objectForKey:@"addon1"] isEqualToString:@"0"])
+        {
+            [cellDic setValue:@"固定提成" forKey:@"num"];
+        }else
+        {
+            [cellDic setValue:@"按比例提成" forKey:@"num"];
+        }
         NSLog(@"downLoadTabelView %@", [cellDic objectForKey:@"modelName"]);
         NSLog(@"downLoadTabelView %@台", [cellDic objectForKey:@"name"]);
         NSLog(@"downLoadTabelView %@", [cellDic objectForKey:@"num"]);
         [self.cellPercent addObject:cellDic];
     }
-
 }
 
 //-(NSString *)findNumber:(NSString *)addon2
@@ -175,12 +275,18 @@
 
 -(IBAction)upMoth:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = [super getUpMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getUpMonthDate:self.dateLabel.text];
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
 }
 
 -(IBAction)downMoth:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = [super getDownMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getDownMonthDate:self.dateLabel.text];
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
     
 }
 
@@ -222,9 +328,10 @@
 - (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
     NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
     self.dateLabel.text = backStr;
-    [calendar removeFromSuperview];
-}
-
-
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = backStr;
+    [self getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
+    NSLog(@"currentDate ,%@" , currentDate);
+    [calendar removeFromSuperview];}
 
 @end

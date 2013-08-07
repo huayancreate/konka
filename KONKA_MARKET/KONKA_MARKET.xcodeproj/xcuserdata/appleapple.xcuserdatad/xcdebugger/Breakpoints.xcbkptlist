@@ -16,31 +16,5 @@
          landmarkName = "+getPasswordWithService:"
          landmarkType = "5">
       </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "KONKA_MARKET/Dao/KonkaManager.m"
-         timestampString = "396935188.65557"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "584"
-         endingLineNumber = "584"
-         landmarkName = "-insertPercentData:ModelName:Percent:PercentStyle:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "KONKA_MARKET/ViewController/CompetitionSalesView/HYCompetitionSalesViewController.m"
-         timestampString = "397336773.200429"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "460"
-         endingLineNumber = "460"
-         landmarkName = "-textFieldDidEndEditing:"
-         landmarkType = "5">
-      </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

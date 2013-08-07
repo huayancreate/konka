@@ -49,7 +49,11 @@
 
 -(void)insertPercentData:(NSNumber *)user_id ModelName:(NSString *)modeName Percent:(NSString *)percent PercentStyle:(NSString *)percentStyle;
 
+-(void)deletePercentData:(NSNumber *)user_id ModelName:(NSString *)modeName;
+
 -(NSMutableArray *)getAllPercentByUserID:(NSNumber *)user_id;
+
+-(Boolean)getPercentDataByModelName:(NSString *)modelname ByUserID:(NSNumber *)user_id;
 
 
 @end

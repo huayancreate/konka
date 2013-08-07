@@ -17,6 +17,9 @@
 @property (strong, nonatomic) IBOutlet UILabel *uiModelLabel;
 @property (strong, nonatomic) IBOutlet UILabel *uiNumber;
 @property (strong, nonatomic) IBOutlet UILabel *uiPercentage;
+@property (strong, nonatomic) IBOutlet UILabel *uiNumLabel;
+@property (strong, nonatomic) IBOutlet UILabel *uiPriceLabel;
+@property (strong, nonatomic) IBOutlet UILabel *uiPercentageLabel;
 
 @property (strong, nonatomic) IBOutlet UITableView *downLoadTabelView;
 

@@ -166,7 +166,7 @@
 -(void) endFailedRequest:(NSString *)msg
 {
     [SVProgressHUD dismiss];
-    [super alertMsg:msg forTittle:@"错误"];
+    [super errorMsg:msg];
 }
 
 -(void) endRequest:(NSString *)msg
@@ -177,6 +177,7 @@
     
     NSDictionary* json = [decoder objectWithData:data];
     
+    //[HYAppUtily stringOutputForDictionary:json];
     NSNumber *status = [json objectForKey:@"status"];
     NSNumber *success = [NSNumber numberWithLong:0];
     
@@ -245,7 +246,7 @@
         
     }else{
         [SVProgressHUD dismiss];
-        [super alertMsg:[json objectForKey:@"msg"] forTittle:@"消息"];
+        [super errorMsg:[json objectForKey:@"msg"]];
     }
 }
 
@@ -263,13 +264,13 @@
     if( self.uiUsername.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"用户名不能为空！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     if( self.uiPassword.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"密码不能为空！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     return true;

@@ -34,6 +34,9 @@
 		18FF848A17A1252600BDD590 /* model_set.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF848317A1252600BDD590 /* model_set.png */; };
 		18FF848B17A1252600BDD590 /* model_set_defaul.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF848417A1252600BDD590 /* model_set_defaul.png */; };
 		18FF848C17A1252600BDD590 /* model_unset.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF848517A1252600BDD590 /* model_unset.png */; };
+		28086B3E17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28086B3C17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m */; };
+		28086B3F17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28086B3D17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib */; };
+		28086B4117B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */; };
 		281A8A1417856FA7006AA1C6 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 281A8A0F17856FA7006AA1C6 /* zbar-back.png */; };
 		281A8A1517856FA7006AA1C6 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 281A8A1017856FA7006AA1C6 /* zbar-help.html */; };
 		281A8A1617856FA7006AA1C6 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 281A8A1117856FA7006AA1C6 /* zbar-helpicons.png */; };
@@ -69,6 +72,11 @@
 		282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2D17A60BE600988D92 /* konka_production_02.jpg */; };
 		282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2E17A60BE600988D92 /* konka_production_03.jpg */; };
 		282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2F17A60BE600988D92 /* konka_production_04.jpg */; };
+		282FDF4A17B0DC200018DC76 /* HYCalculatePercentage.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FDF4917B0DC200018DC76 /* HYCalculatePercentage.m */; };
+		282FDF4D17B112DB0018DC76 /* sales_year_next.png in Resources */ = {isa = PBXBuildFile; fileRef = 282FDF4B17B112DA0018DC76 /* sales_year_next.png */; };
+		282FDF4E17B112DB0018DC76 /* sales_year_pre.png in Resources */ = {isa = PBXBuildFile; fileRef = 282FDF4C17B112DB0018DC76 /* sales_year_pre.png */; };
+		282FDF5317B13BDD0018DC76 /* SIAlertView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 282FDF5017B13BDD0018DC76 /* SIAlertView.bundle */; };
+		282FDF5417B13BDD0018DC76 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FDF5217B13BDD0018DC76 /* SIAlertView.m */; };
 		2831155D1797B11E00DF6AF1 /* AutocompletionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */; };
 		2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831DBC917A186C700EC22CE /* DropDownView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2834BD9F17A61FD300B4F025 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9C17A61FD300B4F025 /* about.png */; };
@@ -244,6 +252,10 @@
 		18FF848317A1252600BDD590 /* model_set.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = model_set.png; sourceTree = "<group>"; };
 		18FF848417A1252600BDD590 /* model_set_defaul.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = model_set_defaul.png; sourceTree = "<group>"; };
 		18FF848517A1252600BDD590 /* model_unset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = model_unset.png; sourceTree = "<group>"; };
+		28086B3B17B15DAD0044E67B /* HYCompetitionSalesHisViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCompetitionSalesHisViewController.h; sourceTree = "<group>"; };
+		28086B3C17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCompetitionSalesHisViewController.m; sourceTree = "<group>"; };
+		28086B3D17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCompetitionSalesHisViewController.xib; sourceTree = "<group>"; };
+		28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCompetitionSalesHisTableViewCell.xib; sourceTree = "<group>"; };
 		281A89F917856FA6006AA1C6 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		281A89FA17856FA6006AA1C6 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		281A89FB17856FA6006AA1C6 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -309,6 +321,13 @@
 		282BAE2D17A60BE600988D92 /* konka_production_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_02.jpg; sourceTree = "<group>"; };
 		282BAE2E17A60BE600988D92 /* konka_production_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_03.jpg; sourceTree = "<group>"; };
 		282BAE2F17A60BE600988D92 /* konka_production_04.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_04.jpg; sourceTree = "<group>"; };
+		282FDF4817B0DC200018DC76 /* HYCalculatePercentage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCalculatePercentage.h; sourceTree = "<group>"; };
+		282FDF4917B0DC200018DC76 /* HYCalculatePercentage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCalculatePercentage.m; sourceTree = "<group>"; };
+		282FDF4B17B112DA0018DC76 /* sales_year_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_year_next.png; sourceTree = "<group>"; };
+		282FDF4C17B112DB0018DC76 /* sales_year_pre.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_year_pre.png; sourceTree = "<group>"; };
+		282FDF5017B13BDD0018DC76 /* SIAlertView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SIAlertView.bundle; sourceTree = "<group>"; };
+		282FDF5117B13BDD0018DC76 /* SIAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SIAlertView.h; sourceTree = "<group>"; };
+		282FDF5217B13BDD0018DC76 /* SIAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SIAlertView.m; sourceTree = "<group>"; };
 		2831155B1797B11E00DF6AF1 /* AutocompletionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutocompletionTableView.h; sourceTree = "<group>"; };
 		2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompletionTableView.m; sourceTree = "<group>"; };
 		2831DBC817A186C700EC22CE /* DropDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownView.h; sourceTree = "<group>"; };
@@ -663,6 +682,8 @@
 		18FF846717A1003600BDD590 /* salesregister */ = {
 			isa = PBXGroup;
 			children = (
+				282FDF4B17B112DA0018DC76 /* sales_year_next.png */,
+				282FDF4C17B112DB0018DC76 /* sales_year_pre.png */,
 				18FF846817A1013600BDD590 /* sales_no_reg.png */,
 				18FF846917A1013600BDD590 /* sales_reg_all.png */,
 				18FF846A17A1013600BDD590 /* sales_reg_foot.png */,
@@ -703,6 +724,16 @@
 				18FF848517A1252600BDD590 /* model_unset.png */,
 			);
 			path = modelconfig;
+			sourceTree = "<group>";
+		};
+		28086B3517B15C1B0044E67B /* CompetitionSalesHisView */ = {
+			isa = PBXGroup;
+			children = (
+				28086B3B17B15DAD0044E67B /* HYCompetitionSalesHisViewController.h */,
+				28086B3C17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m */,
+				28086B3D17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib */,
+			);
+			path = CompetitionSalesHisView;
 			sourceTree = "<group>";
 		};
 		281A89F517856FA6006AA1C6 /* ZBarSDK */ = {
@@ -903,6 +934,25 @@
 				282BAE2F17A60BE600988D92 /* konka_production_04.jpg */,
 			);
 			path = logoAdv;
+			sourceTree = "<group>";
+		};
+		282FDF4717B0DB8F0018DC76 /* Bussiness */ = {
+			isa = PBXGroup;
+			children = (
+				282FDF4817B0DC200018DC76 /* HYCalculatePercentage.h */,
+				282FDF4917B0DC200018DC76 /* HYCalculatePercentage.m */,
+			);
+			path = Bussiness;
+			sourceTree = "<group>";
+		};
+		282FDF4F17B13BDD0018DC76 /* SIAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				282FDF5017B13BDD0018DC76 /* SIAlertView.bundle */,
+				282FDF5117B13BDD0018DC76 /* SIAlertView.h */,
+				282FDF5217B13BDD0018DC76 /* SIAlertView.m */,
+			);
+			path = SIAlertView;
 			sourceTree = "<group>";
 		};
 		2831155A1797B11E00DF6AF1 /* Autocompletion */ = {
@@ -1230,6 +1280,7 @@
 		28DAE3741783F7B300F12366 /* KONKA_MARKET */ = {
 			isa = PBXGroup;
 			children = (
+				282FDF4717B0DB8F0018DC76 /* Bussiness */,
 				28247447179E706400E93EA1 /* Model */,
 				2857426F17951636006E2DA2 /* Dao */,
 				281A8A2B178BC47E006AA1C6 /* Resources */,
@@ -1259,6 +1310,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				282FDF4F17B13BDD0018DC76 /* SIAlertView */,
 				289D87EC17AEDE2B00DDAB68 /* SVProgressHUD */,
 				28FFABC717A64BB3009DDF28 /* Chart Layers */,
 				28FFABBC17A64B63009DDF28 /* Global */,
@@ -1307,6 +1359,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				28086B3517B15C1B0044E67B /* CompetitionSalesHisView */,
 				18E3DF7517A2605600C9FF02 /* AboutView */,
 				28DAE5151783FAF700F12366 /* HomeView */,
 				2821DBB3179713D900B77C26 /* PercentageCofingView */,
@@ -1475,6 +1528,7 @@
 				2823F3B6179ABD16002DCC71 /* HYpercentTabelViewCell.xib */,
 				2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */,
 				28FFABAC17A63353009DDF28 /* HYRetailsTableViewCell.xib */,
+				28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -1705,6 +1759,11 @@
 				2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */,
 				28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */,
 				289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */,
+				282FDF4D17B112DB0018DC76 /* sales_year_next.png in Resources */,
+				282FDF4E17B112DB0018DC76 /* sales_year_pre.png in Resources */,
+				282FDF5317B13BDD0018DC76 /* SIAlertView.bundle in Resources */,
+				28086B3F17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib in Resources */,
+				28086B4117B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,6 +1843,9 @@
 				28FFABDE17A64BB3009DDF28 /* WSScatterLayer.m in Sources */,
 				28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */,
 				289D87F117AEDE2B00DDAB68 /* SVProgressHUD.m in Sources */,
+				282FDF4A17B0DC200018DC76 /* HYCalculatePercentage.m in Sources */,
+				282FDF5417B13BDD0018DC76 /* SIAlertView.m in Sources */,
+				28086B3E17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

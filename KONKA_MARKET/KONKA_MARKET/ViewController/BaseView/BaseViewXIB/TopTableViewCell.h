@@ -14,9 +14,11 @@
 
 -(IBAction)downMoth:(id)sender;
 
--(IBAction)dataPick:(id)sender;
+-(IBAction)upYear:(id)sender;
 
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+-(IBAction)downYear:(id)sender;
+
+-(IBAction)dataPick:(id)sender;
 
 @property (strong, nonatomic) IBOutlet UIButton *dateBtn;
 
@@ -30,10 +32,13 @@
 
 @property (strong, nonatomic) IBOutlet UIButton *dateBtn;
 
-@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
 -(IBAction)upMoth:(id)sender;
 
 -(IBAction)downMoth:(id)sender;
+
+-(IBAction)upYear:(id)sender;
+
+-(IBAction)downYear:(id)sender;
 
 -(IBAction)dataPick:(id)sender;
 

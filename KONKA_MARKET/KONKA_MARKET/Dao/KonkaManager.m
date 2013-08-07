@@ -588,6 +588,29 @@
     [self saveContext];
 }
 
+-(void)deletePercentData:(NSNumber *)user_id ModelName:(NSString *)modeName
+{
+    if ([self managedObjectContext] == nil) {
+        return;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PercentEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"user_id == %d AND model_name == %@", [user_id intValue], modeName];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    for (PercentEntity *en in result)
+    {
+        [self.managedObjectContext deleteObject:en];
+    }
+    
+    [self saveContext];
+}
+
 -(NSMutableArray *)getAllPercentByUserID:(NSNumber *)user_id
 {
     if ([self managedObjectContext] == nil) {
@@ -614,6 +637,29 @@
         [result1 addObject:dic];
     }
     return result1;
+}
+
+-(Boolean)getPercentDataByModelName:(NSString *)modelname ByUserID:(NSNumber *)user_id
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"PercentEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"user_id == %d AND model_name == %@", [user_id intValue], modelname];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    if ([result count] > 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 @end

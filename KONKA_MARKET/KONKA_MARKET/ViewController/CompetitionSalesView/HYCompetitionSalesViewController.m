@@ -7,6 +7,9 @@
 //
 
 #import "HYCompetitionSalesViewController.h"
+#import "HYCompetitionSalesHisViewController.h"
+
+#define NUMBERS @"0123456789\n"
 
 @interface HYCompetitionSalesViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
@@ -143,6 +146,7 @@
     
     self.saleAllPrice.delegate = self;
     self.salesPrice.delegate = self;
+    self.salesCount.delegate = self;
     
     NSDictionary *dic = [self.userLogin.storeList objectAtIndex:0];
     storeName.userInteractionEnabled = YES;
@@ -218,7 +222,7 @@
         submitSalesCount = self.salesCount.text;
     }
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit05",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitSelectChoice2,@"select-choice-1",@"2",@"data_source",nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit06",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitSelectChoice2,@"model",@"2",@"data_source",nil];
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
@@ -230,7 +234,7 @@
 
 -(void) endFailedRequest:(NSString *)msg
 {
-    [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
+    [super errorMsg:@"网络出现问题！"];
 }
 
 -(void) endRequest:(NSString *)msg
@@ -239,14 +243,14 @@
     
     if ([msg isEqualToString:@"success"])
     {
-        [super alertMsg:@"提交成功" forTittle:@"消息"];
+       [super successMsg:@"提交成功"];
         self.selectChoice2.text = brandName.text;
         salesCount.text = @"1";
         saleAllPrice.text = @"0.0";
         salesPrice.text = @"0.0";
     }else
     {
-        [super alertMsg:msg forTittle:@"消息"];
+        [super errorMsg:msg];
     }
 }
 
@@ -441,6 +445,11 @@
 - (IBAction)hisAction:(id)sender{
     [dropDownTableView removeFromSuperview];
     [brandSelectTableView removeFromSuperview];
+    
+    HYCompetitionSalesHisViewController *hys = [[HYCompetitionSalesHisViewController alloc] init];
+    hys.userLogin = self.userLogin;
+    hys.title = @"竞品历史";
+    [self.navigationController pushViewController:hys animated:YES];
 }
 
 #pragma mark - AutoCompleteTableViewDelegate
@@ -466,7 +475,7 @@
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
         
-        self.saleAllPrice.text = [f stringFromNumber:temp];
+        self.saleAllPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
     }
     
     if (textField == self.saleAllPrice)
@@ -478,7 +487,7 @@
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
         
-        self.salesPrice.text = [f stringFromNumber:temp];
+        self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
     }
     
     if (textField == self.salesCount)
@@ -505,6 +514,15 @@
 #pragma mark UITextField
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (textField == self.salesCount)
+    {
+        NSCharacterSet *cs;
+        cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS] invertedSet];
+        NSString *filtered =
+        [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        BOOL basic = [string isEqualToString:filtered];
+        return basic;
+    }
     if (textField == self.saleAllPrice || textField == self.salesPrice) {
         NSScanner      *scanner    = [NSScanner scannerWithString:string];
         NSCharacterSet *numbers;

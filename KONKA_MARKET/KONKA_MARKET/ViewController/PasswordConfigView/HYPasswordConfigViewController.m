@@ -94,19 +94,19 @@
     if( self.uinewpassword.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"新密码不能为空！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     if( self.uirepeatpassword.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"确认密码不能为空！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     if( ![self.uirepeatpassword.text isEqualToString:self.uinewpassword.text]){
         //TOD 弹出警告
         NSString *msg = @"密码不相同！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     return true;
@@ -118,10 +118,10 @@
     self.userLogin.password = self.newpassword;
     if ([msg isEqualToString:@"success"])
     {
-        [super alertMsg:@"修改成功" forTittle:@"修改密码"];
+        [super successMsg:@"提交成功"];
     }else
     {
-        [super alertMsg:msg forTittle:@"修改密码"];
+        [super errorMsg:msg];
     }
     
 }

@@ -27,10 +27,8 @@
 @synthesize salesMoney;
 @synthesize salesNum;
 @synthesize downTableView;
-@synthesize dataItems;
 @synthesize dateBtn;
 @synthesize tableViewCell;
-@synthesize dateLabel;
 @synthesize decoder;
 @synthesize status;
 @synthesize uiCellLabelModelName;
@@ -44,6 +42,7 @@
 @synthesize uiCellAllLabelStoreName;
 @synthesize uiCellAllLabelTime;
 @synthesize currentDate;
+@synthesize dateLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,6 +59,9 @@
     decoder = [[JSONDecoder alloc] init];
     //dataItems=[[NSMutableArray alloc]initWithObjects:@"中国",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",@"美国",@"日本",nil];
     status = @"0";
+    
+    dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
+    [dateLabel setBackgroundColor:[UIColor clearColor]];
     
     currentDate = [super getNowDate];
     
@@ -78,6 +80,8 @@
     [topTableView setBackgroundView:tempView];
     
     topTableView.scrollEnabled = NO;
+    
+    [topTableView addSubview:dateLabel];
     
     [self.view addSubview:topTableView];
     
@@ -245,6 +249,7 @@
 
     if (tableView == downTableView){
         NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
+        NSLog(@"1111 %@", [dic objectForKey:@"memo"]);
         self.userLogin.dataSubmit = dic;
         HYDataSubmitViewController *dataSubmit = [[HYDataSubmitViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
@@ -284,6 +289,7 @@
         return;
     }
     
+    NSLog(@"json count %d" , [json count]);
     [self calNumAndPrice:json];
     
     
@@ -295,6 +301,7 @@
     salesNum.text = self.userLogin.salesAllNum;
     salesMoney.text = self.userLogin.salesAllPrice;
     
+    
     [SVProgressHUD dismiss];
     
 }
@@ -302,13 +309,16 @@
 -(void) calNumAndPrice:(NSArray *)json
 {
     NSNumber *allNum = [[NSNumber alloc] initWithInt:0];
-    NSNumber *allPrice;
-    
+    NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+    NSDecimalNumber *allPrice = [[NSDecimalNumber alloc] initWithDouble:0];
     for (NSDictionary *dic in json) {
         NSNumber *num = [dic objectForKey:@"num"];
+        NSLog(@"[num intValue] %d" , [num intValue]);
         NSNumber *price = [dic objectForKey:@"all_price"];
         allNum = [NSNumber numberWithInt:[allNum intValue] + [num intValue]];
-        allPrice = [NSNumber numberWithFloat:[allPrice floatValue] + [price floatValue]];
+        NSString *strPrice = [nf stringFromNumber:price];
+        NSDecimalNumber *tempPrice = [NSDecimalNumber decimalNumberWithString:strPrice];
+        allPrice = [allPrice decimalNumberByAdding:tempPrice];
     }
     NSString *preNum = @"销售总数量";
     NSString *prePrice = @"销售总金额";
@@ -319,7 +329,7 @@
   //  [self.userLogin.salesAllNum stringByAppendingString:@"台"];
     NSLog(@"self.userLogin.salesAllNum ,%@" ,self.userLogin.salesAllNum);
 
-    self.userLogin.salesAllPrice = [prePrice stringByAppendingString:[allPrice stringValue]];
+    self.userLogin.salesAllPrice = [prePrice stringByAppendingString:[NSString stringWithFormat:@"%.2f", [allPrice doubleValue]]];
     self.userLogin.salesAllPrice = [self.userLogin.salesAllPrice stringByAppendingString:@"元"];
 
 }
@@ -328,7 +338,7 @@
 -(void) endFailedRequest:(NSString *)msg
 {
     [SVProgressHUD dismiss];
-    [super alertMsg:msg forTittle:@"错误"];
+    [super errorMsg:msg];
 }
 
 -(IBAction)upMoth:(id)sender

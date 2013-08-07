@@ -18,6 +18,8 @@
 #import "HYUserLoginModel.h"
 #import "UIKeyboardViewController.h"
 #import "SVProgressHUD.h"
+#import "HYCalculatePercentage.h"
+#import "SIAlertView.h"
 
 @interface HYBaseViewController : UIViewController<SDWebDataManagerDelegate,CLLocationManagerDelegate,UIKeyboardViewControllerDelegate,UIGestureRecognizerDelegate>
 {
@@ -43,11 +45,18 @@
 
 -(void) endRequest:(NSString *)msg;
 -(void) cancelButtonClick:(id)sender;
--(void) alertMsg:(NSString *)msg forTittle:(NSString *)tittle;
+-(void) successMsg:(NSString *)msg;
+-(void) errorMsg:(NSString *)msg;
 -(NSString *) getNowDate;
+-(NSString *) getNowYear;
 -(NSString *) getNowDateYYYYMMDD;
 -(NSString *) getUpMonthDate:(NSString *) currentDate;
+-(NSString *) getUpYear:(NSString *) currentDate;
 -(NSString *) getDownMonthDate:(NSString *) currentDate;
+-(NSString *) getDownYear:(NSString *) currentDate;
 -(NSString *) getFirstDayFromMoth:(NSString *)date;
 -(NSString *) getLastDayFromMoth:(NSString *)date;
+-(NSString *) getFirstDayFromYear:(NSString *)date;
+-(NSString *) getLastDayFromYear:(NSString *)date;
+
 @end

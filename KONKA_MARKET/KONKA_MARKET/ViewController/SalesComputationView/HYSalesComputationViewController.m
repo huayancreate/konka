@@ -24,6 +24,9 @@
 @property(nonatomic, strong) JSONDecoder* decoder;
 @property(nonatomic, strong) NSMutableArray *labelArray;
 @property(nonatomic, strong) CPTPieChart *pieChart;
+@property(nonatomic, strong) CPTBarPlot *barChart;
+@property(nonatomic, strong) UILabel *dateLabel;
+@property(nonatomic, strong) UILabel *dateLabel1;
 //@property (nonatomic, strong) NSMutableDictionary *pieData;
 //@property (nonatomic, strong) NSMutableDictionary *pieData2;
 //@property (nonatomic, strong) WSPieChartWithMotionView *pieChart;
@@ -33,6 +36,7 @@
 
 @implementation HYSalesComputationViewController
 @synthesize topTableView;
+@synthesize topTableView1;
 @synthesize salesMoney;
 @synthesize salesNum;
 @synthesize dateBtn;
@@ -47,6 +51,8 @@
 @synthesize decoder;
 @synthesize labelArray;
 @synthesize pieChart;
+@synthesize dateLabel1;
+@synthesize barChart;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,12 +76,20 @@
     self.pieData = [[NSMutableArray alloc] init];
     self.labelArray = [[NSMutableArray alloc] init];
     
+    dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
+    [dateLabel setBackgroundColor:[UIColor clearColor]];
+    
+    dateLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
+    [dateLabel1 setBackgroundColor:[UIColor clearColor]];
+    
     currentDate = [super getNowDate];
     
     topTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
     
     topTableView.delegate = self;
     topTableView.dataSource = self;
+    
+    [topTableView addSubview:dateLabel];
     
     UIView *tempView = [[UIView alloc] init];
     
@@ -85,6 +99,17 @@
     
     [self.view addSubview:topTableView];
     
+    topTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
+    
+    topTableView1.delegate = self;
+    topTableView1.dataSource = self;
+    [topTableView1 addSubview:dateLabel1];
+    
+    UIView *tempView1 = [[UIView alloc] init];
+    
+    topTableView1.scrollEnabled = NO;
+    
+    [topTableView1 setBackgroundView:tempView1];
     
     salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 45, 145, 40)];
     salesNum.text = @"销售总数量0台";
@@ -154,12 +179,21 @@
 -(void) endFailedRequest:(NSString *)msg
 {
     [SVProgressHUD dismiss];
-    [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
+    [super successMsg:msg];
 }
 
 -(void) endRequest:(NSString *)msg
 {
-    [SVProgressHUD dismiss];
+    if ([self.type isEqualToString:@"3"])
+    {
+        [self.pieData removeAllObjects];
+        salesNum.text = @"销售总数量0台";
+        salesMoney.text = @"销售总金额0元";
+        [graph reloadData];
+        [SVProgressHUD dismiss];
+        //[self createLine];
+    }
+    
     if ([self.type isEqualToString:@"1"] || [self.type isEqualToString:@"2"])
     {
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
@@ -170,6 +204,8 @@
         {
             salesNum.text = @"销售总数量0台";
             salesMoney.text = @"销售总金额0元";
+            [self.pieData removeAllObjects];
+            [graph reloadData];
             [SVProgressHUD dismiss];
             return;
         }
@@ -214,9 +250,24 @@
         salesMoney.text = prePrice;
         
         [graph reloadData];
+        [SVProgressHUD dismiss];
     }
 }
 
+-(void)createLine
+{
+    barChart.delegate = self;
+    barChart.dataSource = self;
+    barChart.identifier = @"BarChart1";
+    CPTBarPlot *barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor blueColor] horizontalBars:NO];
+    barPlot.plotRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0.0) length:CPTDecimalFromDouble(10)];//xAxisLength
+    barPlot.barOffset = CPTDecimalFromFloat(0.25f);
+    barPlot.baseValue = CPTDecimalFromString(@"0");
+    barPlot.barWidth = CPTDecimalFromFloat(10.0f);
+    barPlot.cornerRadius = 2.0f;
+    barPlot.dataSource = self;
+   // [graph addPlot:barPlot];
+}
 
 -(void)createPie
 {
@@ -285,9 +336,15 @@
     [self.uiModelBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     
+    if ([self.type isEqualToString:@"3"])
+    {
+        [topTableView1 removeFromSuperview];
+        [self.view addSubview:topTableView];
+    }
+    
     self.type = @"1";
     
-    
+    currentDate = self.dateLabel.text;
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
     
@@ -309,6 +366,13 @@
     [self.uiModelBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     [self.uiYearsBtn setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     
+    if ([self.type isEqualToString:@"3"])
+    {
+        [topTableView1 removeFromSuperview];
+        [self.view addSubview:topTableView];
+    }
+    
+    currentDate = self.dateLabel.text;
     self.type = @"2";
     
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
@@ -335,6 +399,13 @@
     [self.uiYearsBtn setBackgroundImage:self.selectImg forState:UIControlStateNormal];
     
     self.type = @"3";
+    
+    [self.topTableView removeFromSuperview];
+    
+    [self.view addSubview:topTableView1];
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
 //    [self.uiYearsBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
@@ -349,19 +420,38 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CustomCellIdentifier =@"CellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
-    if (cell ==nil) {
-        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+    if (tableView == topTableView)
+    {
+        static NSString *CustomCellIdentifier =@"CellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+        if (cell ==nil) {
+            NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:0];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UIView *temp = [[UIView alloc] init];
+        [cell setBackgroundView:temp];
+        
+        self.dateLabel.text = [super getNowDate];
+        return  cell;
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    UIView *temp = [[UIView alloc] init];
-    [cell setBackgroundView:temp];
-    
-    self.dateLabel.text = [super getNowDate];
-    return  cell;
+    if (tableView == topTableView1)
+    {
+        static NSString *CustomCellIdentifier =@"CellIdentifier";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+        if (cell ==nil) {
+            NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
+            cell = [nib objectAtIndex:1];
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        UIView *temp = [[UIView alloc] init];
+        [cell setBackgroundView:temp];
+        
+        self.dateLabel1.text = [super getNowYear];
+        return  cell;
+    }
 }
 
 -(IBAction)upMoth:(id)sender
@@ -379,6 +469,23 @@
     currentDate = [super getDownMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getDownMonthDate:self.dateLabel.text];
     [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+}
+
+-(IBAction)upYear:(id)sender
+{
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = [super getUpYear:self.dateLabel1.text];
+    self.dateLabel1.text = [super getUpYear:self.dateLabel1.text];
+    [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
+    
+}
+
+-(IBAction)downYear:(id)sender
+{
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    currentDate = [super getDownYear:self.dateLabel1.text];
+    self.dateLabel1.text = [super getDownYear:self.dateLabel1.text];
+    [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
 }
 
 -(IBAction)dataPick:(id)sender
@@ -411,7 +518,7 @@
     self.dateLabel.text = backStr;
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     currentDate = backStr;
-    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
     NSLog(@"currentDate ,%@" , currentDate);
     [calendar removeFromSuperview];
 }

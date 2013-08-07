@@ -5,7 +5,7 @@
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>CFBundleDisplayName</key>
-	<string>康佳市场</string>
+	<string>渠道管理</string>
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIconFiles</key>

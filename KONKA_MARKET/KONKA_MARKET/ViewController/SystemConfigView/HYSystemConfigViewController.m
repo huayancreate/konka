@@ -143,7 +143,8 @@
     
     if([cell.textLabel.text isEqualToString:@"产品销售提成设定"]){
         HYPercentageConfigViewController *modelView = [[HYPercentageConfigViewController alloc]init];
-        modelView.title = @"型号设定";
+        modelView.title = @"提成设定";
+        modelView.userLogin = self.userLogin;
         [self.navigationController pushViewController:modelView animated:YES];
     }
     
@@ -174,7 +175,7 @@ static float progress = 0.0f;
 
 -(void)dismiss{
     [SVProgressHUD dismiss];
-    [super alertMsg:@"已经是最新版本" forTittle:@"消息"];
+    [super successMsg:@"已经是最新版本"];
 }
 
 @end

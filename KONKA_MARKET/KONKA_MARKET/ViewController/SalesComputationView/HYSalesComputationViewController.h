@@ -11,15 +11,19 @@
 #import "CKCalendarView.h"
 #import "CorePlot-CocoaTouch.h"
 
-@interface HYSalesComputationViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,TopTabelViewCell,CKCalendarDelegate,CPTPieChartDataSource,CPTPieChartDelegate>
+@interface HYSalesComputationViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,TopTabelViewCell,CKCalendarDelegate,CPTPieChartDataSource,CPTPieChartDelegate,CPTBarPlotDataSource,CPTBarPlotDelegate>
 {
     CPTXYGraph * graph;
 	NSMutableArray *pieData;
+    CPTXYGraph * graph1;
+    NSMutableArray *samples;
 }
 @property(readwrite, retain, nonatomic) NSMutableArray *pieData;
 @property (nonatomic,retain) CPTXYGraph * graph;
 
 @property (nonatomic,strong) UITableView *topTableView;
+
+@property (nonatomic,strong) UITableView *topTableView1;
 
 @property (nonatomic,strong) UILabel *salesNum;
 

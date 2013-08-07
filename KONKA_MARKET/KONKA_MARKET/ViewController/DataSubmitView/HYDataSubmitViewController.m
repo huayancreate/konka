@@ -11,7 +11,7 @@
 #import "KonkaManager.h"
 
 #define NUMBERS @"0123456789\n"
-#define NUMBERSPERIOD @"0123456789.\n"
+#define NUMBERSPERIOD @"0123456789xX\n"
 
 
 @interface HYDataSubmitViewController ()
@@ -36,6 +36,7 @@
 @property (nonatomic, strong) NSString *submitPhonenum;
 @property (nonatomic, strong) NSString *submitAddress;
 @property (nonatomic, strong) NSString *submitMastercode;
+@property (nonatomic, strong) NSNumber *dataID;
 
 
 
@@ -74,6 +75,7 @@
 @synthesize phoneNum;
 @synthesize address;
 @synthesize mastercode;
+@synthesize dataID;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -119,6 +121,8 @@
     mainTableView.delegate = self;
     mainTableView.dataSource = self;
     
+    self.dataID = nil;
+    
     [self.view addSubview:mainTableView];
     
     UIView *tempView = [[UIView alloc] init];
@@ -155,10 +159,12 @@
     
     self.salesPrice.delegate = self;
     self.saleAllPrice.delegate = self;
+    self.salesCount.delegate = self;
     
     self.salesCount.text = @"1";
     saleAllPrice.text = @"0.0";
     salesPrice.text = @"0.0";
+    
     
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
@@ -224,6 +230,19 @@
         NSLog(@"saleAllPrice.text %@",saleAllPrice.text);
         salesPrice.text = [self calPrice];
         self.selectChoice2.text = [self.userLogin.dataSubmit objectForKey:@"model_name"];
+        self.dataID = [self.userLogin.dataSubmit objectForKey:@"id"];
+        
+        memo.text = [self.userLogin.dataSubmit objectForKey:@"memo"];
+        
+        mastercode.text = [self.userLogin.dataSubmit objectForKey:@"mastercode"];
+        
+        realName.text = [self.userLogin.dataSubmit objectForKey:@"realname"];
+        
+        phoneNum.text = [self.userLogin.dataSubmit objectForKey:@"phonenum"];
+        
+        address.text = [self.userLogin.dataSubmit objectForKey:@"addresss"];
+        
+        NSLog(@"dataID , %d", [self.dataID intValue]);
     }
     
    
@@ -309,7 +328,17 @@
         submitMastercode = self.mastercode.text;
     }
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",nil];
+    NSDictionary *params = nil;
+    
+    if (self.dataID == nil)
+    {
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",nil];
+    }else
+    {
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",self.dataID,@"id",nil];
+    }
+    
+
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
@@ -322,7 +351,7 @@
 -(void) endFailedRequest:(NSString *)msg
 {
     [SVProgressHUD dismiss];
-    [super alertMsg:@"网络出现问题！" forTittle:@"消息"];
+    [super errorMsg:msg];
 }
 
 -(void) endRequest:(NSString *)msg
@@ -330,7 +359,7 @@
     [SVProgressHUD dismiss];
     if ([msg isEqualToString:@"success"])
     {
-        [super alertMsg:@"提交成功" forTittle:@"消息"];
+        [super successMsg:@"提交成功"];
         self.selectChoice2.text = nil;
         salesCount.text = @"1";
         saleAllPrice.text = @"0.0";
@@ -342,12 +371,15 @@
         mastercode.text = nil;
         if (self.userLogin.dataSubmit != nil)
         {
+            HYSalesRegistrationViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
+            NSString *currentDate = c.dateLabel.text;
+            [c getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
         }
         
     }else
     {
-        [super alertMsg:msg forTittle:@"消息"];
+        [super errorMsg:msg];
     }
 }
 
@@ -598,11 +630,17 @@
 
 
 - (IBAction)hisAction:(id)sender{
+    
+    if (self.userLogin.dataSubmit != nil)
+    {
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+    }else{
+        HYSalesRegistrationViewController *srView = [[HYSalesRegistrationViewController alloc] init];
+        srView.userLogin = self.userLogin;
+        srView.title = @"销售登记";
+        [self.navigationController pushViewController:srView animated:YES];
+    }
 
-    HYSalesRegistrationViewController *srView = [[HYSalesRegistrationViewController alloc] init];
-    srView.userLogin = self.userLogin;
-    srView.title = @"上报历史";
-    [self.navigationController pushViewController:srView animated:YES];
 }
 
 -(NSString *)calPrice
@@ -654,7 +692,7 @@
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
         
-        self.salesPrice.text = [f stringFromNumber:temp];
+        self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
     }
     if (textField == self.salesPrice)
     {
@@ -665,7 +703,7 @@
         NSNumber *count = [f numberFromString:self.salesCount.text];
         temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
         
-        self.saleAllPrice.text = [f stringFromNumber:temp];
+        self.saleAllPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
     }
 }
 
@@ -679,6 +717,26 @@
 #pragma mark UITextField
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    if (textField == self.salesCount || textField == self.phoneNum)
+    {
+        NSCharacterSet *cs;
+        cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS] invertedSet];
+        NSString *filtered =
+        [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        BOOL basic = [string isEqualToString:filtered];
+        return basic;
+    }
+    
+    if (textField == self.mastercode)
+    {
+        NSCharacterSet *cs;
+        cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERSPERIOD] invertedSet];
+        NSString *filtered =
+        [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+        BOOL basic = [string isEqualToString:filtered];
+        return basic;
+    }
+    
     if (textField == self.saleAllPrice || textField == self.salesPrice) {
         NSScanner      *scanner    = [NSScanner scannerWithString:string];
         NSCharacterSet *numbers;

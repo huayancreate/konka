@@ -7,6 +7,7 @@
 //
 
 #import "HYPercentageConfigViewController.h"
+#import "HYPercentageCompetitionViewController.h"
 
 @interface HYPercentageConfigViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
@@ -138,12 +139,22 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYpercentTabelViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
+    cell = [nib objectAtIndex:0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NSDictionary *dic = [self.userLogin.percentList objectAtIndex:indexPath.row];
+    self.uiModelLabel.text = nil;
+    self.uiPercentCellLabel.text = nil;
+    self.uiPercentLabel.text = nil;
     self.uiModelLabel.text = [dic objectForKey:@"model_name"];
     self.uiPercentCellLabel.text = [dic objectForKey:@"percent"];
-    self.uiPercentLabel.text = [dic objectForKey:@"percent_style"];
+    if ([[dic objectForKey:@"percent_style"] isEqualToString:@"0"])
+    {
+        self.uiPercentLabel.text = @"固定提成";
+    }else
+    {
+        self.uiPercentLabel.text = @"按比例提成";
+    }
+    
     return cell;
 }
 
@@ -168,7 +179,6 @@
     [self.uiFixed.titleLabel setTextColor:[UIColor blackColor]];
     [self.uiPercent.titleLabel setTextColor:[UIColor blackColor]];
     
-    
 }
 
 -(Boolean)checkModelName:(NSString *)name
@@ -186,30 +196,74 @@
     
     if (![self checkModelName:self.uiModelTextField.text])
     {
-        [super alertMsg:@"型号不在基础数据范围内！" forTittle:@"消息"];
+        [super errorMsg:@"型号不在基础数据范围内！"];
         return;
     }
     if (!percentFlag)
     {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *temp = [f numberFromString:uiPercentCellLabel.text];
+        NSNumber *temp = [f numberFromString:self.uiPercentTextField.text];
         if ([temp floatValue] > 100)
         {
-            [super alertMsg:@"比例不能大于100！" forTittle:@"消息"];
+            [super errorMsg:@"按比例分成不能大于100！"];
             return;
         }
     }
     
     [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
+    NSString *perStyle = nil;
+    
+    if ([self.percentString isEqualToString:@"固定提成"])
+    {
+        perStyle = @"0";
+    }else
+    {
+        perStyle = @"1";
+    }
+    
+    if (![self checkPercentData:self.uiModelTextField.text])
+    {
+        [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:perStyle];
+        [self getPercentListByUserID:self.userLogin.user_id];
+        
+        [self.mainTableView reloadData];
+        [SVProgressHUD dismiss];
+    }else
+    {
+        SIAlertView *alertView = [[SIAlertView alloc] initWithTitle:@"提示" andMessage:@"已经存在此类型数据是否需要更新"];
+        [alertView addButtonWithTitle:@"取消"
+                                 type:SIAlertViewButtonTypeCancel
+                              handler:^(SIAlertView *alertView) {
+                                  NSLog(@"Cancel Clicked");
+                              }];
+        [alertView addButtonWithTitle:@"确定"
+                                 type:SIAlertViewButtonTypeDefault
+                              handler:^(SIAlertView *alertView) {
+                                  NSLog(@"OK Clicked");
+                                  [self.kkM deletePercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text];
+                                [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:perStyle];
+                                  
+                                [self getPercentListByUserID:self.userLogin.user_id];
+                                  
+                                [self.mainTableView reloadData];
+                                [SVProgressHUD dismiss];
+                              }];
+        alertView.titleColor = [UIColor blueColor];
+        alertView.cornerRadius = 10;
+        alertView.buttonFont = [UIFont boldSystemFontOfSize:15];
+        alertView.transitionStyle = SIAlertViewTransitionStyleBounce;
+        
+        
+        [alertView show];
+    }
+    
+    
+}
 
-    [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:self.percentString];
-    
-    [self getPercentListByUserID:self.userLogin.user_id];
-    
-    [self.mainTableView reloadData];
-    [SVProgressHUD dismiss];
-    
+-(Boolean)checkPercentData:(NSString *)modelname
+{
+    return [self.kkM getPercentDataByModelName:modelname ByUserID:self.userLogin.user_id];
 }
 
 -(void)getPercentListByUserID:(NSNumber *)user_id
@@ -222,13 +276,13 @@
     if( self.uiModelTextField.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"型号不能为空！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     if( self.uiPercentTextField.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"提成不能为空！";
-        [super alertMsg:msg forTittle:@"输入错误"];
+        [super errorMsg:msg];
         return false;
     }
     return true;

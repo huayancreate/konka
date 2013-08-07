@@ -153,15 +153,20 @@
     
 }
 
--(void) alertMsg:(NSString *)msg forTittle:(NSString *)tittle{
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:tittle message:msg delegate:self cancelButtonTitle:@"确认" otherButtonTitles:nil];
-	[alertView show];
+-(void) successMsg:(NSString *)msg{
+    [SVProgressHUD showSuccessWithStatus:msg];
 }
+
+-(void) errorMsg:(NSString *)msg{
+    [SVProgressHUD showErrorWithStatus:msg];
+}
+
+
 
 -(NSString *) getNowDate{
     NSDate *dateTime = [[NSDate alloc] init];
     NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
-    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
     [self.components setSecond:-[self.components second]];
@@ -172,10 +177,26 @@
     return s;
 }
 
+-(NSString *) getNowYear{
+    NSDate *dateTime = [[NSDate alloc] init];
+    NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    [self.components setMonth:([self.components month])];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    [self.dateFormatter setDateFormat:@"yyyy年"];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    NSLog(@"getNowDate s %@", s);
+    return s;
+}
+
 -(NSString *) getNowDateYYYYMMDD{
     NSDate *dateTime = [[NSDate alloc] init];
     NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
-    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
     [self.components setSecond:-[self.components second]];
@@ -188,10 +209,11 @@
     return s;
 }
 
+
 -(NSString *) getUpMonthDate:(NSString *) currentDate{
     
     NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
-    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
     [self.components setMonth:([self.components month] - 1)];
     NSDate *date = [self.cal dateFromComponents:self.components];
     NSString * s = [self.dateFormatter stringFromDate:date];
@@ -202,7 +224,7 @@
 -(NSString *) getDownMonthDate:(NSString *) currentDate{
     NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
     
-    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
     [self.components setSecond:-[self.components second]];
@@ -210,6 +232,34 @@
     NSDate *date = [self.cal dateFromComponents:self.components];
     NSString * s = [self.dateFormatter stringFromDate:date];
     NSLog(@"getDownMonthDate %@", s);
+    return s;
+}
+
+-(NSString *) getUpYear:(NSString *) currentDate{
+    NSLog(@"currentDate %@", currentDate);
+    [self.dateFormatter setDateFormat:@"yyyy年"];
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
+    [self.components setYear:([self.components year] - 1)];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    NSLog(@"currentDate S, %@", s);
+    return s;
+}
+
+-(NSString *) getDownYear:(NSString *) currentDate{
+    NSLog(@"currentDate %@", currentDate);
+    [self.dateFormatter setDateFormat:@"yyyy年"];
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    [self.components setYear:([self.components year] + 1)];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
     return s;
 }
 
@@ -243,7 +293,6 @@
 {
     
     NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
-    
     self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
@@ -258,10 +307,27 @@
     return s;
 }
 
+-(NSString *) getFirstDayFromYear:(NSString *)currentDate
+{
+    [self.dateFormatter setDateFormat:@"yyyy年"];
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    
+    [self.components setYear:([self.components year])];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    NSLog(@"getFirstDayFromYear, %@" , s);
+    return s;
+}
+
 -(NSString *) getLastDayFromMoth:(NSString *)currentDate
 {
     NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
-    
     self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
     [self.components setHour:-[self.components hour]];
     [self.components setMinute:-[self.components minute]];
@@ -276,6 +342,26 @@
     NSLog(@"getLastDayFromMoth, %@" , s);
     return s;
 }
+
+-(NSString *) getLastDayFromYear:(NSString *)currentDate
+{
+    [self.dateFormatter setDateFormat:@"yyyy年"];
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    
+    [self.components setYear:([self.components year]) + 1];
+    [self.components setDay:([self.components day]) - 1];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString * s = [self.dateFormatter stringFromDate:date];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    NSLog(@"getLastDayFromYear, %@" , s);
+    return s;
+}
+
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];

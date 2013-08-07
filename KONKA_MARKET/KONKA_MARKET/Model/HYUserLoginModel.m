@@ -24,5 +24,6 @@
 @synthesize brandNameList;
 @synthesize dataSubmit;
 @synthesize percentList;
+@synthesize nameandidList;
 
 @end
