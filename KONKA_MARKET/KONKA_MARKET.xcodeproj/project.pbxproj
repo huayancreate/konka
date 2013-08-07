@@ -50,6 +50,7 @@
 		282020EA179A6E28000C1C44 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 282020E8179A6E28000C1C44 /* Icon.png */; };
 		282020EB179A6E28000C1C44 /* Icon@x2.png in Resources */ = {isa = PBXBuildFile; fileRef = 282020E9179A6E28000C1C44 /* Icon@x2.png */; };
 		282020EE179A8969000C1C44 /* HYCompetitionSalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282020ED179A8969000C1C44 /* HYCompetitionSalesViewController.m */; };
+		282161C517B1EF070090C027 /* HYNewsPlantTabelViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282161C417B1EF070090C027 /* HYNewsPlantTabelViewCell.xib */; };
 		2821DB981796D90800B77C26 /* HYCompetitionSalesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2821DB961796D90800B77C26 /* HYCompetitionSalesViewController.xib */; };
 		2821DB9D1796DF7B00B77C26 /* HYSalesComputationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2821DB9B1796DF7B00B77C26 /* HYSalesComputationViewController.m */; };
 		2821DB9E1796DF7B00B77C26 /* HYSalesComputationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2821DB9C1796DF7B00B77C26 /* HYSalesComputationViewController.xib */; };
@@ -292,6 +293,7 @@
 		282020E9179A6E28000C1C44 /* Icon@x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@x2.png"; sourceTree = "<group>"; };
 		282020EC179A8969000C1C44 /* HYCompetitionSalesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCompetitionSalesViewController.h; sourceTree = "<group>"; };
 		282020ED179A8969000C1C44 /* HYCompetitionSalesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCompetitionSalesViewController.m; sourceTree = "<group>"; };
+		282161C417B1EF070090C027 /* HYNewsPlantTabelViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYNewsPlantTabelViewCell.xib; sourceTree = "<group>"; };
 		2821DB961796D90800B77C26 /* HYCompetitionSalesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCompetitionSalesViewController.xib; sourceTree = "<group>"; };
 		2821DB9A1796DF7B00B77C26 /* HYSalesComputationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSalesComputationViewController.h; sourceTree = "<group>"; };
 		2821DB9B1796DF7B00B77C26 /* HYSalesComputationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSalesComputationViewController.m; sourceTree = "<group>"; };
@@ -1529,6 +1531,7 @@
 				2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */,
 				28FFABAC17A63353009DDF28 /* HYRetailsTableViewCell.xib */,
 				28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */,
+				282161C417B1EF070090C027 /* HYNewsPlantTabelViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -1764,6 +1767,7 @@
 				282FDF5317B13BDD0018DC76 /* SIAlertView.bundle in Resources */,
 				28086B3F17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib in Resources */,
 				28086B4117B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib in Resources */,
+				282161C517B1EF070090C027 /* HYNewsPlantTabelViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
