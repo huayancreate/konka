@@ -36,17 +36,6 @@
     // Do any additional setup after loading the view from its nib.
     
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"back.png"];
-    CGRect frameimg = CGRectMake(0, 20, 20, 30);
-    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
-    [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
-    
-    [someButton addTarget:self action:@selector(backButtonAction:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [someButton setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    self.navigationItem.leftBarButtonItem  = leftButton;
-    
     UIView *temp = [[UIView alloc] init];
     [mainTableView setBackgroundView:temp];
 

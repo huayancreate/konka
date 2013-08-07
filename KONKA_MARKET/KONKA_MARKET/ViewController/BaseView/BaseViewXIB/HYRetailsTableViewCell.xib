@@ -97,7 +97,6 @@
 								<string key="NSFrame">{{67, 36}, {214, 21}}</string>
 								<reference key="NSSuperview" ref="265137291"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -196,14 +195,13 @@
 								<string key="NSFrame">{{67, 36}, {214, 21}}</string>
 								<reference key="NSSuperview" ref="127506222"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">补充登记销售上传历史信息</string>
+								<string key="IBUIText">补充登记销售上报中的消费者信息</string>
 								<reference key="IBUITextColor" ref="310325091"/>
 								<reference key="IBUIHighlightedColor" ref="400732773"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -284,14 +282,13 @@
 								<string key="NSFrame">{{67, 36}, {214, 21}}</string>
 								<reference key="NSSuperview" ref="571062890"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">竞争对手信息上报</string>
+								<string key="IBUIText">竞争对手销售信息上报</string>
 								<reference key="IBUITextColor" ref="310325091"/>
 								<reference key="IBUIHighlightedColor" ref="400732773"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -372,14 +369,13 @@
 								<string key="NSFrame">{{67, 36}, {214, 21}}</string>
 								<reference key="NSSuperview" ref="527114538"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">提供尺寸，型号，月份统计分析</string>
+								<string key="IBUIText">提供按尺寸、型号、月份统计分析</string>
 								<reference key="IBUITextColor" ref="310325091"/>
 								<reference key="IBUIHighlightedColor" ref="400732773"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -460,14 +456,13 @@
 								<string key="NSFrame">{{67, 36}, {214, 21}}</string>
 								<reference key="NSSuperview" ref="343265152"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">按照销售数据计算提成</string>
+								<string key="IBUIText">按照销售数据测算销售提成</string>
 								<reference key="IBUITextColor" ref="310325091"/>
 								<reference key="IBUIHighlightedColor" ref="400732773"/>
 								<int key="IBUIBaselineAdjustment">0</int>
@@ -548,14 +543,13 @@
 								<string key="NSFrame">{{67, 36}, {214, 21}}</string>
 								<reference key="NSSuperview" ref="433867987"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">设置机型</string>
+								<string key="IBUIText">设置畅销机型</string>
 								<reference key="IBUITextColor" ref="310325091"/>
 								<reference key="IBUIHighlightedColor" ref="400732773"/>
 								<int key="IBUIBaselineAdjustment">0</int>
