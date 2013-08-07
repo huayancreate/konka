@@ -25,4 +25,4 @@
 
 #define scrollViewImageApi @"/webservice/KonkaArticleImgInterface.do"
 
-#define OaAPi @""
+#define OaAPi @"/OaFiles.do"

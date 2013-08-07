@@ -48,7 +48,13 @@
 //加载网页
 - (void)loadPage {
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OaAPi]];
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
+    postString = [postString stringByAppendingString:@"&userpass="];
+    postString = [postString stringByAppendingString:self.userLogin.password];
+    NSLog(@"postString ,%@", postString);
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [self.uiWebView loadRequest:request];
 }
 
