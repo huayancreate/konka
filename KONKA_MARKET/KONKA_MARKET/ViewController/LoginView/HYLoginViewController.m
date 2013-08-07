@@ -10,6 +10,7 @@
 #import "HYHomeViewController.h"
 #import "SFHFKeychainUtils.h"
 #import "KonkaManager.h"
+#import "HYSystemHelpViewController.h"
 
 @interface HYLoginViewController ()
 {
@@ -75,7 +76,12 @@
     [self.uiremember addGestureRecognizer:singleTap];
     
     self.uirememberLabel.userInteractionEnabled = YES;
-    [self.uirememberLabel addGestureRecognizer:singleTap];
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+    [self.uirememberLabel addGestureRecognizer:singleTap1];
+    
+    self.uiHelperLabel.userInteractionEnabled = YES;
+    UITapGestureRecognizer *help = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleHelp:)];
+    [self.uiHelperLabel addGestureRecognizer:help];
     
     
     //TODO 读取最后一个用户名
@@ -102,8 +108,8 @@
     self.password = self.uiPassword.text;
     
     
-    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
-    [self.view addGestureRecognizer:singleTap1];
+    UITapGestureRecognizer *singleTap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
+    [self.view addGestureRecognizer:singleTap2];
 
 }
 
@@ -116,6 +122,16 @@
         [self.uiremember setImage:[imgArray objectAtIndex:0]];
     }
 }
+
+-(void)handleHelp:(UIGestureRecognizer *)gestureRecognizer
+{
+    HYSystemHelpViewController *helpView = [[HYSystemHelpViewController alloc] init];
+    helpView.userLogin = self.userLogin;
+    helpView.title = @"新手上路";
+    
+    [self.navigationController pushViewController:helpView animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

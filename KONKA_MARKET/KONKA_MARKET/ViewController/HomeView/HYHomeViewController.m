@@ -57,7 +57,7 @@
     pageControl.numberOfPages = [self.slideImages count];
     pageControl.currentPage = 0;
     [pageControl addTarget:self action:@selector(turnPage) forControlEvents:UIControlEventValueChanged]; // 触摸mypagecontrol触发change这个方法事件
-    [self.view addSubview:pageControl];
+    //[self.view addSubview:pageControl];
     // 创建四个图片 imageview
     for (int i = 0;i<[slideImages count];i++)
     {
@@ -106,6 +106,7 @@
 // scrollview 委托函数
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
+    NSLog(@"scrollViewDidScroll");
     CGFloat pagewidth = uiAdvLogoScrollView.frame.size.width;
     int page = floor((uiAdvLogoScrollView.contentOffset.x - pagewidth/([slideImages count]+2))/pagewidth)+1;
     page --;  // 默认从第二页开始
@@ -115,6 +116,7 @@
 // scrollview 委托函数
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
+    NSLog(@"scrollViewDidEndDecelerating");
     CGFloat pagewidth = uiAdvLogoScrollView.frame.size.width;
     int currentPage = floor((uiAdvLogoScrollView.contentOffset.x - pagewidth/ ([slideImages count]+2)) / pagewidth) + 1;
     //    int currentPage_ = (int)self.scrollView.contentOffset.x/320; // 和上面两行效果一样

@@ -25,6 +25,9 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *uirememberLabel;
 
+@property (weak, nonatomic) IBOutlet UILabel *uiHelperLabel;
+
+
 @property (nonatomic) Boolean flag;
 
 @property (weak,nonatomic) NSString *userName;
