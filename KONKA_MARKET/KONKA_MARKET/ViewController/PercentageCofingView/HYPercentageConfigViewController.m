@@ -211,7 +211,6 @@
         }
     }
     
-    [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
     NSString *perStyle = nil;
     
     if ([self.percentString isEqualToString:@"固定提成"])
@@ -224,6 +223,8 @@
     
     if (![self checkPercentData:self.uiModelTextField.text])
     {
+        
+        [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
         [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:perStyle];
         [self getPercentListByUserID:self.userLogin.user_id];
         
@@ -241,6 +242,7 @@
                                  type:SIAlertViewButtonTypeDefault
                               handler:^(SIAlertView *alertView) {
                                   NSLog(@"OK Clicked");
+                                  [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
                                   [self.kkM deletePercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text];
                                 [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:perStyle];
                                   
