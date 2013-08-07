@@ -147,13 +147,14 @@
     self.uiPercentCellLabel.text = nil;
     self.uiPercentLabel.text = nil;
     self.uiModelLabel.text = [dic objectForKey:@"model_name"];
-    self.uiPercentCellLabel.text = [dic objectForKey:@"percent"];
     if ([[dic objectForKey:@"percent_style"] isEqualToString:@"0"])
     {
         self.uiPercentLabel.text = @"固定提成";
+        self.uiPercentCellLabel.text = [[dic objectForKey:@"percent"] stringByAppendingString:@"元"];
     }else
     {
         self.uiPercentLabel.text = @"按比例提成";
+        self.uiPercentCellLabel.text = [[dic objectForKey:@"percent"] stringByAppendingString:@"%"];
     }
     
     return cell;

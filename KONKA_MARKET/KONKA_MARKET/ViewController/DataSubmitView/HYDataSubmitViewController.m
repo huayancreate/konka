@@ -26,6 +26,9 @@
 @property (nonatomic, strong) UITextField *phoneNum;
 @property (nonatomic, strong) UITextField *address;
 @property (nonatomic, strong) UITextField *mastercode;
+@property (nonatomic, strong) UILabel *numLabel;
+@property (nonatomic, strong) UILabel *priceLabel;
+@property (nonatomic, strong) UILabel *priceLabel1;
 @property (nonatomic, strong) NSString *submitMemo;
 @property (nonatomic, strong) NSString *submitSaleTime;
 @property (nonatomic, strong) NSString *submitSelectChoice2;
@@ -76,6 +79,9 @@
 @synthesize address;
 @synthesize mastercode;
 @synthesize dataID;
+@synthesize priceLabel;
+@synthesize numLabel;
+@synthesize priceLabel1;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -149,13 +155,27 @@
     self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
     self.memo.clearButtonMode = UITextFieldViewModeWhileEditing;
     
+
+    
+    self.priceLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.priceLabel1 setBackgroundColor:[UIColor clearColor]];
+    self.priceLabel1.text = @"元";
+    
+    self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.priceLabel setBackgroundColor:[UIColor clearColor]];
+    self.priceLabel.text = @"元";
+    
+    self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.numLabel setBackgroundColor:[UIColor clearColor]];
+    self.numLabel.text = @"台";
+    
     self.realName = [[UITextField alloc] initWithFrame:textFieldRect];
     self.phoneNum = [[UITextField alloc] initWithFrame:textFieldRect];
     self.address = [[UITextField alloc] initWithFrame:textFieldRect];
     self.mastercode = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.salesCount = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.salesPrice = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.salesCount = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    self.salesPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    self.saleAllPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     
     self.salesPrice.delegate = self;
     self.saleAllPrice.delegate = self;
@@ -493,19 +513,22 @@
                         break;
                     case 3:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.salesCount;
+                        [cell.contentView addSubview:self.salesCount];
+                        cell.accessoryView = self.numLabel;
                         self.cellLabel4.text = @"数量";
                         return cell;
                         break;
                     case 4:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.salesPrice;
+                        [cell.contentView addSubview:self.salesPrice];
+                        cell.accessoryView = self.priceLabel1;
                         self.cellLabel4.text = @"单价";
                         return cell;
                         break;
                     case 5:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.saleAllPrice;
+                        [cell.contentView addSubview:self.saleAllPrice];
+                        cell.accessoryView = self.priceLabel;
                         self.cellLabel4.text = @"金额";
                         return cell;
                         break;

@@ -19,14 +19,16 @@
 @property (nonatomic, strong) UITextField *selectChoice2;
 @property (nonatomic, strong) UITextField *saleAllPrice;
 @property (nonatomic, strong) UITextField *salesCount;
-@property (nonatomic, strong) UITextField *salesPrice;
+@property (nonatomic, strong) UITextField *memo;
 @property (nonatomic, strong) UITextField *currentTextField;
-
+@property (nonatomic, strong) UILabel *numLabel;
+@property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) NSString *submitSaleTime;
 @property (nonatomic, strong) NSString *submitSelectChoice2;
 @property (nonatomic, strong) NSString *submitStoreID;
 @property (nonatomic, strong) NSString *submitSalesCount;
 @property (nonatomic, strong) NSString *submitSalesPrice;
+@property (nonatomic, strong) NSString *submitMemo;
 
 @end
 
@@ -47,7 +49,7 @@
 @synthesize storeName;
 @synthesize brandName;
 @synthesize salesCount;
-@synthesize salesPrice;
+@synthesize memo;
 @synthesize saleAllPrice;
 @synthesize currentTextField;
 @synthesize submitSaleTime;
@@ -55,6 +57,9 @@
 @synthesize submitStoreID;
 @synthesize submitSalesCount;
 @synthesize submitSalesPrice;
+@synthesize submitMemo;
+@synthesize numLabel;
+@synthesize priceLabel;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -111,21 +116,30 @@
     [self getStoreList:self.userLogin.user_id];
     
     CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
-    self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];    self.salesCount = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.salesPrice = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.saleAllPrice = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.salesCount = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.saleAllPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     
     self.salesCount.text = @"1";
+    self.saleAllPrice.text = @"0.0";
+    
+    self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.priceLabel setBackgroundColor:[UIColor clearColor]];
+    self.priceLabel.text = @"元";
+    
+    self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+    [self.numLabel setBackgroundColor:[UIColor clearColor]];
+    self.numLabel.text = @"台";
     
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
-    [self.salesPrice setKeyboardType:UIKeyboardTypeDecimalPad];
     
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
     
-    [self.salesPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.salesPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
+    [self.memo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.memo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
     
     [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
@@ -145,7 +159,7 @@
     storeName = [[UILabel alloc] initWithFrame:labelFieldRect];
     
     self.saleAllPrice.delegate = self;
-    self.salesPrice.delegate = self;
+    self.memo.delegate = self;
     self.salesCount.delegate = self;
     
     NSDictionary *dic = [self.userLogin.storeList objectAtIndex:0];
@@ -222,7 +236,15 @@
         submitSalesCount = self.salesCount.text;
     }
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit06",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitSelectChoice2,@"model",@"2",@"data_source",nil];
+    if (self.memo.text == nil)
+    {
+        submitMemo = @"";
+    }else
+    {
+        submitMemo = self.memo.text;
+    }
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit06",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitSelectChoice2,@"model",@"2",@"data_source",submitMemo,@"memo",nil];
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
@@ -247,7 +269,6 @@
         self.selectChoice2.text = brandName.text;
         salesCount.text = @"1";
         saleAllPrice.text = @"0.0";
-        salesPrice.text = @"0.0";
     }else
     {
         [super errorMsg:msg];
@@ -414,20 +435,22 @@
                 break;
             case 3:
                 cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                cell.accessoryView = self.salesCount;
+                cell.accessoryView = self.numLabel;
+                [cell.contentView addSubview:self.salesCount];
                 self.cellLabel4.text = @"数量";
                 return cell;
                 break;
             case 4:
                 cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                cell.accessoryView = self.salesPrice;
-                self.cellLabel4.text = @"单价";
+                [cell.contentView addSubview:self.saleAllPrice];
+                cell.accessoryView = self.priceLabel;
+                self.cellLabel4.text = @"金额";
                 return cell;
                 break;
             case 5:
                 cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                cell.accessoryView = self.saleAllPrice;
-                self.cellLabel4.text = @"金额";
+                cell.accessoryView = self.memo;
+                self.cellLabel4.text = @"备注";
                 return cell;
                 break;
 
@@ -464,45 +487,6 @@
     NSLog(@"%@ - Suggestion chosen: %d", completer, index);
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    if (textField == self.salesPrice)
-    {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setUsesGroupingSeparator:NO];
-        NSNumber *temp = [f numberFromString:self.salesPrice.text];
-        NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
-        
-        self.saleAllPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
-    }
-    
-    if (textField == self.saleAllPrice)
-    {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setUsesGroupingSeparator:NO];
-        NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
-        NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
-        
-        self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
-    }
-    
-    if (textField == self.salesCount)
-    {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setUsesGroupingSeparator:NO];
-        NSNumber *temp = [f numberFromString:self.salesPrice.text];
-        NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
-        
-        self.saleAllPrice.text = [f stringFromNumber:temp];
-    }
-}
-
 -(void)firstHandle:(UIGestureRecognizer *)gestureRecognizer
 {
     [dropDownTableView removeFromSuperview];
@@ -523,7 +507,7 @@
         BOOL basic = [string isEqualToString:filtered];
         return basic;
     }
-    if (textField == self.saleAllPrice || textField == self.salesPrice) {
+    if (textField == self.saleAllPrice) {
         NSScanner      *scanner    = [NSScanner scannerWithString:string];
         NSCharacterSet *numbers;
         NSRange         pointRange = [textField.text rangeOfString:@"."];
