@@ -61,7 +61,7 @@
 
 - (void)initWithNameButtons
 {
-    shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, 59, 44)];
+    shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, 49, 44)];
     [shadowImageView setImage:[UIImage imageNamed:@"red_line_and_shadow.png"]];
     [self addSubview:shadowImageView];
     
@@ -101,7 +101,7 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             
-            [shadowImageView setFrame:CGRectMake(sender.frame.origin.x, 0, 59, 44)];
+            [shadowImageView setFrame:CGRectMake(sender.frame.origin.x, 0, 49, 44)];
             
         } completion:^(BOOL finished) {
             if (finished) {
@@ -144,7 +144,7 @@
     
     [UIView animateWithDuration:0.25 animations:^{
         
-        [shadowImageView setFrame:CGRectMake(button.frame.origin.x, 0, 59, 44)];
+        [shadowImageView setFrame:CGRectMake(button.frame.origin.x, 0, 49, 44)];
         
     } completion:^(BOOL finished) {
         if (finished) {
