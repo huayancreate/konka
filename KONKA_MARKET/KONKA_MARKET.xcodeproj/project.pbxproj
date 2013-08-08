@@ -280,10 +280,10 @@
 		189F0C1017B2223900C8B394 /* HYNewsPlatFormViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYNewsPlatFormViewController.xib; sourceTree = "<group>"; };
 		189F0C1417B22D9800C8B394 /* Globle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globle.h; sourceTree = "<group>"; };
 		189F0C1517B22D9800C8B394 /* Globle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Globle.m; sourceTree = "<group>"; };
-		189F0C1617B22D9800C8B394 /* RootScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootScrollView.h; sourceTree = "<group>"; };
-		189F0C1717B22D9800C8B394 /* RootScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootScrollView.m; sourceTree = "<group>"; };
-		189F0C1817B22D9800C8B394 /* TopScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopScrollView.h; sourceTree = "<group>"; };
-		189F0C1917B22D9800C8B394 /* TopScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopScrollView.m; sourceTree = "<group>"; };
+		189F0C1617B22D9800C8B394 /* RootScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootScrollView.h; path = ../../ThirdLib/SlideSwitch/RootScrollView.h; sourceTree = "<group>"; };
+		189F0C1717B22D9800C8B394 /* RootScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootScrollView.m; path = ../../ThirdLib/SlideSwitch/RootScrollView.m; sourceTree = "<group>"; };
+		189F0C1817B22D9800C8B394 /* TopScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopScrollView.h; path = ../../ThirdLib/SlideSwitch/TopScrollView.h; sourceTree = "<group>"; };
+		189F0C1917B22D9800C8B394 /* TopScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TopScrollView.m; path = ../../ThirdLib/SlideSwitch/TopScrollView.m; sourceTree = "<group>"; };
 		189F0C2017B233A500C8B394 /* red_line_and_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_line_and_shadow.png; sourceTree = "<group>"; };
 		189F0C2117B233A500C8B394 /* top_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_background.png; sourceTree = "<group>"; };
 		189F0C2217B233A600C8B394 /* top_channelbutton_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = top_channelbutton_shadow.png; sourceTree = "<group>"; };
@@ -768,6 +768,10 @@
 		189F0C0D17B2221E00C8B394 /* NewsPlatFormView */ = {
 			isa = PBXGroup;
 			children = (
+				189F0C1617B22D9800C8B394 /* RootScrollView.h */,
+				189F0C1717B22D9800C8B394 /* RootScrollView.m */,
+				189F0C1817B22D9800C8B394 /* TopScrollView.h */,
+				189F0C1917B22D9800C8B394 /* TopScrollView.m */,
 				189F0C0E17B2223900C8B394 /* HYNewsPlatFormViewController.h */,
 				189F0C0F17B2223900C8B394 /* HYNewsPlatFormViewController.m */,
 				189F0C1017B2223900C8B394 /* HYNewsPlatFormViewController.xib */,
@@ -783,10 +787,6 @@
 				189F0C2217B233A600C8B394 /* top_channelbutton_shadow.png */,
 				189F0C1417B22D9800C8B394 /* Globle.h */,
 				189F0C1517B22D9800C8B394 /* Globle.m */,
-				189F0C1617B22D9800C8B394 /* RootScrollView.h */,
-				189F0C1717B22D9800C8B394 /* RootScrollView.m */,
-				189F0C1817B22D9800C8B394 /* TopScrollView.h */,
-				189F0C1917B22D9800C8B394 /* TopScrollView.m */,
 			);
 			path = SlideSwitch;
 			sourceTree = "<group>";

@@ -11,7 +11,7 @@
 #import "RootScrollView.h"
 
 //按钮空隙
-#define BUTTONGAP 4
+#define BUTTONGAP 3
 //按钮长度
 #define BUTTONWIDTH 50
 //按钮宽度

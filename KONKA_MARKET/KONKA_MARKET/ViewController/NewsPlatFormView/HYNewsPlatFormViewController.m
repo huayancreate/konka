@@ -9,6 +9,7 @@
 #import "HYNewsPlatFormViewController.h"
 #import "TopScrollView.h"
 #import "RootScrollView.h"
+#import "Globle.h"
 
 @interface HYNewsPlatFormViewController()
 
@@ -39,9 +40,12 @@
     [topShadowImageView setImage:[UIImage imageNamed:@"top_background_shadow.png"]];
     [self.view addSubview:topShadowImageView];
     //[topShadowImageView release];
+    //[RootScrollView shareInstance].userlogin = self.userLogin;
+    //[[RootScrollView shareInstance] start];
+
     
     [self.view addSubview:[TopScrollView shareInstance]];
-    [self.view addSubview:[RootScrollView shareInstance]];
+    [self.view addSubview:[RootScrollView shareInstance:self.userLogin.user_name Password:self.userLogin.password]];
 }
 
 - (void)didReceiveMemoryWarning
