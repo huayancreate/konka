@@ -7,7 +7,10 @@
 //
 
 #define VersionLoadUp @"http://xxx.xxx.com/update/ios_update.txt"
+<<<<<<< HEAD
 
+=======
+>>>>>>> 911c207219e6a4121c9ba1d3c50bc55f2886d7b7
 //#define BaseURL @"http://konka.mymyty.com"
 #define BaseURL @"http://118.145.26.19"
 
@@ -27,4 +30,8 @@
 
 #define OaAPi @"/OaFiles.do"
 
+<<<<<<< HEAD
 #define ArticleInfoInterfaceApi @"/webservice/KonkaPeArticleInfoInterface.do"
+=======
+#define HomeImageApi @"/webservice/KonkaArticleImgInterface.do"
+>>>>>>> 911c207219e6a4121c9ba1d3c50bc55f2886d7b7

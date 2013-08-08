@@ -10,7 +10,7 @@
 #import "HYHomeViewController.h"
 #import "SFHFKeychainUtils.h"
 #import "KonkaManager.h"
-#import "HYSystemHelpViewController.h"
+#import "WZGuideViewController.h"
 
 @interface HYLoginViewController ()
 {
@@ -125,11 +125,7 @@
 
 -(void)handleHelp:(UIGestureRecognizer *)gestureRecognizer
 {
-    HYSystemHelpViewController *helpView = [[HYSystemHelpViewController alloc] init];
-    helpView.userLogin = self.userLogin;
-    helpView.title = @"新手上路";
-    
-    [self.navigationController pushViewController:helpView animated:YES];
+    [WZGuideViewController show];
 }
 
 
