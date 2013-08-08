@@ -7,9 +7,8 @@
 //
 
 #define VersionLoadUp @"http://xxx.xxx.com/update/ios_update.txt"
-
-#define BaseURL @"http://konka.mymyty.com"
-//#define BaseURL @"http://118.145.26.19"
+//#define BaseURL @"http://konka.mymyty.com"
+#define BaseURL @"http://118.145.26.19"
 
 #define DataSubmitApi @"/MobileSubmit.do"
 
@@ -26,3 +25,5 @@
 #define scrollViewImageApi @"/webservice/KonkaArticleImgInterface.do"
 
 #define OaAPi @"/OaFiles.do"
+
+#define HomeImageApi @"/webservice/KonkaArticleImgInterface.do"
