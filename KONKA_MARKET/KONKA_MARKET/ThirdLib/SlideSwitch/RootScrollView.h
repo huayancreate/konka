@@ -34,10 +34,11 @@
 @property (strong, nonatomic) NSMutableArray *imageList;
 @property (strong, nonatomic) NSMutableArray *summaryList;
 @property (strong, nonatomic) NSMutableArray *linkList;
+@property (strong, nonatomic) UINavigationController *linkNav;
 
 -(void)start;
 -(void)end;
 
-+ (RootScrollView *)shareInstance:(NSString *)username Password:(NSString *)password;
++ (RootScrollView *)shareInstance:(NSString *)username Password:(NSString *)password Nav:(UINavigationController *)navController;
 
 @end

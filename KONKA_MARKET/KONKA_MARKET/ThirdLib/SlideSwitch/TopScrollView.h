@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HYUserLoginModel.h"
 
 @interface TopScrollView : UIScrollView <UIScrollViewDelegate>
 {
@@ -18,8 +19,10 @@
 }
 @property (nonatomic, retain) NSArray *nameArray;
 @property (nonatomic, assign) NSInteger scrollViewSelectedChannelID;
+@property (nonatomic, retain) HYUserLoginModel *userlogin;
+@property (strong, nonatomic) UINavigationController *linkNav;
 
-+ (TopScrollView *)shareInstance;
++ (TopScrollView *)shareInstance:(NSString *)username Password:(NSString *)password Nav:(UINavigationController *)navController;
 //滑动撤销选中按钮
 - (void)setButtonUnSelect;
 //滑动选择按钮

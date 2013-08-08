@@ -44,8 +44,8 @@
     //[[RootScrollView shareInstance] start];
 
     
-    [self.view addSubview:[TopScrollView shareInstance]];
-    [self.view addSubview:[RootScrollView shareInstance:self.userLogin.user_name Password:self.userLogin.password]];
+    [self.view addSubview:[TopScrollView shareInstance:self.userLogin.user_name Password:self.userLogin.password Nav:self.navigationController]];
+    [self.view addSubview:[RootScrollView shareInstance:self.userLogin.user_name Password:self.userLogin.password Nav:self.navigationController]];
 }
 
 - (void)didReceiveMemoryWarning

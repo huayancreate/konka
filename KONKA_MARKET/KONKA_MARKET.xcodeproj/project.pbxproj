@@ -121,6 +121,8 @@
 		282A56FE179460F90078524F /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 282A56FC179460F90078524F /* arrow_up.png */; };
 		282A5708179478820078524F /* HYSalesRegistrationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282A5706179478820078524F /* HYSalesRegistrationViewController.m */; };
 		282A5709179478820078524F /* HYSalesRegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282A5707179478820078524F /* HYSalesRegistrationViewController.xib */; };
+		282B2E3117B3EB37007CD13F /* HYWebBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 282B2E2F17B3EB37007CD13F /* HYWebBaseViewController.m */; };
+		282B2E3217B3EB37007CD13F /* HYWebBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282B2E3017B3EB37007CD13F /* HYWebBaseViewController.xib */; };
 		282BAE3017A60BE600988D92 /* konka_production_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2C17A60BE600988D92 /* konka_production_01.jpg */; };
 		282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2D17A60BE600988D92 /* konka_production_02.jpg */; };
 		282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 282BAE2E17A60BE600988D92 /* konka_production_03.jpg */; };
@@ -428,6 +430,9 @@
 		282A5705179478820078524F /* HYSalesRegistrationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSalesRegistrationViewController.h; sourceTree = "<group>"; };
 		282A5706179478820078524F /* HYSalesRegistrationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSalesRegistrationViewController.m; sourceTree = "<group>"; };
 		282A5707179478820078524F /* HYSalesRegistrationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSalesRegistrationViewController.xib; sourceTree = "<group>"; };
+		282B2E2E17B3EB37007CD13F /* HYWebBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWebBaseViewController.h; sourceTree = "<group>"; };
+		282B2E2F17B3EB37007CD13F /* HYWebBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWebBaseViewController.m; sourceTree = "<group>"; };
+		282B2E3017B3EB37007CD13F /* HYWebBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWebBaseViewController.xib; sourceTree = "<group>"; };
 		282BAE2C17A60BE600988D92 /* konka_production_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_01.jpg; sourceTree = "<group>"; };
 		282BAE2D17A60BE600988D92 /* konka_production_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_02.jpg; sourceTree = "<group>"; };
 		282BAE2E17A60BE600988D92 /* konka_production_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = konka_production_03.jpg; sourceTree = "<group>"; };
@@ -1625,6 +1630,9 @@
 				282A56FA179460F90078524F /* images */,
 				28DAE56D1783FCF900F12366 /* HYBaseViewController.h */,
 				28DAE56E1783FCF900F12366 /* HYBaseViewController.m */,
+				282B2E2E17B3EB37007CD13F /* HYWebBaseViewController.h */,
+				282B2E2F17B3EB37007CD13F /* HYWebBaseViewController.m */,
+				282B2E3017B3EB37007CD13F /* HYWebBaseViewController.xib */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2048,6 +2056,7 @@
 				1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */,
 				1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */,
 				1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */,
+				282B2E3217B3EB37007CD13F /* HYWebBaseViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2141,6 +2150,7 @@
 				189F0C1C17B22D9800C8B394 /* TopScrollView.m in Sources */,
 				189F0C2A17B23E4900C8B394 /* HYOARetailViewController.m in Sources */,
 				1830B1BE17B33A5000920F8E /* WZGuideViewController.m in Sources */,
+				282B2E3117B3EB37007CD13F /* HYWebBaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -121,6 +121,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self getStoreList:self.userLogin.user_id];
+    
+//    self.userLogin.storeList = nil;
+//    
+//    if (self.userLogin.storeList == nil)
+//    {
+//        [super errorMsg:@"没有相应的门店对应！"];
+//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 1] animated:YES];
+//        return;
+//    }
+//    
+//    if ([self.userLogin.storeList count] == 0)
+//    {
+//        [super errorMsg:@"没有相应的门店对应！"];
+//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+//    }
+//    
+    
     mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 380) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
     
@@ -144,8 +163,6 @@
     [someButton setShowsTouchWhenHighlighted:YES];
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     self.navigationItem.rightBarButtonItem  = rightButton;
-    
-    [self getStoreList:self.userLogin.user_id];
     
     NSNumber *flag = [[NSNumber alloc] initWithInt:1];
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];

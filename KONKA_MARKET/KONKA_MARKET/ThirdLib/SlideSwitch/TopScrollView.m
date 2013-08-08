@@ -25,8 +25,10 @@
 
 @synthesize nameArray;
 @synthesize scrollViewSelectedChannelID;
+@synthesize userlogin;
+@synthesize linkNav;
 
-+ (TopScrollView *)shareInstance {
++ (TopScrollView *)shareInstance:(NSString *)username Password:(NSString *)password Nav:(UINavigationController *)navController{
     static TopScrollView *__singletion;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -34,13 +36,16 @@
         [Globle shareInstance].globleWidth = screenRect.size.width; //屏幕宽度
         [Globle shareInstance].globleHeight = screenRect.size.height-20;  //屏幕高度（无顶栏）
         [Globle shareInstance].globleAllHeight = screenRect.size.height;  //屏幕高度（有顶栏）
-        __singletion=[[self alloc] initWithFrame:CGRectMake(0, 0, CONTENTSIZEX, 44)];
+        __singletion=[[self alloc] initWithFrame:CGRectMake(0, 0, CONTENTSIZEX, 44) Username:username Password:password Nav:navController];
     });
     return __singletion;
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame Username:(NSString *)username Password:(NSString *)password Nav:(UINavigationController *)navController
 {
+    self.userlogin.user_name = username;
+    self.userlogin.password = password;
+    self.linkNav = navController;
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate = self;
@@ -106,7 +111,7 @@
         } completion:^(BOOL finished) {
             if (finished) {
                 //设置新闻页出现
-                [[RootScrollView shareInstance] setContentOffset:CGPointMake(BUTTONID*320, 0) animated:NO];
+                [[RootScrollView shareInstance:self.userlogin.user_name Password:self.userlogin.password Nav:self.linkNav] setContentOffset:CGPointMake(BUTTONID*320, 0) animated:NO];
                 //赋值滑动列表选择频道ID
                 scrollViewSelectedChannelID = sender.tag;
             }

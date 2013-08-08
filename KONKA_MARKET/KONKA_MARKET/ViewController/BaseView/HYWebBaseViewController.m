@@ -1,18 +1,20 @@
 //
-//  HYOAViewController.m
+//  HYWebBaseViewController.m
 //  KONKA_MARKET
 //
-//  Created by andychen on 13-8-7.
+//  Created by archon on 13-8-8.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
-#import "HYOAViewController.h"
+#import "HYWebBaseViewController.h"
 
-@interface HYOAViewController ()
+@interface HYWebBaseViewController ()
 
 @end
 
-@implementation HYOAViewController
+@implementation HYWebBaseViewController
+@synthesize uiWebView;
+@synthesize link_url;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,7 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //webview 和 webview 的 scrollView 的委托都设置为self
+    // Do any additional setup after loading the view from its nib.
     self.uiWebView.delegate = self;
     self.uiWebView.scrollView.delegate = self;
     
@@ -38,26 +40,20 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    
     [self loadPage];
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 //加载网页
-- (void)loadPage {
-    
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OaAPi]];
+- (void)loadPage{
+    NSURL *url = [[NSURL alloc] initWithString:link_url];
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
-    postString = [postString stringByAppendingString:@"&userpass="];
-    postString = [postString stringByAppendingString:self.userLogin.password];
-    NSLog(@"postString ,%@", postString);
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [self.uiWebView loadRequest:request];
 }
 
