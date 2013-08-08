@@ -7,6 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1830B1BE17B33A5000920F8E /* WZGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1830B1BD17B33A5000920F8E /* WZGuideViewController.m */; };
+		1830B1D017B33B5700920F8E /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C017B33B5700920F8E /* 1.png */; };
+		1830B1D117B33B5700920F8E /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C117B33B5700920F8E /* 1@2x.png */; };
+		1830B1D217B33B5700920F8E /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C217B33B5700920F8E /* 2.png */; };
+		1830B1D317B33B5700920F8E /* 2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C317B33B5700920F8E /* 2@2x.png */; };
+		1830B1D417B33B5700920F8E /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C417B33B5700920F8E /* 3.png */; };
+		1830B1D517B33B5700920F8E /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C517B33B5700920F8E /* 3@2x.png */; };
+		1830B1D617B33B5700920F8E /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C617B33B5700920F8E /* 4.png */; };
+		1830B1D717B33B5700920F8E /* 4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C717B33B5700920F8E /* 4@2x.png */; };
+		1830B1D817B33B5700920F8E /* btn_nor.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C817B33B5700920F8E /* btn_nor.png */; };
+		1830B1D917B33B5700920F8E /* btn_nor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C917B33B5700920F8E /* btn_nor@2x.png */; };
+		1830B1DA17B33B5700920F8E /* btn_press.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CA17B33B5700920F8E /* btn_press.png */; };
+		1830B1DB17B33B5700920F8E /* btn_press@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CB17B33B5700920F8E /* btn_press@2x.png */; };
+		1830B1DC17B33B5700920F8E /* checkBox_blankCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CC17B33B5700920F8E /* checkBox_blankCheck.png */; };
+		1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */; };
+		1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */; };
+		1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */; };
 		189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEA17B21C9B00C8B394 /* blackArrow.png */; };
 		189F0BF517B21C9B00C8B394 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */; };
 		189F0BF617B21C9B00C8B394 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEC17B21C9B00C8B394 /* blueArrow.png */; };
@@ -32,8 +49,6 @@
 		189F0C2A17B23E4900C8B394 /* HYOARetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C2817B23E4800C8B394 /* HYOARetailViewController.m */; };
 		189F0C2B17B23E4900C8B394 /* HYOARetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C2917B23E4800C8B394 /* HYOARetailViewController.xib */; };
 		189F0C2D17B242C300C8B394 /* HYOARetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C2C17B242C200C8B394 /* HYOARetailsTableViewCell.xib */; };
-		189F0C3217B24DAD00C8B394 /* HYSystemHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189F0C3017B24DAD00C8B394 /* HYSystemHelpViewController.m */; };
-		189F0C3317B24DAD00C8B394 /* HYSystemHelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3117B24DAD00C8B394 /* HYSystemHelpViewController.xib */; };
 		189F0C3F17B2518500C8B394 /* sys_nav_01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3517B2518500C8B394 /* sys_nav_01.jpg */; };
 		189F0C4017B2518500C8B394 /* sys_nav_02.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3617B2518500C8B394 /* sys_nav_02.jpg */; };
 		189F0C4117B2518500C8B394 /* sys_nav_03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3717B2518500C8B394 /* sys_nav_03.jpg */; };
@@ -262,6 +277,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1830B1BC17B33A5000920F8E /* WZGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGuideViewController.h; sourceTree = "<group>"; };
+		1830B1BD17B33A5000920F8E /* WZGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGuideViewController.m; sourceTree = "<group>"; };
+		1830B1C017B33B5700920F8E /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		1830B1C117B33B5700920F8E /* 1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1@2x.png"; sourceTree = "<group>"; };
+		1830B1C217B33B5700920F8E /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		1830B1C317B33B5700920F8E /* 2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2@2x.png"; sourceTree = "<group>"; };
+		1830B1C417B33B5700920F8E /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		1830B1C517B33B5700920F8E /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
+		1830B1C617B33B5700920F8E /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		1830B1C717B33B5700920F8E /* 4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "4@2x.png"; sourceTree = "<group>"; };
+		1830B1C817B33B5700920F8E /* btn_nor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_nor.png; sourceTree = "<group>"; };
+		1830B1C917B33B5700920F8E /* btn_nor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nor@2x.png"; sourceTree = "<group>"; };
+		1830B1CA17B33B5700920F8E /* btn_press.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_press.png; sourceTree = "<group>"; };
+		1830B1CB17B33B5700920F8E /* btn_press@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_press@2x.png"; sourceTree = "<group>"; };
+		1830B1CC17B33B5700920F8E /* checkBox_blankCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_blankCheck.png; sourceTree = "<group>"; };
+		1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_blankCheck@2x.png"; sourceTree = "<group>"; };
+		1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_selectCheck.png; sourceTree = "<group>"; };
+		1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_selectCheck@2x.png"; sourceTree = "<group>"; };
 		189F0BEA17B21C9B00C8B394 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		189F0BEC17B21C9B00C8B394 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -291,9 +324,6 @@
 		189F0C2817B23E4800C8B394 /* HYOARetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOARetailViewController.m; sourceTree = "<group>"; };
 		189F0C2917B23E4800C8B394 /* HYOARetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOARetailViewController.xib; sourceTree = "<group>"; };
 		189F0C2C17B242C200C8B394 /* HYOARetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOARetailsTableViewCell.xib; sourceTree = "<group>"; };
-		189F0C2F17B24DAD00C8B394 /* HYSystemHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSystemHelpViewController.h; sourceTree = "<group>"; };
-		189F0C3017B24DAD00C8B394 /* HYSystemHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSystemHelpViewController.m; sourceTree = "<group>"; };
-		189F0C3117B24DAD00C8B394 /* HYSystemHelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSystemHelpViewController.xib; sourceTree = "<group>"; };
 		189F0C3517B2518500C8B394 /* sys_nav_01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sys_nav_01.jpg; sourceTree = "<group>"; };
 		189F0C3617B2518500C8B394 /* sys_nav_02.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sys_nav_02.jpg; sourceTree = "<group>"; };
 		189F0C3717B2518500C8B394 /* sys_nav_03.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sys_nav_03.jpg; sourceTree = "<group>"; };
@@ -730,6 +760,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1830B1BB17B33A5000920F8E /* WZGuideView */ = {
+			isa = PBXGroup;
+			children = (
+				1830B1BF17B33B5700920F8E /* Image */,
+				1830B1BC17B33A5000920F8E /* WZGuideViewController.h */,
+				1830B1BD17B33A5000920F8E /* WZGuideViewController.m */,
+			);
+			name = WZGuideView;
+			path = WZGuideViewController;
+			sourceTree = "<group>";
+		};
+		1830B1BF17B33B5700920F8E /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				1830B1C017B33B5700920F8E /* 1.png */,
+				1830B1C117B33B5700920F8E /* 1@2x.png */,
+				1830B1C217B33B5700920F8E /* 2.png */,
+				1830B1C317B33B5700920F8E /* 2@2x.png */,
+				1830B1C417B33B5700920F8E /* 3.png */,
+				1830B1C517B33B5700920F8E /* 3@2x.png */,
+				1830B1C617B33B5700920F8E /* 4.png */,
+				1830B1C717B33B5700920F8E /* 4@2x.png */,
+				1830B1C817B33B5700920F8E /* btn_nor.png */,
+				1830B1C917B33B5700920F8E /* btn_nor@2x.png */,
+				1830B1CA17B33B5700920F8E /* btn_press.png */,
+				1830B1CB17B33B5700920F8E /* btn_press@2x.png */,
+				1830B1CC17B33B5700920F8E /* checkBox_blankCheck.png */,
+				1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */,
+				1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */,
+				1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
 		189F0BE817B21C9B00C8B394 /* EGOableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -799,16 +863,6 @@
 				189F0C2917B23E4800C8B394 /* HYOARetailViewController.xib */,
 			);
 			path = OARetailView;
-			sourceTree = "<group>";
-		};
-		189F0C2E17B24D8E00C8B394 /* SystemHelp */ = {
-			isa = PBXGroup;
-			children = (
-				189F0C2F17B24DAD00C8B394 /* HYSystemHelpViewController.h */,
-				189F0C3017B24DAD00C8B394 /* HYSystemHelpViewController.m */,
-				189F0C3117B24DAD00C8B394 /* HYSystemHelpViewController.xib */,
-			);
-			path = SystemHelp;
 			sourceTree = "<group>";
 		};
 		189F0C3417B2518400C8B394 /* help */ = {
@@ -1490,6 +1544,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				1830B1BB17B33A5000920F8E /* WZGuideView */,
 				189F0C1317B22D9800C8B394 /* SlideSwitch */,
 				189F0BE817B21C9B00C8B394 /* EGOableView */,
 				282FDF4F17B13BDD0018DC76 /* SIAlertView */,
@@ -1541,7 +1596,6 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				189F0C2E17B24D8E00C8B394 /* SystemHelp */,
 				189F0C2617B23E2C00C8B394 /* OARetailView */,
 				189F0C0D17B2221E00C8B394 /* NewsPlatFormView */,
 				189F0BFD17B21CD000C8B394 /* OAView */,
@@ -1968,7 +2022,6 @@
 				189F0C2517B233A600C8B394 /* top_channelbutton_shadow.png in Resources */,
 				189F0C2B17B23E4900C8B394 /* HYOARetailViewController.xib in Resources */,
 				189F0C2D17B242C300C8B394 /* HYOARetailsTableViewCell.xib in Resources */,
-				189F0C3317B24DAD00C8B394 /* HYSystemHelpViewController.xib in Resources */,
 				189F0C3F17B2518500C8B394 /* sys_nav_01.jpg in Resources */,
 				189F0C4017B2518500C8B394 /* sys_nav_02.jpg in Resources */,
 				189F0C4117B2518500C8B394 /* sys_nav_03.jpg in Resources */,
@@ -1979,6 +2032,22 @@
 				189F0C4617B2518500C8B394 /* sys_nav_08.jpg in Resources */,
 				189F0C4717B2518500C8B394 /* sys_nav_09.jpg in Resources */,
 				189F0C4817B2518500C8B394 /* sys_nav_10.jpg in Resources */,
+				1830B1D017B33B5700920F8E /* 1.png in Resources */,
+				1830B1D117B33B5700920F8E /* 1@2x.png in Resources */,
+				1830B1D217B33B5700920F8E /* 2.png in Resources */,
+				1830B1D317B33B5700920F8E /* 2@2x.png in Resources */,
+				1830B1D417B33B5700920F8E /* 3.png in Resources */,
+				1830B1D517B33B5700920F8E /* 3@2x.png in Resources */,
+				1830B1D617B33B5700920F8E /* 4.png in Resources */,
+				1830B1D717B33B5700920F8E /* 4@2x.png in Resources */,
+				1830B1D817B33B5700920F8E /* btn_nor.png in Resources */,
+				1830B1D917B33B5700920F8E /* btn_nor@2x.png in Resources */,
+				1830B1DA17B33B5700920F8E /* btn_press.png in Resources */,
+				1830B1DB17B33B5700920F8E /* btn_press@2x.png in Resources */,
+				1830B1DC17B33B5700920F8E /* checkBox_blankCheck.png in Resources */,
+				1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */,
+				1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */,
+				1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2071,7 +2140,7 @@
 				189F0C1B17B22D9800C8B394 /* RootScrollView.m in Sources */,
 				189F0C1C17B22D9800C8B394 /* TopScrollView.m in Sources */,
 				189F0C2A17B23E4900C8B394 /* HYOARetailViewController.m in Sources */,
-				189F0C3217B24DAD00C8B394 /* HYSystemHelpViewController.m in Sources */,
+				1830B1BE17B33A5000920F8E /* WZGuideViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
