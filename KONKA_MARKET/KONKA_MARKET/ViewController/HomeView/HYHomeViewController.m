@@ -50,7 +50,7 @@
     [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
     
     firstImageView = [[UIImageView alloc] init];
-    firstImageView.frame = CGRectMake(0, 0, 320, 115);
+    firstImageView.frame = CGRectMake(0, 0, 320, 150);
     firstImageView.image = [UIImage imageNamed:@"konka_production_01.jpg"];
     
     uiAdvLogoScrollView.bounces = YES;
@@ -100,12 +100,12 @@
     [firstImageView removeFromSuperview];
     [uiAdvLogoScrollView setContentSize:CGSizeMake(320 * ([slideImages count] + 2), 1)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
     [uiAdvLogoScrollView setContentOffset:CGPointMake(0, 0)];
-    [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320,0,320,138) animated:NO]; // 默认从序号1位置放第1页 ，序号0位置位置放第4页
+    [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320,0,320,150) animated:NO]; // 默认从序号1位置放第1页 ，序号0位置位置放第4页
     
     for (int i = 0;i<[slideImages count];i++)
     {
         UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.frame = CGRectMake((320 * i)+320, 0, 320, 115);
+        imageView.frame = CGRectMake((320 * i)+320, 0, 320, 150);
         NSURL *url = [[NSURL alloc] initWithString:[slideImages objectAtIndex:i]];
         imageView.userInteractionEnabled = YES;
         UITapGestureRecognizer *jump = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJump:)];
@@ -115,13 +115,13 @@
     }
     
     UIImageView *imageView1 = [[UIImageView alloc] init];
-    imageView1.frame = CGRectMake(0, 0, 320, 115);
+    imageView1.frame = CGRectMake(0, 0, 320, 148);
     NSURL *url1 = [[NSURL alloc] initWithString:[slideImages objectAtIndex:([slideImages count] - 1)]];
     [imageView1 setImageWithURL:url1];
     [uiAdvLogoScrollView addSubview:imageView1];
     
     UIImageView *imageView2 = [[UIImageView alloc] init];
-    imageView2.frame = CGRectMake(320 * [slideImages count] + 320, 0, 320, 115);
+    imageView2.frame = CGRectMake(320 * [slideImages count] + 320, 0, 320, 150);
     NSURL *url2 = [[NSURL alloc] initWithString:[slideImages objectAtIndex:0]];
     [imageView2 setImageWithURL:url2];
     [uiAdvLogoScrollView addSubview:imageView2];

@@ -40,7 +40,9 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     [self loadPage];
+    [SVProgressHUD dismiss];
     
 }
 

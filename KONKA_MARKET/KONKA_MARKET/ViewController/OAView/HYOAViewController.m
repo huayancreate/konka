@@ -9,6 +9,9 @@
 #import "HYOAViewController.h"
 
 @interface HYOAViewController ()
+{
+    NSMutableURLRequest *request;
+}
 
 @end
 
@@ -38,8 +41,17 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OaAPi]];
+    request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"POST"];
+    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
+    postString = [postString stringByAppendingString:@"&userpass="];
+    postString = [postString stringByAppendingString:self.userLogin.password];
+    NSLog(@"postString ,%@", postString);
+    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     [self loadPage];
+    [SVProgressHUD dismiss];
 }
 
 - (void)didReceiveMemoryWarning
@@ -49,15 +61,6 @@
 
 //加载网页
 - (void)loadPage {
-    
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OaAPi]];
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
-    postString = [postString stringByAppendingString:@"&userpass="];
-    postString = [postString stringByAppendingString:self.userLogin.password];
-    NSLog(@"postString ,%@", postString);
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     [self.uiWebView loadRequest:request];
 }
 
@@ -109,6 +112,15 @@
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
 	
 	return [NSDate date]; // should return date data source was last changed
+}
+
+#pragma mark -
+#pragma mark webview Methods
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType
+{
+    request = (NSMutableURLRequest *)_request;
+    return YES;
 }
 
 @end
