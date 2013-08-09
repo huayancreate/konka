@@ -18,6 +18,7 @@
 @interface HYHomeViewController ()
 {
     JSONDecoder* decoder;
+    UIImageView *firstImageView;
 }
 
 @end
@@ -45,13 +46,20 @@
     // Do any additional setup after loading the view from its nib.
     // 初始化广告滚屏
     // 定时器 循环
-    [self loadHomeImages];
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+    
+    [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(runTimePage) userInfo:nil repeats:YES];
+    
+    firstImageView = [[UIImageView alloc] init];
+    firstImageView.frame = CGRectMake(0, 0, 320, 115);
+    firstImageView.image = [UIImage imageNamed:@"konka_production_01.jpg"];
+    
     uiAdvLogoScrollView.bounces = YES;
     uiAdvLogoScrollView.pagingEnabled = YES;
     uiAdvLogoScrollView.userInteractionEnabled = YES;
     uiAdvLogoScrollView.showsHorizontalScrollIndicator = NO;
     uiAdvLogoScrollView.delegate = self;
+    
+    [uiAdvLogoScrollView addSubview:firstImageView];
     
     // 初始化 数组 并添加四张图片
     slideImages = [[NSMutableArray alloc] init];
@@ -79,6 +87,8 @@
     [someButton setHighlighted:NO];
     self.navigationItem.leftBarButtonItem  = leftButton;
     
+    
+    [self loadHomeImages];
 }
 
 -(void)insertImageToHeader
@@ -87,6 +97,7 @@
     {
         return;
     }
+    [firstImageView removeFromSuperview];
     [uiAdvLogoScrollView setContentSize:CGSizeMake(320 * ([slideImages count] + 2), 1)]; //  +上第1页和第4页  原理：4-[1-2-3-4]-1
     [uiAdvLogoScrollView setContentOffset:CGPointMake(0, 0)];
     [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320,0,320,138) animated:NO]; // 默认从序号1位置放第1页 ，序号0位置位置放第4页
@@ -238,6 +249,7 @@
 
 -(void) loadHomeImages
 {
+    
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"getJson",@"method",self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"1100",@"type_id",nil];
     
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:HomeImageApi]];

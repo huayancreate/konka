@@ -114,11 +114,18 @@
     HYSalesComputationViewController *salesComputationView = nil;
     HYPercentageCompetitionViewController *percentageView = nil;
     HYModelConfigViewController *modelConfigView = nil;
+    [self getStoreList:self.userLogin.user_id];
     switch (indexPath.row) {
         case 0:
             dataSubmit = [[HYDataSubmitViewController alloc]init];
             dataSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
             dataSubmit.title = @"数据上报";
             [self.navigationController pushViewController:dataSubmit animated:YES];
             break;
@@ -126,6 +133,13 @@
             
             salesSubmit = [[HYSalesRegistrationViewController alloc] init];
             salesSubmit.userLogin = self.userLogin;
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
+            
             salesSubmit.title = @"销售登记";
             
             [self.navigationController pushViewController:salesSubmit animated:YES];
@@ -134,6 +148,13 @@
         case 2:
             csalesView = [[HYCompetitionSalesViewController alloc] init];
             csalesView.userLogin = self.userLogin;
+            
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
             csalesView.title = @"竞品信息";
             
             [self.navigationController pushViewController:csalesView animated:YES];
@@ -141,6 +162,12 @@
         case 3:
             salesComputationView = [[HYSalesComputationViewController alloc] init];
             salesComputationView.userLogin = self.userLogin;
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
             salesComputationView.title = @"销售分析";
             
             [self.navigationController pushViewController:salesComputationView animated:YES];
@@ -148,6 +175,12 @@
         case 4:
             percentageView = [[HYPercentageCompetitionViewController alloc] init];
             percentageView.userLogin = self.userLogin;
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
             percentageView.title = @"提成测算";
             
             [self.navigationController pushViewController:percentageView animated:YES];
@@ -155,6 +188,12 @@
         case 5:
             modelConfigView = [[HYModelConfigViewController alloc] init];
             modelConfigView.userLogin = self.userLogin;
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
             modelConfigView.title = @"型号设定";
             
             [self.navigationController pushViewController:modelConfigView animated:YES];
@@ -162,6 +201,14 @@
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+- (void) getStoreList:(NSNumber *)user_id
+{
+    NSLog(@"getStoreList user_id %d", [user_id intValue]);
+    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
+    
+    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
 }
 
 
