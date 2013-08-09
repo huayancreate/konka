@@ -221,6 +221,8 @@
             uiCellLabelStoreName.text = [dic objectForKey:@"dept_name"];
             NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
             uiCellLabelNum.text = [numberFormatter stringFromNumber:[dic objectForKey:@"num"]];
+            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            [numberFormatter setGroupingSize:0];
             uiCellLabelPrice.text = [numberFormatter stringFromNumber:[dic objectForKey:@"all_price"]];
             uiCellLabelTime.text = [dic objectForKey:@"sale_date"];
             uiCellLabelModelName.text = [dic objectForKey:@"model_name"];
@@ -231,6 +233,8 @@
             uiCellAllLabelStoreName.text = [dic objectForKey:@"dept_name"];
             NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
             uiCellAllLabelNum.text = [numberFormatter stringFromNumber:[dic objectForKey:@"num"]];
+            [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+            [numberFormatter setGroupingSize:0];
             uiCellAllLabelPrice.text = [numberFormatter stringFromNumber:[dic objectForKey:@"all_price"]];
             uiCellAllLabelTime.text = [dic objectForKey:@"sale_date"];
             uiCellAllLabelModelName.text = [dic objectForKey:@"model_name"];
@@ -310,6 +314,8 @@
 {
     NSNumber *allNum = [[NSNumber alloc] initWithInt:0];
     NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+    [nf setNumberStyle:NSNumberFormatterDecimalStyle];
+    [nf setGroupingSize:0];
     NSDecimalNumber *allPrice = [[NSDecimalNumber alloc] initWithDouble:0];
     for (NSDictionary *dic in json) {
         NSNumber *num = [dic objectForKey:@"num"];
