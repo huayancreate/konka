@@ -294,10 +294,32 @@
     }
 }
 
+
+int _lastPosition = 0;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     //调整顶部滑条按钮状态
-    [self adjustTopScrollViewButton:scrollView];
+    
+    int currentPostion = scrollView.contentOffset.x;
+    if (currentPostion - _lastPosition > 25) {
+        [self adjustTopScrollViewButton:scrollView];
+        _lastPosition = 0;
+        NSLog(@"currentPostion %d", currentPostion);
+        
+        NSLog(@"_lastPosition %d", _lastPosition);
+        NSLog(@"ScrollUp now");
+        //TODO 增加刷新
+    }
+    else if (_lastPosition - currentPostion > 25)
+    {
+        [self adjustTopScrollViewButton:scrollView];
+        _lastPosition = 0;
+        NSLog(@"currentPostion %d", currentPostion);
+        
+        NSLog(@"_lastPosition %d", _lastPosition);
+        NSLog(@"ScrollDown now");
+        //TODO 增加刷新
+    }
     
     CGFloat pagewidth = self.frame.size.width;
     int page = floor((self.contentOffset.x - pagewidth/([viewNameArray count]+2))/pagewidth)+1;

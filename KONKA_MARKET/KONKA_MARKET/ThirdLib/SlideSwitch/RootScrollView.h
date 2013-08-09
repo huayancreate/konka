@@ -35,6 +35,7 @@
 @property (strong, nonatomic) NSMutableArray *summaryList;
 @property (strong, nonatomic) NSMutableArray *linkList;
 @property (strong, nonatomic) UINavigationController *linkNav;
+-(void) loadNewsPlat;
 
 -(void)start;
 -(void)end;

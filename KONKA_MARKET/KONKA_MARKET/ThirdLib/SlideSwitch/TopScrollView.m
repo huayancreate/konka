@@ -20,6 +20,7 @@
 #define CONTENTSIZEX 320
 
 #define BUTTONID (sender.tag-100)
+#define POSITIONID (int)scrollView.contentOffset.x/320
 
 @implementation TopScrollView
 
@@ -110,10 +111,38 @@
             
         } completion:^(BOOL finished) {
             if (finished) {
+                
                 //设置新闻页出现
-                [[RootScrollView shareInstance:self.userlogin.user_name Password:self.userlogin.password Nav:self.linkNav] setContentOffset:CGPointMake(BUTTONID*320, 0) animated:NO];
+                RootScrollView *rootView = [RootScrollView shareInstance:self.userlogin.user_name Password:self.userlogin.password Nav:self.linkNav];
+                [rootView setContentOffset:CGPointMake(BUTTONID*320, 0) animated:NO];
+                //rootView.tittle_id = @"1030";
+                //[rootView loadNewsPlat];
                 //赋值滑动列表选择频道ID
                 scrollViewSelectedChannelID = sender.tag;
+                NSString *title_id;
+                switch (sender.tag) {
+                    case 100:
+                        title_id = nil;
+                        break;
+                    case 101:
+                        title_id = @"1020";
+                        break;
+                    case 102:
+                        title_id = @"1030";
+                        break;
+                    case 103:
+                        title_id = @"1040";
+                        break;
+                    case 104:
+                        title_id = @"1050";
+                        break;
+                    case 105:
+                        title_id = @"1060";
+                }
+                rootView.tittle_id = title_id;
+                [rootView loadNewsPlat];
+
+                //NSLog(@"title_id %@",newString);
             }
         }];
         
@@ -161,6 +190,7 @@
     }];
     
 }
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
