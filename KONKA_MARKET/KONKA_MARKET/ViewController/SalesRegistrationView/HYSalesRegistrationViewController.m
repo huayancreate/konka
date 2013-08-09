@@ -254,7 +254,13 @@
     if (tableView == downTableView){
         NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
         NSLog(@"1111 %@", [dic objectForKey:@"memo"]);
-        self.userLogin.dataSubmit = dic;
+        if ([self.status isEqualToString:@"0"])
+        {
+            self.userLogin.dataSubmit = dic;
+        }else
+        {
+            self.userLogin.allDataSubmit = dic;
+        }
         HYDataSubmitViewController *dataSubmit = [[HYDataSubmitViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
         dataSubmit.title = @"销售登记";

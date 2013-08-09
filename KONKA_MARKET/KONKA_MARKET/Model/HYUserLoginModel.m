@@ -25,5 +25,6 @@
 @synthesize dataSubmit;
 @synthesize percentList;
 @synthesize nameandidList;
+@synthesize allDataSubmit;
 
 @end

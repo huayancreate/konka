@@ -30,4 +30,5 @@
 @property (nonatomic, retain) NSDictionary *dataSubmit;
 @property (nonatomic, retain) NSMutableArray *percentList;
 @property (nonatomic, strong) NSMutableDictionary *nameandidList;
+@property (nonatomic, strong) NSDictionary *allDataSubmit;
 @end

@@ -250,7 +250,6 @@
     
     UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
     [self.mainTableView addGestureRecognizer:singleTap1];
-    
     if (self.userLogin.dataSubmit != nil)
     {
         storeName.enabled = false;
@@ -258,6 +257,7 @@
         saleAllPrice.enabled = false;
         self.selectChoice2.enabled = false;
         self.salesPrice.enabled = false;
+        self.memo.enabled = false;
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setUsesGroupingSeparator:NO];
         storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
@@ -279,6 +279,42 @@
         
         address.text = [self.userLogin.dataSubmit objectForKey:@"addresss"];
         
+        NSLog(@"dataID , %d", [self.dataID intValue]);
+    }
+    
+    if (self.userLogin.allDataSubmit != nil)
+    {
+        NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setUsesGroupingSeparator:NO];
+        storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
+        salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
+        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"all_price"]];
+        NSLog(@"saleAllPrice.text %@",saleAllPrice.text);
+        salesPrice.text = [self calPrice];
+        self.selectChoice2.text = [self.userLogin.dataSubmit objectForKey:@"model_name"];
+        self.dataID = [self.userLogin.dataSubmit objectForKey:@"id"];
+        
+        memo.text = [self.userLogin.dataSubmit objectForKey:@"memo"];
+        
+        mastercode.text = [self.userLogin.dataSubmit objectForKey:@"mastercode"];
+        
+        realName.text = [self.userLogin.dataSubmit objectForKey:@"realname"];
+        
+        phoneNum.text = [self.userLogin.dataSubmit objectForKey:@"phonenum"];
+        
+        address.text = [self.userLogin.dataSubmit objectForKey:@"addresss"];
+        
+        storeName.enabled = false;
+        salesCount.enabled = false;
+        saleAllPrice.enabled = false;
+        self.selectChoice2.enabled = false;
+        self.salesPrice.enabled = false;
+        self.memo.enabled = false;
+        self.mastercode.enabled = false;
+        self.realName.enabled = false;
+        self.phoneNum.enabled = false;
+        self.address.enabled = false;
         NSLog(@"dataID , %d", [self.dataID intValue]);
     }
     
@@ -503,6 +539,10 @@
 
 -(void)storeSelectAction:(UIGestureRecognizer *)gestureRecognizer
 {
+    if (!self.storeName.enabled)
+    {
+        return;
+    }
     if (dropDownTableView != nil)
     {
         [dropDownTableView removeFromSuperview];
@@ -622,9 +662,12 @@
             }
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             
-            self.cellImage.userInteractionEnabled = YES;
-            UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanCamera:)];
-            [self.cellImage addGestureRecognizer:singleTap];
+            if (self.storeName.enabled)
+            {
+                self.cellImage.userInteractionEnabled = YES;
+                UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scanCamera:)];
+                [self.cellImage addGestureRecognizer:singleTap];
+            }
             self.cellLabel1.text = @"扫描";
             return cell;
         }

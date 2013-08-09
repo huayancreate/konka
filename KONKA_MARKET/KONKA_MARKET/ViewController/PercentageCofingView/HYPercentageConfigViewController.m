@@ -59,6 +59,8 @@
     // Do any additional setup after loading the view from its nib.
     percentFlag = true;
     
+    self.uiPercentTextField.delegate = self;
+    
     NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     // 自动补全
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
@@ -68,7 +70,6 @@
     
     UIView *tempView = [[UIView alloc] init];
     [mainTableView setBackgroundView:tempView];
-    
     
     [self.uiFixed setBackgroundColor:[UIColor blueColor]];
     [self.uiPercent setBackgroundColor:[UIColor clearColor]];
@@ -81,8 +82,10 @@
     
     
     [self.uiModelTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
-    [self.uiPercentTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+//    [self.uiPercentTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
+    [self.uiPercentTextField addTarget:self action:@selector(changeTextValue) forControlEvents:UIControlEventEditingChanged];
     self.uiPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    
     
     self.percentString = @"固定提成";
     
@@ -98,6 +101,9 @@
     UITapGestureRecognizer *gesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
     [self.mainTableView addGestureRecognizer:gesture2];
     
+}
+-(void)changeTextValue
+{
 }
 
 -(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
@@ -364,7 +370,6 @@
         {
             return NO;
         }
-        
     }
     
     return YES;
