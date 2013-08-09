@@ -13,6 +13,7 @@
 #import "HYNewsPlatFormViewController.h"
 #import "HYOARetailViewController.h"
 #import "SDImageView+SDWebCache.h"
+#import "HYWebBaseViewController.h"
 
 @interface HYHomeViewController ()
 {
@@ -25,6 +26,7 @@
 @synthesize uiAdvLogoScrollView;
 @synthesize slideImages;
 @synthesize pageControl;
+@synthesize linkList;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +41,7 @@
 {
     [super viewDidLoad];
     decoder = [[JSONDecoder alloc] init];
+    linkList = [[NSMutableArray alloc] init];
     // Do any additional setup after loading the view from its nib.
     // 初始化广告滚屏
     // 定时器 循环
@@ -93,6 +96,9 @@
         UIImageView *imageView = [[UIImageView alloc] init];
         imageView.frame = CGRectMake((320 * i)+320, 0, 320, 115);
         NSURL *url = [[NSURL alloc] initWithString:[slideImages objectAtIndex:i]];
+        imageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *jump = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleJump:)];
+        [imageView addGestureRecognizer:jump];
         [imageView setImageWithURL:url];
         [uiAdvLogoScrollView addSubview:imageView]; // 首页是第0页,默认从第1页开始的。所以+320。。。
     }
@@ -119,10 +125,18 @@
 
 }
 
+-(void)handleJump:(UIGestureRecognizer *)gestureRecognizer
+{
+    HYWebBaseViewController *webView = [[HYWebBaseViewController alloc] init];
+    webView.link_url = [self.linkList objectAtIndex:pageControl.currentPage];
+    webView.userLogin = self.userLogin;
+    webView.title = @"资讯展示";
+    [self.navigationController pushViewController:webView animated:YES];
+}
+
 // scrollview 委托函数
 - (void)scrollViewDidScroll:(UIScrollView *)sender
 {
-    NSLog(@"scrollViewDidScroll");
     CGFloat pagewidth = uiAdvLogoScrollView.frame.size.width;
     int page = floor((uiAdvLogoScrollView.contentOffset.x - pagewidth/([slideImages count]+2))/pagewidth)+1;
     pageControl.currentPage = page;
@@ -132,7 +146,6 @@
 // scrollview 委托函数
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollViewDidEndDecelerating");
     CGFloat pagewidth = uiAdvLogoScrollView.frame.size.width;
     int currentPage = floor((uiAdvLogoScrollView.contentOffset.x - pagewidth/ ([slideImages count]+2)) / pagewidth) + 1;
     //    int currentPage_ = (int)self.scrollView.contentOffset.x/320; // 和上面两行效果一样
@@ -151,15 +164,17 @@
 {
     int page = pageControl.currentPage; // 获取当前的page
     [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320*(page+1),0,320,460) animated:YES]; // 触摸pagecontroller那个点点 往后翻一页 +1
+    pageControl.currentPage = page + 1;
 }
 // 定时器 绑定的方法
 - (void)runTimePage
 {
+    
+    NSLog(@"pageControl.currentPage %d",pageControl.currentPage);
     int page = pageControl.currentPage; // 获取当前的page
-    NSLog(@"slideImages count %d",page);
     page++;
     NSLog(@"slideImages count %d",page);
-    page = page > [slideImages count] + 1 ? 0 : page ;
+    page = page > [slideImages count] - 1? 0 : page ;
     pageControl.currentPage = page;
     [self turnPage];
 }
@@ -245,6 +260,8 @@
         imgPath = [dictionary objectForKey:@"image_path"];
         NSLog(@"imgPath %@",imgPath);
         [slideImages addObject:imgPath];
+        NSLog(@"linkList %@",[dictionary objectForKey:@"image_url"]);
+        [self.linkList addObject:[dictionary objectForKey:@"image_url"]];
     }
     [self insertImageToHeader];
 }

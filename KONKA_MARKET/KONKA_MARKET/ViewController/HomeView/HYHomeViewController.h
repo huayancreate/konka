@@ -17,6 +17,7 @@
 @property (strong, nonatomic) IBOutlet UIScrollView *uiAdvLogoScrollView;
 @property (strong,nonatomic)NSMutableArray *slideImages;
 @property (strong,nonatomic)UIPageControl *pageControl;
+@property (strong, nonatomic) NSMutableArray *linkList;
 
 -(IBAction)oaAction:(id)sender;
 -(IBAction)newsAction:(id)sender;
