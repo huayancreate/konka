@@ -279,9 +279,11 @@
     return [self.tittleList count];
 }
 
+int _currentPage = 0;
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     userContentOffsetX = scrollView.contentOffset.x;
+    _currentPage = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -298,27 +300,12 @@
 int _lastPosition = 0;
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    //调整顶部滑条按钮状态
-    
+    int indexPage = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
+    NSLog(@"indexPage %d",indexPage);
     int currentPostion = scrollView.contentOffset.x;
-    if (currentPostion - _lastPosition > 25) {
-        [self adjustTopScrollViewButton:scrollView];
-        _lastPosition = 0;
-        NSLog(@"currentPostion %d", currentPostion);
-        
-        NSLog(@"_lastPosition %d", _lastPosition);
-        NSLog(@"ScrollUp now");
-        //TODO 增加刷新
-    }
-    else if (_lastPosition - currentPostion > 25)
-    {
-        [self adjustTopScrollViewButton:scrollView];
-        _lastPosition = 0;
-        NSLog(@"currentPostion %d", currentPostion);
-        
-        NSLog(@"_lastPosition %d", _lastPosition);
-        NSLog(@"ScrollDown now");
-        //TODO 增加刷新
+    //调整顶部滑条按钮状态
+    if(_currentPage != indexPage){
+         [self adjustTopScrollViewButton:scrollView];        
     }
     
     CGFloat pagewidth = self.frame.size.width;
