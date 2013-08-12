@@ -117,6 +117,8 @@
     NSLog(@"%f,%f" ,lattitude,longitude);
     NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"SaveGPSInfo",@"method",[NSString stringWithFormat:@"%f", lattitude],@"X",[NSString stringWithFormat:@"%f", longitude],@"Y",nil];
     
+    [HYAppUtily stringOutputForDictionary:params];
+    
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:DataGPSUpdateApi]];
     
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
