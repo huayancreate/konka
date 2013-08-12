@@ -286,24 +286,24 @@
     {
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setUsesGroupingSeparator:NO];
-        storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
-        salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
+        storeName.text = [self.userLogin.allDataSubmit objectForKey:@"dept_name"];
+        salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.allDataSubmit objectForKey:@"num"]];
         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"all_price"]];
+        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.allDataSubmit objectForKey:@"all_price"]];
         NSLog(@"saleAllPrice.text %@",saleAllPrice.text);
         salesPrice.text = [self calPrice];
-        self.selectChoice2.text = [self.userLogin.dataSubmit objectForKey:@"model_name"];
-        self.dataID = [self.userLogin.dataSubmit objectForKey:@"id"];
+        self.selectChoice2.text = [self.userLogin.allDataSubmit objectForKey:@"model_name"];
+        self.dataID = [self.userLogin.allDataSubmit objectForKey:@"id"];
         
-        memo.text = [self.userLogin.dataSubmit objectForKey:@"memo"];
+        memo.text = [self.userLogin.allDataSubmit objectForKey:@"memo"];
         
-        mastercode.text = [self.userLogin.dataSubmit objectForKey:@"mastercode"];
+        mastercode.text = [self.userLogin.allDataSubmit objectForKey:@"mastercode"];
         
-        realName.text = [self.userLogin.dataSubmit objectForKey:@"realname"];
+        realName.text = [self.userLogin.allDataSubmit objectForKey:@"realname"];
         
-        phoneNum.text = [self.userLogin.dataSubmit objectForKey:@"phonenum"];
+        phoneNum.text = [self.userLogin.allDataSubmit objectForKey:@"phonenum"];
         
-        address.text = [self.userLogin.dataSubmit objectForKey:@"addresss"];
+        address.text = [self.userLogin.allDataSubmit objectForKey:@"addresss"];
         
         storeName.enabled = false;
         salesCount.enabled = false;
