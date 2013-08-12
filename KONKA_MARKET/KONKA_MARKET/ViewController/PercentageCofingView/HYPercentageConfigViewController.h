@@ -38,4 +38,6 @@
 
 @property (strong, nonatomic) NSString *percentString;
 
+
+
 @end

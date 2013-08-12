@@ -11,6 +11,8 @@
 #import "HYPercentageConfigViewController.h"
 #import "HYPasswordConfigViewController.h"
 #import "HYAboutViewController.h"
+#import "WZGuideViewController.h"
+#import "HYLoginViewController.h"
 
 @interface HYSystemConfigViewController ()
 
@@ -116,6 +118,22 @@
                     break;
             }
             break;
+        case 3:
+            switch (indexPath.row) {
+                case 0:
+                    image = nil;
+                    cell.imageView.image = image;
+                    break;
+                case 1:
+                    image = nil;
+                    cell.imageView.image = image;
+                    break;
+                case 2:
+                    image = nil;
+                    cell.imageView.image = image;
+                    break;
+            }
+            break;
     }
     
     return  cell;
@@ -153,10 +171,25 @@
         aboutView.title = @"关于";
         [self.navigationController pushViewController:aboutView animated:YES];
     }
-
+    
+    if([cell.textLabel.text isEqualToString:@"退出"]){
+        exit(0);
+    }
+    
+    if([cell.textLabel.text isEqualToString:@"重新登录"]){
+        HYLoginViewController *loginView = [[HYLoginViewController alloc] init];
+        [self.navigationController pushViewController:loginView animated:YES];
+    }
+    
+    if([cell.textLabel.text isEqualToString:@"新手上路"]){
+        [WZGuideViewController show];
+    }
+    
     if([cell.textLabel.text isEqualToString:@"新版本检测"]){
         [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3];
     }
+    
+    
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

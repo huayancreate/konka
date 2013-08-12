@@ -256,9 +256,11 @@
         NSLog(@"1111 %@", [dic objectForKey:@"memo"]);
         if ([self.status isEqualToString:@"0"])
         {
+            self.userLogin.allDataSubmit = nil;
             self.userLogin.dataSubmit = dic;
         }else
         {
+            self.userLogin.dataSubmit = nil;
             self.userLogin.allDataSubmit = dic;
         }
         HYDataSubmitViewController *dataSubmit = [[HYDataSubmitViewController alloc]init];

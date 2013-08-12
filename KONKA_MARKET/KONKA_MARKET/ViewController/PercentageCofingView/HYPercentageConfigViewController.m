@@ -12,6 +12,8 @@
 @interface HYPercentageConfigViewController ()
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic) Boolean percentFlag;
+@property (nonatomic, strong) UIImage *unsetImg;
+@property (nonatomic, strong) UIImage *setImg;
 
 @end
 
@@ -28,6 +30,7 @@
 @synthesize uibgLabel;
 @synthesize uibgLabel1;
 @synthesize uiPercentTextField;
+
 
 
 - (AutocompletionTableView *)autoCompleter
@@ -75,7 +78,15 @@
     [self.uiPercent setBackgroundColor:[UIColor clearColor]];
     
     [self.uiFixed.titleLabel setTextColor:[UIColor blackColor]];
+    
     [self.uiPercent.titleLabel setTextColor:[UIColor blackColor]];
+    
+    
+    self.setImg=[UIImage imageNamed:@"model_set.png"];
+    self.unsetImg=[UIImage imageNamed:@"model_unset.png"];
+    
+    [self.uiFixed setBackgroundImage:self.setImg forState:UIControlStateNormal];
+    [self.uiPercent setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
     
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
@@ -175,6 +186,9 @@
     self.percentString = @"固定提成";
     [self.uiFixed.titleLabel setTextColor:[UIColor blackColor]];
     [self.uiPercent.titleLabel setTextColor:[UIColor blackColor]];
+    
+    [self.uiFixed setBackgroundImage:self.setImg forState:UIControlStateNormal];
+    [self.uiPercent setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
 
 }
 
@@ -186,6 +200,9 @@
      self.percentString = @"按比例提成";
     [self.uiFixed.titleLabel setTextColor:[UIColor blackColor]];
     [self.uiPercent.titleLabel setTextColor:[UIColor blackColor]];
+    
+    [self.uiFixed setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
+    [self.uiPercent setBackgroundImage:self.setImg forState:UIControlStateNormal];
     
 }
 

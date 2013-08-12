@@ -8,6 +8,7 @@
 
 #import "HYAppDelegate.h"
 #import "HYLoginViewController.h"
+#import "WZGuideViewController.h"
 
 @implementation HYAppDelegate
 
@@ -21,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [NSThread sleepForTimeInterval:7];
+    [NSThread sleepForTimeInterval:1];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -32,14 +33,26 @@
     
     // Override point for customization after application launch.
 
-    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
+    //HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
     
 //    HYScrollPageViewController *scrollView = [[HYScrollPageViewController alloc]initWithNibName:@"HYScrollPageViewController" bundle:nil];
     
+    //self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
+    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
     self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
-    self.window.rootViewController = self.navController;
 
     self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.navController;
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        [WZGuideViewController show];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    }
+    
     return YES;
 }
 

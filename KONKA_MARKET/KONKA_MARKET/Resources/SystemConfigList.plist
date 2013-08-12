@@ -2,19 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key> </key>
+	<key>item2</key>
 	<array>
-		<string>账号管理</string>
+		<string>新版本检测</string>
+		<string>关于</string>
 	</array>
-	<key>  </key>
+	<key>item3</key>
+	<array>
+		<string>退出</string>
+		<string>重新登录</string>
+		<string>新手上路</string>
+	</array>
+	<key>item1</key>
 	<array>
 		<string>型号设定</string>
 		<string>产品销售提成设定</string>
 	</array>
-	<key>   </key>
+	<key>item0</key>
 	<array>
-		<string>新版本检测</string>
-		<string>关于</string>
+		<string>账号管理</string>
 	</array>
 </dict>
 </plist>
