@@ -239,8 +239,7 @@
     
     if (tableView == topTableView)
     {
-        static NSString *CustomCellIdentifier =@"CellIdentifier";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+        UITableViewCell *cell = nil;
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         
@@ -255,8 +254,7 @@
     if(tableView == downLoadTabelView)
     {
         NSLog(@"downLoadTabelView %d", [self.userLogin.peList count]);
-        static NSString *CustomCellIdentifier =@"PercentCellIdentifier";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+        UITableViewCell *cell = nil;
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYPercentageCompetitionTabelViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;

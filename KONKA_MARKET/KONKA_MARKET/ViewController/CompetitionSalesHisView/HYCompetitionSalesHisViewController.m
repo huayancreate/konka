@@ -153,8 +153,7 @@
     
     if (tableView == downTableView) {
         static NSString *SectionTableMyTag=@"CellCompetitionSalesHisIdentifier";
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        UITableViewCell *cell = nil;
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCompetitionSalesHisTableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.userInteractionEnabled = NO; 
