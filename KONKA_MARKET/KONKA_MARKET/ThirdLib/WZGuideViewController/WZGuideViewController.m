@@ -7,6 +7,7 @@
 //
 
 #import "WZGuideViewController.h"
+#import "HYLoginViewController.h"
 
 @interface WZGuideViewController ()
 @property (nonatomic) NSArray *imageNameArray;
@@ -158,18 +159,25 @@
 - (void)pressEnterButton:(UIButton *)enterButton
 {
     [[WZGuideViewController sharedGuide] hideGuide];
-//    [self hideGuide];
-//    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-//    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+
+- (void)nextPressButton:(UIButton *)nextEnterButton
+{
+    CGFloat pagewidth = self.pageScroll.frame.size.width;
+    int page = floor((self.pageScroll.contentOffset.x - pagewidth/([imageNameArray count]+2))/pagewidth)+1;
+    [_pageScroll scrollRectToVisible:CGRectMake(320 * page + 320 ,0,320,460) animated:NO];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    
     self.imageNameArray = [NSArray arrayWithObjects:@"sys_nav_01.jpg", @"sys_nav_02.jpg", @"sys_nav_03.jpg", @"sys_nav_04.jpg", @"sys_nav_05.jpg",@"sys_nav_06.jpg",@"sys_nav_07.jpg",@"sys_nav_08.jpg",@"sys_nav_09.jpg",@"sys_nav_10.jpg",nil];
     
     _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    _pageScroll.showsHorizontalScrollIndicator = NO;
     self.pageScroll.pagingEnabled = YES;
     self.pageScroll.contentSize = CGSizeMake(self.view.frame.size.width * imageNameArray.count, self.view.frame.size.height);
     [self.view addSubview:self.pageScroll];
@@ -193,15 +201,30 @@
 //            [checkButton setSelected:YES];
 //            [view addSubview:checkButton];
             
-            UIButton *enterButton = [[UIButton alloc] initWithFrame:CGRectMake(0.f, 0.f, 175.f, 35.f)];
+            UIButton *enterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 35)];
             [enterButton setTitle:@"开始使用" forState:UIControlStateNormal];
             [enterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [enterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-            [enterButton setCenter:CGPointMake(self.view.center.x, 459.f)];
-            [enterButton setBackgroundImage:[UIImage imageNamed:@"btn_nor"] forState:UIControlStateNormal];
-            [enterButton setBackgroundImage:[UIImage imageNamed:@"btn_press"] forState:UIControlStateHighlighted];
+            [enterButton setCenter:CGPointMake(self.view.center.x, 465)];
+            
+            [enterButton setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
+            
+            //[enterButton setBackgroundImage:[UIImage imageNamed:@"btn_nor"] forState:UIControlStateNormal];
+            //[enterButton setBackgroundImage:[UIImage imageNamed:@"btn_press"] forState:UIControlStateHighlighted];
             [enterButton addTarget:self action:@selector(pressEnterButton:) forControlEvents:UIControlEventTouchUpInside];
             [view addSubview:enterButton];
+        }else{
+            UIButton *nextEnterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 320, 35)];
+            [nextEnterButton setTitle:@"下一步" forState:UIControlStateNormal];
+            [nextEnterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [nextEnterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+            [nextEnterButton setCenter:CGPointMake(self.view.center.x, 465)];
+            
+            [nextEnterButton setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
+            
+            [nextEnterButton addTarget:self action:@selector(nextPressButton:) forControlEvents:UIControlEventTouchUpInside];
+            [view addSubview:nextEnterButton];
+
         }
     }
 }

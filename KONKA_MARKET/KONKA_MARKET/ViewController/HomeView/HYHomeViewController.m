@@ -218,7 +218,7 @@
 {
     HYOARetailViewController  *oaRetailView = [[HYOARetailViewController alloc] init];
     oaRetailView.userLogin = self.userLogin;
-    oaRetailView.title = @"协同办公";
+    oaRetailView.title = @"行政办公";
     
     [self.navigationController pushViewController:oaRetailView animated:YES];
 }

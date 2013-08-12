@@ -15,9 +15,13 @@
     UIScrollView *_pageScroll;
 }
 
+@property (strong, nonatomic) UIWindow *window;
+
 @property (nonatomic, assign) BOOL animating;
 
 @property (nonatomic, strong) UIScrollView *pageScroll;
+
+@property (nonatomic,strong) UINavigationController *navController;
 
 + (WZGuideViewController *)sharedGuide;
 
