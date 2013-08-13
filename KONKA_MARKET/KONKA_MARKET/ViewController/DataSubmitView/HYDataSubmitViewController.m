@@ -191,7 +191,6 @@
     self.address = [[UITextField alloc] initWithFrame:textFieldRect];
     
     self.mastercode = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.mastercode.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
     
     self.salesCount = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     self.salesPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];

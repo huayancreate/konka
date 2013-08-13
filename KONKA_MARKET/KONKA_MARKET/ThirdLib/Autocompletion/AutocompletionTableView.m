@@ -60,6 +60,8 @@
     NSMutableArray *tmpArray = [NSMutableArray array];
     NSRange range;
     
+    subString = [subString uppercaseString];
+    NSLog(@"value %@", subString);
     if (_autoCompleteDelegate && [_autoCompleteDelegate respondsToSelector:@selector(autoCompletion:suggestionsFor:)]) {
         self.suggestionsDictionary = [_autoCompleteDelegate autoCompletion:self suggestionsFor:subString];
     }

@@ -91,7 +91,6 @@
     self.mainTableView.dataSource = self;
     self.mainTableView.delegate = self;
     
-    self.uiModelTextField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
     [self.uiModelTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
 //    [self.uiPercentTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.uiPercentTextField addTarget:self action:@selector(changeTextValue) forControlEvents:UIControlEventEditingChanged];

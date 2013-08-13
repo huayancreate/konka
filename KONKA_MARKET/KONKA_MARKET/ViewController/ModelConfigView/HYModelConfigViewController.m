@@ -103,8 +103,6 @@
     
     [self.searchTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    self.searchTextField.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
-    
     self.setImg=[UIImage imageNamed:@"model_set.png"];
     self.unsetImg=[UIImage imageNamed:@"model_unset.png"];
     
