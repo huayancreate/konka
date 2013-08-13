@@ -189,10 +189,15 @@
     self.realName = [[UITextField alloc] initWithFrame:textFieldRect];
     self.phoneNum = [[UITextField alloc] initWithFrame:textFieldRect];
     self.address = [[UITextField alloc] initWithFrame:textFieldRect];
+    
     self.mastercode = [[UITextField alloc] initWithFrame:textFieldRect];
+    self.mastercode.autocapitalizationType = UITextAutocapitalizationTypeAllCharacters;
+    
     self.salesCount = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     self.salesPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    self.salesPrice.clearsOnBeginEditing = YES;
     self.saleAllPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    self.saleAllPrice.clearsOnBeginEditing = YES;
     
     self.salesPrice.delegate = self;
     self.saleAllPrice.delegate = self;

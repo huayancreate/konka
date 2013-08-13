@@ -135,6 +135,8 @@
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
     
+    self.saleAllPrice.clearsOnBeginEditing = YES;
+    
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
     
