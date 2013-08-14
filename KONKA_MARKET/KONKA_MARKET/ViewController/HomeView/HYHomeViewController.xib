@@ -45,7 +45,7 @@
 						<string key="NSFrame">{{0, 152}, {320, 308}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="304952858"/>
+						<reference key="NSNextKeyView" ref="972977203"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -148,7 +148,7 @@
 						<string key="NSFrame">{{234, 173}, {40, 40}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="972977203"/>
+						<reference key="NSNextKeyView" ref="551557493"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -560,7 +560,7 @@
 						<string key="NSFrameSize">{320, 150}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="551557493"/>
+						<reference key="NSNextKeyView" ref="304952858"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
@@ -2513,11 +2513,6 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">165</int>
-						<reference key="object" ref="613055124"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
 						<int key="objectID">972</int>
 						<reference key="object" ref="408276278"/>
 						<reference key="parent" ref="890193161"/>
@@ -2585,11 +2580,6 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">1930</int>
 						<reference key="object" ref="387916015"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">1933</int>
-						<reference key="object" ref="568738885"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -2715,6 +2705,16 @@
 					<object class="IBObjectRecord">
 						<int key="objectID">2044</int>
 						<reference key="object" ref="230850874"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">165</int>
+						<reference key="object" ref="613055124"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1933</int>
+						<reference key="object" ref="568738885"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -2982,7 +2982,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">2044</int>
+			<int key="maxID">2068</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

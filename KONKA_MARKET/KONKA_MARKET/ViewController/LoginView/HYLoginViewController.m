@@ -35,8 +35,8 @@
         // Custom initialization
         
         imgArray = [[NSMutableArray alloc] initWithObjects:
-                    [UIImage imageNamed:@"remember1@x2.png"],
-                    [UIImage imageNamed:@"remember2@x2.png"],nil];
+                    [UIImage imageNamed:@"rememberset"],
+                    [UIImage imageNamed:@"rememberunset"],nil];
     }
     return self;
 }
@@ -63,11 +63,11 @@
     
     self.uiPassword.secureTextEntry = YES;
     
-    UIImageView *imgvpass=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"passwordimg"]];
+    UIImageView *imgvpass=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"password"]];
     self.uiPassword.leftView = imgvpass;
     self.uiPassword.rightViewMode = UITextFieldViewModeAlways;
     
-    UIImageView *imguser=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"userimg"]];
+    UIImageView *imguser=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"username"]];
     self.uiPassword.leftView = imguser;
     self.uiPassword.rightViewMode = UITextFieldViewModeAlways;
     
@@ -83,6 +83,8 @@
     UITapGestureRecognizer *help = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleHelp:)];
     [self.uiHelperLabel addGestureRecognizer:help];
     
+    //UIImage *loginBtnView = [UIImage imageNamed:@"loginbtn"];
+    //self.loginBtn.imageView.image = loginBtnView;
     
     //TODO 读取最后一个用户名
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
