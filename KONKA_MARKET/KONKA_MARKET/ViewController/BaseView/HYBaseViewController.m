@@ -50,7 +50,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.kkM = [[KonkaManager alloc] init];
-    UIImage *backButtonImage = [UIImage imageNamed:@"back_white.png"];
+    UIImage *backButtonImage = [UIImage imageNamed:@"back"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
@@ -61,7 +61,7 @@
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     self.navigationItem.leftBarButtonItem  = leftButton;
 
-    UIImage *formulaImage = [UIImage imageNamed:@"head_bg.png"];
+    UIImage *formulaImage = [UIImage imageNamed:@"headbg@2x.png"];
     
     [self.navigationController.navigationBar setBackgroundImage:formulaImage forBarMetrics:UIBarMetricsDefault];
     

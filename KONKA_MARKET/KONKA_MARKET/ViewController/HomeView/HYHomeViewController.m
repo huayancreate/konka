@@ -66,7 +66,7 @@
     [self insertImageToHeader];
     
     //其他初始化
-    UIImage *setConfigImage = [UIImage imageNamed:@"btn_set_white.png"];
+    UIImage *setConfigImage = [UIImage imageNamed:@"headset"];
     CGRect frameimg = CGRectMake(0, 20, 30, 30);
     UIButton *configButton = [[UIButton alloc] initWithFrame:frameimg];
     [configButton setBackgroundImage:setConfigImage forState:UIControlStateNormal];
