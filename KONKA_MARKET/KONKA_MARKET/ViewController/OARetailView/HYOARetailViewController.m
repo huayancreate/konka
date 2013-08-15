@@ -8,6 +8,8 @@
 
 #import "HYOARetailViewController.h"
 #import "HYOAViewController.h"
+#import "HYOAApprovalListViewController.h"
+#import "HYOAIssuedListViewController.h"
 
 @interface HYOARetailViewController ()
 
@@ -89,6 +91,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     HYOAViewController *oaSubmit = nil;
+    HYOAApprovalListViewController *oaListSubmit = nil;
+    HYOAIssuedListViewController *issuedSubmit = nil;
     switch (indexPath.row) {
         case 0:
             oaSubmit = [[HYOAViewController alloc]init];
@@ -98,19 +102,19 @@
             [self.navigationController pushViewController:oaSubmit animated:YES];
             break;
         case 1:
-//            salesSubmit = [[HYSalesRegistrationViewController alloc] init];
-//            salesSubmit.userLogin = self.userLogin;
-//            salesSubmit.title = @"已审文件查询";
-//            
-//            [self.navigationController pushViewController:salesSubmit animated:YES];
+            oaListSubmit = [[HYOAApprovalListViewController alloc] init];
+            oaListSubmit.userLogin = self.userLogin;
+            oaListSubmit.title = @"已审文件查询";
+            
+            [self.navigationController pushViewController:oaListSubmit animated:YES];
             
             break;
         case 2:
-//            csalesView = [[HYCompetitionSalesViewController alloc] init];
-//            csalesView.userLogin = self.userLogin;
-//            csalesView.title = @"下发文件查询";
-//            
-//            [self.navigationController pushViewController:csalesView animated:YES];
+            issuedSubmit = [[HYOAIssuedListViewController alloc] init];
+            issuedSubmit.userLogin = self.userLogin;
+            issuedSubmit.title = @"下发文件查询";
+            
+            [self.navigationController pushViewController:issuedSubmit animated:YES];
             break;
             }
     

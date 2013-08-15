@@ -1,21 +1,21 @@
 //
-//  HYOAViewController.m
+//  HYOAApprovalListViewController.m
 //  KONKA_MARKET
 //
-//  Created by andychen on 13-8-7.
+//  Created by archon on 13-8-15.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
-#import "HYOAViewController.h"
+#import "HYOAApprovalListViewController.h"
 
-@interface HYOAViewController ()
+@interface HYOAApprovalListViewController ()
 {
     NSMutableURLRequest *request;
 }
 
 @end
 
-@implementation HYOAViewController
+@implementation HYOAApprovalListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    //webview 和 webview 的 scrollView 的委托都设置为self
+    // Do any additional setup after loading the view from its nib.
     self.uiWebView.delegate = self;
     self.uiWebView.scrollView.delegate = self;
     
@@ -41,10 +41,12 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OaAPi]];
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OASearchApi]];
     request = [[NSMutableURLRequest alloc] initWithURL:url];
     [request setHTTPMethod:@"POST"];
     NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
+    postString = [postString stringByAppendingString:@"&method"];
+    postString = [postString stringByAppendingString:@"list1"];
     postString = [postString stringByAppendingString:@"&userpass="];
     postString = [postString stringByAppendingString:self.userLogin.password];
     postString = [postString stringByAppendingString:@"&user_id="];
@@ -56,11 +58,13 @@
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     [self loadPage];
     [SVProgressHUD dismiss];
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 //加载网页

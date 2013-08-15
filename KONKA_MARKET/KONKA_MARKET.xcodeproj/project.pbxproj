@@ -160,6 +160,10 @@
 		2834BDA017A61FD300B4F025 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9D17A61FD300B4F025 /* setting.png */; };
 		2834BDA117A61FD300B4F025 /* switchuser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9E17A61FD300B4F025 /* switchuser.png */; };
 		2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BDA217A6217400B4F025 /* menu_refresh.png */; };
+		28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28352CE617BC6E1E007215F9 /* HYOAApprovalListViewController.m */; };
+		28352CE917BC6E1E007215F9 /* HYOAApprovalListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28352CE717BC6E1E007215F9 /* HYOAApprovalListViewController.xib */; };
+		28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28352CEC17BC71A4007215F9 /* HYOAIssuedListViewController.m */; };
+		28352CEF17BC71A4007215F9 /* HYOAIssuedListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28352CED17BC71A4007215F9 /* HYOAIssuedListViewController.xib */; };
 		2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */; };
 		283AF85517A51828005E08D4 /* UIKeyboardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85217A51828005E08D4 /* UIKeyboardView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		283AF85617A51828005E08D4 /* UIKeyboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 283AF85417A51828005E08D4 /* UIKeyboardViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -518,6 +522,12 @@
 		2834BD9D17A61FD300B4F025 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
 		2834BD9E17A61FD300B4F025 /* switchuser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchuser.png; sourceTree = "<group>"; };
 		2834BDA217A6217400B4F025 /* menu_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_refresh.png; sourceTree = "<group>"; };
+		28352CE517BC6E1E007215F9 /* HYOAApprovalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAApprovalListViewController.h; sourceTree = "<group>"; };
+		28352CE617BC6E1E007215F9 /* HYOAApprovalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAApprovalListViewController.m; sourceTree = "<group>"; };
+		28352CE717BC6E1E007215F9 /* HYOAApprovalListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAApprovalListViewController.xib; sourceTree = "<group>"; };
+		28352CEB17BC71A4007215F9 /* HYOAIssuedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAIssuedListViewController.h; sourceTree = "<group>"; };
+		28352CEC17BC71A4007215F9 /* HYOAIssuedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAIssuedListViewController.m; sourceTree = "<group>"; };
+		28352CED17BC71A4007215F9 /* HYOAIssuedListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAIssuedListViewController.xib; sourceTree = "<group>"; };
 		2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		283AF85117A51828005E08D4 /* UIKeyboardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIKeyboardView.h; sourceTree = "<group>"; };
 		283AF85217A51828005E08D4 /* UIKeyboardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIKeyboardView.m; sourceTree = "<group>"; };
@@ -1338,6 +1348,26 @@
 			path = systemconfig;
 			sourceTree = "<group>";
 		};
+		28352CE417BC6E14007215F9 /* OAApprovalListView */ = {
+			isa = PBXGroup;
+			children = (
+				28352CE517BC6E1E007215F9 /* HYOAApprovalListViewController.h */,
+				28352CE617BC6E1E007215F9 /* HYOAApprovalListViewController.m */,
+				28352CE717BC6E1E007215F9 /* HYOAApprovalListViewController.xib */,
+			);
+			path = OAApprovalListView;
+			sourceTree = "<group>";
+		};
+		28352CEA17BC718D007215F9 /* OAIssuedListView */ = {
+			isa = PBXGroup;
+			children = (
+				28352CEB17BC71A4007215F9 /* HYOAIssuedListViewController.h */,
+				28352CEC17BC71A4007215F9 /* HYOAIssuedListViewController.m */,
+				28352CED17BC71A4007215F9 /* HYOAIssuedListViewController.xib */,
+			);
+			path = OAIssuedListView;
+			sourceTree = "<group>";
+		};
 		283AF85017A51828005E08D4 /* UIKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,6 +1774,8 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				28352CEA17BC718D007215F9 /* OAIssuedListView */,
+				28352CE417BC6E14007215F9 /* OAApprovalListView */,
 				189F0C2617B23E2C00C8B394 /* OARetailView */,
 				189F0C0D17B2221E00C8B394 /* NewsPlatFormView */,
 				189F0BFD17B21CD000C8B394 /* OAView */,
@@ -2241,6 +2273,8 @@
 				28DA279217BB63D200DDA062 /* 返回.png in Resources */,
 				28DA279417BB648C00DDA062 /* newsbtnbg.png in Resources */,
 				28DA279617BB6B7900DDA062 /* homebg@2x.png in Resources */,
+				28352CE917BC6E1E007215F9 /* HYOAApprovalListViewController.xib in Resources */,
+				28352CEF17BC71A4007215F9 /* HYOAIssuedListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2335,6 +2369,8 @@
 				189F0C2A17B23E4900C8B394 /* HYOARetailViewController.m in Sources */,
 				1830B1BE17B33A5000920F8E /* WZGuideViewController.m in Sources */,
 				282B2E3117B3EB37007CD13F /* HYWebBaseViewController.m in Sources */,
+				28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */,
+				28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

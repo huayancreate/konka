@@ -28,6 +28,8 @@
 
 #define OaAPi @"/OaFiles.do"
 
+#define OASearchApi @"/OaFileSearch.do"
+
 #define ArticleInfoInterfaceApi @"/webservice/KonkaPeArticleInfoInterface.do"
 
 #define HomeImageApi @"/webservice/KonkaArticleImgInterface.do"

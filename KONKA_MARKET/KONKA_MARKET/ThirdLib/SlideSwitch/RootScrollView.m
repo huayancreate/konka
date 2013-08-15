@@ -118,6 +118,7 @@
     JSONDecoder *decoder = [[JSONDecoder alloc] init];
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *json = [decoder objectWithData:data];
+    NSLog(@"json count %d",json.count);
     if ( [json count] == 0)
     {
         return;
