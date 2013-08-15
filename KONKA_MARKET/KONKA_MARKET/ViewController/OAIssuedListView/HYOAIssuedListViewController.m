@@ -69,6 +69,7 @@
 
 //加载网页
 - (void)loadPage {
+    NSLog(@"request %@", [request valueForHTTPHeaderField:@"forward"]);
     [self.uiWebView loadRequest:request];
 }
 
@@ -122,14 +123,7 @@
 	return [NSDate date]; // should return date data source was last changed
 }
 
-#pragma mark -
-#pragma mark webview Methods
 
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType
-{
-    request = (NSMutableURLRequest *)_request;
-    return YES;
-}
 
 
 @end
