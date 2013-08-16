@@ -20,5 +20,6 @@
 @property (strong, nonatomic) NSMutableArray *linkList;
 
 -(IBAction)oaAction:(id)sender;
+-(IBAction)customAction:(id)sender;
 -(IBAction)newsAction:(id)sender;
 @end

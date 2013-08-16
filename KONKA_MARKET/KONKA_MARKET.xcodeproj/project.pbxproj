@@ -79,6 +79,12 @@
 		18B5A1A017BA34390022613F /* username@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A18E17BA34390022613F /* username@2x.png */; };
 		18B5A1A317BA37E40022613F /* loginbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A1A117BA37E10022613F /* loginbtn.png */; };
 		18B5A1A417BA37E40022613F /* username.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A1A217BA37E20022613F /* username.png */; };
+		18BB2C9817BDBD460096ADBB /* HYCustomManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB2C9617BDBD460096ADBB /* HYCustomManageViewController.m */; };
+		18BB2C9917BDBD460096ADBB /* HYCustomManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2C9717BDBD460096ADBB /* HYCustomManageViewController.xib */; };
+		18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB2C9C17BDBF820096ADBB /* HYCustomRetailViewController.m */; };
+		18BB2C9F17BDBF820096ADBB /* HYCustomRetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */; };
+		18BB2CA117BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */; };
+		18BB2CA317BE02C20096ADBB /* HYCustomManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */; };
 		18BBFBB817B484AA00F29C9C /* 文件审批.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BBFBB517B484AA00F29C9C /* 文件审批.png */; };
 		18BBFBB917B484AA00F29C9C /* 已审文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BBFBB617B484AA00F29C9C /* 已审文件.png */; };
 		18BBFBBA17B484AA00F29C9C /* 下发文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 18BBFBB717B484AA00F29C9C /* 下发文件.png */; };
@@ -404,6 +410,14 @@
 		18B5A18E17BA34390022613F /* username@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "username@2x.png"; sourceTree = "<group>"; };
 		18B5A1A117BA37E10022613F /* loginbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbtn.png; sourceTree = "<group>"; };
 		18B5A1A217BA37E20022613F /* username.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = username.png; sourceTree = "<group>"; };
+		18BB2C9517BDBD460096ADBB /* HYCustomManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomManageViewController.h; sourceTree = "<group>"; };
+		18BB2C9617BDBD460096ADBB /* HYCustomManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomManageViewController.m; sourceTree = "<group>"; };
+		18BB2C9717BDBD460096ADBB /* HYCustomManageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageViewController.xib; sourceTree = "<group>"; };
+		18BB2C9B17BDBF820096ADBB /* HYCustomRetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomRetailViewController.h; sourceTree = "<group>"; };
+		18BB2C9C17BDBF820096ADBB /* HYCustomRetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomRetailViewController.m; sourceTree = "<group>"; };
+		18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomRetailViewController.xib; sourceTree = "<group>"; };
+		18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomRetailTableViewCell.xib; sourceTree = "<group>"; };
+		18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageTableViewCell.xib; sourceTree = "<group>"; };
 		18BBFBB517B484AA00F29C9C /* 文件审批.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "文件审批.png"; sourceTree = "<group>"; };
 		18BBFBB617B484AA00F29C9C /* 已审文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已审文件.png"; sourceTree = "<group>"; };
 		18BBFBB717B484AA00F29C9C /* 下发文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下发文件.png"; sourceTree = "<group>"; };
@@ -1010,6 +1024,26 @@
 				18B5A16A17BA31F10022613F /* loginbtn@2x.png */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		18BB2C9417BDBD190096ADBB /* CustomManageView */ = {
+			isa = PBXGroup;
+			children = (
+				18BB2C9517BDBD460096ADBB /* HYCustomManageViewController.h */,
+				18BB2C9617BDBD460096ADBB /* HYCustomManageViewController.m */,
+				18BB2C9717BDBD460096ADBB /* HYCustomManageViewController.xib */,
+			);
+			path = CustomManageView;
+			sourceTree = "<group>";
+		};
+		18BB2C9A17BDBF630096ADBB /* CustomRetailView */ = {
+			isa = PBXGroup;
+			children = (
+				18BB2C9B17BDBF820096ADBB /* HYCustomRetailViewController.h */,
+				18BB2C9C17BDBF820096ADBB /* HYCustomRetailViewController.m */,
+				18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */,
+			);
+			path = CustomRetailView;
 			sourceTree = "<group>";
 		};
 		18BBFBB417B484AA00F29C9C /* oa */ = {
@@ -1774,6 +1808,8 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18BB2C9A17BDBF630096ADBB /* CustomRetailView */,
+				18BB2C9417BDBD190096ADBB /* CustomManageView */,
 				28352CEA17BC718D007215F9 /* OAIssuedListView */,
 				28352CE417BC6E14007215F9 /* OAApprovalListView */,
 				189F0C2617B23E2C00C8B394 /* OARetailView */,
@@ -1951,6 +1987,8 @@
 				28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */,
 				282161C417B1EF070090C027 /* HYNewsPlantTabelViewCell.xib */,
 				189F0C2C17B242C200C8B394 /* HYOARetailsTableViewCell.xib */,
+				18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */,
+				18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2275,6 +2313,10 @@
 				28DA279617BB6B7900DDA062 /* homebg@2x.png in Resources */,
 				28352CE917BC6E1E007215F9 /* HYOAApprovalListViewController.xib in Resources */,
 				28352CEF17BC71A4007215F9 /* HYOAIssuedListViewController.xib in Resources */,
+				18BB2C9917BDBD460096ADBB /* HYCustomManageViewController.xib in Resources */,
+				18BB2C9F17BDBF820096ADBB /* HYCustomRetailViewController.xib in Resources */,
+				18BB2CA117BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib in Resources */,
+				18BB2CA317BE02C20096ADBB /* HYCustomManageTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2371,6 +2413,8 @@
 				282B2E3117B3EB37007CD13F /* HYWebBaseViewController.m in Sources */,
 				28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */,
 				28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */,
+				18BB2C9817BDBD460096ADBB /* HYCustomManageViewController.m in Sources */,
+				18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

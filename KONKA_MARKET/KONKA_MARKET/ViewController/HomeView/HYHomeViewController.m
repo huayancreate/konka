@@ -14,6 +14,7 @@
 #import "HYOARetailViewController.h"
 #import "SDImageView+SDWebCache.h"
 #import "HYWebBaseViewController.h"
+#import "HYCustomRetailViewController.h"
 
 @interface HYHomeViewController ()
 {
@@ -221,6 +222,16 @@
     oaRetailView.title = @"行政办公";
     
     [self.navigationController pushViewController:oaRetailView animated:YES];
+}
+
+- (IBAction)customAction:(id)sender
+{
+    HYCustomRetailViewController *customView = [[HYCustomRetailViewController alloc]
+                                            init];
+    customView.userLogin = self.userLogin;
+    customView.title = @"客户管理";
+    [self.navigationController pushViewController:customView animated:YES];
+    
 }
 
 -(IBAction)newsAction:(id)sender

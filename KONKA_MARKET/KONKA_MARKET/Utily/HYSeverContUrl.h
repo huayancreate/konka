@@ -34,3 +34,6 @@
 
 #define HomeImageApi @"/webservice/KonkaArticleImgInterface.do"
 
+#define CustomManageApi @"/webservice/KonkaR3ShopInterface.do"
+
+
