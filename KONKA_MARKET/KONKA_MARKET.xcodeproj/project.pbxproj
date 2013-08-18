@@ -189,6 +189,7 @@
 		285A8A67179AE8BB00BE68BE /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A63179AE8BB00BE68BE /* EskLinePlot.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
+		2871229F17C13E7400D917BB /* RegexKitLite.m in Sources */ = {isa = PBXBuildFile; fileRef = 2871229E17C13E7400D917BB /* RegexKitLite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */; };
 		289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 289D87ED17AEDE2B00DDAB68 /* SVProgressHUD.bundle */; };
 		289D87F117AEDE2B00DDAB68 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 289D87EF17AEDE2B00DDAB68 /* SVProgressHUD.m */; };
@@ -570,6 +571,8 @@
 		285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskPlotTheme.m; sourceTree = "<group>"; };
 		285CB8E91797DEEC004A7D7E /* HYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTableViewCell.h; sourceTree = "<group>"; };
 		285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTableViewCell.m; sourceTree = "<group>"; };
+		2871229D17C13E7400D917BB /* RegexKitLite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegexKitLite.h; sourceTree = "<group>"; };
+		2871229E17C13E7400D917BB /* RegexKitLite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegexKitLite.m; sourceTree = "<group>"; };
 		2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSalesRegistrationTableViewCell.xib; sourceTree = "<group>"; };
 		288C2A50179AEAA900EA8000 /* _CPTFillColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CPTFillColor.h; sourceTree = "<group>"; };
 		288C2A51179AEAA900EA8000 /* _CPTFillGradient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _CPTFillGradient.h; sourceTree = "<group>"; };
@@ -850,6 +853,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28DAE5AD1784036C00F12366 /* libicucore.dylib in Frameworks */,
 				2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */,
 				28DAE5A51784032500F12366 /* QuartzCore.framework in Frameworks */,
 				281A8A1917857009006AA1C6 /* AVFoundation.framework in Frameworks */,
@@ -859,7 +863,6 @@
 				28DAE5B11784038800F12366 /* CoreText.framework in Frameworks */,
 				28DAE5AF1784037800F12366 /* ImageIO.framework in Frameworks */,
 				28AD1B1317A258A2004D8D70 /* libzbar.a in Frameworks */,
-				28DAE5AD1784036C00F12366 /* libicucore.dylib in Frameworks */,
 				28DAE5AB1784035B00F12366 /* libiconv.dylib in Frameworks */,
 				28DAE5A91784033F00F12366 /* MobileCoreServices.framework in Frameworks */,
 				28DAE5A71784033100F12366 /* SystemConfiguration.framework in Frameworks */,
@@ -1487,6 +1490,15 @@
 			path = Plot;
 			sourceTree = "<group>";
 		};
+		2871229C17C13E7400D917BB /* Regex */ = {
+			isa = PBXGroup;
+			children = (
+				2871229D17C13E7400D917BB /* RegexKitLite.h */,
+				2871229E17C13E7400D917BB /* RegexKitLite.m */,
+			);
+			path = Regex;
+			sourceTree = "<group>";
+		};
 		288C2A4F179AEAA900EA8000 /* CorePlotHeaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -1756,6 +1768,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				2871229C17C13E7400D917BB /* Regex */,
 				1830B1BB17B33A5000920F8E /* WZGuideView */,
 				189F0C1317B22D9800C8B394 /* SlideSwitch */,
 				189F0BE817B21C9B00C8B394 /* EGOableView */,
@@ -2415,6 +2428,7 @@
 				28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */,
 				18BB2C9817BDBD460096ADBB /* HYCustomManageViewController.m in Sources */,
 				18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */,
+				2871229F17C13E7400D917BB /* RegexKitLite.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
