@@ -15,6 +15,45 @@
 
 @synthesize percentList;
 @synthesize percentPrice;
+@synthesize cellPercentList;
+
+-(void)calCellPercentList
+{
+    self.cellPercentList = [[NSMutableArray alloc] init];
+    for (NSDictionary *dic in salesList) {
+        NSNumber *num = [dic objectForKey:@"num"];
+        NSString *modelname = [dic objectForKey:@"model_name"];
+        NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] init];
+        [tempDic setValue:modelname forKey:@"modelname"];
+        [tempDic setValue:num forKey:@"num"];
+        [tempDic setValue:[self calPriceByName:modelname AndNum:num AndPrice:[dic objectForKey:@"all_price"]] forKey:@"percentage"];
+        [self.cellPercentList addObject:tempDic];
+    }
+    NSLog(@"cellPercentList count = %d", [self.cellPercentList count]);
+}
+
+-(NSDecimalNumber *) calPriceByName:(NSString *)modelname AndNum:(NSNumber *)num AndPrice:(NSNumber *)price
+{
+    NSDecimalNumber *modelnamePercentage = [[NSDecimalNumber alloc] initWithLong:0.0];
+    for(NSDictionary *dic in self.percentList)
+    {
+        if([[dic objectForKey:@"modelname"] isEqualToString:modelname])
+        {
+            if([[dic objectForKey:@"percentStyle"] isEqualToString:@"0"])
+            {
+                NSDecimalNumber *temppercent = [NSDecimalNumber decimalNumberWithString:[dic objectForKey:@"percent"]];
+                NSDecimalNumber *tempnum = [NSDecimalNumber decimalNumberWithString:[num stringValue]];
+                modelnamePercentage = [modelnamePercentage decimalNumberByAdding:[temppercent decimalNumberByMultiplyingBy:tempnum]];
+            }else
+            {
+                NSDecimalNumber *temppercent = [NSDecimalNumber decimalNumberWithString:[dic objectForKey:@"percent"]];
+                NSDecimalNumber *tempprice = [NSDecimalNumber decimalNumberWithString:[price stringValue]];
+                modelnamePercentage = [modelnamePercentage decimalNumberByAdding:[tempprice decimalNumberByMultiplyingBy:[temppercent decimalNumberByDividingBy:[NSDecimalNumber decimalNumberWithString:@"100"]]]];
+            }
+        }
+    }
+    return modelnamePercentage;
+}
 
 -(void)cal
 {

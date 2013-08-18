@@ -20,6 +20,7 @@
 @property(nonatomic, strong) NSMutableArray *cellPercent;
 @property(nonatomic, strong) UILabel *dateLabel;
 @property(nonatomic, strong) NSString *currentDate;
+@property(nonatomic, strong) HYCalculatePercentage *hyc;
 
 
 @end
@@ -35,6 +36,7 @@
 @synthesize uiPriceLabel;
 @synthesize decoder;
 @synthesize currentDate;
+@synthesize hyc;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -83,7 +85,7 @@
     [self.view addSubview:topTableView];
 
     
-    [self getPeList:self.userLogin.user_id ByFlag:self.flag];
+    //[self getPeList:self.userLogin.user_id ByFlag:self.flag];
     
     currentDate = [super getNowDate];
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
@@ -120,6 +122,8 @@
     
     [self calPercentage:json];
     
+    [downLoadTabelView reloadData];
+    
     [SVProgressHUD dismiss];
     
 }
@@ -127,7 +131,7 @@
 
 -(void) calPercentage:(NSArray *)json
 {
-    HYCalculatePercentage *hyc = [[HYCalculatePercentage alloc] init];
+    hyc = [[HYCalculatePercentage alloc] init];
     hyc.percentList = [[NSMutableArray alloc] init];
     
     hyc.allnum = [[NSNumber alloc] initWithDouble:0];
@@ -159,6 +163,8 @@
     }
     
     [hyc cal];
+    
+    [hyc calCellPercentList];
     
     
     self.uiNumLabel.text = [[hyc.allnum stringValue] stringByAppendingString:@"台"];
@@ -226,7 +232,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (tableView == downLoadTabelView){
-        return [self.userLogin.peList count];
+        return [hyc.cellPercentList count];
     }
     return 1;
 }
@@ -258,14 +264,13 @@
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYPercentageCompetitionTabelViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        NSDictionary *cellLabel = [self.cellPercent objectAtIndex:indexPath.row];
-        self.uiModelLabel.text = [cellLabel objectForKey:@"modelName"];
-        self.uiPercentage.text = [cellLabel objectForKey:@"name"];
-        self.uiNumber.text = [cellLabel objectForKey:@"num"];
-        
-        NSLog(@"downLoadTabelView %@", [cellLabel objectForKey:@"modelName"]);
-        NSLog(@"downLoadTabelView %@", [cellLabel objectForKey:@"name"]);
-        NSLog(@"downLoadTabelView %@", [cellLabel objectForKey:@"num"]);
+        NSLog(@"hyc.cellPercentList = %d", [hyc.cellPercentList count]);
+        NSDictionary *cellLabel = [hyc.cellPercentList objectAtIndex:indexPath.row];
+        NSLog(@"cellPercentList count = ,%d", [hyc.cellPercentList count]);
+        self.uiModelLabel.text = [cellLabel objectForKey:@"modelname"];
+        NSDecimalNumber *pricedecimal = [cellLabel objectForKey:@"percentage"];
+        self.uiPercentage.text = [NSString stringWithFormat:@"%.2f" , [pricedecimal floatValue]];
+        self.uiNumber.text = [NSString stringWithFormat:@"%d", [[cellLabel objectForKey:@"num"] intValue]];
         return cell;
     }
 
