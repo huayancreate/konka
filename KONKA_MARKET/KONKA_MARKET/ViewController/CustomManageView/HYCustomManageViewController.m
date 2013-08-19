@@ -14,11 +14,19 @@
 
 @implementation HYCustomManageViewController
 //@synthesize decoder;
-@synthesize uiCellLabelModelName;
-@synthesize uiCellLabelNum;
-@synthesize uiCellLabelPrice;
-@synthesize uiCellLabelStoreName;
-@synthesize uiCellLabelTime;
+@synthesize lblR3Name;
+@synthesize lblR3Code;
+@synthesize lblDeptName;
+@synthesize lblYwyName;
+@synthesize lblType;
+
+@synthesize lblHostName;
+@synthesize lblLinkManAddr;
+@synthesize lblLinkManPost;
+@synthesize lblLinkManMobile;
+@synthesize lblLinkManName;
+@synthesize lbllinkManTel;
+
 @synthesize userlogin;
 @synthesize customList;
 
@@ -63,21 +71,24 @@
     cell = [nib objectAtIndex:0];
     NSDictionary *dic = [self.customList objectAtIndex:indexPath.row];
     NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-    uiCellLabelStoreName.text = [dic objectForKey:@"c_name"];
-    NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
-    uiCellLabelNum.text = [numberFormatter stringFromNumber:[dic objectForKey:@"dept_name"]];
-    [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-    [numberFormatter setGroupingSize:0];
-    uiCellLabelPrice.text = [numberFormatter stringFromNumber:[dic objectForKey:@"r3_code"]];
-    uiCellLabelTime.text = [dic objectForKey:@"r3_name"];
-    uiCellLabelModelName.text = [dic objectForKey:@""];
+    lblR3Name.text = [dic objectForKey:@"r3_name"];
+    lblDeptName.text = [dic objectForKey:@"dept_name"];
+    lblR3Code.text = [dic objectForKey:@"r3_code"];
+    lblType.text = [dic objectForKey:@"c_name"];
+    lblYwyName.text = [dic objectForKey:@"ywy_name"];
+    lblHostName.text = [dic objectForKey:@"host_name"];
+    lblLinkManAddr.text = [dic objectForKey:@"link_man_addr"];
+    lblLinkManPost.text = [dic objectForKey:@"link_man_post"];
+    lblLinkManMobile.text = [dic objectForKey:@"link_man_mobile"];
+    lblLinkManName.text = [dic objectForKey:@"link_man_name"];
+    lbllinkManTel.text = [dic objectForKey:@"link_man_tel"];
     return cell;
     
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPat
 {
-    return 70;
+    return 170;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -121,10 +132,10 @@
 
 -(void)endRequest:(NSString *)msg
 {
-    NSString *msg1=@"[{\"c_name\":\"其它1\",\"dept_name\":\"内江\",\"map\":{},\"r3_code\":\"F1621XYGHB\",\"r3_name\":\"叙永县光宏电器有限公司(白电）\",\"row\":{},\"ywy_name\":\"\"},{\"c_name\":\"乡镇客户\",\"dept_name\":\"成都\",\"map\":{},\"r3_code\":\"F1053L26BD\",\"r3_name\":\"乐山市金口河区金拓家电白电\",\"row\":{},\"ywy_name\":\"\"}]";
-    NSLog(@"mgs %@",msg1);
+//    NSString *msg1=@"[{\"c_name\":\"其它1\",\"dept_name\":\"内江\",\"map\":{},\"r3_code\":\"F1621XYGHB\",\"r3_name\":\"叙永县光宏电器有限公司(白电）\",\"row\":{},\"ywy_name\":\"\"},{\"c_name\":\"乡镇客户\",\"dept_name\":\"成都\",\"map\":{},\"r3_code\":\"F1053L26BD\",\"r3_name\":\"乐山市金口河区金拓家电白电\",\"row\":{},\"ywy_name\":\"\"}]";
+//    NSLog(@"mgs %@",msg1);
     JSONDecoder *decoder = [[JSONDecoder alloc] init];
-    NSData *data = [msg1 dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *json = [decoder objectWithData:data];
     NSLog(@"json count %d",json.count);
     if ( [json count] == 0)
@@ -132,7 +143,9 @@
         return;
     }
     [self.customList removeAllObjects];
-    [self.customList addObject:[json objectAtIndex:0]];
+    for (NSDictionary *dic in json) {
+        [self.customList addObject:dic];
+    }
     [self.uiTableView reloadData];
 }
 
@@ -146,5 +159,10 @@
     [SVProgressHUD dismiss];
     [super errorMsg:msg];
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 0;
+}
+
 
 @end
