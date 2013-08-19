@@ -220,10 +220,8 @@
 
 - (void) getStoreList:(NSNumber *)user_id
 {
-    NSLog(@"getStoreList user_id %d", [user_id intValue]);
-    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     
-    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
+    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id];
 }
 
 

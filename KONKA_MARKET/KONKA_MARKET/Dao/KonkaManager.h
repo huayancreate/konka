@@ -21,11 +21,11 @@
 }
 
 -(void) insertUserDataByParems:(NSMutableDictionary *)dic;
--(void) insertBaseDataByParems:(NSMutableDictionary *)dic;
+//-(void) insertBaseDataByParems:(NSMutableDictionary *)dic;
 -(Boolean) isExistUserDataByID:(NSNumber *)user_id;
 -(void) updateDataPatch:(NSString *)dataPatch ByUserID:(NSNumber *)user_id;
 -(NSString *) selectDataPatchByUserID:(NSNumber *)user_id;
--(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
+
 -(NSMutableArray *) getBrandListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag;
 -(NSMutableArray *) getPeListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag;
 -(NSMutableArray *) getModelListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int)page;
@@ -60,6 +60,6 @@
 //TODO 重构插入代码
 -(void) insertBaseDataByJson:(NSString *)json ByUserID:(NSNumber *)user_id;
 -(void) deleteBaseDataByUserID:(NSNumber *)user_id;
-
+-(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id;
 
 @end

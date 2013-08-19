@@ -7,6 +7,7 @@
 //
 
 #import "KonkaManager.h"
+#import "JSONKit.h"
 
 @interface KonkaManager()
 
@@ -154,20 +155,20 @@
     
 }
 
--(void) insertBaseDataByParems:(NSMutableDictionary *)dic
-{
-    if ([self managedObjectContext] == nil) {
-        return ;
-    }
-    
-    BaseDataEntity *baseDataEntity = (BaseDataEntity *) [NSEntityDescription insertNewObjectForEntityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
-    
-    for (id akey in [dic allKeys]) {
-        [baseDataEntity setValue:[dic objectForKey:akey] forKey:akey];
-    }
-    
-    [self saveContext];
-}
+//-(void) insertBaseDataByParems:(NSMutableDictionary *)dic
+//{
+//    if ([self managedObjectContext] == nil) {
+//        return ;
+//    }
+//    
+//    BaseDataEntity *baseDataEntity = (BaseDataEntity *) [NSEntityDescription insertNewObjectForEntityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
+//    
+//    for (id akey in [dic allKeys]) {
+//        [baseDataEntity setValue:[dic objectForKey:akey] forKey:akey];
+//    }
+//    
+//    [self saveContext];
+//}
 
 -(Boolean) isExistUserDataByID:(NSNumber *)user_id
 {
@@ -341,7 +342,7 @@
 
 -(NSMutableArray *) getPeListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag
 {
-    return [self getStoreListByUserID:user_id ByType:type ByFlag:flag];
+    return [self getStoreListByUserID:user_id];
 }
 
 -(NSMutableArray *) getBrandListByUserID:(NSNumber *)user_id ByFlag:(NSNumber *)flag
@@ -374,37 +375,6 @@
     }
     return categoryArray;
 
-}
-
--(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id ByType:(NSString *)type ByFlag:(NSNumber *)flag
-{
-    if ([self managedObjectContext] == nil) {
-        return nil;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataEntity" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    NSPredicate * predicate = nil;
-    predicate = [NSPredicate predicateWithFormat:@"list_type == %@ AND user_id == %d AND flag = %d", type, [user_id intValue], [flag intValue]];
-
-    [fetchRequest setPredicate:predicate];
-    
-    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    
-    NSMutableArray *result1 = [[NSMutableArray alloc] init];
-    
-    for (BaseDataEntity *en in result) {
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-        [dic setObject:en.addon1 forKey:@"addon1"];
-        [dic setObject:en.addon2 forKey:@"addon2"];
-        [dic setObject:en.name forKey:@"name"];
-        [dic setObject:en.base_id forKey:@"base_id"];
-        [dic setObject:en.user_id forKey:@"user_id"];
-        [dic setObject:en.list_type forKey:@"list_type"];
-        [result1 addObject:dic];
-    }
-    return result1;
 }
 
 
@@ -698,6 +668,49 @@
     }
     
     [self saveContext];
+}
+
+-(NSMutableArray *) getStoreListByUserID:(NSNumber *)user_id
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataJSONEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"user_id == %d",[user_id intValue]];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    
+    NSMutableArray *result1 = [[NSMutableArray alloc] init];
+    if ([result count] == 0)
+    {
+        return result1;
+    }
+    BaseDataJSONEntity *jsonentity = [result objectAtIndex:0];
+    NSString *jsonstr = jsonentity.json;
+    
+    JSONDecoder *decoder = [[JSONDecoder alloc] init];
+    NSData *data = [jsonstr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary* json = [decoder objectWithData:data];
+    NSArray *storelist = [json objectForKey:@"storeList"];
+    
+    for (NSDictionary *dic in storelist)
+    {
+        NSMutableDictionary *temp = [[NSMutableDictionary alloc] init];
+        [temp setObject:[dic objectForKey:@"addon1"] forKey:@"addon1"];
+        [temp setObject:[dic objectForKey:@"addon2"] forKey:@"addon2"];
+        [temp setObject:[dic objectForKey:@"name"] forKey:@"name"];
+        [temp setObject:[dic objectForKey:@"id"] forKey:@"base_id"];
+        [result1 addObject:temp];
+    }
+    return result1;
 }
 
 @end
