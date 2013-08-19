@@ -134,7 +134,7 @@
             //NSLog(@"self.userLogin.modelNameCopyList count %d", [self.userLogin.modelNameCopyList count]);
             if([self.userLogin.modelNameList count] == 0)
             {
-                [super errorMsg:@"系统中没有设置常用机型，请设置"];
+                [super errorMsg:@"系统检测到您未设置常用的产品型号，请先进行常用型号设定后再进行其他操作"];
                 modelConfigView = [[HYModelConfigViewController alloc] init];
                 modelConfigView.userLogin = self.userLogin;
                 modelConfigView.title = @"型号设定";

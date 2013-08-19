@@ -161,8 +161,19 @@
     [someButton addTarget:self action:@selector(submit:)
          forControlEvents:UIControlEventTouchUpInside];
     [someButton setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    self.navigationItem.rightBarButtonItem  = rightButton;
+    if(self.userLogin.allDataSubmit != nil){
+
+        NSNumber *dataStatus = [self.userLogin.allDataSubmit objectForKey:@"status"];
+        //NSLog(@"dataStatus %d",dataStatus);
+        if (dataStatus.intValue == 0)
+        {
+            UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+            self.navigationItem.rightBarButtonItem  = rightButton;
+        }
+    }else{
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+        self.navigationItem.rightBarButtonItem  = rightButton;
+    }
     
     NSNumber *flag = [[NSNumber alloc] initWithInt:1];
     [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
@@ -235,8 +246,7 @@
     [self.selectChoice2 addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.selectChoice2 addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.selectChoice2 setBorderStyle:UITextBorderStyleLine];
-    
+       
     CGRect labelFieldRect = CGRectMake(0, 0, 175, 30);
     
     storeName = [[UILabel alloc] initWithFrame:labelFieldRect];
@@ -263,6 +273,13 @@
         self.selectChoice2.enabled = false;
         self.salesPrice.enabled = false;
         self.memo.enabled = false;
+        [self.mastercode setBorderStyle:UITextBorderStyleLine];
+        [self.realName setBorderStyle:UITextBorderStyleLine];
+        [self.phoneNum setBorderStyle:UITextBorderStyleLine];
+        [self.address setBorderStyle:UITextBorderStyleLine];
+        //[self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
+        //[self.memo setBorderStyle:UITextBorderStyleLine];
+
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setUsesGroupingSeparator:NO];
         storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
@@ -286,8 +303,7 @@
         
         NSLog(@"dataID , %d", [self.dataID intValue]);
     }
-    
-    if (self.userLogin.allDataSubmit != nil)
+    else if (self.userLogin.allDataSubmit != nil)
     {
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setUsesGroupingSeparator:NO];
@@ -316,11 +332,34 @@
         self.selectChoice2.enabled = false;
         self.salesPrice.enabled = false;
         self.memo.enabled = false;
-        self.mastercode.enabled = false;
-        self.realName.enabled = false;
-        self.phoneNum.enabled = false;
-        self.address.enabled = false;
+        
+        NSNumber *dataStatus = [self.userLogin.allDataSubmit objectForKey:@"status"];
+        //NSLog(@"dataStatus %d",dataStatus);
+        if (dataStatus.intValue == 1)
+        {
+            self.mastercode.enabled = false;
+            self.realName.enabled = false;
+            self.phoneNum.enabled = false;
+            self.address.enabled = false;
+        }else{
+            [self.mastercode setBorderStyle:UITextBorderStyleLine];
+            [self.realName setBorderStyle:UITextBorderStyleLine];
+            [self.phoneNum setBorderStyle:UITextBorderStyleLine];
+            [self.address setBorderStyle:UITextBorderStyleLine];
+            //[self.memo setBorderStyle:UITextBorderStyleLine];
+        }
         NSLog(@"dataID , %d", [self.dataID intValue]);
+    }else
+    {
+        [self.selectChoice2 setBorderStyle:UITextBorderStyleLine];
+        [self.salesCount setBorderStyle:UITextBorderStyleLine];
+        [self.salesPrice setBorderStyle:UITextBorderStyleLine];
+        [self.mastercode setBorderStyle:UITextBorderStyleLine];
+        [self.realName setBorderStyle:UITextBorderStyleLine];
+        [self.phoneNum setBorderStyle:UITextBorderStyleLine];
+        [self.address setBorderStyle:UITextBorderStyleLine];
+        [self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
+        [self.memo setBorderStyle:UITextBorderStyleLine];
     }
     
    

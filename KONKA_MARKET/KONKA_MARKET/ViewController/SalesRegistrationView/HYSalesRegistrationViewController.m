@@ -228,7 +228,6 @@
             uiCellLabelModelName.text = [dic objectForKey:@"model_name"];
         }else
         {
-            
             cell = [nib objectAtIndex:1];
             NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
             uiCellAllLabelStoreName.text = [dic objectForKey:@"dept_name"];
