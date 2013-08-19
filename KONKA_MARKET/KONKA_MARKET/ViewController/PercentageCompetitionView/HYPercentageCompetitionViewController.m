@@ -114,6 +114,8 @@
         self.uiNumLabel.text = @"0台";
         self.uiPercentageLabel.text = @"0元";
         self.uiPriceLabel.text = @"0元";
+        [hyc.cellPercentList removeAllObjects];
+        [downLoadTabelView reloadData];
         [SVProgressHUD dismiss];
         return;
     }
