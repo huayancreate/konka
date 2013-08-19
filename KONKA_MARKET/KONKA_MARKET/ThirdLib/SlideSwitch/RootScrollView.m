@@ -115,9 +115,27 @@
 {
     [SVProgressHUD dismiss];
     NSLog(@"msg %@",msg);
+//    [msg	replaceOccurrencesOfString:(NSString *) withString:(NSString *)]
+    
+    NSLog(@"msg1 %@",msg);
+    
+    NSMutableString *msg1 = [[NSMutableString alloc] initWithFormat:@"%@",msg];
+    for (int i = 0; i < [msg1 length]; i++)
+    {
+        
+        int asciiCode = [msg1 characterAtIndex:i];
+        if (asciiCode == 7)
+        {
+            NSRange range;
+            range.location = i;
+            range.length = 1;
+            [msg1 replaceCharactersInRange:range withString:@"·"];
+        }
+    }
     
     JSONDecoder *decoder = [[JSONDecoder alloc] init];
-    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [msg1 dataUsingEncoding:NSUTF8StringEncoding];
+    
     NSArray *json = [decoder objectWithData:data];
     NSLog(@"json count %d",json.count);
     if ( [json count] == 0)
