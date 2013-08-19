@@ -365,13 +365,13 @@
         
         
         
-        [self runLoopSets:backList Type:@"backList" UserID:user_id];
+//        [self runLoopSets:backList Type:@"backList" UserID:user_id];
         [self runLoopSets:brandList Type:@"brandList" UserID:user_id];
-        [self runLoopSets:goodList Type:@"goodList" UserID:user_id];
-        [self runLoopSets:ideaList Type:@"ideaList" UserID:user_id];
+//        [self runLoopSets:goodList Type:@"goodList" UserID:user_id];
+//        [self runLoopSets:ideaList Type:@"ideaList" UserID:user_id];
         [self runLoopSets:modelList Type:@"modelList" UserID:user_id];
         [self runLoopSets:peList Type:@"peList" UserID:user_id];
-        [self runLoopSets:plList Type:@"plList" UserID:user_id];
+//        [self runLoopSets:plList Type:@"plList" UserID:user_id];
         [self runLoopSets:storeList Type:@"storeList" UserID:user_id];
         
         

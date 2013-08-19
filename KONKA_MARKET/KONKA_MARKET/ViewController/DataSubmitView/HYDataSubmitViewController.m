@@ -235,7 +235,7 @@
     [self.selectChoice2 addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.selectChoice2 addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-    [self.selectChoice2 setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.selectChoice2 setBorderStyle:UITextBorderStyleLine];
     
     CGRect labelFieldRect = CGRectMake(0, 0, 175, 30);
     
