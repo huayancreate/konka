@@ -10,11 +10,19 @@
 
 @interface HYCustomManageViewController : HYBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelStoreName;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelTime;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelModelName;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelNum;
-@property (strong, nonatomic) IBOutlet UILabel *uiCellLabelPrice;
+@property (strong, nonatomic) IBOutlet UILabel *lblR3Name;
+@property (strong, nonatomic) IBOutlet UILabel *lblR3Code;
+@property (strong, nonatomic) IBOutlet UILabel *lblDeptName;
+@property (strong, nonatomic) IBOutlet UILabel *lblYwyName;
+@property (strong, nonatomic) IBOutlet UILabel *lblType;
+
+@property (strong, nonatomic) IBOutlet UILabel *lblHostName;
+@property (strong, nonatomic) IBOutlet UILabel *lblLinkManMobile;
+@property (strong, nonatomic) IBOutlet UILabel *lblLinkManAddr;
+@property (strong, nonatomic) IBOutlet UILabel *lbllinkManTel;
+@property (strong, nonatomic) IBOutlet UILabel *lblLinkManName;
+@property (strong, nonatomic) IBOutlet UILabel *lblLinkManPost;
+
 @property (nonatomic, retain) HYUserLoginModel *userlogin;
 @property (strong, nonatomic) NSMutableArray *customList;
 
