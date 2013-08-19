@@ -11,6 +11,7 @@
 #import "UserEntity.h"
 #import "BaseDataEntity.h"
 #import "PercentEntity.h"
+#import "BaseDataJSONEntity.h"
 
 @interface KonkaManager : NSObject
 {
@@ -54,5 +55,11 @@
 -(NSMutableArray *)getAllPercentByUserID:(NSNumber *)user_id;
 
 -(Boolean)getPercentDataByModelName:(NSString *)modelname ByUserID:(NSNumber *)user_id;
+
+
+//TODO 重构插入代码
+-(void) insertBaseDataByJson:(NSString *)json ByUserID:(NSNumber *)user_id;
+-(void) deleteBaseDataByUserID:(NSNumber *)user_id;
+
 
 @end

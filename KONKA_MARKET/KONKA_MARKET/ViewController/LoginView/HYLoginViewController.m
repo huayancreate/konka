@@ -348,6 +348,17 @@
         
         // 删除BaseDataByUserID
         
+        //TODO 重构插入
+        NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary* json = [decoder objectWithData:data];
+        NSString* dataPatch = [json objectForKey:@"dataPatch"];
+        NSLog(@"remote dataPatch %@",dataPatch);
+        [self.kkM updateDataPatch:dataPatch ByUserID:user_id];
+        
+        [self.kkM insertBaseDataByJson:msg ByUserID:self.userLogin.user_id];
+        
+        /*
+        
         [self.kkM deleteAllBaseDataByUserID:user_id];
         
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
@@ -378,6 +389,7 @@
         NSString* dataPatch = [json objectForKey:@"dataPatch"];
         NSLog(@"remote dataPatch %@",dataPatch);
         [self.kkM updateDataPatch:dataPatch ByUserID:user_id];
+         */
         
         NSLog(@"BASE INSERT");
         

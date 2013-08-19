@@ -662,4 +662,42 @@
     return false;
 }
 
+
+//TODO 重构
+-(void) insertBaseDataByJson:(NSString *)json ByUserID:(NSNumber *)user_id
+{
+    if ([self managedObjectContext] == nil) {
+        return ;
+    }
+    
+    BaseDataJSONEntity *basedatajson = (BaseDataJSONEntity *) [NSEntityDescription insertNewObjectForEntityForName:@"BaseDataJSONEntity" inManagedObjectContext:self.managedObjectContext];
+    basedatajson.user_id = user_id;
+    basedatajson.json = json;
+    
+    [self saveContext];
+}
+
+-(void) deleteBaseDataByUserID:(NSNumber *)user_id
+{
+    if ([self managedObjectContext] == nil) {
+        return;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataJSONEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate * predicate = [NSPredicate predicateWithFormat:@"user_id == %d", [user_id intValue]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    for (BaseDataJSONEntity *en in result)
+    {
+        [self.managedObjectContext deleteObject:en];
+    }
+    
+    [self saveContext];
+}
+
 @end
