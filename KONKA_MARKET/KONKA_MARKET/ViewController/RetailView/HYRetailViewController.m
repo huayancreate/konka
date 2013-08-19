@@ -114,7 +114,10 @@
     HYSalesComputationViewController *salesComputationView = nil;
     HYPercentageCompetitionViewController *percentageView = nil;
     HYModelConfigViewController *modelConfigView = nil;
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self getStoreList:self.userLogin.user_id];
+    NSNumber *flag = [[NSNumber alloc] initWithInt:1];
+    [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
     switch (indexPath.row) {
         case 0:
             dataSubmit = [[HYDataSubmitViewController alloc]init];
@@ -125,6 +128,19 @@
                 [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
                 return;
+            }
+            //NSLog(@"self.userLogin.modelNameList count %d", [self.userLogin.modelNameList count]);
+            //NSLog(@"self.userLogin.modelList count %d", [self.userLogin.modelList count]);
+            //NSLog(@"self.userLogin.modelNameCopyList count %d", [self.userLogin.modelNameCopyList count]);
+            if([self.userLogin.modelNameList count] == 0)
+            {
+                [super errorMsg:@"系统中没有设置常用机型，请设置"];
+                modelConfigView = [[HYModelConfigViewController alloc] init];
+                modelConfigView.userLogin = self.userLogin;
+                modelConfigView.title = @"型号设定";
+                [self.navigationController pushViewController:modelConfigView animated:YES];
+                return;
+                //NSLog(@"test111");
             }
             dataSubmit.title = @"数据上报";
             [self.navigationController pushViewController:dataSubmit animated:YES];
@@ -200,7 +216,6 @@
             break;
     }
     
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 - (void) getStoreList:(NSNumber *)user_id
@@ -229,5 +244,10 @@
     [super viewWillAppear:animated];
 }
 
+-(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+{
+    self.userLogin.modelNameList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:flag];
+    NSLog(@"getAllModelNameList %d" , [self.userLogin.modelNameStoreList count]);
+}
 
 @end

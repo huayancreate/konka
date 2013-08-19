@@ -194,9 +194,9 @@
     
     self.salesCount = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     self.salesPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
-    self.salesPrice.clearsOnBeginEditing = YES;
+    self.salesPrice.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.saleAllPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
-    self.saleAllPrice.clearsOnBeginEditing = YES;
+    self.saleAllPrice.clearButtonMode = UITextFieldViewModeWhileEditing;
     
     self.salesPrice.delegate = self;
     self.saleAllPrice.delegate = self;
@@ -235,6 +235,7 @@
     [self.selectChoice2 addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.selectChoice2 addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
+    [self.selectChoice2 setBorderStyle:UITextBorderStyleRoundedRect];
     
     CGRect labelFieldRect = CGRectMake(0, 0, 175, 30);
     
