@@ -354,13 +354,13 @@
         
         NSDictionary* json = [decoder objectWithData:data];
         
-        NSArray* backList = [json objectForKey:@"backList"];
+//        NSArray* backList = [json objectForKey:@"backList"];
         NSArray* brandList = [json objectForKey:@"brandList"];
-        NSArray* goodList = [json objectForKey:@"goodList"];
-        NSArray* ideaList = [json objectForKey:@"ideaList"];
+//        NSArray* goodList = [json objectForKey:@"goodList"];
+//        NSArray* ideaList = [json objectForKey:@"ideaList"];
         NSArray* modelList = [json objectForKey:@"modelList"];
         NSArray* peList = [json objectForKey:@"peList"];
-        NSArray* plList = [json objectForKey:@"plList"];
+//        NSArray* plList = [json objectForKey:@"plList"];
         NSArray* storeList = [json objectForKey:@"storeList"];
         
         

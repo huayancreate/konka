@@ -24,7 +24,7 @@
         <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BaseDataEntity" positionX="-3773" positionY="-699" width="128" height="150"/>
+        <element name="BaseDataEntity" positionX="-3942" positionY="-873" width="128" height="150"/>
         <element name="PercentEntity" positionX="160" positionY="192" width="128" height="105"/>
         <element name="UserEntity" positionX="-3611" positionY="-900" width="128" height="135"/>
     </elements>

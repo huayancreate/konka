@@ -55,5 +55,4 @@
 
 -(Boolean)getPercentDataByModelName:(NSString *)modelname ByUserID:(NSNumber *)user_id;
 
-
 @end
