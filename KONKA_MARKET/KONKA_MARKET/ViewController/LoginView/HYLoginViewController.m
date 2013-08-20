@@ -60,7 +60,6 @@
     
     [self.uiremember setImage:[imgArray objectAtIndex:0]];
     
-    
     self.uiPassword.secureTextEntry = YES;
     
     UIImageView *imgvpass=[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"password"]];
@@ -270,6 +269,7 @@
     self.userLogin.user_name = [userJSON objectForKey:@"user_name"];
     self.userLogin.real_name = [userJSON objectForKey:@"real_name"];
     self.userLogin.department = [userJSON objectForKey:@"department"];
+    self.userLogin.mobile_user_type = [userJSON objectForKey:@"mobile_user_type"];
     self.userLogin.password = self.uiPassword.text;
 }
 

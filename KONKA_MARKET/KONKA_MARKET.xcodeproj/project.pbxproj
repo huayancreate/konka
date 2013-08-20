@@ -285,7 +285,6 @@
 		28DAE3791783F7B300F12366 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28DAE3771783F7B300F12366 /* InfoPlist.strings */; };
 		28DAE37B1783F7B300F12366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE37A1783F7B300F12366 /* main.m */; };
 		28DAE37F1783F7B300F12366 /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE37E1783F7B300F12366 /* HYAppDelegate.m */; };
-		28DAE3881783F7B300F12366 /* KONKA_MARKET.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE3861783F7B300F12366 /* KONKA_MARKET.xcdatamodeld */; };
 		28DAE4E81783F8DD00F12366 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE4831783F8DC00F12366 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28DAE5071783F8DD00F12366 /* SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE4C41783F8DD00F12366 /* SDDataCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		28DAE5081783F8DD00F12366 /* SDImageView+SDWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE4C61783F8DD00F12366 /* SDImageView+SDWebCache.m */; };
@@ -2441,10 +2440,10 @@
 			files = (
 				189F0C1D17B230C500C8B394 /* Globle.h in Sources */,
 				189F0C1E17B230C500C8B394 /* RootScrollView.h in Sources */,
+				28247451179E706400E93EA1 /* KonkaModel.xcdatamodeld in Sources */,
 				189F0C1F17B230C500C8B394 /* TopScrollView.h in Sources */,
 				28DAE37B1783F7B300F12366 /* main.m in Sources */,
 				28DAE37F1783F7B300F12366 /* HYAppDelegate.m in Sources */,
-				28DAE3881783F7B300F12366 /* KONKA_MARKET.xcdatamodeld in Sources */,
 				28DAE4E81783F8DD00F12366 /* JSONKit.m in Sources */,
 				28DAE5071783F8DD00F12366 /* SDDataCache.m in Sources */,
 				28DAE5081783F8DD00F12366 /* SDImageView+SDWebCache.m in Sources */,
@@ -2485,7 +2484,6 @@
 				285A8A66179AE8BB00BE68BE /* EskBarPlot.m in Sources */,
 				285A8A67179AE8BB00BE68BE /* EskLinePlot.m in Sources */,
 				285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */,
-				28247451179E706400E93EA1 /* KonkaModel.xcdatamodeld in Sources */,
 				28247465179E928400E93EA1 /* UserEntity.m in Sources */,
 				28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */,
 				28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */,
@@ -2538,12 +2536,9 @@
 				28693ECB17C1BA89007309F4 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				28693ECC17C1BA89007309F4 /* SBJsonStreamWriterState.m in Sources */,
 				28693ECD17C1BA89007309F4 /* SBJsonWriter.m in Sources */,
-<<<<<<< HEAD
 				183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */,
-=======
 				281A5E8317C222D300B14DB8 /* BaseDataJSONEntity.m in Sources */,
 				281A5E8C17C3518400B14DB8 /* SetUsualEntity.m in Sources */,
->>>>>>> 重构代码
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

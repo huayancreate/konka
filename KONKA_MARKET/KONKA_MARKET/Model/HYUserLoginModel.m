@@ -26,5 +26,6 @@
 @synthesize percentList;
 @synthesize nameandidList;
 @synthesize allDataSubmit;
+@synthesize mobile_user_type;
 
 @end
