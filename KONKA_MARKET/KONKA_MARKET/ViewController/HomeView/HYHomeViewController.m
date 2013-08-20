@@ -20,6 +20,8 @@
 {
     JSONDecoder* decoder;
     UIImageView *firstImageView;
+    
+    NSMutableArray *leaderList,*customerList,*promotersList;
 }
 
 @end
@@ -35,6 +37,34 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        NSDictionary *dic0 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"客户管理",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"决策分析",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic2 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"订单系统",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic3 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"零售通",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic4 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"行政办公",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic5 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"促销管理",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic6 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"资讯平台",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic7 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"系统设置",@"name",@"",@"btnclickname",nil];
+        leaderList = [[NSMutableArray alloc] init];
+        customerList = [[NSMutableArray alloc] init];
+        promotersList = [[NSMutableArray alloc] init];
+        [leaderList addObject:dic0];
+        [leaderList addObject:dic1];
+        [leaderList addObject:dic2];
+        [leaderList addObject:dic3];
+        [leaderList addObject:dic4];
+        [leaderList addObject:dic5];
+        [leaderList addObject:dic6];
+        [leaderList addObject:dic7];
+        [customerList addObject:dic3];
+        [customerList addObject:dic2];
+        [customerList addObject:dic5];
+        [customerList addObject:dic6];
+        [customerList addObject:dic7];
+        [promotersList addObject:dic3];
+        [promotersList addObject:dic5];
+        [promotersList addObject:dic6];
+        [promotersList addObject:dic7];
     }
     return self;
 }
@@ -90,6 +120,26 @@
     
     
     [self loadHomeImages];
+    
+    
+    //根据权限画首页画面
+    [self createMainView];
+    
+}
+
+
+
+-(void) createMainView
+{
+    //创建按钮对象
+//    [self createBtnObject];
+    
+    
+    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(20, 158, 64, 64)];
+    UIImage *image1 = [UIImage imageNamed:@"iconbg.png"];
+    imageView1.image = image1;
+    
+    [self.view addSubview:imageView1];
 }
 
 -(void)insertImageToHeader
