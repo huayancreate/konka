@@ -141,7 +141,7 @@
     hyc.allprice = [[NSDecimalNumber alloc] initWithDouble:0];
     hyc.salesList = json;
     
-    NSArray *pelist = [self.kkM getPeListByUserID:self.userLogin.user_id ByType:@"peList" ByFlag:self.flag];
+    NSArray *pelist = [self.kkM getPeListByUserID:self.userLogin.user_id];
     
     NSArray *temppercentlist = [self.kkM getAllPercentByUserID:self.userLogin.user_id];
     
@@ -176,7 +176,7 @@
 
 -(void) getPeList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
 {
-    self.userLogin.peList = [self.kkM getPeListByUserID:user_id ByType:@"peList" ByFlag:flag];
+    self.userLogin.peList = [self.kkM getPeListByUserID:user_id];
     
     for (NSDictionary *dic in self.userLogin.peList)
     {
@@ -214,7 +214,7 @@
 
 -(NSString *) findModelNameByID:(NSString *)addon2
 {
-    return [self.kkM findModelNameByID:self.userLogin.user_id ByName:addon2];
+    return [self.kkM findModelNameByID:self.userLogin.user_id ByID:addon2];
 }
 
 
