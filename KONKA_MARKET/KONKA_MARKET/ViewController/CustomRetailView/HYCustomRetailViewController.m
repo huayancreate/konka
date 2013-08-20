@@ -8,6 +8,7 @@
 
 #import "HYCustomRetailViewController.h"
 #import "HYCustomManageViewController.h"
+#import "HYCustomR3ViewController.h"
 
 @interface HYCustomRetailViewController ()
 
@@ -89,22 +90,23 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     HYCustomManageViewController *customMangeSubmit = nil;
+    HYCustomR3ViewController *customR3Submit = nil;
 //    HYOAViewController *oaSubmit = nil;
 //    HYOAApprovalListViewController *oaListSubmit = nil;
 //    HYOAIssuedListViewController *issuedSubmit = nil;
     switch (indexPath.row) {
         case 0:
-            customMangeSubmit = [[HYCustomManageViewController alloc]init];
-            customMangeSubmit.userLogin = self.userLogin;
+            customR3Submit = [[HYCustomR3ViewController alloc]init];
+            customR3Submit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
-            customMangeSubmit.title = @"客户管理";
-            [self.navigationController pushViewController:customMangeSubmit animated:YES];
+            customR3Submit.title = @"客户毛利分析";
+            [self.navigationController pushViewController:customR3Submit animated:YES];
             break;
         case 1:
             customMangeSubmit = [[HYCustomManageViewController alloc]init];
             customMangeSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
-            customMangeSubmit.title = @"客户管理";
+            customMangeSubmit.title = @"R3客户管理";
             [self.navigationController pushViewController:customMangeSubmit animated:YES];
             break;
         case 2:

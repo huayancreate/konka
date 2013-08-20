@@ -36,4 +36,6 @@
 
 #define CustomManageApi @"/webservice/KonkaR3ShopInterface.do"
 
+#define CustomR3Api @"/webservice/KonkaR3MarginInterface.do"
+
 

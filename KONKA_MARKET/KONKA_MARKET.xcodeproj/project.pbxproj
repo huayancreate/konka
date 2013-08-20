@@ -24,6 +24,11 @@
 		1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */; };
 		1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */; };
 		1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */; };
+		183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */; };
+		183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CE90917C30B860041462B /* HYCustomR3ViewController.m */; };
+		183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */; };
+		183CE90E17C34DE10041462B /* HYCustomR3SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90D17C34DE00041462B /* HYCustomR3SearchTableViewCell.xib */; };
+		183CE91017C34E210041462B /* HYCustomManageSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90F17C34E210041462B /* HYCustomManageSearchTableViewCell.xib */; };
 		189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEA17B21C9B00C8B394 /* blackArrow.png */; };
 		189F0BF517B21C9B00C8B394 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */; };
 		189F0BF617B21C9B00C8B394 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEC17B21C9B00C8B394 /* blueArrow.png */; };
@@ -362,6 +367,12 @@
 		1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_blankCheck@2x.png"; sourceTree = "<group>"; };
 		1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_selectCheck.png; sourceTree = "<group>"; };
 		1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_selectCheck@2x.png"; sourceTree = "<group>"; };
+		183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3TableViewCell.xib; sourceTree = "<group>"; };
+		183CE90817C30B860041462B /* HYCustomR3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomR3ViewController.h; sourceTree = "<group>"; };
+		183CE90917C30B860041462B /* HYCustomR3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomR3ViewController.m; sourceTree = "<group>"; };
+		183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3ViewController.xib; sourceTree = "<group>"; };
+		183CE90D17C34DE00041462B /* HYCustomR3SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3SearchTableViewCell.xib; sourceTree = "<group>"; };
+		183CE90F17C34E210041462B /* HYCustomManageSearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageSearchTableViewCell.xib; sourceTree = "<group>"; };
 		189F0BEA17B21C9B00C8B394 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		189F0BEC17B21C9B00C8B394 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -943,6 +954,16 @@
 				1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		183CE90717C30B6E0041462B /* CustomR3View */ = {
+			isa = PBXGroup;
+			children = (
+				183CE90817C30B860041462B /* HYCustomR3ViewController.h */,
+				183CE90917C30B860041462B /* HYCustomR3ViewController.m */,
+				183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */,
+			);
+			path = CustomR3View;
 			sourceTree = "<group>";
 		};
 		189F0BE817B21C9B00C8B394 /* EGOableView */ = {
@@ -1881,6 +1902,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				183CE90717C30B6E0041462B /* CustomR3View */,
 				18BB2C9A17BDBF630096ADBB /* CustomRetailView */,
 				18BB2C9417BDBD190096ADBB /* CustomManageView */,
 				28352CEA17BC718D007215F9 /* OAIssuedListView */,
@@ -2062,6 +2084,9 @@
 				189F0C2C17B242C200C8B394 /* HYOARetailsTableViewCell.xib */,
 				18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */,
 				18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */,
+				183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */,
+				183CE90D17C34DE00041462B /* HYCustomR3SearchTableViewCell.xib */,
+				183CE90F17C34E210041462B /* HYCustomManageSearchTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2390,6 +2415,10 @@
 				18BB2C9F17BDBF820096ADBB /* HYCustomRetailViewController.xib in Resources */,
 				18BB2CA117BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib in Resources */,
 				18BB2CA317BE02C20096ADBB /* HYCustomManageTableViewCell.xib in Resources */,
+				183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */,
+				183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */,
+				183CE90E17C34DE10041462B /* HYCustomR3SearchTableViewCell.xib in Resources */,
+				183CE91017C34E210041462B /* HYCustomManageSearchTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2499,6 +2528,7 @@
 				28693ECB17C1BA89007309F4 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				28693ECC17C1BA89007309F4 /* SBJsonStreamWriterState.m in Sources */,
 				28693ECD17C1BA89007309F4 /* SBJsonWriter.m in Sources */,
+				183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

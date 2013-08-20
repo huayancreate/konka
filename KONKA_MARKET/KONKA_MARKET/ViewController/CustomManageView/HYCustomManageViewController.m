@@ -42,11 +42,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [self loadCustom];
     self.customList = [[NSMutableArray alloc] init];
     self.uiTableView.delegate = self;
     self.uiTableView.dataSource = self;
-    // Do any additional setup after loading the view from its nib.
-    [self loadCustom];
 }
 
 - (void)didReceiveMemoryWarning
@@ -117,6 +117,7 @@
 
 -(void)loadCustom
 {
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass", nil];
     
     NSLog(@"username %@",self.userLogin.user_name);
@@ -140,6 +141,7 @@
     NSLog(@"json count %d",json.count);
     if ( [json count] == 0)
     {
+        [SVProgressHUD showErrorWithStatus:@"数据获取失败"];
         return;
     }
     [self.customList removeAllObjects];
@@ -147,6 +149,7 @@
         [self.customList addObject:dic];
     }
     [self.uiTableView reloadData];
+    [SVProgressHUD dismiss];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
