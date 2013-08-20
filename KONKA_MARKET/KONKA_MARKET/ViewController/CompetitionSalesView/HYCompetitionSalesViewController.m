@@ -93,8 +93,7 @@
     
     [self getBrandList:self.userLogin.user_id];
      
-    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
-    [self getBrandNameList:self.userLogin.user_id ByFlag:flag ByName:[self.userLogin.brandList objectAtIndex:0]];
+    [self getBrandNameList:self.userLogin.user_id ByName:[self.userLogin.brandList objectAtIndex:0]];
     
     UIImage *backButtonImage = [UIImage imageNamed:@"right.png"];
     CGRect frameimg = CGRectMake(0, 0, 32, 24);
@@ -190,33 +189,22 @@
 
 
 
--(void) getBrandNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)_brandName
+-(void) getBrandNameList:(NSNumber *)user_id ByName:(NSString *)_brandName
 {
-    self.userLogin.brandNameList = [self.kkM getBrandNameListByUserID:user_id ByFlag:flag ByName:_brandName];
-    NSLog(@"getAllModelNameList %d" , [self.userLogin.brandNameList count]);
+    self.userLogin.brandNameList = [self.kkM getBrandNameListByUserID:user_id ByName:_brandName];
 }
 
 - (void) getStoreList:(NSNumber *)user_id
 {
-    NSLog(@"getStoreList user_id %d", [user_id intValue]);
     
-    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
-    
-    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
+    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id];
     
     NSLog(@"asdasd ,%d", [self.userLogin.storeList count]);
 }
 
 - (void) getBrandList:(NSNumber *)user_id
 {
-
-    NSLog(@"getBrandList user_id %d", [user_id intValue]);
-    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
-    
-    self.userLogin.brandList = [self.kkM getBrandListByUserID:user_id ByFlag:flag];
-    
-    NSLog(@"getBrandList ,%d", [self.userLogin.brandList count]);
-    NSLog(@"getBrandList ,%@", [self.userLogin.brandList objectAtIndex:0]);
+    self.userLogin.brandList = [self.kkM getBrandListByUserID:user_id];
 }
 
 -(void)submit:(id)sender{
@@ -382,8 +370,7 @@
         
         self.selectChoice2.text = brandName.text;
         
-        NSNumber *flag = [[NSNumber alloc] initWithInt:0];
-        [self getBrandNameList:self.userLogin.user_id ByFlag:flag ByName:brandName.text];
+        [self getBrandNameList:self.userLogin.user_id ByName:brandName.text];
         
     }
 }

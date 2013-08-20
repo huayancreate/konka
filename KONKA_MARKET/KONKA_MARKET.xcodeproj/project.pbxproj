@@ -123,6 +123,8 @@
 		28086B3E17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28086B3C17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m */; };
 		28086B3F17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28086B3D17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib */; };
 		28086B4117B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */; };
+		281A5E8317C222D300B14DB8 /* BaseDataJSONEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A5E8217C222D300B14DB8 /* BaseDataJSONEntity.m */; };
+		281A5E8C17C3518400B14DB8 /* SetUsualEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A5E8B17C3518400B14DB8 /* SetUsualEntity.m */; };
 		281A8A1417856FA7006AA1C6 /* zbar-back.png in Resources */ = {isa = PBXBuildFile; fileRef = 281A8A0F17856FA7006AA1C6 /* zbar-back.png */; };
 		281A8A1517856FA7006AA1C6 /* zbar-help.html in Resources */ = {isa = PBXBuildFile; fileRef = 281A8A1017856FA7006AA1C6 /* zbar-help.html */; };
 		281A8A1617856FA7006AA1C6 /* zbar-helpicons.png in Resources */ = {isa = PBXBuildFile; fileRef = 281A8A1117856FA7006AA1C6 /* zbar-helpicons.png */; };
@@ -475,6 +477,10 @@
 		28086B3C17B15DAD0044E67B /* HYCompetitionSalesHisViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCompetitionSalesHisViewController.m; sourceTree = "<group>"; };
 		28086B3D17B15DAD0044E67B /* HYCompetitionSalesHisViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCompetitionSalesHisViewController.xib; sourceTree = "<group>"; };
 		28086B4017B1606A0044E67B /* HYCompetitionSalesHisTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCompetitionSalesHisTableViewCell.xib; sourceTree = "<group>"; };
+		281A5E8117C222D300B14DB8 /* BaseDataJSONEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDataJSONEntity.h; sourceTree = "<group>"; };
+		281A5E8217C222D300B14DB8 /* BaseDataJSONEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDataJSONEntity.m; sourceTree = "<group>"; };
+		281A5E8A17C3518300B14DB8 /* SetUsualEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetUsualEntity.h; sourceTree = "<group>"; };
+		281A5E8B17C3518400B14DB8 /* SetUsualEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetUsualEntity.m; sourceTree = "<group>"; };
 		281A89F917856FA6006AA1C6 /* Decoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Decoder.h; sourceTree = "<group>"; };
 		281A89FA17856FA6006AA1C6 /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
 		281A89FB17856FA6006AA1C6 /* Image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Image.h; sourceTree = "<group>"; };
@@ -1364,6 +1370,10 @@
 				28FBA6D2179F7C7600CF4284 /* HYUserLoginModel.m */,
 				28FFABAE17A63C2B009DDF28 /* PercentEntity.h */,
 				28FFABAF17A63C2B009DDF28 /* PercentEntity.m */,
+				281A5E8117C222D300B14DB8 /* BaseDataJSONEntity.h */,
+				281A5E8217C222D300B14DB8 /* BaseDataJSONEntity.m */,
+				281A5E8A17C3518300B14DB8 /* SetUsualEntity.h */,
+				281A5E8B17C3518400B14DB8 /* SetUsualEntity.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2528,7 +2538,12 @@
 				28693ECB17C1BA89007309F4 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				28693ECC17C1BA89007309F4 /* SBJsonStreamWriterState.m in Sources */,
 				28693ECD17C1BA89007309F4 /* SBJsonWriter.m in Sources */,
+<<<<<<< HEAD
 				183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */,
+=======
+				281A5E8317C222D300B14DB8 /* BaseDataJSONEntity.m in Sources */,
+				281A5E8C17C3518400B14DB8 /* SetUsualEntity.m in Sources */,
+>>>>>>> 重构代码
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -174,9 +174,7 @@
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
         self.navigationItem.rightBarButtonItem  = rightButton;
     }
-    
-    NSNumber *flag = [[NSNumber alloc] initWithInt:1];
-    [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
+    [self getAllUsualModelNameList:self.userLogin.user_id];
     
     CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
     self.selectChoice2 = [[UITextField alloc] initWithFrame:textFieldRect];
@@ -365,18 +363,16 @@
    
 }
 
--(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+-(void) getAllUsualModelNameList:(NSNumber *)user_id
 {
-    self.userLogin.modelNameStoreList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:flag];
+    self.userLogin.modelNameStoreList = [self.kkM getAllUsualModelNameListByUserID:user_id];
     NSLog(@"getAllModelNameList %d" , [self.userLogin.modelNameStoreList count]);
 }
 
 - (void) getStoreList:(NSNumber *)user_id
 {
-    NSLog(@"getStoreList user_id %d", [user_id intValue]);
-    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     
-    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id ByType:@"storeList" ByFlag:flag];
+    self.userLogin.storeList = [self.kkM getStoreListByUserID:user_id];
 }
 
 

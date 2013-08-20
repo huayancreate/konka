@@ -9,10 +9,18 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="BaseDataJSONEntity" representedClassName="BaseDataJSONEntity" syncable="YES">
+        <attribute name="json" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="PercentEntity" representedClassName="PercentEntity" syncable="YES">
         <attribute name="model_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percent_stype" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="SetUsualEntity" representedClassName="SetUsualEntity" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES">
@@ -27,5 +35,7 @@
         <element name="BaseDataEntity" positionX="-3942" positionY="-873" width="128" height="150"/>
         <element name="PercentEntity" positionX="160" positionY="192" width="128" height="105"/>
         <element name="UserEntity" positionX="-3611" positionY="-900" width="128" height="135"/>
+        <element name="BaseDataJSONEntity" positionX="-3978" positionY="-684" width="128" height="75"/>
+        <element name="SetUsualEntity" positionX="-3798" positionY="-819" width="128" height="75"/>
     </elements>
 </model>

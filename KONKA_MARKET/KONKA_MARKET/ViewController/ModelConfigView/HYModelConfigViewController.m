@@ -52,23 +52,9 @@
     return self;
 }
 
--(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+-(void) getAllModelNameListByUserID:(NSNumber *)user_id
 {
-    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:self.flag];
-}
-
--(void) getModelListLimit:(NSNumber *)user_id ByFlag:(NSNumber *)flag ByName:(NSString *)name ByPage:(int) page
-{
-    self.userLogin.modelList = [self.kkM getModelListByUserID:user_id ByType:@"modelList" ByFlag:flag ByName:name ByPage:page];
-    
-    self.userLogin.modelNameList = [[NSMutableArray alloc] init];
-
-    for (NSDictionary *dic in self.userLogin.modelList) {
-        NSLog(@"[dic objectForKey:@name] %@", [dic objectForKey:@"name"]);
-        [self.userLogin.modelNameList addObject:[NSString stringWithFormat:@"%@", [dic objectForKey:@"name"]]];
-        NSLog(@"self.userLogin.modelNameList %@", [self.userLogin.modelNameList objectAtIndex:0]);
-    }
-    NSLog(@"self.userLogin.modelNameList count %d", [self.userLogin.modelNameList count]);
+    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id];
 }
 
 - (void)viewDidLoad
@@ -77,15 +63,15 @@
     // Do any additional setup after loading the view from its nib.
     self.kkM = [[KonkaManager alloc] init];
     
-    self.flag = [[NSNumber alloc] initWithInt:0];
-    
     self.page = 0;
     
+    self.flag = [[NSNumber alloc] initWithInt:0];
+    
     // 自动补全
-    [self getAllModelNameList:self.userLogin.user_id ByFlag:self.flag];
+    [self getAllModelNameListByUserID:self.userLogin.user_id];
     
     // 分页
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:nil ByPage:self.page];
+    [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:nil ByPage:self.page];
     
     modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, 260) style:UITableViewStyleGrouped];
     
@@ -115,6 +101,16 @@
     
 }
 
+-(void) getUnusualModelListLimitByID:(NSNumber *)user_id ByName:(NSString *)name ByPage:(int)page
+{
+    self.userLogin.modelList = [self.kkM getUnusualModelListByUserID:user_id ByName:name ByPage:page];
+}
+
+-(void) getUsualModelListLimitByID:(NSNumber *)user_id ByName:(NSString *)name ByPage:(int)page
+{
+    self.userLogin.modelList = [self.kkM getUsualModelListByUserID:user_id ByName:name ByPage:page];
+}
+
 // Workaround to hide keyboard when Done is tapped
 - (IBAction)textFieldDidEndEditing:(id)sender
 {
@@ -129,11 +125,10 @@
     NSString *name = nil;
     if (self.searchTextField.text.length != 0)
     {
-        name = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        name = [NSString stringWithFormat:@"%@%@", name, @"*"];
+        name = self.searchTextField.text;
     }
     
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:name ByPage:self.page];
+    [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:name ByPage:self.page];
     
     [self.uiModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
     [self.uiUnModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
@@ -155,14 +150,12 @@
     self.flag = [[NSNumber alloc] initWithInt:1];
     
     NSString *name = nil;
-    
     if (self.searchTextField.text.length != 0)
     {
-        name = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        name = [NSString stringWithFormat:@"%@%@", name, @"*"];
+        name = self.searchTextField.text;
     }
     
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:name ByPage:self.page];
+    [self getUsualModelListLimitByID:self.userLogin.user_id ByName:name ByPage:self.page];
     
     [self.uiModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
     [self.uiUnModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
@@ -208,10 +201,10 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     if ([self.flag isEqualToNumber:one]) {
-        uiCancelModelLabel.text = [self.userLogin.modelNameList objectAtIndex:indexPath.row];
+        uiCancelModelLabel.text = [self.userLogin.modelList objectAtIndex:indexPath.row];
     }
     if ([self.flag isEqualToNumber:zero]) {
-        uiLableModelName.text = [self.userLogin.modelNameList objectAtIndex:indexPath.row];
+        uiLableModelName.text = [self.userLogin.modelList objectAtIndex:indexPath.row];
     }
     
     uiSetModelBtn.tag = indexPath.row;
@@ -235,23 +228,21 @@
 {
     self.page = 0;
     UIButton *btnTag = (UIButton *)sender;
-    NSString *name = [self.userLogin.modelNameList objectAtIndex:btnTag.tag];
+    NSString *name = [self.userLogin.modelList objectAtIndex:btnTag.tag];
+    NSLog(@"name setDefaultModel %@" , name);
     
     NSString *str = nil;
     
     if (self.searchTextField.text.length != 0)
     {
-        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+        str = self.searchTextField.text;
     }
     
     [SVProgressHUD showWithStatus:@"正在更新..." maskType:SVProgressHUDMaskTypeGradient];
-    
-    NSNumber *tempFlag = [[NSNumber alloc] initWithInt:1];
    
-    [self.kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
+    [self.kkM insertSetUsual:name ByUserID:self.userLogin.user_id];
     
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
     
     [self.modelConfigTableView reloadData];
     [SVProgressHUD dismiss];
@@ -262,24 +253,21 @@
 {
     self.page = 0;
     UIButton *btnTag = (UIButton *)sender;
-    NSString *name = [self.userLogin.modelNameList objectAtIndex:btnTag.tag];
-    
+    NSString *name = [self.userLogin.modelList objectAtIndex:btnTag.tag];
+    NSLog(@"name unSetDefaultModel %@",name);
     NSString *str = nil;
     
     if (self.searchTextField.text.length != 0)
     {
-        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+        str = self.searchTextField.text;
     }
     
     
     [SVProgressHUD showWithStatus:@"正在更新..." maskType:SVProgressHUDMaskTypeGradient];
     
-    NSNumber *tempFlag = [[NSNumber alloc] initWithInt:0];
+    [self.kkM deleteSetUsualByUserID:self.userLogin.user_id AndName:name];
     
-    [self.kkM updateModelListFlag:tempFlag ByName:name ByUserID:self.userLogin.user_id];
-    
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    [self getUsualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
     
     [self.modelConfigTableView reloadData];
     [SVProgressHUD dismiss];
@@ -288,28 +276,30 @@
 -(IBAction)search:(id)sender
 {
     NSLog(@"self.searchTextField.text %@",self.searchTextField.text);
+    self.page = 0;
     
     NSString *str = nil;
     if (self.searchTextField.text.length != 0){
-    
-        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+        str = self.searchTextField.text;
     }
     
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    if ([self.flag intValue] == 0)
+    {
+        [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
+    }else
+    {
+        [self getUsualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
+    }
     [_autoCompleter hideOptionsView];
     [self.modelConfigTableView reloadData];
 }
 
 -(IBAction)up:(id)sender
 {
-    
-    
     NSString *str = nil;
     if (self.searchTextField.text.length != 0)
     {
-        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+        str = self.searchTextField.text;
     }
     if (self.page == 0)
     {
@@ -318,18 +308,22 @@
     {
         self.page = self.page - 1;
     }
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    if ([self.flag intValue] == 0)
+    {
+        [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
+    }else
+    {
+        [self getUsualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];    
+    }
     [self.modelConfigTableView reloadData];
 }
 
 -(IBAction)down:(id)sender
 {
     NSString *str = nil;
-    
     if (self.searchTextField.text.length != 0)
     {
-        str = [NSString stringWithFormat:@"%@%@", @"*", self.searchTextField.text];
-        str = [NSString stringWithFormat:@"%@%@", str, @"*"];
+        str = self.searchTextField.text;
     }
     
     if([self.userLogin.modelList count] < 20)
@@ -339,7 +333,13 @@
     {
         self.page = self.page + 1;
     }
-    [self getModelListLimit:self.userLogin.user_id ByFlag:self.flag ByName:str ByPage:self.page];
+    if ([self.flag intValue] == 0)
+    {
+        [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
+    }else
+    {
+        [self getUsualModelListLimitByID:self.userLogin.user_id ByName:str ByPage:self.page];
+    }
     [self.modelConfigTableView reloadData];
 }
 

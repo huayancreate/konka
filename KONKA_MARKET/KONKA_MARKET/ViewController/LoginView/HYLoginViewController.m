@@ -348,6 +348,17 @@
         
         // 删除BaseDataByUserID
         
+        //TODO 重构插入
+        NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary* json = [decoder objectWithData:data];
+        NSString* dataPatch = [json objectForKey:@"dataPatch"];
+        NSLog(@"remote dataPatch %@",dataPatch);
+        [self.kkM updateDataPatch:dataPatch ByUserID:user_id];
+        
+        [self.kkM insertBaseDataByJson:msg ByUserID:self.userLogin.user_id];
+        
+        /*
+        
         [self.kkM deleteAllBaseDataByUserID:user_id];
         
         NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
@@ -378,6 +389,7 @@
         NSString* dataPatch = [json objectForKey:@"dataPatch"];
         NSLog(@"remote dataPatch %@",dataPatch);
         [self.kkM updateDataPatch:dataPatch ByUserID:user_id];
+         */
         
         NSLog(@"BASE INSERT");
         
@@ -394,23 +406,23 @@
     }
 }
 
--(void) runLoopSets:(NSArray *)list Type:(NSString *)type UserID:(NSNumber *) userid
-{
-    NSMutableDictionary *dicBase = [[NSMutableDictionary alloc] init];
-
-    for(NSDictionary *innerObj in list)
-    {
-        NSNumber *flagNumber = [[NSNumber alloc] initWithInt:0];
-        [dicBase setValue:[innerObj objectForKey:@"addon1"] forKey:@"addon1"];
-        [dicBase setValue:[innerObj objectForKey:@"addon2"] forKey:@"addon2"];
-        [dicBase setValue:[innerObj objectForKey:@"id"] forKey:@"base_id"];
-        [dicBase setValue:[innerObj objectForKey:@"name"] forKey:@"name"];
-        [dicBase setValue:type forKey:@"list_type"];
-        [dicBase setValue:userid forKey:@"user_id"];
-        [dicBase setValue:flagNumber forKey:@"flag"];
-        [self.kkM insertBaseDataByParems:dicBase];
-    }
-}
+//-(void) runLoopSets:(NSArray *)list Type:(NSString *)type UserID:(NSNumber *) userid
+//{
+//    NSMutableDictionary *dicBase = [[NSMutableDictionary alloc] init];
+//
+//    for(NSDictionary *innerObj in list)
+//    {
+//        NSNumber *flagNumber = [[NSNumber alloc] initWithInt:0];
+//        [dicBase setValue:[innerObj objectForKey:@"addon1"] forKey:@"addon1"];
+//        [dicBase setValue:[innerObj objectForKey:@"addon2"] forKey:@"addon2"];
+//        [dicBase setValue:[innerObj objectForKey:@"id"] forKey:@"base_id"];
+//        [dicBase setValue:[innerObj objectForKey:@"name"] forKey:@"name"];
+//        [dicBase setValue:type forKey:@"list_type"];
+//        [dicBase setValue:userid forKey:@"user_id"];
+//        [dicBase setValue:flagNumber forKey:@"flag"];
+//        [self.kkM insertBaseDataByParems:dicBase];
+//    }
+//}
 
 - (void) endLoadBaseDataFin:(ASIHTTPRequest *)request
 {

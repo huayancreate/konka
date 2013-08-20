@@ -64,9 +64,8 @@
     
     self.uiPercentTextField.delegate = self;
     
-    NSNumber *flag = [[NSNumber alloc] initWithInt:0];
     // 自动补全
-    [self getAllModelNameList:self.userLogin.user_id ByFlag:flag];
+    [self getAllModelNameList:self.userLogin.user_id];
     
     [self getPercentListByUserID:self.userLogin.user_id];
 
@@ -116,9 +115,9 @@
 {
 }
 
--(void) getAllModelNameList:(NSNumber *)user_id ByFlag:(NSNumber *)flag
+-(void) getAllModelNameList:(NSNumber *)user_id
 {    
-    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id ByFlag:flag];
+    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id];
 }
 
 - (IBAction)textFieldFinished:(id)sender {
