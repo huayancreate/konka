@@ -328,7 +328,7 @@
     
     if([self.userLogin.modelList count] < 20)
     {
-        self.page = 0;
+        self.page = self.page;
     }else
     {
         self.page = self.page + 1;
