@@ -54,7 +54,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -68,10 +68,6 @@
             break;
         case 1:
             cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYCustomRetailTableViewCell" tableView:tableView index:1];
-            return cell;
-            break;
-        case 2:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYCustomRetailTableViewCell" tableView:tableView index:2];
             return cell;
             break;
     }
@@ -91,9 +87,6 @@
     
     HYCustomManageViewController *customMangeSubmit = nil;
     HYCustomR3ViewController *customR3Submit = nil;
-//    HYOAViewController *oaSubmit = nil;
-//    HYOAApprovalListViewController *oaListSubmit = nil;
-//    HYOAIssuedListViewController *issuedSubmit = nil;
     switch (indexPath.row) {
         case 0:
             customR3Submit = [[HYCustomR3ViewController alloc]init];
@@ -106,15 +99,8 @@
             customMangeSubmit = [[HYCustomManageViewController alloc]init];
             customMangeSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
-            customMangeSubmit.title = @"R3客户管理";
+            customMangeSubmit.title = @"R3客户查询";
             [self.navigationController pushViewController:customMangeSubmit animated:YES];
-            break;
-        case 2:
-//            issuedSubmit = [[HYOAIssuedListViewController alloc] init];
-//            issuedSubmit.userLogin = self.userLogin;
-//            issuedSubmit.title = @"下发文件查询";
-//            
-//            [self.navigationController pushViewController:issuedSubmit animated:YES];
             break;
     }
     
