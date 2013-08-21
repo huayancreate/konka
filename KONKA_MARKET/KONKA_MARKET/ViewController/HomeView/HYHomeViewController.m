@@ -147,20 +147,6 @@
 
 -(void) createBtnObject:(int)index
 {
-<<<<<<< HEAD
-    //创建按钮对象
-    //[self createBtnObject];
-    
-    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(22, 159, 64, 64)];
-    UIImage *image1 = [UIImage imageNamed:@"iconbg.png"];
-    imageView1.image = image1;
-    [self.view addSubview:imageView1];
-    
-    UIImageView *imageView2 = [[UIImageView alloc] initWithFrame:CGRectMake(123, 159, 64, 64)];
-    UIImage *image2 = [UIImage imageNamed:@"iconbg.png"];
-    imageView2.image = image2;
-    [self.view addSubview:imageView2];
-=======
     
     double imageViewX = 0.0;
     double imageViewY = 0.0;
@@ -230,7 +216,6 @@
     theView.title = titlename;
     theView.userLogin = self.userLogin;
     [self.navigationController pushViewController:theView animated:YES];
->>>>>>> 2480116de67730b2855f1a6195848be659f80f9e
 }
 
 -(void)insertImageToHeader
