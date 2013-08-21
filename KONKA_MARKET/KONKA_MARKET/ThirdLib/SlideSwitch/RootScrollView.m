@@ -280,7 +280,7 @@
     HYWebBaseViewController *webView = [[HYWebBaseViewController alloc] init];
     webView.link_url = [self.linkList objectAtIndex:indexPath.row];
     webView.userLogin = self.userlogin;
-    webView.title = @"资讯展示";
+    webView.title = @"资讯平台";
     [self.linkNav pushViewController:webView animated:YES];
 }
 
