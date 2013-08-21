@@ -22,4 +22,11 @@
 @property (nonatomic, retain) HYUserLoginModel *userlogin;
 @property (weak, nonatomic) IBOutlet UITableView *uiTableView;
 
+@property (nonatomic,retain) NSArray *mykey;
+
+@property (strong, nonatomic) IBOutlet UITextField *txtMonth;
+@property (strong, nonatomic) IBOutlet UITextField *txtCustomName;
+@property (strong, nonatomic) IBOutlet UITextField *txtYwyName;
+@property (strong, nonatomic) IBOutlet UIButton *btnSearch;
+
 @end
