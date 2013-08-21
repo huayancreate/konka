@@ -214,6 +214,7 @@
     Class class = NSClassFromString(clickname);
     HYBaseViewController *theView = [(HYBaseViewController *)[class alloc] init];
     theView.title = titlename;
+    theView.userLogin = self.userLogin;
     [self.navigationController pushViewController:theView animated:YES];
 }
 
