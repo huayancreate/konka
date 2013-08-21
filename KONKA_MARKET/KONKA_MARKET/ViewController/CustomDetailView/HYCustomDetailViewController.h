@@ -10,4 +10,6 @@
 
 @interface HYCustomDetailViewController : HYBaseViewController
 
+@property (weak, nonatomic) IBOutlet UITableView *uiTableView;
+
 @end

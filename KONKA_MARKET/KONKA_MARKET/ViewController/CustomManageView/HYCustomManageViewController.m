@@ -94,9 +94,9 @@
             lblHostName.text = [dic objectForKey:@"host_name"];
             lblLinkManAddr.text = [dic objectForKey:@"link_man_addr"];
             lblLinkManPost.text = [dic objectForKey:@"link_man_post"];
-            lblLinkManMobile.text = [dic objectForKey:@"link_man_mobile"];
+            //lblLinkManMobile.text = [dic objectForKey:@"link_man_mobile"];
             lblLinkManName.text = [dic objectForKey:@"link_man_name"];
-            lbllinkManTel.text = [dic objectForKey:@"link_man_tel"];
+            //lbllinkManTel.text = [dic objectForKey:@"link_man_tel"];
             return cell;
         }
         if (indexPath.section == 0)

@@ -129,7 +129,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -146,6 +146,7 @@
             return 28;
         }
     }
+    return 0;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -199,8 +200,6 @@
             return [self.customR3List count];
             break;
     }
-
-    //return [self.customR3List count];
 }
 
 -(void) endFailedRequest:(NSString *)msg
