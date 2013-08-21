@@ -22,6 +22,8 @@
     UIImageView *firstImageView;
     
     NSMutableArray *leaderList,*customerList,*promotersList;
+    
+    NSArray *viewList;
 }
 
 @end
@@ -37,14 +39,14 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSDictionary *dic0 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"客户管理",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"决策分析",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic2 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"订单系统",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic3 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"零售通",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic4 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"行政办公",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic5 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"促销管理",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic6 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"资讯平台",@"name",@"",@"btnclickname",nil];
-        NSDictionary *dic7 = [[NSDictionary alloc] initWithObjectsAndKeys:@"",@"imagepath",@"系统设置",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic0 = [[NSDictionary alloc] initWithObjectsAndKeys:@"客户管理",@"imagepath",@"客户管理",@"name",@"HYCustomRetailViewController",@"btnclickname",nil];
+        NSDictionary *dic1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"决策分析",@"imagepath",@"决策分析",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic2 = [[NSDictionary alloc] initWithObjectsAndKeys:@"订单系统",@"imagepath",@"订单系统",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic3 = [[NSDictionary alloc] initWithObjectsAndKeys:@"零售通",@"imagepath",@"零售通",@"name",@"HYRetailViewController",@"btnclickname",nil];
+        NSDictionary *dic4 = [[NSDictionary alloc] initWithObjectsAndKeys:@"行政办公",@"imagepath",@"行政办公",@"name",@"HYOARetailViewController",@"btnclickname",nil];
+        NSDictionary *dic5 = [[NSDictionary alloc] initWithObjectsAndKeys:@"促销管理",@"imagepath",@"促销管理",@"name",@"",@"btnclickname",nil];
+        NSDictionary *dic6 = [[NSDictionary alloc] initWithObjectsAndKeys:@"资讯平台",@"imagepath",@"资讯平台",@"name",@"HYNewsPlatFormViewController",@"btnclickname",nil];
+        NSDictionary *dic7 = [[NSDictionary alloc] initWithObjectsAndKeys:@"系统设置",@"imagepath",@"系统设置",@"name",@"HYSystemConfigViewController",@"btnclickname",nil];
         leaderList = [[NSMutableArray alloc] init];
         customerList = [[NSMutableArray alloc] init];
         promotersList = [[NSMutableArray alloc] init];
@@ -56,11 +58,13 @@
         [leaderList addObject:dic5];
         [leaderList addObject:dic6];
         [leaderList addObject:dic7];
-        [customerList addObject:dic3];
+        
         [customerList addObject:dic2];
+        [customerList addObject:dic3];
         [customerList addObject:dic5];
         [customerList addObject:dic6];
         [customerList addObject:dic7];
+        
         [promotersList addObject:dic3];
         [promotersList addObject:dic5];
         [promotersList addObject:dic6];
@@ -121,25 +125,96 @@
     
     [self loadHomeImages];
     
-    
-    //根据权限画首页画面
-    [self createMainView];
+    //根据权限创建首页画面
+    NSLog(@"self.userLogin.mobile_user_type intValue ,%d",[self.userLogin.mobile_user_type intValue]);
+    if ([self.userLogin.mobile_user_type intValue] == 10)
+    {
+        viewList = leaderList;
+    }
+    if ([self.userLogin.mobile_user_type intValue] == 20)
+    {
+        viewList = customerList;
+    }
+    if (self.userLogin.mobile_user_type == nil || [self.userLogin.mobile_user_type intValue] == 30)
+    {
+        viewList = promotersList;
+    }
+    NSLog(@"count %d", [viewList count]);
+    [self createMainView:viewList];
     
 }
 
 
+-(void) createBtnObject:(int)index
+{
+    
+    double imageViewX = 0.0;
+    double imageViewY = 0.0;
+    
+    double btnX = 0.0;
+    double btnY = 0.0;
+    
+    double labelX = 0.0;
+    double labelY = 0.0;
+    
+    int X = fmod(index, 3);
+    int Y = (index / 3);
+    NSLog(@"X %d",X);
+    NSLog(@"Y %d",Y);
+    
+    imageViewX = 23.0 + X * 105.0;
+    btnX = 34.0 + X * 105.0;
+    labelX = 22.0 + X * 105.0;
 
--(void) createMainView
+    imageViewY = 158.0 + Y * 95.0;
+    btnY = 171.0 + Y * 95.0;
+    labelY = 220.0 + Y * 95.0;
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageViewX,imageViewY, 64, 64)];
+    UIImage *image = [UIImage imageNamed:@"iconbg.png"];
+    imageView.image = image;
+    
+    [self.view addSubview:imageView];
+    
+    UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(btnX, btnY, 40, 40)];
+    [btn setImage:[UIImage imageNamed:[[viewList objectAtIndex:index] objectForKey:@"imagepath"]] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
+    btn.tag = index;
+    [self.view addSubview:btn];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(labelX, labelY, 65, 30)];
+    label.text = [[viewList objectAtIndex:index] objectForKey:@"name"];
+    label.font = [UIFont fontWithName:@"Helvetica" size:14.0];
+    label.backgroundColor = [UIColor clearColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
+}
+
+
+-(void) createMainView:(NSArray *)list
 {
     //创建按钮对象
-//    [self createBtnObject];
-    
-    
-    UIImageView *imageView1 = [[UIImageView alloc] initWithFrame:CGRectMake(20, 158, 64, 64)];
-    UIImage *image1 = [UIImage imageNamed:@"iconbg.png"];
-    imageView1.image = image1;
-    
-    [self.view addSubview:imageView1];
+    for (int i = 0 ; i < list.count; i++)
+    {
+        [self createBtnObject:i];
+    }
+    //font CGFloat
+}
+
+
+-(void) clickButton:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    NSString *titlename = [[viewList objectAtIndex:btn.tag] objectForKey:@"name"];
+    NSString *clickname = [[viewList objectAtIndex:btn.tag] objectForKey:@"btnclickname"];
+    if ([clickname isEqualToString:@""])
+    {
+        return;
+    }
+    Class class = NSClassFromString(clickname);
+    HYBaseViewController *theView = [(HYBaseViewController *)[class alloc] init];
+    theView.title = titlename;
+    [self.navigationController pushViewController:theView animated:YES];
 }
 
 -(void)insertImageToHeader
