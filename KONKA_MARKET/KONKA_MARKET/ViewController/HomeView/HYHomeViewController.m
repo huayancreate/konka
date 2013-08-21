@@ -111,7 +111,7 @@
     
     self.navigationItem.rightBarButtonItem  = rightButton;
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"logo.png"];
+    UIImage *backButtonImage = [UIImage imageNamed:@"headbglogo"];
     UIButton *someButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 220, 35)];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
