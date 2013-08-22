@@ -21,6 +21,7 @@
 @property(nonatomic, strong) UILabel *dateLabel;
 @property(nonatomic, strong) NSString *currentDate;
 @property(nonatomic, strong) HYCalculatePercentage *hyc;
+@property(nonatomic) NSArray *json;
 
 
 @end
@@ -37,6 +38,7 @@
 @synthesize decoder;
 @synthesize currentDate;
 @synthesize hyc;
+@synthesize json;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,6 +46,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        json = nil;
     }
     return self;
 }
@@ -107,7 +110,7 @@
 {
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSArray *json = [decoder objectWithData:data];
+    json = [decoder objectWithData:data];
     
     if ([json count] == 0)
     {
@@ -130,8 +133,24 @@
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    if (json == nil || [json count] == 0)
+    {
+        return;
+    }
+    
+    [SVProgressHUD showWithStatus:@"正在重新测算提成..." maskType:SVProgressHUDMaskTypeGradient];
+    
+    [self calPercentage:json];
+    
+    [downLoadTabelView reloadData];
+    
+    [SVProgressHUD dismiss];
+}
 
--(void) calPercentage:(NSArray *)json
+
+-(void) calPercentage:(NSArray *)_json
 {
     hyc = [[HYCalculatePercentage alloc] init];
     hyc.percentList = [[NSMutableArray alloc] init];
@@ -139,7 +158,7 @@
     hyc.allnum = [[NSNumber alloc] initWithDouble:0];
     hyc.percentPrice = [[NSDecimalNumber alloc] initWithDouble:0];
     hyc.allprice = [[NSDecimalNumber alloc] initWithDouble:0];
-    hyc.salesList = json;
+    hyc.salesList = _json;
     
     NSArray *pelist = [self.kkM getPeListByUserID:self.userLogin.user_id];
     

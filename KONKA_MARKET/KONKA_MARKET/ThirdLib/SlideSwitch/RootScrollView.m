@@ -296,6 +296,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"self.tittleList , %d",[self.tittleList count]);
     return [self.tittleList count];
 }
 

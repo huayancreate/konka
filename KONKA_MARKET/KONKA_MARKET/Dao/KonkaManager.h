@@ -65,6 +65,8 @@
 
 -(NSMutableArray *) getAllUsualModelNameListByUserID:(NSNumber *)user_id;
 
+-(NSMutableArray *) getAllUnusualModelNameListByUserID:(NSNumber *)user_id;
+
 -(NSMutableArray *) getAllModelNameListByUserID:(NSNumber *)user_id;
 
 @end

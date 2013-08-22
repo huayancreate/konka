@@ -868,6 +868,50 @@
     }
 }
 
+-(NSMutableArray *) getAllUnusualModelNameListByUserID:(NSNumber *)user_id
+{
+    if ([self managedObjectContext] == nil) {
+        return nil;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"BaseDataJSONEntity" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * predicate = nil;
+    predicate = [NSPredicate predicateWithFormat:@"user_id == %d", [user_id intValue]];
+    [fetchRequest setPredicate:predicate];
+    
+    NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+    
+    NSMutableArray *result1 = [[NSMutableArray alloc] init];
+    if ([result count] == 0) {
+        return result1;
+    }
+    
+    NSMutableArray *unusualList = [[NSMutableArray alloc] init];
+    
+    BaseDataJSONEntity *jsonentity = [result objectAtIndex:0];
+    NSString *jsonstr = jsonentity.json;
+    
+    JSONDecoder *decoder = [[JSONDecoder alloc] init];
+    NSData *data = [jsonstr dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary* json = [decoder objectWithData:data];
+    NSArray *modelList = [json objectForKey:@"modelList"];
+    
+    NSMutableArray *usualList = [self getAllUsualModelNameListByUserID:user_id];
+    
+    for (NSDictionary *dic in modelList)
+    {
+        NSString *name = [dic objectForKey:@"name"];
+        if (![usualList containsObject:name])
+        {
+            [unusualList addObject:name];
+        }
+    }
+    return unusualList;
+}
+
 
 -(NSMutableArray *) getAllUsualModelNameListByUserID:(NSNumber *)user_id
 {

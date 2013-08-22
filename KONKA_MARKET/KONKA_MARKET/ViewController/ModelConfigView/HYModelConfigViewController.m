@@ -54,7 +54,15 @@
 
 -(void) getAllModelNameListByUserID:(NSNumber *)user_id
 {
-    self.userLogin.modelNameCopyList = [self.kkM getAllModelNameListByUserID:user_id];
+    [self.userLogin.modelNameCopyList removeAllObjects];
+    if ([self.flag intValue] == 0)
+    {
+        self.userLogin.modelNameCopyList = [self.kkM getAllUnusualModelNameListByUserID:user_id];
+    
+    }else
+    {
+        self.userLogin.modelNameCopyList = [self.kkM getAllUsualModelNameListByUserID:user_id];
+    }
 }
 
 - (void)viewDidLoad
@@ -132,6 +140,7 @@
     
     [self.uiModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
     [self.uiUnModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
+    [self getAllModelNameListByUserID:self.userLogin.user_id];
     
 //    [self.uiModelSet setBackgroundColor:[UIColor blueColor]];
 //    
@@ -159,6 +168,7 @@
     
     [self.uiModelSet setBackgroundImage:self.unsetImg forState:UIControlStateNormal];
     [self.uiUnModelSet setBackgroundImage:self.setImg forState:UIControlStateNormal];
+    [self getAllModelNameListByUserID:self.userLogin.user_id];
     
 //    [self.uiModelSet setBackgroundColor:[UIColor clearColor]];
 //    
