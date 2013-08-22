@@ -122,6 +122,7 @@
             dataSubmit = [[HYDataSubmitViewController alloc]init];
             dataSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
+            self.userLogin.allDataSubmit = nil;
             if ([self.userLogin.storeList count] == 0)
             {
                 [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
