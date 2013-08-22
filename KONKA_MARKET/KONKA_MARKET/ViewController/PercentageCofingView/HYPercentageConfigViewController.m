@@ -66,6 +66,7 @@
     
     uiTextPercent = [[UITextField alloc] initWithFrame:CGRectMake(98, 107, 109, 30)];
     uiTextPercent.borderStyle = UITextBorderStyleLine;
+    uiTextPercent.keyboardType = UIKeyboardTypeDecimalPad;
     uiTextPercent.delegate = self;
     
     [self.view addSubview:uiTextPercent];
