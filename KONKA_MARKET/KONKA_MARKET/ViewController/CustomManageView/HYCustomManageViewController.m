@@ -169,14 +169,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//        NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
-        //NSLog(@"1111 %@", [dic objectForKey:@"memo"]);
+    if(indexPath.section == 1){
         HYCustomDetailViewController *dataSubmit = [[HYCustomDetailViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
+        dataSubmit.userLogin.customManageList = [customList objectAtIndex:indexPath.row];
         dataSubmit.title = @"R3客户详细信息";
         
         [self.navigationController pushViewController:dataSubmit animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
 }
 
 -(void)loadCustom
@@ -225,6 +226,8 @@
             return [self.customList count];
             break;
     }
+
+    return 0;
 }
 
 
