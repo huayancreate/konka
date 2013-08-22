@@ -176,7 +176,7 @@
     
     self.imageNameArray = [NSArray arrayWithObjects:@"sys_nav_01.jpg", @"sys_nav_02.jpg", @"sys_nav_03.jpg", @"sys_nav_04.jpg", @"sys_nav_05.jpg",@"sys_nav_06.jpg",@"sys_nav_07.jpg",@"sys_nav_08.jpg",@"sys_nav_09.jpg",@"sys_nav_10.jpg",nil];
     
-    _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    _pageScroll = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 320, [super screenHeight])];
     _pageScroll.showsHorizontalScrollIndicator = NO;
     self.pageScroll.pagingEnabled = YES;
     self.pageScroll.contentSize = CGSizeMake(self.view.frame.size.width * imageNameArray.count, self.view.frame.size.height);
@@ -186,7 +186,7 @@
     UIView *view;
     for (int i = 0; i < imageNameArray.count; i++) {
         imgName = [imageNameArray objectAtIndex:i];
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, [super screenHeight])];
         imageView.image = [UIImage imageNamed:imgName];
         view = [[UIView alloc] initWithFrame:CGRectMake((self.view.frame.size.width * i), 0.f, self.view.frame.size.width, self.view.frame.size.height)];
         
@@ -205,7 +205,7 @@
             [enterButton setTitle:@"开始使用" forState:UIControlStateNormal];
             [enterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [enterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-            [enterButton setCenter:CGPointMake(self.view.center.x, 465)];
+            [enterButton setCenter:CGPointMake(self.view.center.x, [super screenHeight] - 15)];
             
             [enterButton setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
             
@@ -218,7 +218,7 @@
             [nextEnterButton setTitle:@"下一步" forState:UIControlStateNormal];
             [nextEnterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [nextEnterButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
-            [nextEnterButton setCenter:CGPointMake(self.view.center.x, 465)];
+            [nextEnterButton setCenter:CGPointMake(self.view.center.x, [super screenHeight] - 15)];
             
             [nextEnterButton setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
             

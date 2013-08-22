@@ -47,6 +47,7 @@
 @property (nonatomic, strong) HYUserLoginModel *userLogin;
 @property (nonatomic, strong) NSString *newpassword;
 @property (nonatomic, strong) KonkaManager *kkM;
+@property (nonatomic) CGFloat screenHeight;
 
 -(void) endRequest:(NSString *)msg;
 -(void) cancelButtonClick:(id)sender;

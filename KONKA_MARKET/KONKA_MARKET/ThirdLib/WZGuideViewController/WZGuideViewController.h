@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HYBaseViewController.h"
 
-@interface WZGuideViewController : UIViewController<UIScrollViewDelegate>
+@interface WZGuideViewController : HYBaseViewController<UIScrollViewDelegate>
 {
     BOOL _animating;
     

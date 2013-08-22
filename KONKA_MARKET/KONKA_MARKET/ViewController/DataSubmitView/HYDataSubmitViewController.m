@@ -138,9 +138,9 @@
 //        [super errorMsg:@"没有相应的门店对应！"];
 //        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
 //    }
-//    
+//
     
-    mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 380) style:UITableViewStyleGrouped];
+    mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, ([super screenHeight] - 100)) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
     
     mainTableView.delegate = self;

@@ -32,6 +32,7 @@
 @synthesize lattitude;
 @synthesize longitude;
 @synthesize flagcount;
+@synthesize screenHeight;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,6 +50,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenRect.size;
+    self.screenHeight = screenSize.height;
+    
+    
     self.kkM = [[KonkaManager alloc] init];
     UIImage *backButtonImage = [UIImage imageNamed:@"back"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);

@@ -73,7 +73,7 @@
     // 分页
     [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:nil ByPage:self.page];
     
-    modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, 260) style:UITableViewStyleGrouped];
+    modelConfigTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 85, 320, [super screenHeight] - 180) style:UITableViewStyleGrouped];
     
     modelConfigTableView.delegate = self;
     modelConfigTableView.dataSource = self;

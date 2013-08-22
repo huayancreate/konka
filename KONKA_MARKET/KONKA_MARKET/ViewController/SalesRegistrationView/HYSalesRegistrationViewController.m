@@ -100,7 +100,7 @@
     [self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];
     
-    downTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, 320, 280) style:UITableViewStyleGrouped];
+    downTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 80, 320, [super screenHeight] - 180) style:UITableViewStyleGrouped];
     downTableView.scrollEnabled = YES;
     
     downTableView.delegate = self;
