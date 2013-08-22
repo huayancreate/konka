@@ -45,29 +45,26 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    static NSString *SectionTableMyTag=@"CellCustomR3Identifier";
-//    UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-//    cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
-//    NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomR3TableViewCell" owner:self options:nil];
-//    cell = [nib objectAtIndex:0];
-//    //        NSDictionary *dic = [self.customR3List objectAtIndex:indexPath.row];
-//    //        //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-//    //        lblR3TotalMoney.text = [dic objectForKey:@"pd_total_money"];
-//    //        lblCustomName.text = [dic objectForKey:@"customer_name"];
-//    //        lblR3TotalCount.text = [dic objectForKey:@"pd_count"];
-//    //        lblAvgMlMoney.text = [dic objectForKey:@"pj_ml_money"];
-//    //        lblAvgUnitPrice.text = [dic objectForKey:@"pj_unitprice"];
-//    //        lblTbMlMoney.text = [dic objectForKey:@"tb_ml_money"];
-//    //        lblTbUnitPrice.text = [dic objectForKey:@"tb_unitprice"];
-//    
-//    return cell;
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+    UITableViewCell *cell = nil;
+    static NSString *SectionTableMyTag=@"CellCustomDetailIdentifier";
+    cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
+    cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+    NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomDetailTableViewCell" owner:self options:nil];
+    cell = [nib objectAtIndex:0];
+    self.lblR3Name.text = [self.userLogin.customManageList objectForKey:@"r3_name"];
+    self.lblR3Code.text = [self.userLogin.customManageList objectForKey:@"r3_code"];
+    self.lblMonth.text = @"";
+    self.lblR3SaleCount.text = @"";
+    self.lblR3SaleMoney.text = @"";
+    self.lblSaleCount.text = @"";
+    self.lblSaleMoney.text = @"";
+    self.lblBackMoney.text = @"";
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 0;
+    return 250;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

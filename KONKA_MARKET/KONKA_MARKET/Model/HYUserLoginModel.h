@@ -32,4 +32,6 @@
 @property (nonatomic, strong) NSMutableDictionary *nameandidList;
 @property (nonatomic, strong) NSDictionary *allDataSubmit;
 @property (nonatomic, strong) NSNumber *mobile_user_type;
+@property (nonatomic, retain) NSDictionary *customManageList;
+
 @end

@@ -200,6 +200,7 @@
             return [self.customR3List count];
             break;
     }
+    return 0;
 }
 
 -(void) endFailedRequest:(NSString *)msg

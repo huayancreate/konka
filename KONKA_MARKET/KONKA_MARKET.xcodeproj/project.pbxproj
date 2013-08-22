@@ -26,6 +26,7 @@
 		1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */; };
 		1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */; };
 		1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */; };
+		1834836A17C5A05400AB6524 /* HYCustomDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */; };
 		183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */; };
 		183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CE90917C30B860041462B /* HYCustomR3ViewController.m */; };
 		183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */; };
@@ -371,6 +372,7 @@
 		1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_blankCheck@2x.png"; sourceTree = "<group>"; };
 		1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_selectCheck.png; sourceTree = "<group>"; };
 		1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_selectCheck@2x.png"; sourceTree = "<group>"; };
+		1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomDetailTableViewCell.xib; sourceTree = "<group>"; };
 		183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3TableViewCell.xib; sourceTree = "<group>"; };
 		183CE90817C30B860041462B /* HYCustomR3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomR3ViewController.h; sourceTree = "<group>"; };
 		183CE90917C30B860041462B /* HYCustomR3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomR3ViewController.m; sourceTree = "<group>"; };
@@ -2106,6 +2108,7 @@
 				18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */,
 				18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */,
 				183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */,
+				1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2437,6 +2440,7 @@
 				183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */,
 				183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */,
 				181913A517C4BA0B007A184F /* HYCustomDetailViewController.xib in Resources */,
+				1834836A17C5A05400AB6524 /* HYCustomDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

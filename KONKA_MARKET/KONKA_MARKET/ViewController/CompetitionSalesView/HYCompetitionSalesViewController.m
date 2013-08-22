@@ -263,6 +263,7 @@
         self.selectChoice2.text = brandName.text;
         salesCount.text = @"1";
         saleAllPrice.text = @"0.0";
+        memo.text = @"";
     }else
     {
         [super errorMsg:msg];

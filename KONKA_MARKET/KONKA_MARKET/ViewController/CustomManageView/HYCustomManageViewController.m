@@ -11,31 +11,37 @@
 
 @interface HYCustomManageViewController ()
 //@property(nonatomic, strong) JSONDecoder* decoder;
+@property(nonatomic, weak) CKCalendarView *calendar;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDate *minimumDate;
+
+
 @end
 
 @implementation HYCustomManageViewController
 //@synthesize decoder;
-@synthesize lblR3Name;
-@synthesize lblR3Code;
-@synthesize lblDeptName;
-@synthesize lblYwyName;
-@synthesize lblType;
+//@synthesize lblR3Name;
+//@synthesize lblR3Code;
+//@synthesize lblDeptName;
+//@synthesize lblYwyName;
+//@synthesize lblType;
+//
+//@synthesize lblHostName;
+//@synthesize lblLinkManAddr;
+//@synthesize lblLinkManPost;
+//@synthesize lblLinkManMobile;
+//@synthesize lblLinkManName;
+//@synthesize lbllinkManTel;
+//
+//@synthesize userlogin;
+//@synthesize customList;
+//
+//@synthesize btnMonth;
+//@synthesize txtCustomName;
+//@synthesize txtR3Code;
+//@synthesize txtYwyName;
+//@synthesize btnSearch;
 
-@synthesize lblHostName;
-@synthesize lblLinkManAddr;
-@synthesize lblLinkManPost;
-@synthesize lblLinkManMobile;
-@synthesize lblLinkManName;
-@synthesize lbllinkManTel;
-
-@synthesize userlogin;
-@synthesize customList;
-
-@synthesize txtMonth;
-@synthesize txtCustomName;
-@synthesize txtR3Code;
-@synthesize txtYwyName;
-@synthesize btnSearch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -86,16 +92,16 @@
             cell = [nib objectAtIndex:0];
             NSDictionary *dic = [self.customList objectAtIndex:indexPath.row];
             NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-            lblR3Name.text = [dic objectForKey:@"r3_name"];
-            lblDeptName.text = [dic objectForKey:@"dept_name"];
-            lblR3Code.text = [dic objectForKey:@"r3_code"];
-            lblType.text = [dic objectForKey:@"c_name"];
-            lblYwyName.text = [dic objectForKey:@"ywy_name"];
-            lblHostName.text = [dic objectForKey:@"host_name"];
-            lblLinkManAddr.text = [dic objectForKey:@"link_man_addr"];
-            lblLinkManPost.text = [dic objectForKey:@"link_man_post"];
+            self.lblR3Name.text = [dic objectForKey:@"r3_name"];
+            self.lblDeptName.text = [dic objectForKey:@"dept_name"];
+            self.lblR3Code.text = [dic objectForKey:@"r3_code"];
+            self.lblType.text = [dic objectForKey:@"c_name"];
+            self.lblYwyName.text = [dic objectForKey:@"ywy_name"];
+            self.lblHostName.text = [dic objectForKey:@"host_name"];
+            self.lblLinkManAddr.text = [dic objectForKey:@"link_man_addr"];
+            self.lblLinkManPost.text = [dic objectForKey:@"link_man_post"];
             //lblLinkManMobile.text = [dic objectForKey:@"link_man_mobile"];
-            lblLinkManName.text = [dic objectForKey:@"link_man_name"];
+            self.lblLinkManName.text = [dic objectForKey:@"link_man_name"];
             //lbllinkManTel.text = [dic objectForKey:@"link_man_tel"];
             return cell;
         }
@@ -110,9 +116,11 @@
                     break;
                 case 1:
                     cell.textLabel.text = [self.mykey objectAtIndex: 1];
-                    self.txtMonth = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
-                    [self.txtMonth setBorderStyle:UITextBorderStyleLine];
-                    [cell addSubview:self.txtMonth];
+                    self.btnMonth = [[UIButton alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                    [self.btnMonth setTitle:[super getNowDate] forState:UIControlStateNormal];
+                    [self.btnMonth addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
+                    [self.btnMonth setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                    [cell addSubview:self.btnMonth];
                     break;
                 case 2:
                     cell.textLabel.text = [self.mykey objectAtIndex: 2];
@@ -134,11 +142,10 @@
                     break;
                 case 5:
                     self.btnSearch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    btnSearch.frame = CGRectMake(35, 1, 250, 24);
-                    [btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
-                    //btnSearch.tag = 1234;
-                    [btnSearch setTitle:@"查询" forState:UIControlStateNormal];
-                    [btnSearch addTarget:self action:@selector(Search:) forControlEvents:UIControlEventTouchUpInside];
+                    self.btnSearch.frame = CGRectMake(35, 1, 250, 24);
+                    [self.btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
+                    [self.btnSearch setTitle:@"查询" forState:UIControlStateNormal];
+                    [self.btnSearch addTarget:self action:@selector(Search:) forControlEvents:UIControlEventTouchUpInside];
                     [cell addSubview:self.btnSearch];
                     break;
                     
@@ -169,14 +176,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//        NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
-        //NSLog(@"1111 %@", [dic objectForKey:@"memo"]);
+    if(indexPath.section == 1){
         HYCustomDetailViewController *dataSubmit = [[HYCustomDetailViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
+        dataSubmit.userLogin.customManageList = [self.customList objectAtIndex:indexPath.row];
         dataSubmit.title = @"R3客户详细信息";
         
         [self.navigationController pushViewController:dataSubmit animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    }
 }
 
 -(void)loadCustom
@@ -225,6 +233,8 @@
             return [self.customList count];
             break;
     }
+
+    return 0;
 }
 
 
@@ -239,23 +249,49 @@
 }
 
 //查询
--(void)Search:(id)sender
+-(IBAction)Search:(id)sender
 {
-    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass", nil];
-    
-    NSLog(@"username %@",self.userLogin.user_name);
-    NSLog(@"userpass %@",self.userLogin.password);
-    
-    NSLog(@"%@,,,,,",[HYAppUtily stringOutputForDictionary:param]);
-    
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:CustomManageApi]];
-    
-    NSLog(@"url %@", url.absoluteString);
-    [[[DataProcessing alloc] init] sentRequest:url Parem:param Target:self];
+    NSLog(@"获取日期值：%@",self.btnMonth.titleLabel.text);
+//    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+//    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass", nil];
+//    
+//    NSLog(@"username %@",self.userLogin.user_name);
+//    NSLog(@"userpass %@",self.userLogin.password);
+//    
+//    NSLog(@"%@,,,,,",[HYAppUtily stringOutputForDictionary:param]);
+//    
+//    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:CustomManageApi]];
+//    
+//    NSLog(@"url %@", url.absoluteString);
+//    [[[DataProcessing alloc] init] sentRequest:url Parem:param Target:self];
 
     //NSLog(@"点击查询按钮才会出现的");
 }
 
+-(IBAction)dataPick:(id)sender
+{
+    CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+    
+    self.calendar = calendar;
+    calendar.delegate = self;
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"2012年12月"];
+    
+    calendar.onlyShowCurrentMonth = NO;
+    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+    
+    calendar.frame = CGRectMake(10, 10, 300, 320);
+    [self.view addSubview:calendar];
+    //NSLog(@"点击日期事件");
+}
+
+- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+    
+    NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
+    [self.btnMonth setTitle:backStr forState:UIControlStateNormal];
+    [calendar removeFromSuperview];
+}
 
 @end

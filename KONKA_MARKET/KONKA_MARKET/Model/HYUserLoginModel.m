@@ -27,5 +27,6 @@
 @synthesize nameandidList;
 @synthesize allDataSubmit;
 @synthesize mobile_user_type;
+@synthesize customManageList;
 
 @end
