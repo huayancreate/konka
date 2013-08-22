@@ -898,7 +898,8 @@
     if ([resultStr canBeConvertedToEncoding:NSShiftJISStringEncoding]) {
         resultStr = [NSString stringWithCString:[resultStr cStringUsingEncoding: NSShiftJISStringEncoding]  encoding:NSUTF8StringEncoding];
     }
-    [super errorMsg:resultStr];
+    self.selectChoice2.text = resultStr;
+    //[super errorMsg:resultStr];
     [[reader presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
