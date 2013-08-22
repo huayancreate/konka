@@ -290,18 +290,18 @@
     //    NSLog(@"currentPage_==%d",currentPage_);
     if (currentPage==0)
     {
-        [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320 * [slideImages count],0,320,460) animated:NO]; // 序号0 最后1页
+        [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320 * [slideImages count],0,320, [super screenHeight] - 20) animated:NO]; // 序号0 最后1页
     }
     else if (currentPage==([slideImages count]+1))
     {
-        [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320,0,320,460) animated:NO]; // 最后+1,循环第1页
+        [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320,0,320,[super screenHeight] - 20) animated:NO]; // 最后+1,循环第1页
     }
 }
 // pagecontrol 选择器的方法
 - (void)turnPage
 {
     int page = pageControl.currentPage; // 获取当前的page
-    [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320*(page+1),0,320,460) animated:YES]; // 触摸pagecontroller那个点点 往后翻一页 +1
+    [uiAdvLogoScrollView scrollRectToVisible:CGRectMake(320*(page+1),0,320,[super screenHeight] - 20) animated:YES]; // 触摸pagecontroller那个点点 往后翻一页 +1
     pageControl.currentPage = page + 1;
 }
 // 定时器 绑定的方法

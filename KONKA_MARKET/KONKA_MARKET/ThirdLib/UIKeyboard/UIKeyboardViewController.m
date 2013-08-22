@@ -74,6 +74,7 @@ static CGFloat viewFrameY = 0;
 	kboardHeight = kheight;
 	//[self checkBarButton:textField];
 	CGRect rect = objectView.frame;
+    NSLog(@"viewFrameY %f", viewFrameY);
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	if (isShow) {
@@ -236,6 +237,8 @@ static CGFloat viewFrameY = 0;
 			objectView = (UIView *)[self boardDelegate];
 		}
         viewFrameY = objectView.frame.origin.y;
+        viewFrameY = 0.0;
+        NSLog(@"viewFrameY first %f", viewFrameY);
 		[self addKeyBoardNotification];
 	}
 	return self;
