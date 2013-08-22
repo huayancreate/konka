@@ -32,8 +32,6 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *uiPercentCellLabel;
 
-@property (strong, nonatomic) IBOutlet UITextField *uiPercentTextField;
-
 @property (strong, nonatomic) IBOutlet UITextField *uiModelTextField;
 
 @property (strong, nonatomic) NSString *percentString;

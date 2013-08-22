@@ -14,6 +14,7 @@
 @property (nonatomic) Boolean percentFlag;
 @property (nonatomic, strong) UIImage *unsetImg;
 @property (nonatomic, strong) UIImage *setImg;
+@property (nonatomic, strong) UITextField *uiTextPercent;
 
 @end
 
@@ -29,7 +30,7 @@
 @synthesize percentFlag;
 @synthesize uibgLabel;
 @synthesize uibgLabel1;
-@synthesize uiPercentTextField;
+@synthesize uiTextPercent;
 
 
 
@@ -62,7 +63,12 @@
     // Do any additional setup after loading the view from its nib.
     percentFlag = true;
     
-    self.uiPercentTextField.delegate = self;
+    
+    uiTextPercent = [[UITextField alloc] initWithFrame:CGRectMake(98, 107, 109, 30)];
+    uiTextPercent.borderStyle = UITextBorderStyleLine;
+    uiTextPercent.delegate = self;
+    
+    [self.view addSubview:uiTextPercent];
     
     // 自动补全
     [self getAllModelNameList:self.userLogin.user_id];
@@ -92,8 +98,7 @@
     
     [self.uiModelTextField addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
 //    [self.uiPercentTextField addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.uiPercentTextField addTarget:self action:@selector(changeTextValue) forControlEvents:UIControlEventEditingChanged];
-    self.uiPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    //self.uiPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
     
     
     self.percentString = @"固定提成";
@@ -110,9 +115,6 @@
     UITapGestureRecognizer *gesture2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
     [self.mainTableView addGestureRecognizer:gesture2];
     
-}
--(void)changeTextValue
-{
 }
 
 -(void) getAllModelNameList:(NSNumber *)user_id
@@ -226,7 +228,7 @@
     {
         NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
         [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        NSNumber *temp = [f numberFromString:self.uiPercentTextField.text];
+        NSNumber *temp = [f numberFromString:self.uiTextPercent.text];
         if ([temp floatValue] > 100)
         {
             [super errorMsg:@"按比例分成不能大于100！"];
@@ -248,7 +250,7 @@
     {
         
         [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
-        [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:perStyle];
+        [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiTextPercent.text PercentStyle:perStyle];
         [self getPercentListByUserID:self.userLogin.user_id];
         
         [self.mainTableView reloadData];
@@ -267,7 +269,7 @@
                                   NSLog(@"OK Clicked");
                                   [SVProgressHUD showWithStatus:@"正在保存..." maskType:SVProgressHUDMaskTypeGradient];
                                   [self.kkM deletePercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text];
-                                [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiPercentTextField.text PercentStyle:perStyle];
+                                [self.kkM insertPercentData:self.userLogin.user_id ModelName:self.uiModelTextField.text Percent:self.uiTextPercent.text PercentStyle:perStyle];
                                   
                                 [self getPercentListByUserID:self.userLogin.user_id];
                                   
@@ -304,7 +306,7 @@
         [super errorMsg:msg];
         return false;
     }
-    if( self.uiPercentTextField.text.length == 0){
+    if( self.uiTextPercent.text.length == 0){
         //TOD 弹出警告
         NSString *msg = @"提成不能为空！";
         [super errorMsg:msg];
@@ -334,7 +336,7 @@
 #pragma mark UITextField
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == self.uiPercentTextField) {
+    if (textField == self.uiTextPercent) {
         NSScanner      *scanner    = [NSScanner scannerWithString:string];
         NSCharacterSet *numbers;
         NSRange         pointRange = [textField.text rangeOfString:@"."];
