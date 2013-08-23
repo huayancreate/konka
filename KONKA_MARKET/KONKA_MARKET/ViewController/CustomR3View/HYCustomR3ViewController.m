@@ -72,9 +72,8 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     if (indexPath.section == 1) {
-        static NSString *SectionTableMyTag=@"CellCustomR3Identifier";
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        UITableViewCell *cell = nil;
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomR3TableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         NSDictionary *dic = [self.customR3List objectAtIndex:indexPath.row];

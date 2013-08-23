@@ -11,27 +11,27 @@
 
 @interface HYUserLoginModel : NSObject
 
-@property (nonatomic, retain) NSString *user_name;
-@property (nonatomic, retain) NSString *real_name;
-@property (nonatomic, retain) NSNumber *user_id;
-@property (nonatomic, retain) NSArray *storeList;
-@property (nonatomic, retain) NSArray *brandList;
-@property (nonatomic, retain) NSString *department;
-@property (nonatomic, retain) NSString *password;
-@property (nonatomic, retain) NSArray *modelList;
-@property (nonatomic, retain) NSMutableArray *modelNameList;
-@property (nonatomic, retain) NSMutableArray *modelNameCopyList;
-@property (nonatomic, retain) NSMutableArray *modelNameStoreList;
-@property (nonatomic, retain) NSArray *peList;
-@property (nonatomic, retain) NSMutableArray *salesRegisterList;
-@property (nonatomic, retain) NSString *salesAllNum;
-@property (nonatomic, retain) NSString *salesAllPrice;
-@property (nonatomic, retain) NSMutableArray *brandNameList;
-@property (nonatomic, retain) NSDictionary *dataSubmit;
-@property (nonatomic, retain) NSMutableArray *percentList;
+@property (nonatomic, strong) NSString *user_name;
+@property (nonatomic, strong) NSString *real_name;
+@property (nonatomic, strong) NSNumber *user_id;
+@property (nonatomic, strong) NSArray *storeList;
+@property (nonatomic, strong) NSArray *brandList;
+@property (nonatomic, strong) NSString *department;
+@property (nonatomic, strong) NSString *password;
+@property (nonatomic, strong) NSArray *modelList;
+@property (nonatomic, strong) NSMutableArray *modelNameList;
+@property (nonatomic, strong) NSMutableArray *modelNameCopyList;
+@property (nonatomic, strong) NSMutableArray *modelNameStoreList;
+@property (nonatomic, strong) NSArray *peList;
+@property (nonatomic, strong) NSMutableArray *salesRegisterList;
+@property (nonatomic, strong) NSString *salesAllNum;
+@property (nonatomic, strong) NSString *salesAllPrice;
+@property (nonatomic, strong) NSMutableArray *brandNameList;
+@property (nonatomic, strong) NSDictionary *dataSubmit;
+@property (nonatomic, strong) NSMutableArray *percentList;
 @property (nonatomic, strong) NSMutableDictionary *nameandidList;
 @property (nonatomic, strong) NSDictionary *allDataSubmit;
 @property (nonatomic, strong) NSNumber *mobile_user_type;
-@property (nonatomic, retain) NSDictionary *customManageList;
+@property (nonatomic, strong) NSDictionary *customManageList;
 
 @end

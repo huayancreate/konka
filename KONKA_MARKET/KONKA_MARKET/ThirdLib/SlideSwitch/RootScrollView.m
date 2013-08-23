@@ -37,21 +37,21 @@
 @synthesize linkList;
 @synthesize linkNav;
 
-+ (RootScrollView *)shareInstance:(NSString *)username Password:(NSString *)password Nav:(UINavigationController *)navController{
++ (RootScrollView *)shareInstance:(NSString *)_username Password:(NSString *)_password Nav:(UINavigationController *)navController{
     static RootScrollView *__singletion;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        __singletion=[[self alloc] initWithFrame:CGRectMake(0, 44, 320, [Globle shareInstance].globleHeight-44) Username:username Password:password Nav:navController];
+        __singletion=[[self alloc] initWithFrame:CGRectMake(0, 44, 320, [Globle shareInstance].globleHeight-44) Username:_username Password:_password Nav:navController];
     });
     return __singletion;
 }
 
 
-- (id)initWithFrame:(CGRect)frame  Username:(NSString *)username Password:(NSString *)password Nav:(UINavigationController *)navController
+- (id)initWithFrame:(CGRect)frame  Username:(NSString *)_username Password:(NSString *)_password Nav:(UINavigationController *)navController
 {
     self.userlogin = [[HYUserLoginModel alloc] init];
-    self.userlogin.user_name = username;
-    self.userlogin.password = password;
+    self.userlogin.user_name = _username;
+    self.userlogin.password = _password;
     self.linkNav = navController;
     self = [super initWithFrame:frame];
     if (self) {
@@ -217,8 +217,7 @@
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *CustomCellIdentifier =@"NewsPlantCellIdentifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier: CustomCellIdentifier];
+    UITableViewCell *cell = nil;
     NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYNewsPlantTabelViewCell" owner:self options:nil];
     cell = [nib objectAtIndex:0];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -323,7 +322,7 @@ int _lastPosition = 0;
 {
     int indexPage = fabs(scrollView.contentOffset.x) / scrollView.frame.size.width;
     NSLog(@"indexPage %d",indexPage);
-    int currentPostion = scrollView.contentOffset.x;
+//    int currentPostion = scrollView.contentOffset.x;
     //调整顶部滑条按钮状态
     if(_currentPage != indexPage){
          [self adjustTopScrollViewButton:scrollView];        
