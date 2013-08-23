@@ -100,7 +100,7 @@
                     cell.imageView.image = image;
                     break;
                 case 1:
-                    image = [UIImage imageNamed:@"setting.png"];
+                    image = [UIImage imageNamed:@"sys_set02.png"];
                     cell.imageView.image = image;
                     break;
             }
@@ -112,28 +112,41 @@
                     image = [UIImage imageNamed:@"menu_refresh.png"];
                     cell.imageView.image = image;
                     break;
-                case 1:
+                case 4:
                     image = [UIImage imageNamed:@"about.png"];
                     cell.imageView.image = image;
                     break;
-            }
-            break;
-        case 3:
-            switch (indexPath.row) {
-                case 0:
-                    image = nil;
-                    cell.imageView.image = image;
-                    break;
                 case 1:
-                    image = nil;
+                    image = [UIImage imageNamed:@"sys_guide.png"];;
                     cell.imageView.image = image;
                     break;
                 case 2:
-                    image = nil;
+                    image = [UIImage imageNamed:@"sys_exit.png"];;
                     cell.imageView.image = image;
                     break;
+                case 3:
+                    image = [UIImage imageNamed:@"sys_appexit.png"];;
+                    cell.imageView.image = image;
+                    break;
+
             }
             break;
+//        case 3:
+//            switch (indexPath.row) {
+//                case 0:
+//                    image = [UIImage imageNamed:@"sys_guide.png"];;
+//                    cell.imageView.image = image;
+//                    break;
+//                case 1:
+//                    image = [UIImage imageNamed:@"sys_exit.png"];;
+//                    cell.imageView.image = image;
+//                    break;
+//                case 2:
+//                    image = [UIImage imageNamed:@"sys_appexit.png"];;
+//                    cell.imageView.image = image;
+//                    break;
+//            }
+//            break;
     }
     
     return  cell;

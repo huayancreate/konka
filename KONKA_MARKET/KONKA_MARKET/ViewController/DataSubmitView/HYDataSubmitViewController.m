@@ -514,6 +514,11 @@
             [c getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
         }
+        else if (self.userLogin.allDataSubmit != nil)
+        {
+            [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+            //[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-2];
+        }
         
     }else
     {

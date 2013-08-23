@@ -5,13 +5,10 @@
 	<key>item2</key>
 	<array>
 		<string>新版本检测</string>
-		<string>关于</string>
-	</array>
-	<key>item3</key>
-	<array>
-		<string>退出</string>
+		<string>新手指南</string>
 		<string>重新登录</string>
-		<string>新手上路</string>
+		<string>退出系统</string>
+		<string>关于</string>
 	</array>
 	<key>item1</key>
 	<array>

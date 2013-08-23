@@ -27,6 +27,15 @@
 		1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */; };
 		1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */; };
 		1834836A17C5A05400AB6524 /* HYCustomDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */; };
+		183C5AD717C6FB1400DB8FF6 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5ACE17C6FB1400DB8FF6 /* about.png */; };
+		183C5AD817C6FB1400DB8FF6 /* conf_wage.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */; };
+		183C5AD917C6FB1400DB8FF6 /* menu_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */; };
+		183C5ADA17C6FB1400DB8FF6 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD117C6FB1400DB8FF6 /* setting.png */; };
+		183C5ADB17C6FB1400DB8FF6 /* switchuser.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD217C6FB1400DB8FF6 /* switchuser.png */; };
+		183C5ADC17C6FB1400DB8FF6 /* sys_appexit.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD317C6FB1400DB8FF6 /* sys_appexit.png */; };
+		183C5ADD17C6FB1400DB8FF6 /* sys_exit.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD417C6FB1400DB8FF6 /* sys_exit.png */; };
+		183C5ADE17C6FB1400DB8FF6 /* sys_guide.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD517C6FB1400DB8FF6 /* sys_guide.png */; };
+		183C5ADF17C6FB1400DB8FF6 /* sys_set02.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD617C6FB1400DB8FF6 /* sys_set02.png */; };
 		183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */; };
 		183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CE90917C30B860041462B /* HYCustomR3ViewController.m */; };
 		183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */; };
@@ -170,10 +179,6 @@
 		282FDF5417B13BDD0018DC76 /* SIAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 282FDF5217B13BDD0018DC76 /* SIAlertView.m */; };
 		2831155D1797B11E00DF6AF1 /* AutocompletionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */; };
 		2831DBCA17A186C700EC22CE /* DropDownView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2831DBC917A186C700EC22CE /* DropDownView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		2834BD9F17A61FD300B4F025 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9C17A61FD300B4F025 /* about.png */; };
-		2834BDA017A61FD300B4F025 /* setting.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9D17A61FD300B4F025 /* setting.png */; };
-		2834BDA117A61FD300B4F025 /* switchuser.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BD9E17A61FD300B4F025 /* switchuser.png */; };
-		2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 2834BDA217A6217400B4F025 /* menu_refresh.png */; };
 		28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28352CE617BC6E1E007215F9 /* HYOAApprovalListViewController.m */; };
 		28352CE917BC6E1E007215F9 /* HYOAApprovalListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28352CE717BC6E1E007215F9 /* HYOAApprovalListViewController.xib */; };
 		28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28352CEC17BC71A4007215F9 /* HYOAIssuedListViewController.m */; };
@@ -373,6 +378,15 @@
 		1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_selectCheck.png; sourceTree = "<group>"; };
 		1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_selectCheck@2x.png"; sourceTree = "<group>"; };
 		1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomDetailTableViewCell.xib; sourceTree = "<group>"; };
+		183C5ACE17C6FB1400DB8FF6 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conf_wage.png; sourceTree = "<group>"; };
+		183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_refresh.png; sourceTree = "<group>"; };
+		183C5AD117C6FB1400DB8FF6 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
+		183C5AD217C6FB1400DB8FF6 /* switchuser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchuser.png; sourceTree = "<group>"; };
+		183C5AD317C6FB1400DB8FF6 /* sys_appexit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_appexit.png; sourceTree = "<group>"; };
+		183C5AD417C6FB1400DB8FF6 /* sys_exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_exit.png; sourceTree = "<group>"; };
+		183C5AD517C6FB1400DB8FF6 /* sys_guide.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_guide.png; sourceTree = "<group>"; };
+		183C5AD617C6FB1400DB8FF6 /* sys_set02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_set02.png; sourceTree = "<group>"; };
 		183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3TableViewCell.xib; sourceTree = "<group>"; };
 		183CE90817C30B860041462B /* HYCustomR3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomR3ViewController.h; sourceTree = "<group>"; };
 		183CE90917C30B860041462B /* HYCustomR3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomR3ViewController.m; sourceTree = "<group>"; };
@@ -562,10 +576,6 @@
 		2831155C1797B11E00DF6AF1 /* AutocompletionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocompletionTableView.m; sourceTree = "<group>"; };
 		2831DBC817A186C700EC22CE /* DropDownView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownView.h; sourceTree = "<group>"; };
 		2831DBC917A186C700EC22CE /* DropDownView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownView.m; sourceTree = "<group>"; };
-		2834BD9C17A61FD300B4F025 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
-		2834BD9D17A61FD300B4F025 /* setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting.png; sourceTree = "<group>"; };
-		2834BD9E17A61FD300B4F025 /* switchuser.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switchuser.png; sourceTree = "<group>"; };
-		2834BDA217A6217400B4F025 /* menu_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_refresh.png; sourceTree = "<group>"; };
 		28352CE517BC6E1E007215F9 /* HYOAApprovalListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAApprovalListViewController.h; sourceTree = "<group>"; };
 		28352CE617BC6E1E007215F9 /* HYOAApprovalListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAApprovalListViewController.m; sourceTree = "<group>"; };
 		28352CE717BC6E1E007215F9 /* HYOAApprovalListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAApprovalListViewController.xib; sourceTree = "<group>"; };
@@ -972,6 +982,22 @@
 				1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		183C5ACD17C6FB1400DB8FF6 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				183C5ACE17C6FB1400DB8FF6 /* about.png */,
+				183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */,
+				183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */,
+				183C5AD117C6FB1400DB8FF6 /* setting.png */,
+				183C5AD217C6FB1400DB8FF6 /* switchuser.png */,
+				183C5AD317C6FB1400DB8FF6 /* sys_appexit.png */,
+				183C5AD417C6FB1400DB8FF6 /* sys_exit.png */,
+				183C5AD517C6FB1400DB8FF6 /* sys_guide.png */,
+				183C5AD617C6FB1400DB8FF6 /* sys_set02.png */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		183CE90717C30B6E0041462B /* CustomR3View */ = {
@@ -1448,17 +1474,6 @@
 			path = Autocompletion;
 			sourceTree = "<group>";
 		};
-		2834BD9B17A61FD300B4F025 /* systemconfig */ = {
-			isa = PBXGroup;
-			children = (
-				2834BDA217A6217400B4F025 /* menu_refresh.png */,
-				2834BD9C17A61FD300B4F025 /* about.png */,
-				2834BD9D17A61FD300B4F025 /* setting.png */,
-				2834BD9E17A61FD300B4F025 /* switchuser.png */,
-			);
-			path = systemconfig;
-			sourceTree = "<group>";
-		};
 		28352CE417BC6E14007215F9 /* OAApprovalListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1529,7 +1544,6 @@
 				18FF847E17A1252600BDD590 /* modelconfig */,
 				18BBFBB417B484AA00F29C9C /* oa */,
 				189F0C3417B2518400C8B394 /* help */,
-				2834BD9B17A61FD300B4F025 /* systemconfig */,
 				282BAE2B17A60BE600988D92 /* logoAdv */,
 				283BB02F17A57E1400E2012D /* guide */,
 				18E3DF7B17A262C200C9FF02 /* about */,
@@ -1979,6 +1993,7 @@
 		28DAE5191783FAF700F12366 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				183C5ACD17C6FB1400DB8FF6 /* Help */,
 				28DA278417BB63D200DDA062 /* News */,
 				28DA277B17BB315900DDA062 /* Public */,
 				28DA275217BB29A000DDA062 /* Retail */,
@@ -2302,10 +2317,6 @@
 				282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */,
 				282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */,
 				282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */,
-				2834BD9F17A61FD300B4F025 /* about.png in Resources */,
-				2834BDA017A61FD300B4F025 /* setting.png in Resources */,
-				2834BDA117A61FD300B4F025 /* switchuser.png in Resources */,
-				2834BDA317A6217400B4F025 /* menu_refresh.png in Resources */,
 				28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */,
 				289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */,
 				282FDF4D17B112DB0018DC76 /* sales_year_next.png in Resources */,
@@ -2441,6 +2452,15 @@
 				183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */,
 				181913A517C4BA0B007A184F /* HYCustomDetailViewController.xib in Resources */,
 				1834836A17C5A05400AB6524 /* HYCustomDetailTableViewCell.xib in Resources */,
+				183C5AD717C6FB1400DB8FF6 /* about.png in Resources */,
+				183C5AD817C6FB1400DB8FF6 /* conf_wage.png in Resources */,
+				183C5AD917C6FB1400DB8FF6 /* menu_refresh.png in Resources */,
+				183C5ADA17C6FB1400DB8FF6 /* setting.png in Resources */,
+				183C5ADB17C6FB1400DB8FF6 /* switchuser.png in Resources */,
+				183C5ADC17C6FB1400DB8FF6 /* sys_appexit.png in Resources */,
+				183C5ADD17C6FB1400DB8FF6 /* sys_exit.png in Resources */,
+				183C5ADE17C6FB1400DB8FF6 /* sys_guide.png in Resources */,
+				183C5ADF17C6FB1400DB8FF6 /* sys_set02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
