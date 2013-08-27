@@ -191,6 +191,7 @@
 		283BB03517A57E1400E2012D /* guide_sell_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03117A57E1400E2012D /* guide_sell_3.jpg */; };
 		283BB03617A57E1400E2012D /* guide_set_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03217A57E1400E2012D /* guide_set_2.jpg */; };
 		283BB03717A57E1400E2012D /* guide_setother_4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 283BB03317A57E1400E2012D /* guide_setother_4.jpg */; };
+		284ADB8717CC3B5B00C20E98 /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 284ADB8517CC3B5B00C20E98 /* libMobClickLibrary.a */; };
 		284CAAFC1798E37600943B7D /* btn_qr.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFB1798E37600943B7D /* btn_qr.png */; };
 		284CAB001798F7EB00943B7D /* lst_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFF1798F7EB00943B7D /* lst_bg.png */; };
 		284CAB1D1799122900943B7D /* HYPasswordConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284CAB1B1799122900943B7D /* HYPasswordConfigViewController.m */; };
@@ -580,6 +581,8 @@
 		283BB03117A57E1400E2012D /* guide_sell_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_sell_3.jpg; sourceTree = "<group>"; };
 		283BB03217A57E1400E2012D /* guide_set_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_set_2.jpg; sourceTree = "<group>"; };
 		283BB03317A57E1400E2012D /* guide_setother_4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = guide_setother_4.jpg; sourceTree = "<group>"; };
+		284ADB8517CC3B5B00C20E98 /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		284ADB8617CC3B5B00C20E98 /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
 		284CAAFB1798E37600943B7D /* btn_qr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_qr.png; sourceTree = "<group>"; };
 		284CAAFF1798F7EB00943B7D /* lst_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lst_bg.png; sourceTree = "<group>"; };
 		284CAB1A1799122800943B7D /* HYPasswordConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPasswordConfigViewController.h; sourceTree = "<group>"; };
@@ -897,6 +900,7 @@
 				28DAE3711783F7B300F12366 /* CoreGraphics.framework in Frameworks */,
 				28DAE3731783F7B300F12366 /* CoreData.framework in Frameworks */,
 				289E791117A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a in Frameworks */,
+				284ADB8717CC3B5B00C20E98 /* libMobClickLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1489,6 +1493,15 @@
 			path = guide;
 			sourceTree = "<group>";
 		};
+		284ADB8417CC3B5B00C20E98 /* UMAnalytics_Sdk_2.2.0.OpenUDID */ = {
+			isa = PBXGroup;
+			children = (
+				284ADB8517CC3B5B00C20E98 /* libMobClickLibrary.a */,
+				284ADB8617CC3B5B00C20E98 /* MobClick.h */,
+			);
+			path = UMAnalytics_Sdk_2.2.0.OpenUDID;
+			sourceTree = "<group>";
+		};
 		284CAAFA1798E35B00943B7D /* datasubmit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1810,6 +1823,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				284ADB8417CC3B5B00C20E98 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				1830B1BB17B33A5000920F8E /* WZGuideView */,
 				189F0C1317B22D9800C8B394 /* SlideSwitch */,
 				189F0BE817B21C9B00C8B394 /* EGOableView */,
@@ -2574,6 +2588,7 @@
 					"\"$(SRCROOT)/KONKA_MARKET/ThirdLib/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../Downloads/CorePlotSample-master\"",
+					"\"$(SRCROOT)/KONKA_MARKET/ThirdLib/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -2601,6 +2616,7 @@
 					"\"$(SRCROOT)/KONKA_MARKET/ThirdLib/ZBarSDK\"",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/../../Downloads/CorePlotSample-master\"",
+					"\"$(SRCROOT)/KONKA_MARKET/ThirdLib/UMAnalytics_Sdk_2.2.0.OpenUDID\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (

@@ -191,7 +191,7 @@
         salesMoney.text = @"销售总金额0元";
         [graph reloadData];
         [SVProgressHUD dismiss];
-        //[self createLine];
+        [self createLine];
     }
     
     if ([self.type isEqualToString:@"1"] || [self.type isEqualToString:@"2"])
