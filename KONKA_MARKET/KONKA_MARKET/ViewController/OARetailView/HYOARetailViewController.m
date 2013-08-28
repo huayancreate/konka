@@ -10,6 +10,7 @@
 #import "HYOAViewController.h"
 #import "HYOAApprovalListViewController.h"
 #import "HYOAIssuedListViewController.h"
+#import "HYOAFilesListViewController.h"
 
 @interface HYOARetailViewController ()
 
@@ -55,7 +56,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -75,7 +76,11 @@
             cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOARetailsTableViewCell" tableView:tableView index:2];
             return cell;
             break;
-            }
+        case 3:
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOARetailsTableViewCell" tableView:tableView index:3];
+            return cell;
+            break;
+    }
     return cell;
 }
 
@@ -93,18 +98,19 @@
     HYOAViewController *oaSubmit = nil;
     HYOAApprovalListViewController *oaListSubmit = nil;
     HYOAIssuedListViewController *issuedSubmit = nil;
+    HYOAFilesListViewController *filesSubmit = nil;
     switch (indexPath.row) {
         case 0:
             oaSubmit = [[HYOAViewController alloc]init];
             oaSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
-            oaSubmit.title = @"文件审批";
+            oaSubmit.title = @"待审文件";
             [self.navigationController pushViewController:oaSubmit animated:YES];
             break;
         case 1:
             oaListSubmit = [[HYOAApprovalListViewController alloc] init];
             oaListSubmit.userLogin = self.userLogin;
-            oaListSubmit.title = @"已审文件查询";
+            oaListSubmit.title = @"已审文件";
             
             [self.navigationController pushViewController:oaListSubmit animated:YES];
             
@@ -112,11 +118,18 @@
         case 2:
             issuedSubmit = [[HYOAIssuedListViewController alloc] init];
             issuedSubmit.userLogin = self.userLogin;
-            issuedSubmit.title = @"下发文件查询";
+            issuedSubmit.title = @"下发文件";
             
             [self.navigationController pushViewController:issuedSubmit animated:YES];
             break;
-            }
+        case 3:
+            filesSubmit = [[HYOAFilesListViewController alloc] init];
+            filesSubmit.userLogin = self.userLogin;
+            filesSubmit.title = @"我的文件";
+            
+            [self.navigationController pushViewController:filesSubmit animated:YES];
+            break;
+    }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

@@ -74,6 +74,8 @@
 		189F0C4617B2518500C8B394 /* sys_nav_08.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3C17B2518500C8B394 /* sys_nav_08.jpg */; };
 		189F0C4717B2518500C8B394 /* sys_nav_09.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3D17B2518500C8B394 /* sys_nav_09.jpg */; };
 		189F0C4817B2518500C8B394 /* sys_nav_10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3E17B2518500C8B394 /* sys_nav_10.jpg */; };
+		18AEA63D17CD9340005DB5B7 /* HYOAFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEA63B17CD9340005DB5B7 /* HYOAFilesListViewController.m */; };
+		18AEA63E17CD9340005DB5B7 /* HYOAFilesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA63C17CD9340005DB5B7 /* HYOAFilesListViewController.xib */; };
 		18B5A17317BA31F10022613F /* loginbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A16917BA31F10022613F /* loginbg@2x.png */; };
 		18B5A17417BA31F10022613F /* loginbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A16A17BA31F10022613F /* loginbtn@2x.png */; };
 		18B5A18F17BA34390022613F /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A17D17BA34390022613F /* help.png */; };
@@ -419,6 +421,9 @@
 		189F0C3C17B2518500C8B394 /* sys_nav_08.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sys_nav_08.jpg; sourceTree = "<group>"; };
 		189F0C3D17B2518500C8B394 /* sys_nav_09.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sys_nav_09.jpg; sourceTree = "<group>"; };
 		189F0C3E17B2518500C8B394 /* sys_nav_10.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sys_nav_10.jpg; sourceTree = "<group>"; };
+		18AEA63A17CD9340005DB5B7 /* HYOAFilesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAFilesListViewController.h; sourceTree = "<group>"; };
+		18AEA63B17CD9340005DB5B7 /* HYOAFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAFilesListViewController.m; sourceTree = "<group>"; };
+		18AEA63C17CD9340005DB5B7 /* HYOAFilesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAFilesListViewController.xib; sourceTree = "<group>"; };
 		18B5A16917BA31F10022613F /* loginbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginbg@2x.png"; sourceTree = "<group>"; };
 		18B5A16A17BA31F10022613F /* loginbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginbtn@2x.png"; sourceTree = "<group>"; };
 		18B5A17D17BA34390022613F /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
@@ -1063,6 +1068,16 @@
 				189F0C3E17B2518500C8B394 /* sys_nav_10.jpg */,
 			);
 			path = help;
+			sourceTree = "<group>";
+		};
+		18AEA63917CD9326005DB5B7 /* OAFilesListView */ = {
+			isa = PBXGroup;
+			children = (
+				18AEA63A17CD9340005DB5B7 /* HYOAFilesListViewController.h */,
+				18AEA63B17CD9340005DB5B7 /* HYOAFilesListViewController.m */,
+				18AEA63C17CD9340005DB5B7 /* HYOAFilesListViewController.xib */,
+			);
+			path = OAFilesListView;
 			sourceTree = "<group>";
 		};
 		18B5A16817BA31F10022613F /* Login */ = {
@@ -1876,6 +1891,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18AEA63917CD9326005DB5B7 /* OAFilesListView */,
 				181913A017C4B9F1007A184F /* CustomDetailView */,
 				183CE90717C30B6E0041462B /* CustomR3View */,
 				18BB2C9A17BDBF630096ADBB /* CustomRetailView */,
@@ -2397,6 +2413,7 @@
 				183C5ADD17C6FB1400DB8FF6 /* sys_exit.png in Resources */,
 				183C5ADE17C6FB1400DB8FF6 /* sys_guide.png in Resources */,
 				183C5ADF17C6FB1400DB8FF6 /* sys_set02.png in Resources */,
+				18AEA63E17CD9340005DB5B7 /* HYOAFilesListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2497,6 +2514,7 @@
 				281A5E8317C222D300B14DB8 /* BaseDataJSONEntity.m in Sources */,
 				281A5E8C17C3518400B14DB8 /* SetUsualEntity.m in Sources */,
 				181913A417C4BA0B007A184F /* HYCustomDetailViewController.m in Sources */,
+				18AEA63D17CD9340005DB5B7 /* HYOAFilesListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
