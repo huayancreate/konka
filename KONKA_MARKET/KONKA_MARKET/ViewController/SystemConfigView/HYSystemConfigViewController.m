@@ -190,8 +190,7 @@
     }
     
     if([cell.textLabel.text isEqualToString:@"重新登录"]){
-        HYLoginViewController *loginView = [[HYLoginViewController alloc] init];
-        [self.navigationController pushViewController:loginView animated:YES];
+        [self.navigationController popToRootViewControllerAnimated:YES]; 
     }
     
     if([cell.textLabel.text isEqualToString:@"新手上路"]){
