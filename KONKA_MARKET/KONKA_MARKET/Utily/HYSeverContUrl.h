@@ -38,4 +38,8 @@
 
 #define CustomR3Api @"/webservice/KonkaR3MarginInterface.do"
 
+#define OrderAuditApi @"/KonkaOrderAudit.do"
+
+#define WageApi @"/wage/"
+
 

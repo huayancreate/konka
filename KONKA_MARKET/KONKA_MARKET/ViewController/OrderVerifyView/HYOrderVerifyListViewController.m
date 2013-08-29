@@ -1,21 +1,21 @@
 //
-//  HYOAFilesListViewController.m
+//  HYOrderVerifyListViewController.m
 //  KONKA_MARKET
 //
 //  Created by andychen on 13-8-28.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
-#import "HYOAFilesListViewController.h"
+#import "HYOrderVerifyListViewController.h"
 
-@interface HYOAFilesListViewController ()
+@interface HYOrderVerifyListViewController ()
 {
     NSMutableURLRequest *request;
 }
 
 @end
 
-@implementation HYOAFilesListViewController
+@implementation HYOrderVerifyListViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,7 +41,8 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=list3&username=%@&userpass=%@&user_id=%d", BaseURL, OASearchApi,self.userLogin.user_name,self.userLogin.password,[self.userLogin.user_id intValue] ];
+    
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=list&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,self.userLogin.user_name,self.userLogin.password,[self.userLogin.user_id intValue] ];
     
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
@@ -51,7 +52,7 @@
     NSLog(@"request url %@", urlStr);
     [self loadPage];
     [SVProgressHUD dismiss];
-
+    
 }
 
 - (void)didReceiveMemoryWarning

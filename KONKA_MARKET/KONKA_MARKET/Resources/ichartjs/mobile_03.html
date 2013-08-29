@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8" />
+	<title>ichartjs 示例</title>
+	<meta name="Description" content="The ichartjs's gallery center,ichartjs 示例中心" />
+	<meta name="Keywords" content="ichartjs demo,Html5 demo,ichartjs示例,ichartjs示例,Html5示例,Html5示例" />
+	<script type="text/javascript" src="ichart.1.2.min.js"></script>
+	<script type="text/javascript">
+      function loadchart(jsonstr){
+          //alert(jsonstr);
+          if(jsonstr !=""){
+          var labels = ["01","02","03","04","05","06","07","08","09","10","11","12"];
+          var jsondata = eval("("+jsonstr+")");
+          var flow = [];var month="";var money="";
+          var flag = false;
+          for(var i=0;i<labels.length;i++){
+              for(var j=0;j<jsondata.length;j++){
+                  money = jsondata[j].data.toString();
+                  money = money.split(",")[1];
+                  month = jsondata[j].label.toString();
+                  if(labels[i] == (month.split("-")[1])){
+                      //alert(i);
+                      flow.push(money);
+                      flag = true;
+                      break;
+                  }else{
+                      //flow.push(0);
+                  }
+              }
+              if (!flag){
+                  flow.push(0);
+              }
+              flag = false;
+          }
+          var data = [
+                      {
+                      name : '销售额',
+                      value:flow,
+                      color:'#ec4646',
+                      line_width:2
+                      }
+                      ];
+          
+          var chart = new iChart.LineBasic2D({
+                                             render : 'canvasDiv',
+                                             data: data,
+                                             align:'center',
+                                             width : 800,
+                                             height : 400,
+                                             fit:true,
+                                             shadow:true,
+                                             shadow_color : '#202020',
+                                             shadow_blur : 8,
+                                             shadow_offsetx : 0,
+                                             shadow_offsety : 0,
+                                             background_color:'#353c5a',
+                                             //			tip:{
+                                             //				enable:true,
+                                             //				shadow:true,
+                                             //				listeners:{
+                                             //					 //tip:提示框对象、name:数据名称、value:数据值、text:当前文本、i:数据点的索引
+                                             //					parseText:function(tip,name,value,text,i){
+                                             //						return "<span style='color:#005268;font-size:24px;font-weight:600;'>"+labels[i]+":00访问量约:<br/>"+
+                                             //						"</span><span style='color:#005268;font-size:34px;font-weight:600;'>"+value+"万</span>";
+                                             //					}
+                                             //				}
+                                             //			},
+                                             crosshair:{
+                                             enable:true,
+                                             line_color:'#ec4646',
+                                             line_width:3
+                                             },
+                                             sub_option : {
+                                             smooth : true,
+                                             label:false,
+                                             hollow:false,
+                                             hollow_inside:false,
+                                             point_size:14
+                                             },
+                                             coordinate:{
+                                             background_color:'#2f85a2',
+                                             width:'78%',
+                                             height:'74%',
+                                             striped_factor : 0.14,
+                                             grid_color:'#4e4e4e',
+                                             axis:{
+                                             color:'#252525',
+                                             width:[0,0,4,4]
+                                             },
+                                             scale:[{
+                                                    position:'left',	
+                                                    start_scale:0,
+                                                    end_scale:800000,
+                                                    scale_space:160000,
+                                                    scale_size:15,
+                                                    scale_enable : false,
+                                                    label : {color:'#e4e4e4',font : '微软雅黑',fontsize:26,fontweight:600},
+                                                    scale_color:'#9f9f9f'
+                                                    },{
+                                                    position:'bottom',	
+                                                    label : {color:'#e4e4e4',font : '微软雅黑',fontsize:26,fontweight:600},
+                                                    scale_enable : false,
+                                                    labels:labels
+                                                    }]
+                                             }
+                                             });
+          //利用自定义组件构造左侧说明文本
+          chart.plugin(new iChart.Custom({
+                                         drawFn:function(){
+                                         //计算位置
+                                         var coo = chart.getCoordinate(),
+                                         x = coo.get('originx'),
+                                         y = coo.get('originy'),
+                                         w = coo.width,
+                                         h = coo.height;
+                                         //在左上侧的位置，渲染一个单位的文字
+                                         chart.target.textAlign('start')
+                                         .textBaseline('bottom')
+                                         .textFont('600 26px 微软雅黑')
+                                         .fillText('销售额(元)',x-90,y-22,false,'#e4e4e4')
+                                         .textBaseline('top')
+                                         .fillText('(月份)',x+w+24,y+h+10,false,'#e4e4e4');
+                                         
+                                         }
+                                         }));
+          chart.on('beforedraw',function(e){
+                   chart.START_RUN_TIME = new Date().getTime();
+                   return true;
+                   });
+          
+          chart.on('draw',function(e){
+                   chart.END_RUN_TIME = new Date().getTime();
+                   chart.RUN_TIME_COST = chart.END_RUN_TIME - chart.START_RUN_TIME;
+                   $("#ichartjs_result").innerHTML = chart.RUN_TIME_COST+"ms";
+                   });
+          //开始画图
+          chart.draw();
+          }
+      }
+	</script>
+</head>
+<body>
+	<div id='canvasDiv'></div>
+	<div id='ichartjs_result'></div>
+</body>
+</html>
+

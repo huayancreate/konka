@@ -41,7 +41,11 @@
         // Custom initialization
         NSDictionary *dic0 = [[NSDictionary alloc] initWithObjectsAndKeys:@"客户管理",@"imagepath",@"客户管理",@"name",@"HYCustomRetailViewController",@"btnclickname",nil];
         NSDictionary *dic1 = [[NSDictionary alloc] initWithObjectsAndKeys:@"决策分析",@"imagepath",@"决策分析",@"name",@"",@"btnclickname",nil];
+<<<<<<< HEAD
         NSDictionary *dic2 = [[NSDictionary alloc] initWithObjectsAndKeys:@"订单系统",@"imagepath",@"订单系统",@"name",@"",@"btnclickname",nil];
+=======
+        NSDictionary *dic2 = [[NSDictionary alloc] initWithObjectsAndKeys:@"订单系统",@"imagepath",@"订单系统",@"name",@"HYOrderRetailViewController",@"btnclickname",nil];
+>>>>>>> 5f80613d7bc6725ad5ba17d4272fc9e5e76be9bf
         NSDictionary *dic3 = [[NSDictionary alloc] initWithObjectsAndKeys:@"零售通",@"imagepath",@"零售通",@"name",@"HYRetailViewController",@"btnclickname",nil];
         NSDictionary *dic4 = [[NSDictionary alloc] initWithObjectsAndKeys:@"行政办公",@"imagepath",@"行政办公",@"name",@"HYOARetailViewController",@"btnclickname",nil];
         NSDictionary *dic5 = [[NSDictionary alloc] initWithObjectsAndKeys:@"促销管理",@"imagepath",@"促销管理",@"name",@"",@"btnclickname",nil];

@@ -53,6 +53,7 @@
 @synthesize pieChart;
 @synthesize dateLabel1;
 @synthesize barChart;
+@synthesize jsonData;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,6 +70,7 @@
     
     // Do any additional setup after loading the view from its nib.
     self.type = @"2";
+   
     
     decoder = [[JSONDecoder alloc] init];
     pieChart = [[CPTPieChart alloc] init];
@@ -100,6 +102,9 @@
     [self.view addSubview:topTableView];
     
     topTableView1 = [[UITableView alloc] initWithFrame:CGRectMake(0, -8, 320, 56) style:UITableViewStyleGrouped];
+    
+    dateLabel1.text = [super getNowYear];
+    dateLabel.text = [super getNowDate];
     
     topTableView1.delegate = self;
     topTableView1.dataSource = self;
@@ -149,19 +154,29 @@
     
     
 //    [self createPieChart];
-    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    //[SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
     
     //TODO PLOT
-    graph = [[CPTXYGraph alloc] initWithFrame:self.chartView.frame];
-    graph.delegate = self;
-    self.chartView.hostedGraph = graph;
+//    graph = [[CPTXYGraph alloc] initWithFrame:self.chartView.frame];
+//    graph.delegate = self;
+//    self.chartView.hostedGraph = graph;
+//    
+    //[self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+//
+//    
+//    
+//    [self createPie];
+    [self.uiWebView setUserInteractionEnabled:YES];
+    self.uiWebView.scalesPageToFit = YES;
+    [self.uiWebView setBackgroundColor:[UIColor clearColor]];
+    [self.uiWebView setOpaque:YES];
+    self.uiWebView.delegate = self;
     
-    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    [self loadPage:2];
     
-    
-    
-    [self createPie];
+    //[self loadJSTest:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
 }
+
 
 -(void) getLoadDataStartTime:(NSString *)starttime EndTime:(NSString *)endtime
 {
@@ -184,22 +199,14 @@
 
 -(void) endRequest:(NSString *)msg
 {
+    jsonData = msg;
+    
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSArray *json = [decoder objectWithData:data];
+    
     if ([self.type isEqualToString:@"3"])
     {
-        [self.pieData removeAllObjects];
-        salesNum.text = @"销售总数量0台";
-        salesMoney.text = @"销售总金额0元";
-        [graph reloadData];
-        [SVProgressHUD dismiss];
-        [self createLine];
-    }
-    
-    if ([self.type isEqualToString:@"1"] || [self.type isEqualToString:@"2"])
-    {
-        NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-        
-        NSArray *json = [decoder objectWithData:data];
-        
         if ([json count] == 0)
         {
             salesNum.text = @"销售总数量0台";
@@ -207,14 +214,12 @@
             [self.pieData removeAllObjects];
             [graph reloadData];
             [SVProgressHUD dismiss];
+            jsonData = @"";
+            [self.uiWebView stringByEvaluatingJavaScriptFromString:[@"loadchart('" stringByAppendingFormat:@"%@');",jsonData]];
             return;
         }
         int count = 0;
         double count1 = 0.0;
-        //[graph removePlot:pieChart];
-        [self.pieData removeAllObjects];
-        [self.labelArray removeAllObjects];
-        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
         for (NSDictionary *dic in json)
         {
             NSArray *arr = [dic objectForKey:@"data"];
@@ -224,20 +229,7 @@
                 NSNumber *temp1 = ar[1];
                 count = count + [temp intValue];
                 count1 = count1 + [temp1 doubleValue];
-                [tempArr addObject:temp];
             }
-        }
-        for (NSNumber *nu in tempArr) {
-            NSString *tempcount = [nu stringValue];
-           //[self.pieData addObject:[NSNumber numberWithDouble: (tempcount / count) * 100]];
-            NSDecimalNumber *multiplierNumber = [NSDecimalNumber decimalNumberWithString:tempcount];
-            NSDecimalNumber *multiplicandNumber = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d",count]];
-            NSDecimalNumber *product = [multiplierNumber decimalNumberByDividingBy:multiplicandNumber];
-            NSString *objA = [NSString stringWithFormat:@"%.1f", [product doubleValue] * 100];
-            NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
-            NSLog(@"objA %@",objA);
-            NSNumber *nud = [nf numberFromString:objA];
-            [self.pieData addObject:[NSNumber numberWithDouble:[nud doubleValue]]];
         }
         NSString *preNum = @"销售总数量";
         NSString *prePrice = @"销售总金额";
@@ -248,37 +240,79 @@
         prePrice = [prePrice stringByAppendingString:@"元"];
         salesNum.text = preNum;
         salesMoney.text = prePrice;
-        
-        [graph reloadData];
+        [self.uiWebView stringByEvaluatingJavaScriptFromString:[@"loadchart('" stringByAppendingFormat:@"%@');",jsonData]];
         [SVProgressHUD dismiss];
     }
-}
-
--(void)createLine
-{
-    barChart.delegate = self;
-    barChart.dataSource = self;
-    barChart.identifier = @"BarChart1";
-    CPTBarPlot *barPlot = [CPTBarPlot tubularBarPlotWithColor:[CPTColor blueColor] horizontalBars:NO];
-    barPlot.plotRange = [CPTPlotRange plotRangeWithLocation:CPTDecimalFromDouble(0.0) length:CPTDecimalFromDouble(10)];//xAxisLength
-    barPlot.barOffset = CPTDecimalFromFloat(0.25f);
-    barPlot.baseValue = CPTDecimalFromString(@"0");
-    barPlot.barWidth = CPTDecimalFromFloat(10.0f);
-    barPlot.cornerRadius = 2.0f;
-    barPlot.dataSource = self;
-   // [graph addPlot:barPlot];
-}
-
--(void)createPie
-{
-    pieChart.delegate = self;
-    pieChart.dataSource = self;
-    pieChart.pieRadius = 100.0;
-    pieChart.identifier = @"PieChart1";
-    pieChart.startAngle = M_PI_4;
-    pieChart.sliceDirection = CPTPieDirectionCounterClockwise;
-    [self.chartView setAllowPinchScaling:YES];
-    [graph addPlot:pieChart];
+    
+    if ([self.type isEqualToString:@"1"] || [self.type isEqualToString:@"2"])
+    {
+        
+        if ([json count] == 0)
+        {
+            salesNum.text = @"销售总数量0台";
+            salesMoney.text = @"销售总金额0元";
+            [self.pieData removeAllObjects];
+            [graph reloadData];
+            [SVProgressHUD dismiss];
+            jsonData = @"";
+            
+            if([self.type isEqualToString:@"2"]){
+                [self.uiWebView stringByEvaluatingJavaScriptFromString:[@"loadchart('" stringByAppendingFormat:@"%@',%@);",jsonData,@""]];
+            }
+            if([self.type isEqualToString:@"1"]){
+                [self.uiWebView stringByEvaluatingJavaScriptFromString:[@"loadchart('" stringByAppendingFormat:@"%@');",jsonData]];
+            }
+            return;
+        }
+        int count = 0;
+        double count1 = 0.0;
+        //[graph removePlot:pieChart];
+//        [self.pieData removeAllObjects];
+//        [self.labelArray removeAllObjects];
+//        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (NSDictionary *dic in json)
+        {
+            NSArray *arr = [dic objectForKey:@"data"];
+            [self.labelArray addObject:[dic objectForKey:@"label"]];
+            for(NSArray *ar in arr) {
+                NSNumber *temp = ar[0];
+                NSNumber *temp1 = ar[1];
+                count = count + [temp intValue];
+                count1 = count1 + [temp1 doubleValue];
+//                [tempArr addObject:temp];
+            }
+        }
+//        for (NSNumber *nu in tempArr) {
+//            NSString *tempcount = [nu stringValue];
+//           //[self.pieData addObject:[NSNumber numberWithDouble: (tempcount / count) * 100]];
+//            NSDecimalNumber *multiplierNumber = [NSDecimalNumber decimalNumberWithString:tempcount];
+//            NSDecimalNumber *multiplicandNumber = [NSDecimalNumber decimalNumberWithString:[NSString stringWithFormat:@"%d",count]];
+//            NSDecimalNumber *product = [multiplierNumber decimalNumberByDividingBy:multiplicandNumber];
+//            NSString *objA = [NSString stringWithFormat:@"%.1f", [product doubleValue] * 100];
+//            NSNumberFormatter *nf = [[NSNumberFormatter alloc] init];
+//            NSLog(@"objA %@",objA);
+//            NSNumber *nud = [nf numberFromString:objA];
+//            [self.pieData addObject:[NSNumber numberWithDouble:[nud doubleValue]]];
+//        }
+        NSString *preNum = @"销售总数量";
+        NSString *prePrice = @"销售总金额";
+        preNum = [preNum stringByAppendingString:[NSString stringWithFormat:@"%d",count]];
+        preNum = [preNum stringByAppendingString:@"台"];
+        
+        prePrice = [prePrice stringByAppendingString:[NSString stringWithFormat:@"%.2f",count1]];
+        prePrice = [prePrice stringByAppendingString:@"元"];
+        salesNum.text = preNum;
+        salesMoney.text = prePrice;
+        
+        NSString *sumMoney = [NSString stringWithFormat:@"%.2f",count1];
+        if([self.type isEqualToString:@"2"]){
+            [self.uiWebView stringByEvaluatingJavaScriptFromString:[@"loadchart('" stringByAppendingFormat:@"%@',%@);",jsonData,sumMoney]];
+        }
+        if([self.type isEqualToString:@"1"]){
+            [self.uiWebView stringByEvaluatingJavaScriptFromString:[@"loadchart('" stringByAppendingFormat:@"%@');",jsonData]];
+        }
+        [SVProgressHUD dismiss];
+    }
 }
 
 -(NSUInteger)numberOfRecordsForPlot:(CPTPlot *)plot
@@ -346,9 +380,15 @@
     
     currentDate = self.dateLabel.text;
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    [self loadPage:2];
     
-    [graph reloadData];
+//    if([self.type isEqualToString:@"2"]){
+//        NSString *path = [[NSBundle mainBundle]pathForResource:@"mobile_01.html" ofType:nil];
+//        [self.uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+//    }
+//    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+//    
+//    [graph reloadData];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
@@ -376,10 +416,14 @@
     self.type = @"1";
     
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    //[self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
     
-    [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
-    
-    [graph reloadData];
+    [self loadPage:1];
+//    if([self.type isEqualToString:@"3"]){
+//        NSString *path = [[NSBundle mainBundle]pathForResource:@"mobile_02.html" ofType:nil];
+//        [self.uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+//    }
+//    [graph reloadData];
 //    [self.uiModelBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiYearsBtn setBackgroundColor:[UIColor clearColor]];
@@ -404,8 +448,15 @@
     
     [self.view addSubview:topTableView1];
     
+    NSLog(@"self.dateLabel1.text = %@",self.dateLabel1.text);
+    NSLog(@"self.dateLabel.text = %@",self.dateLabel.text);
+    
+    currentDate = self.dateLabel1.text;
+    
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
+    //[self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
+    
+    [self loadPage:3];
 //    [self.uiYearsBtn setBackgroundColor:[UIColor blueColor]];
 //    [self.uiModelBtn setBackgroundColor:[UIColor clearColor]];
 //    [self.uiSizeBtn setBackgroundColor:[UIColor clearColor]];
@@ -460,6 +511,12 @@
     currentDate = [super getUpMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getUpMonthDate:self.dateLabel.text];
     [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    if([self.type isEqualToString:@"2"]){
+        [self loadPage:2];
+    }
+    if([self.type isEqualToString:@"1"]){
+        [self loadPage:1];
+    }
     
 }
 
@@ -469,6 +526,12 @@
     currentDate = [super getDownMonthDate:self.dateLabel.text];
     self.dateLabel.text = [super getDownMonthDate:self.dateLabel.text];
     [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    if([self.type isEqualToString:@"2"]){
+        [self loadPage:2];
+    }
+    if([self.type isEqualToString:@"1"]){
+        [self loadPage:1];
+    }
 }
 
 -(IBAction)upYear:(id)sender
@@ -477,6 +540,7 @@
     currentDate = [super getUpYear:self.dateLabel1.text];
     self.dateLabel1.text = [super getUpYear:self.dateLabel1.text];
     [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
+    [self loadPage:3];
     
 }
 
@@ -486,6 +550,7 @@
     currentDate = [super getDownYear:self.dateLabel1.text];
     self.dateLabel1.text = [super getDownYear:self.dateLabel1.text];
     [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
+    [self loadPage:3];
 }
 
 -(IBAction)dataPick:(id)sender
@@ -523,5 +588,38 @@
     [calendar removeFromSuperview];
 }
 
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"_request.URL.absoluteString %@",_request.URL.absoluteString);
+
+    return YES;
+}
+
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    if([self.type isEqualToString:@"3"]){
+        [self getLoadDataStartTime:[super getFirstDayFromYear:currentDate] EndTime:[super getLastDayFromYear:currentDate]];
+    }else{
+        [self getLoadDataStartTime:[super getFirstDayFromMoth:currentDate] EndTime:[super getLastDayFromMoth:currentDate]];
+    }
+}
+
+-(void)loadPage:(int)chartType{
+    NSString *path = nil;
+    switch (chartType) {
+        case 1:
+            path = [[NSBundle mainBundle]pathForResource:@"mobile_02.html" ofType:nil];
+            [self.uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+            break;
+        case 2:
+            path = [[NSBundle mainBundle]pathForResource:@"mobile_01.html" ofType:nil];
+            [self.uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+            break;
+        case 3:
+            path = [[NSBundle mainBundle]pathForResource:@"mobile_03.html" ofType:nil];
+            [self.uiWebView loadRequest:[NSURLRequest requestWithURL:[NSURL fileURLWithPath:path]]];
+            break;
+    }
+}
 
 @end

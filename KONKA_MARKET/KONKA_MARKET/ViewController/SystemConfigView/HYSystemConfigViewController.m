@@ -13,6 +13,7 @@
 #import "HYAboutViewController.h"
 #import "WZGuideViewController.h"
 #import "HYLoginViewController.h"
+#import "HYWageViewController.h"
 
 @interface HYSystemConfigViewController ()
 
@@ -109,6 +110,14 @@
         case 2:
             switch (indexPath.row) {
                 case 0:
+                    image = [UIImage imageNamed:@"conf_wage.png"];
+                    cell.imageView.image = image;
+                    break;
+            }
+            break;
+        case 3:
+            switch (indexPath.row) {
+                case 0:
                     image = [UIImage imageNamed:@"menu_refresh.png"];
                     cell.imageView.image = image;
                     break;
@@ -131,22 +140,6 @@
 
             }
             break;
-//        case 3:
-//            switch (indexPath.row) {
-//                case 0:
-//                    image = [UIImage imageNamed:@"sys_guide.png"];;
-//                    cell.imageView.image = image;
-//                    break;
-//                case 1:
-//                    image = [UIImage imageNamed:@"sys_exit.png"];;
-//                    cell.imageView.image = image;
-//                    break;
-//                case 2:
-//                    image = [UIImage imageNamed:@"sys_appexit.png"];;
-//                    cell.imageView.image = image;
-//                    break;
-//            }
-//            break;
     }
     
     return  cell;
@@ -200,8 +193,11 @@
     if([cell.textLabel.text isEqualToString:@"新版本检测"]){
         [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3];
     }
-    
-    
+    if([cell.textLabel.text isEqualToString:@"工资查询"]){
+        HYWageViewController *wageView = [[HYWageViewController alloc] init];
+        wageView.title = @"工资查询";
+        [self.navigationController pushViewController:wageView animated:YES];
+    }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }

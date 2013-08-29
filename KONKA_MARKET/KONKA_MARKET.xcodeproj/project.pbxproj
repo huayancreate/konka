@@ -39,6 +39,8 @@
 		183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */; };
 		183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CE90917C30B860041462B /* HYCustomR3ViewController.m */; };
 		183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */; };
+		189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A6C7B17CF442100E0A948 /* HYWageViewController.m */; };
+		189A6C7E17CF442100E0A948 /* HYWageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189A6C7C17CF442100E0A948 /* HYWageViewController.xib */; };
 		189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEA17B21C9B00C8B394 /* blackArrow.png */; };
 		189F0BF517B21C9B00C8B394 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */; };
 		189F0BF617B21C9B00C8B394 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEC17B21C9B00C8B394 /* blueArrow.png */; };
@@ -76,6 +78,23 @@
 		189F0C4817B2518500C8B394 /* sys_nav_10.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 189F0C3E17B2518500C8B394 /* sys_nav_10.jpg */; };
 		18AEA63D17CD9340005DB5B7 /* HYOAFilesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEA63B17CD9340005DB5B7 /* HYOAFilesListViewController.m */; };
 		18AEA63E17CD9340005DB5B7 /* HYOAFilesListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA63C17CD9340005DB5B7 /* HYOAFilesListViewController.xib */; };
+		18AEA64617CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA64517CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib */; };
+		18AEA64B17CDA071005DB5B7 /* HYOrderRetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEA64917CDA071005DB5B7 /* HYOrderRetailViewController.m */; };
+		18AEA64C17CDA071005DB5B7 /* HYOrderRetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA64A17CDA071005DB5B7 /* HYOrderRetailViewController.xib */; };
+		18AEA65117CDA0DA005DB5B7 /* HYOrderVerifyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEA64F17CDA0DA005DB5B7 /* HYOrderVerifyListViewController.m */; };
+		18AEA65217CDA0DA005DB5B7 /* HYOrderVerifyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA65017CDA0DA005DB5B7 /* HYOrderVerifyListViewController.xib */; };
+		18AEA65717CDC998005DB5B7 /* HYOrderAuditedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEA65517CDC998005DB5B7 /* HYOrderAuditedViewController.m */; };
+		18AEA65817CDC998005DB5B7 /* HYOrderAuditedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA65617CDC998005DB5B7 /* HYOrderAuditedViewController.xib */; };
+		18AEA65D17CDCD19005DB5B7 /* HYOrderByMyListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18AEA65B17CDCD19005DB5B7 /* HYOrderByMyListViewController.m */; };
+		18AEA65E17CDCD19005DB5B7 /* HYOrderByMyListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA65C17CDCD19005DB5B7 /* HYOrderByMyListViewController.xib */; };
+		18AEA8EC17CDD8D4005DB5B7 /* ichart.1.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA8EB17CDD8D4005DB5B7 /* ichart.1.2.min.js */; };
+		18AEA8FF17CDDA31005DB5B7 /* demo.css in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA8FA17CDDA31005DB5B7 /* demo.css */; };
+		18AEA90017CDDA31005DB5B7 /* mobile_01.html in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA8FB17CDDA31005DB5B7 /* mobile_01.html */; };
+		18AEA90117CDDA31005DB5B7 /* mobile_02.html in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA8FC17CDDA31005DB5B7 /* mobile_02.html */; };
+		18AEA90217CDDA31005DB5B7 /* mobile_03.html in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA8FD17CDDA31005DB5B7 /* mobile_03.html */; };
+		18AEA90317CDDA31005DB5B7 /* style.css in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA8FE17CDDA31005DB5B7 /* style.css */; };
+		18AEA90717CDF377005DB5B7 /* jquery-1.10.2.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA90617CDF377005DB5B7 /* jquery-1.10.2.min.js */; };
+		18AEA90917CDFB6F005DB5B7 /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 18AEA90817CDFB6F005DB5B7 /* test.js */; };
 		18B5A17317BA31F10022613F /* loginbg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A16917BA31F10022613F /* loginbg@2x.png */; };
 		18B5A17417BA31F10022613F /* loginbtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A16A17BA31F10022613F /* loginbtn@2x.png */; };
 		18B5A18F17BA34390022613F /* help.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A17D17BA34390022613F /* help.png */; };
@@ -382,6 +401,9 @@
 		183CE90817C30B860041462B /* HYCustomR3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomR3ViewController.h; sourceTree = "<group>"; };
 		183CE90917C30B860041462B /* HYCustomR3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomR3ViewController.m; sourceTree = "<group>"; };
 		183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3ViewController.xib; sourceTree = "<group>"; };
+		189A6C7A17CF442100E0A948 /* HYWageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWageViewController.h; sourceTree = "<group>"; };
+		189A6C7B17CF442100E0A948 /* HYWageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWageViewController.m; sourceTree = "<group>"; };
+		189A6C7C17CF442100E0A948 /* HYWageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWageViewController.xib; sourceTree = "<group>"; };
 		189F0BEA17B21C9B00C8B394 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		189F0BEB17B21C9B00C8B394 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		189F0BEC17B21C9B00C8B394 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -424,6 +446,27 @@
 		18AEA63A17CD9340005DB5B7 /* HYOAFilesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOAFilesListViewController.h; sourceTree = "<group>"; };
 		18AEA63B17CD9340005DB5B7 /* HYOAFilesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOAFilesListViewController.m; sourceTree = "<group>"; };
 		18AEA63C17CD9340005DB5B7 /* HYOAFilesListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOAFilesListViewController.xib; sourceTree = "<group>"; };
+		18AEA64517CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderRetailTableViewCell.xib; sourceTree = "<group>"; };
+		18AEA64817CDA071005DB5B7 /* HYOrderRetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOrderRetailViewController.h; sourceTree = "<group>"; };
+		18AEA64917CDA071005DB5B7 /* HYOrderRetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOrderRetailViewController.m; sourceTree = "<group>"; };
+		18AEA64A17CDA071005DB5B7 /* HYOrderRetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderRetailViewController.xib; sourceTree = "<group>"; };
+		18AEA64E17CDA0DA005DB5B7 /* HYOrderVerifyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOrderVerifyListViewController.h; sourceTree = "<group>"; };
+		18AEA64F17CDA0DA005DB5B7 /* HYOrderVerifyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOrderVerifyListViewController.m; sourceTree = "<group>"; };
+		18AEA65017CDA0DA005DB5B7 /* HYOrderVerifyListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderVerifyListViewController.xib; sourceTree = "<group>"; };
+		18AEA65417CDC998005DB5B7 /* HYOrderAuditedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOrderAuditedViewController.h; sourceTree = "<group>"; };
+		18AEA65517CDC998005DB5B7 /* HYOrderAuditedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOrderAuditedViewController.m; sourceTree = "<group>"; };
+		18AEA65617CDC998005DB5B7 /* HYOrderAuditedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderAuditedViewController.xib; sourceTree = "<group>"; };
+		18AEA65A17CDCD19005DB5B7 /* HYOrderByMyListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOrderByMyListViewController.h; sourceTree = "<group>"; };
+		18AEA65B17CDCD19005DB5B7 /* HYOrderByMyListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOrderByMyListViewController.m; sourceTree = "<group>"; };
+		18AEA65C17CDCD19005DB5B7 /* HYOrderByMyListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderByMyListViewController.xib; sourceTree = "<group>"; };
+		18AEA8EB17CDD8D4005DB5B7 /* ichart.1.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ichart.1.2.min.js; sourceTree = "<group>"; };
+		18AEA8FA17CDDA31005DB5B7 /* demo.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = demo.css; sourceTree = "<group>"; };
+		18AEA8FB17CDDA31005DB5B7 /* mobile_01.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = mobile_01.html; sourceTree = "<group>"; };
+		18AEA8FC17CDDA31005DB5B7 /* mobile_02.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = mobile_02.html; sourceTree = "<group>"; };
+		18AEA8FD17CDDA31005DB5B7 /* mobile_03.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = mobile_03.html; sourceTree = "<group>"; };
+		18AEA8FE17CDDA31005DB5B7 /* style.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = style.css; sourceTree = "<group>"; };
+		18AEA90617CDF377005DB5B7 /* jquery-1.10.2.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.10.2.min.js"; sourceTree = "<group>"; };
+		18AEA90817CDFB6F005DB5B7 /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
 		18B5A16917BA31F10022613F /* loginbg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginbg@2x.png"; sourceTree = "<group>"; };
 		18B5A16A17BA31F10022613F /* loginbtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "loginbtn@2x.png"; sourceTree = "<group>"; };
 		18B5A17D17BA34390022613F /* help.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help.png; sourceTree = "<group>"; };
@@ -982,6 +1025,16 @@
 			path = CustomR3View;
 			sourceTree = "<group>";
 		};
+		189A6C7917CF440500E0A948 /* WageView */ = {
+			isa = PBXGroup;
+			children = (
+				189A6C7A17CF442100E0A948 /* HYWageViewController.h */,
+				189A6C7B17CF442100E0A948 /* HYWageViewController.m */,
+				189A6C7C17CF442100E0A948 /* HYWageViewController.xib */,
+			);
+			path = WageView;
+			sourceTree = "<group>";
+		};
 		189F0BE817B21C9B00C8B394 /* EGOableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1078,6 +1131,61 @@
 				18AEA63C17CD9340005DB5B7 /* HYOAFilesListViewController.xib */,
 			);
 			path = OAFilesListView;
+			sourceTree = "<group>";
+		};
+		18AEA64717CDA071005DB5B7 /* OrderRetailView */ = {
+			isa = PBXGroup;
+			children = (
+				18AEA64817CDA071005DB5B7 /* HYOrderRetailViewController.h */,
+				18AEA64917CDA071005DB5B7 /* HYOrderRetailViewController.m */,
+				18AEA64A17CDA071005DB5B7 /* HYOrderRetailViewController.xib */,
+			);
+			path = OrderRetailView;
+			sourceTree = "<group>";
+		};
+		18AEA64D17CDA0B3005DB5B7 /* OrderVerifyView */ = {
+			isa = PBXGroup;
+			children = (
+				18AEA64E17CDA0DA005DB5B7 /* HYOrderVerifyListViewController.h */,
+				18AEA64F17CDA0DA005DB5B7 /* HYOrderVerifyListViewController.m */,
+				18AEA65017CDA0DA005DB5B7 /* HYOrderVerifyListViewController.xib */,
+			);
+			path = OrderVerifyView;
+			sourceTree = "<group>";
+		};
+		18AEA65317CDC972005DB5B7 /* OrderAuditedView */ = {
+			isa = PBXGroup;
+			children = (
+				18AEA65417CDC998005DB5B7 /* HYOrderAuditedViewController.h */,
+				18AEA65517CDC998005DB5B7 /* HYOrderAuditedViewController.m */,
+				18AEA65617CDC998005DB5B7 /* HYOrderAuditedViewController.xib */,
+			);
+			path = OrderAuditedView;
+			sourceTree = "<group>";
+		};
+		18AEA65917CDCD00005DB5B7 /* OrderByMyView */ = {
+			isa = PBXGroup;
+			children = (
+				18AEA65A17CDCD19005DB5B7 /* HYOrderByMyListViewController.h */,
+				18AEA65B17CDCD19005DB5B7 /* HYOrderByMyListViewController.m */,
+				18AEA65C17CDCD19005DB5B7 /* HYOrderByMyListViewController.xib */,
+			);
+			path = OrderByMyView;
+			sourceTree = "<group>";
+		};
+		18AEA65F17CDD465005DB5B7 /* ichartjs */ = {
+			isa = PBXGroup;
+			children = (
+				18AEA90617CDF377005DB5B7 /* jquery-1.10.2.min.js */,
+				18AEA8FA17CDDA31005DB5B7 /* demo.css */,
+				18AEA8FB17CDDA31005DB5B7 /* mobile_01.html */,
+				18AEA8FC17CDDA31005DB5B7 /* mobile_02.html */,
+				18AEA8FD17CDDA31005DB5B7 /* mobile_03.html */,
+				18AEA8FE17CDDA31005DB5B7 /* style.css */,
+				18AEA8EB17CDD8D4005DB5B7 /* ichart.1.2.min.js */,
+				18AEA90817CDFB6F005DB5B7 /* test.js */,
+			);
+			path = ichartjs;
 			sourceTree = "<group>";
 		};
 		18B5A16817BA31F10022613F /* Login */ = {
@@ -1311,6 +1419,7 @@
 		281A8A2B178BC47E006AA1C6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				18AEA65F17CDD465005DB5B7 /* ichartjs */,
 				285741DC1794B2DF006E2DA2 /* images */,
 				281A8A2C178BC4BC006AA1C6 /* SystemConfigList.plist */,
 				28D43661179394DC00C3F1B2 /* PasswordList.plist */,
@@ -1891,6 +2000,11 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				189A6C7917CF440500E0A948 /* WageView */,
+				18AEA65917CDCD00005DB5B7 /* OrderByMyView */,
+				18AEA65317CDC972005DB5B7 /* OrderAuditedView */,
+				18AEA64D17CDA0B3005DB5B7 /* OrderVerifyView */,
+				18AEA64717CDA071005DB5B7 /* OrderRetailView */,
 				18AEA63917CD9326005DB5B7 /* OAFilesListView */,
 				181913A017C4B9F1007A184F /* CustomDetailView */,
 				183CE90717C30B6E0041462B /* CustomR3View */,
@@ -2076,6 +2190,7 @@
 				18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */,
 				183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */,
 				1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */,
+				18AEA64517CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2190,6 +2305,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AEA8EC17CDD8D4005DB5B7 /* ichart.1.2.min.js in Resources */,
+				18AEA90717CDF377005DB5B7 /* jquery-1.10.2.min.js in Resources */,
+				18AEA90917CDFB6F005DB5B7 /* test.js in Resources */,
 				28DAE3791783F7B300F12366 /* InfoPlist.strings in Resources */,
 				28DAE55E1783FAF800F12366 /* Default-568h@2x.png in Resources */,
 				28DAE55F1783FAF800F12366 /* Default.png in Resources */,
@@ -2414,6 +2532,17 @@
 				183C5ADE17C6FB1400DB8FF6 /* sys_guide.png in Resources */,
 				183C5ADF17C6FB1400DB8FF6 /* sys_set02.png in Resources */,
 				18AEA63E17CD9340005DB5B7 /* HYOAFilesListViewController.xib in Resources */,
+				18AEA64617CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib in Resources */,
+				18AEA64C17CDA071005DB5B7 /* HYOrderRetailViewController.xib in Resources */,
+				18AEA65217CDA0DA005DB5B7 /* HYOrderVerifyListViewController.xib in Resources */,
+				18AEA65817CDC998005DB5B7 /* HYOrderAuditedViewController.xib in Resources */,
+				18AEA65E17CDCD19005DB5B7 /* HYOrderByMyListViewController.xib in Resources */,
+				18AEA8FF17CDDA31005DB5B7 /* demo.css in Resources */,
+				18AEA90017CDDA31005DB5B7 /* mobile_01.html in Resources */,
+				18AEA90117CDDA31005DB5B7 /* mobile_02.html in Resources */,
+				18AEA90217CDDA31005DB5B7 /* mobile_03.html in Resources */,
+				18AEA90317CDDA31005DB5B7 /* style.css in Resources */,
+				189A6C7E17CF442100E0A948 /* HYWageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2515,6 +2644,11 @@
 				281A5E8C17C3518400B14DB8 /* SetUsualEntity.m in Sources */,
 				181913A417C4BA0B007A184F /* HYCustomDetailViewController.m in Sources */,
 				18AEA63D17CD9340005DB5B7 /* HYOAFilesListViewController.m in Sources */,
+				18AEA64B17CDA071005DB5B7 /* HYOrderRetailViewController.m in Sources */,
+				18AEA65117CDA0DA005DB5B7 /* HYOrderVerifyListViewController.m in Sources */,
+				18AEA65717CDC998005DB5B7 /* HYOrderAuditedViewController.m in Sources */,
+				18AEA65D17CDCD19005DB5B7 /* HYOrderByMyListViewController.m in Sources */,
+				189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
