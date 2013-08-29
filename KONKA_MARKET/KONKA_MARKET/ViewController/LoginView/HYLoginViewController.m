@@ -90,14 +90,9 @@
     NSString *str = [userDefaults stringForKey:@"user_name"];
     
     
-    
-    NSError *localError;
     if ([str length] != 0)
     {
-        NSString *thePassword = [SFHFKeychainUtils
-                                 getPasswordForUsername:self.uiUsername.text
-                                 andServiceName:ServiceName
-                                 error:&localError];
+        NSString *thePassword = [[NSUserDefaults standardUserDefaults] objectForKey:str];
         self.uiPassword.text = thePassword;
         if ([thePassword length] !=0){
             self.flag = !self.flag;
@@ -143,13 +138,10 @@
     {
         self.userName = self.uiUsername.text;
         
-        NSError *localError;
         NSString *msg = self.uiUsername.text;
         
         if ([msg length] != 0){
-            NSString *thePassword = [SFHFKeychainUtils getPasswordForUsername:msg
-                                                               andServiceName:ServiceName
-                                                                        error:&localError];
+            NSString *thePassword = [[NSUserDefaults standardUserDefaults] objectForKey:msg];
             self.uiPassword.text = thePassword;
         }
         
@@ -443,26 +435,18 @@
 -(void) rememberMe
 {
     //TODO 是否记住密码
-    
-    NSError *localError = nil;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     if(!self.flag){
         
-        NSLog(@"记住密码 %@",@"111");
         //TOOD 记住密码
-        [SFHFKeychainUtils storeUsername:self.uiUsername.text andPassword:self.uiPassword.text forServiceName:ServiceName updateExisting:1 error:&localError];
-        
-        
-        
-        //TODO 验证
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [userDefaults removeObjectForKey:self.uiUsername.text];
+        [userDefaults removeObjectForKey:@"user_name"];
+        [userDefaults setObject:self.uiPassword.text forKey:self.uiUsername.text];
         [userDefaults setObject:self.uiUsername.text forKey:@"user_name"];
 
     }else{
-        NSLog(@"没有记住密码 %@",@"111");
-        [SFHFKeychainUtils deleteItemForUsername:self.uiUsername.text andServiceName:ServiceName error:&localError];
-        
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         [userDefaults removeObjectForKey:@"user_name"];
+        [userDefaults removeObjectForKey:self.uiUsername.text];
     }
 }
 
