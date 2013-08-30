@@ -92,7 +92,7 @@
     if ([str length] != 0)
     {
         NSString *thePassword = [[NSUserDefaults standardUserDefaults] objectForKey:str];
-        self.uiPassword.text = thePassword;
+//        self.uiPassword.text = thePassword;
         if ([thePassword length] !=0){
             self.flag = !self.flag;
             [self.uiremember setImage:[imgArray objectAtIndex:0]];

@@ -251,6 +251,21 @@
     return s;
 }
 
+-(NSData *) getIntervalDateByDays:(int) days ByDate:(NSString *) currentDate
+{
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
+    [self.components setYear:[self.components year]];
+    [self.components setMonth:[self.components month]];
+    [self.components setDay:([self.components day] + days)];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    //NSString * s = [self.dateFormatter stringFromDate:date];
+    //[self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    //NSLog(@"getIntervalDateByDays %@",s);
+    return date;
+}
+
 
 -(NSString *) getUpMonthDate:(NSString *) currentDate{
     
@@ -430,6 +445,21 @@
     return s;
 }
 
+-(NSDate *) getDateNow
+{
+    NSDate *dateTime = [[NSDate alloc] init];
+    NSLog(@"datetime ,%@", [self.dateFormatter stringFromDate:dateTime]);
+    self.components = [self.cal components:( NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit) fromDate:dateTime];
+    [self.components setHour:-[self.components hour]];
+    [self.components setMinute:-[self.components minute]];
+    [self.components setSecond:-[self.components second]];
+    [self.components setMonth:([self.components month])];
+    NSDate *date = [self.cal dateFromComponents:self.components];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+//    NSString * s = [self.dateFormatter stringFromDate:date];
+//    NSDate *date1 = [self.dateFormatter dateFromString:s];
+    return date;
+}
 
 -(void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
