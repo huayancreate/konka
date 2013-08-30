@@ -8,7 +8,6 @@
 
 #import "HYLoginViewController.h"
 #import "HYHomeViewController.h"
-#import "SFHFKeychainUtils.h"
 #import "KonkaManager.h"
 #import "WZGuideViewController.h"
 

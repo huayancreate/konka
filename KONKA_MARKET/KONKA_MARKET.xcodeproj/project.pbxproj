@@ -217,11 +217,7 @@
 		284CAB001798F7EB00943B7D /* lst_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 284CAAFF1798F7EB00943B7D /* lst_bg.png */; };
 		284CAB1D1799122900943B7D /* HYPasswordConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284CAB1B1799122900943B7D /* HYPasswordConfigViewController.m */; };
 		284CAB1E1799122900943B7D /* HYPasswordConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 284CAB1C1799122900943B7D /* HYPasswordConfigViewController.xib */; };
-		2857426917950E7B006E2DA2 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2857426817950E7B006E2DA2 /* SFHFKeychainUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2857426B17950F88006E2DA2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2857426A17950F87006E2DA2 /* Security.framework */; };
-		285A8A66179AE8BB00BE68BE /* EskBarPlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A61179AE8BB00BE68BE /* EskBarPlot.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		285A8A67179AE8BB00BE68BE /* EskLinePlot.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A63179AE8BB00BE68BE /* EskLinePlot.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */; };
 		2882C3F917A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */; };
 		289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 289D87ED17AEDE2B00DDAB68 /* SVProgressHUD.bundle */; };
@@ -636,15 +632,7 @@
 		284CAB1A1799122800943B7D /* HYPasswordConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPasswordConfigViewController.h; sourceTree = "<group>"; };
 		284CAB1B1799122900943B7D /* HYPasswordConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYPasswordConfigViewController.m; sourceTree = "<group>"; };
 		284CAB1C1799122900943B7D /* HYPasswordConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYPasswordConfigViewController.xib; sourceTree = "<group>"; };
-		2857426717950E7B006E2DA2 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
-		2857426817950E7B006E2DA2 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
 		2857426A17950F87006E2DA2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		285A8A60179AE8BB00BE68BE /* EskBarPlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskBarPlot.h; sourceTree = "<group>"; };
-		285A8A61179AE8BB00BE68BE /* EskBarPlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskBarPlot.m; sourceTree = "<group>"; };
-		285A8A62179AE8BB00BE68BE /* EskLinePlot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskLinePlot.h; sourceTree = "<group>"; };
-		285A8A63179AE8BB00BE68BE /* EskLinePlot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskLinePlot.m; sourceTree = "<group>"; };
-		285A8A64179AE8BB00BE68BE /* EskPlotTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EskPlotTheme.h; sourceTree = "<group>"; };
-		285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EskPlotTheme.m; sourceTree = "<group>"; };
 		285CB8E91797DEEC004A7D7E /* HYTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYTableViewCell.h; sourceTree = "<group>"; };
 		285CB8EA1797DEED004A7D7E /* HYTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYTableViewCell.m; sourceTree = "<group>"; };
 		2882C3F817A359C4003E6C41 /* HYSalesRegistrationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSalesRegistrationTableViewCell.xib; sourceTree = "<group>"; };
@@ -1665,19 +1653,6 @@
 			path = Dao;
 			sourceTree = "<group>";
 		};
-		285A8A5F179AE8BB00BE68BE /* Plot */ = {
-			isa = PBXGroup;
-			children = (
-				285A8A60179AE8BB00BE68BE /* EskBarPlot.h */,
-				285A8A61179AE8BB00BE68BE /* EskBarPlot.m */,
-				285A8A62179AE8BB00BE68BE /* EskLinePlot.h */,
-				285A8A63179AE8BB00BE68BE /* EskLinePlot.m */,
-				285A8A64179AE8BB00BE68BE /* EskPlotTheme.h */,
-				285A8A65179AE8BB00BE68BE /* EskPlotTheme.m */,
-			);
-			path = Plot;
-			sourceTree = "<group>";
-		};
 		288C2A4F179AEAA900EA8000 /* CorePlotHeaders */ = {
 			isa = PBXGroup;
 			children = (
@@ -2088,25 +2063,14 @@
 			isa = PBXGroup;
 			children = (
 				28B24252179E4974009CE985 /* HYLog.h */,
-				285A8A5F179AE8BB00BE68BE /* Plot */,
 				2821DBB9179718F900B77C26 /* CKCalendarView.h */,
 				2821DBBA179718F900B77C26 /* CKCalendarView.m */,
-				28DAE5431783FAF800F12366 /* UtiliyView */,
 				28DAE5CE17851CC100F12366 /* HYConstants.h */,
 				28DAE56C1783FCA800F12366 /* HYSeverContUrl.h */,
 				28DAE595178400A000F12366 /* HYAppUtily.h */,
 				28DAE596178400A000F12366 /* HYAppUtily.m */,
-				2857426717950E7B006E2DA2 /* SFHFKeychainUtils.h */,
-				2857426817950E7B006E2DA2 /* SFHFKeychainUtils.m */,
 			);
 			path = Utily;
-			sourceTree = "<group>";
-		};
-		28DAE5431783FAF800F12366 /* UtiliyView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UtiliyView;
 			sourceTree = "<group>";
 		};
 		28DAE5701783FECE00F12366 /* http */ = {
@@ -2584,7 +2548,6 @@
 				28D43699179400BB00C3F1B2 /* VPPDropDown.m in Sources */,
 				28D4369A179400BB00C3F1B2 /* VPPDropDownElement.m in Sources */,
 				282A5708179478820078524F /* HYSalesRegistrationViewController.m in Sources */,
-				2857426917950E7B006E2DA2 /* SFHFKeychainUtils.m in Sources */,
 				2821DB9D1796DF7B00B77C26 /* HYSalesComputationViewController.m in Sources */,
 				2821DBA31796E24E00B77C26 /* HYPercentageCompetitionViewController.m in Sources */,
 				2821DBA91796E5C500B77C26 /* HYModelConfigViewController.m in Sources */,
@@ -2596,9 +2559,6 @@
 				285CB8EB1797DEED004A7D7E /* HYTableViewCell.m in Sources */,
 				284CAB1D1799122900943B7D /* HYPasswordConfigViewController.m in Sources */,
 				282020EE179A8969000C1C44 /* HYCompetitionSalesViewController.m in Sources */,
-				285A8A66179AE8BB00BE68BE /* EskBarPlot.m in Sources */,
-				285A8A67179AE8BB00BE68BE /* EskLinePlot.m in Sources */,
-				285A8A68179AE8BB00BE68BE /* EskPlotTheme.m in Sources */,
 				28247465179E928400E93EA1 /* UserEntity.m in Sources */,
 				28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */,
 				28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */,
