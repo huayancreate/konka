@@ -139,8 +139,11 @@
         
         NSString *msg = self.uiUsername.text;
         
+        NSLog(@"username = %@", msg);
         if ([msg length] != 0){
+            NSLog(@"username = %@", msg);
             NSString *thePassword = [[NSUserDefaults standardUserDefaults] objectForKey:msg];
+            NSLog(@"userpass = %@",thePassword);
             self.uiPassword.text = thePassword;
         }
         
