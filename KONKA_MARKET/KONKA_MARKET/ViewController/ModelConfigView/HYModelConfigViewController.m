@@ -291,6 +291,7 @@
     NSString *str = nil;
     if (self.searchTextField.text.length != 0){
         str = self.searchTextField.text;
+        str = [str uppercaseString];
     }
     
     if ([self.flag intValue] == 0)
