@@ -12,11 +12,7 @@
 		<string>Icon@x2.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-<<<<<<< HEAD
-	<string>G2F4XQ5U79.${PRODUCT_NAME:rfc1034identifier}</string>
-=======
 	<string>4QJ3BFA799.${PRODUCT_NAME:rfc1034identifier}</string>
->>>>>>> origin/零售通、资讯平台、协同办公
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

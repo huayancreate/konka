@@ -2638,12 +2638,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-<<<<<<< HEAD
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
-=======
-				CODE_SIGN_IDENTITY = "iPhone Developer";
->>>>>>> origin/零售通、资讯平台、协同办公
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -2658,13 +2654,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-<<<<<<< HEAD
-				PROVISIONING_PROFILE = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
-=======
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
->>>>>>> origin/零售通、资讯平台、协同办公
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = armv7;
@@ -2683,12 +2674,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-<<<<<<< HEAD
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
-=======
-				CODE_SIGN_IDENTITY = "iPhone Developer";
->>>>>>> origin/零售通、资讯平台、协同办公
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -2696,13 +2683,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-<<<<<<< HEAD
-				PROVISIONING_PROFILE = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
-=======
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
->>>>>>> origin/零售通、资讯平台、协同办公
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -2713,13 +2695,8 @@
 		28DAE38C1783F7B300F12366 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-<<<<<<< HEAD
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
-=======
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
->>>>>>> origin/零售通、资讯平台、协同办公
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KONKA_MARKET/KONKA_MARKET-Prefix.pch";
 				INFOPLIST_FILE = "KONKA_MARKET/KONKA_MARKET-Info.plist";
@@ -2748,13 +2725,8 @@
 		28DAE38D1783F7B300F12366 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-<<<<<<< HEAD
-				CODE_SIGN_IDENTITY = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
-=======
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
->>>>>>> origin/零售通、资讯平台、协同办公
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KONKA_MARKET/KONKA_MARKET-Prefix.pch";
 				INFOPLIST_FILE = "KONKA_MARKET/KONKA_MARKET-Info.plist";
