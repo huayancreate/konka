@@ -2657,8 +2657,8 @@
 		28DAE38C1783F7B300F12366 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KONKA_MARKET/KONKA_MARKET-Prefix.pch";
 				INFOPLIST_FILE = "KONKA_MARKET/KONKA_MARKET-Info.plist";
@@ -2675,8 +2675,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -2686,8 +2686,8 @@
 		28DAE38D1783F7B300F12366 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KONKA_MARKET/KONKA_MARKET-Prefix.pch";
 				INFOPLIST_FILE = "KONKA_MARKET/KONKA_MARKET-Info.plist";
@@ -2704,8 +2704,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2C0548A8-00B0-4716-816E-8D6DBB4D5C8D";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
