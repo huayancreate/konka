@@ -12,7 +12,7 @@
 		<string>Icon@x2.png</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>4QJ3BFA799.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>com.konka.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

@@ -178,7 +178,7 @@
         [self.navigationController pushViewController:aboutView animated:YES];
     }
     
-    if([cell.textLabel.text isEqualToString:@"退出"]){
+    if([cell.textLabel.text isEqualToString:@"退出系统"]){
         exit(0);
     }
     
@@ -186,7 +186,7 @@
         [self.navigationController popToRootViewControllerAnimated:YES]; 
     }
     
-    if([cell.textLabel.text isEqualToString:@"新手上路"]){
+    if([cell.textLabel.text isEqualToString:@"新手指南"]){
         [WZGuideViewController show];
     }
     

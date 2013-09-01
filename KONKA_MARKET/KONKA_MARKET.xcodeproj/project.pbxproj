@@ -359,6 +359,8 @@
 		28FFABDD17A64BB3009DDF28 /* WSLineLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD317A64BB3009DDF28 /* WSLineLayer.m */; };
 		28FFABDE17A64BB3009DDF28 /* WSScatterLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD517A64BB3009DDF28 /* WSScatterLayer.m */; };
 		28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */; };
+		4F15344D17D2FB7100B63710 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F15344717D2FB7100B63710 /* Harpy.m */; };
+		4F15345017D2FB7100B63710 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F15344B17D2FB7100B63710 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -908,6 +910,10 @@
 		28FFABD517A64BB3009DDF28 /* WSScatterLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSScatterLayer.m; sourceTree = "<group>"; };
 		28FFABD617A64BB3009DDF28 /* WSTopLeftCoordinateLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSTopLeftCoordinateLayer.h; sourceTree = "<group>"; };
 		28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WSTopLeftCoordinateLayer.m; sourceTree = "<group>"; };
+		4F15344617D2FB7100B63710 /* Harpy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Harpy.h; sourceTree = "<group>"; };
+		4F15344717D2FB7100B63710 /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
+		4F15344817D2FB7100B63710 /* HarpyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HarpyConstants.h; sourceTree = "<group>"; };
+		4F15344B17D2FB7100B63710 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1922,6 +1928,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				4F15344317D2FB7100B63710 /* Harpy */,
 				284ADB8417CC3B5B00C20E98 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				1830B1BB17B33A5000920F8E /* WZGuideView */,
 				189F0C1317B22D9800C8B394 /* SlideSwitch */,
@@ -2216,6 +2223,25 @@
 			path = "Chart Layers";
 			sourceTree = "<group>";
 		};
+		4F15344317D2FB7100B63710 /* Harpy */ = {
+			isa = PBXGroup;
+			children = (
+				4F15344517D2FB7100B63710 /* Harpy */,
+				4F15344B17D2FB7100B63710 /* README.md */,
+			);
+			path = Harpy;
+			sourceTree = "<group>";
+		};
+		4F15344517D2FB7100B63710 /* Harpy */ = {
+			isa = PBXGroup;
+			children = (
+				4F15344617D2FB7100B63710 /* Harpy.h */,
+				4F15344717D2FB7100B63710 /* Harpy.m */,
+				4F15344817D2FB7100B63710 /* HarpyConstants.h */,
+			);
+			path = Harpy;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2507,6 +2533,7 @@
 				18AEA90217CDDA31005DB5B7 /* mobile_03.html in Resources */,
 				18AEA90317CDDA31005DB5B7 /* style.css in Resources */,
 				189A6C7E17CF442100E0A948 /* HYWageViewController.xib in Resources */,
+				4F15345017D2FB7100B63710 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2609,6 +2636,7 @@
 				18AEA65717CDC998005DB5B7 /* HYOrderAuditedViewController.m in Sources */,
 				18AEA65D17CDCD19005DB5B7 /* HYOrderByMyListViewController.m in Sources */,
 				189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */,
+				4F15344D17D2FB7100B63710 /* Harpy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2695,8 +2723,8 @@
 		28DAE38C1783F7B300F12366 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: xiufeng ni (G2F4XQ5U79)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KONKA_MARKET/KONKA_MARKET-Prefix.pch";
 				INFOPLIST_FILE = "KONKA_MARKET/KONKA_MARKET-Info.plist";
@@ -2714,8 +2742,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "307945BA-E277-4A49-BD25-4889874F5DE4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "307945BA-E277-4A49-BD25-4889874F5DE4";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;
@@ -2725,8 +2753,8 @@
 		28DAE38D1783F7B300F12366 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: xiufeng ni (4QJ3BFA799)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KONKA_MARKET/KONKA_MARKET-Prefix.pch";
 				INFOPLIST_FILE = "KONKA_MARKET/KONKA_MARKET-Info.plist";
@@ -2744,8 +2772,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "9A3AE368-F005-4137-9770-C4111ED5FC07";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9A3AE368-F005-4137-9770-C4111ED5FC07";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = armv7;
 				WRAPPER_EXTENSION = app;

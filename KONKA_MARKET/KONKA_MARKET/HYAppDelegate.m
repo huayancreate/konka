@@ -10,6 +10,7 @@
 #import "HYLoginViewController.h"
 #import "WZGuideViewController.h"
 #import "MobClick.h"
+#import "Harpy.h"
 
 @implementation HYAppDelegate
 
@@ -23,6 +24,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [Harpy checkVersion];
     [MobClick startWithAppkey:@"52103a0156240b648f012643"];
     //[NSThread sleepForTimeInterval:8];
     
