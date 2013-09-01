@@ -20,19 +20,6 @@
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "KONKA_MARKET/ViewController/OAView/HYOAViewController.m"
-         timestampString = "398251974.499709"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "68"
-         endingLineNumber = "68"
-         landmarkName = "-loadPage"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
          filePath = "KONKA_MARKET/ViewController/PercentageCofingView/HYPercentageConfigViewController.m"
          timestampString = "398856888.930646"
          startingColumnNumber = "9223372036854775807"
@@ -40,6 +27,19 @@
          startingLineNumber = "339"
          endingLineNumber = "339"
          landmarkName = "-textField:shouldChangeCharactersInRange:replacementString:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "KONKA_MARKET/ViewController/LoginView/HYLoginViewController.m"
+         timestampString = "399354653.266679"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "438"
+         endingLineNumber = "438"
+         landmarkName = "-rememberMe"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

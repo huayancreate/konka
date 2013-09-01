@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>ichartjs 示例</title>
+		<meta name="Description" content="The ichartjs's gallery center,ichartjs 示例中心" />
+		<meta name="Keywords" content="ichartjs demo,Html5 demo,ichartjs示例,ichartjs示例,Html5示例,Html5示例" />
+		<script type="text/javascript" src="ichart.1.2.min.js"></script>
+        <link rel="stylesheet" href="style.css" type="text/css"/>
+        
+		<style type="text/css">
+			body {
+				margin-top:0px;
+			}
+		</style>
+		<script type="text/javascript">
+            function loadchart(data,sumMoney){
+                //alert(data);
+                if(data !=""){
+                var jsonstr="[";
+                
+                var jsondata = eval("("+data+")");
+                var value = "";
+                for(var i=0;i<jsondata.length;i++){
+                    value = jsondata[i].data.toString();
+                    value = value.split(",")[1];
+                    if(i == jsondata.length -1){
+                        jsonstr += "{name:'"+jsondata[i].label+"寸',value:"+((value/sumMoney)*100).toFixed(1)+",color:'"+getRandomColor()+"'}]";
+                    }else{
+                        jsonstr += "{name:'"+jsondata[i].label+"寸',value:"+((value/sumMoney)*100).toFixed(1)+",color:'"+getRandomColor()+"'},";
+                    }
+                }
+                //alert(jsonstr);
+                var chart = new iChart.Pie3D({
+                                             render : 'canvasDiv',
+                                             data: eval("("+jsonstr+")"),
+                                             sub_option : {
+                                             mini_label_threshold_angle : 40,//迷你label的阀值,单位:角度
+                                             mini_label:{//迷你label配置项
+                                             fontsize:20,
+                                             fontweight:600,
+                                             color : '#ffffff'
+                                             },
+                                             label : {
+                                             background_color:null,
+                                             sign:false,//设置禁用label的小图标
+                                             padding:'0 4',
+                                             border:{
+                                             enable:false,
+                                             color:'#666666'
+                                             },
+                                             fontsize:12,
+                                             fontweight:600,
+                                             color : '#4572a7'
+                                             },
+                                             border : {
+                                             width : 2,
+                                             color : '#ffffff'
+                                             },
+                                             listeners:{
+                                             parseText:function(d, t){
+                                             return d.get('name')+" "+d.get('value')+"%";//自定义label文本
+                                             }
+                                             } 
+                                             },
+                                             legend:{
+                                             enable:true,
+                                             padding:0,
+                                             offsetx:120,
+                                             offsety:50,
+                                             color:'#3e576f',
+                                             fontsize:20,//文本大小
+                                             sign_size:20,//小图标大小
+                                             line_height:28,//设置行高
+                                             sign_space:10,//小图标与文本间距
+                                             border:false,
+                                             align:'left',
+                                             background_color : null//透明背景
+                                             }, 
+                                             shadow : true,
+                                             shadow_blur : 6,
+                                             shadow_color : '#aaaaaa',
+                                             shadow_offsetx : 0,
+                                             shadow_offsety : 0,
+                                             background_color:'#66a3d2',
+                                             align:'right',//右对齐
+                                             offsetx:-100,//设置向x轴负方向偏移位置60px
+                                             offset_angle:-90,//逆时针偏移120度
+                                             width : 945,
+                                             height : 920,
+                                             radius:200
+                                             });
+
+                
+                chart.draw();
+                }
+            }
+            var getRandomColor = function(){
+                return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6);
+            }
+	</script>
+</head>
+<body>
+	<div id="canvasDiv"></div>
+	<div id='ichartjs_result'></div>
+</body>
+</html>

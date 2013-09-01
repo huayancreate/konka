@@ -210,9 +210,8 @@
     }
     
     if (tableView == downTableView) {
-        static NSString *SectionTableMyTag=@"CellSalesRegisterIdentifier";
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        UITableViewCell *cell = nil;
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYSalesRegistrationTableViewCell" owner:self options:nil];
         if ([self.status isEqualToString:@"0"])
         {

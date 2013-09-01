@@ -41,19 +41,14 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:OaAPi]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?username=%@&userpass=%@&user_id=%d", BaseURL, OaAPi,self.userLogin.user_name,self.userLogin.password,[self.userLogin.user_id intValue] ];
+    
+    NSURL *url = [[NSURL alloc] initWithString:urlStr];
+    
     request = [[NSMutableURLRequest alloc] initWithURL:url];
-    [request setHTTPMethod:@"POST"];
-    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
-    postString = [postString stringByAppendingString:@"&userpass="];
-    postString = [postString stringByAppendingString:self.userLogin.password];
-    postString = [postString stringByAppendingString:@"&user_id="];
-    NSInteger userId = [self.userLogin.user_id intValue];
-    NSString *strUserId = [NSString stringWithFormat:@"%d", userId];
-    postString = [postString stringByAppendingString:strUserId];
-    NSLog(@"postString ,%@", postString);
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    [request setHTTPMethod:@"GET"];
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    NSLog(@"request url %@", urlStr);
     [self loadPage];
     [SVProgressHUD dismiss];
 }
@@ -123,18 +118,19 @@
 
 - (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType
 {
-    request = (NSMutableURLRequest *)_request;
-    [request setHTTPMethod:@"POST"];
-    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
-    postString = [postString stringByAppendingString:@"&userpass="];
-    postString = [postString stringByAppendingString:self.userLogin.password];
-    postString = [postString stringByAppendingString:@"&user_id="];
-    NSInteger userId = [self.userLogin.user_id intValue];
-    NSString *strUserId = [NSString stringWithFormat:@"%d", userId];
-    postString = [postString stringByAppendingString:strUserId];
-    NSLog(@"postString111 %@", postString);
-    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"request.URL.absoluteString %@",request.URL.absoluteString);
+    NSLog(@"_request.URL.absoluteString %@",_request.URL.absoluteString);
+//    request = (NSMutableURLRequest *)_request;
+//    [request setHTTPMethod:@"POST"];
+//    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
+//    postString = [postString stringByAppendingString:@"&userpass="];
+//    postString = [postString stringByAppendingString:self.userLogin.password];
+//    postString = [postString stringByAppendingString:@"&user_id="];
+//    NSInteger userId = [self.userLogin.user_id intValue];
+//    NSString *strUserId = [NSString stringWithFormat:@"%d", userId];
+//    postString = [postString stringByAppendingString:strUserId];
+//    NSLog(@"postString111 %@", postString);
+//    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+//    NSLog(@"request.URL.absoluteString %@",request.URL.absoluteString);
     return YES;
 }
 

@@ -72,20 +72,19 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
     if (indexPath.section == 1) {
-        static NSString *SectionTableMyTag=@"CellCustomR3Identifier";
-        UITableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        UITableViewCell *cell = nil;
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomR3TableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         NSDictionary *dic = [self.customR3List objectAtIndex:indexPath.row];
         //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-        lblR3TotalMoney.text = [dic objectForKey:@"pd_total_money"];
-        lblCustomName.text = [dic objectForKey:@"customer_name"];
-        lblR3TotalCount.text = [dic objectForKey:@"pd_count"];
-        lblAvgMlMoney.text = [dic objectForKey:@"pj_ml_money"];
-        lblAvgUnitPrice.text = [dic objectForKey:@"pj_unitprice"];
-        lblTbMlMoney.text = [dic objectForKey:@"tb_ml_money"];
-        lblTbUnitPrice.text = [dic objectForKey:@"tb_unitprice"];
+//        lblR3TotalMoney.text = [dic objectForKey:@"pd_total_money"];
+//        lblCustomName.text = [dic objectForKey:@"customer_name"];
+//        lblR3TotalCount.text = [dic objectForKey:@"pd_count"];
+//        lblAvgMlMoney.text = [dic objectForKey:@"pj_ml_money"];
+//        lblAvgUnitPrice.text = [dic objectForKey:@"pj_unitprice"];
+//        lblTbMlMoney.text = [dic objectForKey:@"tb_ml_money"];
+//        lblTbUnitPrice.text = [dic objectForKey:@"tb_unitprice"];
         
         return cell;    
     }
@@ -136,7 +135,7 @@
 {
     if (indexPath.section == 1)
     {
-        return 100;
+        return 120;
     }
     if(indexPath.section == 0)
     {
@@ -213,5 +212,9 @@
     return 0;
 }
 
+-(IBAction)Search:(id)sender
+{
+    
+}
 
 @end

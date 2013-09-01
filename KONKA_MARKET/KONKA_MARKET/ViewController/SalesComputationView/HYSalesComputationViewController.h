@@ -11,7 +11,7 @@
 #import "CKCalendarView.h"
 #import "CorePlot-CocoaTouch.h"
 
-@interface HYSalesComputationViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,TopTabelViewCell,CKCalendarDelegate,CPTPieChartDataSource,CPTPieChartDelegate,CPTBarPlotDataSource,CPTBarPlotDelegate>
+@interface HYSalesComputationViewController : HYBaseViewController<UITableViewDelegate,UITableViewDataSource,TopTabelViewCell,CKCalendarDelegate,CPTPieChartDataSource,CPTPieChartDelegate,CPTBarPlotDataSource,CPTBarPlotDelegate,UIWebViewDelegate>
 {
     CPTXYGraph * graph;
 	NSMutableArray *pieData;
@@ -40,5 +40,9 @@
 -(IBAction)modelAction:(id)sender;
 
 -(IBAction)yearsAction:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIWebView *uiWebView;
+
+@property (nonatomic,strong) NSString *jsonData;
 
 @end

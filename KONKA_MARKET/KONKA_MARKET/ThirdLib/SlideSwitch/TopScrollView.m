@@ -119,7 +119,7 @@
                 //[rootView loadNewsPlat];
                 //赋值滑动列表选择频道ID
                 scrollViewSelectedChannelID = sender.tag;
-                NSString *title_id;
+                NSString *title_id = nil;
                 switch (sender.tag) {
                     case 100:
                         title_id = nil;

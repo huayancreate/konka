@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>ichartjs 示例</title>
+		<meta name="Description" content="The ichartjs's gallery center,ichartjs 示例中心" />
+		<meta name="Keywords" content="ichartjs demo,Html5 demo,ichartjs示例,ichartjs示例,Html5示例,Html5示例" />
+		<script type="text/javascript" src="ichart.1.2.min.js"></script>
+		<style type="text/css">
+			body{
+				margin-top:0px;
+			}
+		</style>
+		<script type="text/javascript">
+            function loadchart(data){
+                if(data !=""){
+                //alert(data);
+                var jsonstr="[";
+                var jsondata = eval("("+data+")");
+                //alert(jsondata.length);
+                //var color = ["#4572a7","#aa4643","#89a54e","#80699b","#3d96ae","#ffff00","",""];
+                var value = "";
+                for(var i=0;i<jsondata.length;i++){
+                    value = jsondata[i].data.toString();
+                    //alert(value);
+                    value = value.split(",")[1];
+                    if(i == jsondata.length -1){
+                        jsonstr += "{name:'"+jsondata[i].label+"',value:"+value+",color:'"+getRandomColor()+"'}]";
+                    }else{
+                        jsonstr += "{name:'"+jsondata[i].label+"',value:"+value+",color:'"+getRandomColor()+"'},";
+                    }
+                }
+                //alert(jsonstr);
+                new iChart.Bar2D({
+                                 render : 'canvasDiv',
+                                 data: eval("("+jsonstr+")"),
+                                 width : 945,
+                                 height : 920,
+                                 background_color:'#66a3d2',
+                                 coordinate:{
+                                 width:720,
+                                 height:760,
+                                 axis:{
+                                 width:[0,0,1,1]
+                                 },
+                                 scale:[{
+                                        position:'bottom',
+                                        start_scale:0,
+                                        end_scale:300000,
+                                        scale_space:60000
+                                        }]
+                                 },
+                                 shadow:true,
+                                 shadow_color:'#8d8d8d',
+                                 shadow_blur:2,
+                                 shadow_offsety:1,
+                                 shadow_offsetx:1,
+                                 background_color : '#66a3d2',
+                                 sub_option:{
+                                 border:{
+                                 enable : true,
+                                 color:'#fcfcfc' 
+                                 },
+                                 listeners:{
+                                 parseText:function(r,t){
+                                 return t;
+                                 }
+                                 }
+                                 },
+                                 legend:{enable:false}
+                                 }).draw();
+                }
+
+            };
+            var getRandomColor = function(){
+                return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).substr(-6);
+            }
+	</script>
+</head>
+<body>
+	<div id='canvasDiv'></div>
+	<div id='ichartjs_result'></div>
+</body>
+</html>

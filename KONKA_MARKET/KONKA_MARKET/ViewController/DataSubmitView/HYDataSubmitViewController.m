@@ -40,8 +40,8 @@
 @property (nonatomic, strong) NSString *submitAddress;
 @property (nonatomic, strong) NSString *submitMastercode;
 @property (nonatomic, strong) NSNumber *dataID;
-
-
+@property (nonatomic, strong) NSString *dateTime;
+@property (nonatomic, strong) NSDateFormatter * dateFormatter;
 
 @end
 
@@ -82,6 +82,7 @@
 @synthesize priceLabel;
 @synthesize numLabel;
 @synthesize priceLabel1;
+@synthesize dateTime;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -161,19 +162,6 @@
     [someButton addTarget:self action:@selector(submit:)
          forControlEvents:UIControlEventTouchUpInside];
     [someButton setShowsTouchWhenHighlighted:YES];
-    if(self.userLogin.allDataSubmit != nil){
-
-        NSNumber *dataStatus = [self.userLogin.allDataSubmit objectForKey:@"status"];
-        //NSLog(@"dataStatus %d",dataStatus);
-        if (dataStatus.intValue == 0)
-        {
-            UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-            self.navigationItem.rightBarButtonItem  = rightButton;
-        }
-    }else{
-        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-        self.navigationItem.rightBarButtonItem  = rightButton;
-    }
     [self getAllUsualModelNameList:self.userLogin.user_id];
     
     CGRect textFieldRect = CGRectMake(120, 145, 175, 30);
@@ -266,11 +254,11 @@
     if (self.userLogin.dataSubmit != nil)
     {
         storeName.enabled = false;
-        salesCount.enabled = false;
-        saleAllPrice.enabled = false;
         self.selectChoice2.enabled = false;
-        self.salesPrice.enabled = false;
-        self.memo.enabled = false;
+        salesCount.enabled = true;
+        saleAllPrice.enabled = true;
+        self.salesPrice.enabled = true;
+        self.memo.enabled = true;
         [self.mastercode setBorderStyle:UITextBorderStyleLine];
         [self.realName setBorderStyle:UITextBorderStyleLine];
         [self.phoneNum setBorderStyle:UITextBorderStyleLine];
@@ -281,6 +269,19 @@
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setUsesGroupingSeparator:NO];
         storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
+        dateTime = [self.userLogin.dataSubmit objectForKey:@"sale_date"];
+        NSString *date = [super getNowDateYYYYMMDD];
+        [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dataNow = [self.dateFormatter dateFromString:date];
+        NSData *newDate = [super getIntervalDateByDays:2 ByDate:dateTime];
+        if ([dataNow compare:newDate] == NSOrderedDescending) {
+            storeName.enabled = false;
+            self.selectChoice2.enabled = false;
+            salesCount.enabled = false;
+            saleAllPrice.enabled = false;
+            self.salesPrice.enabled = false;
+            self.memo.enabled = false;
+        }
         salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
         saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"all_price"]];
@@ -325,16 +326,27 @@
         address.text = [self.userLogin.allDataSubmit objectForKey:@"addresss"];
         
         storeName.enabled = false;
-        salesCount.enabled = false;
-        saleAllPrice.enabled = false;
+        salesCount.enabled = true;
+        saleAllPrice.enabled = true;
         self.selectChoice2.enabled = false;
-        self.salesPrice.enabled = false;
-        self.memo.enabled = false;
-        
+        self.salesPrice.enabled = true;
+        self.memo.enabled = true;
+        self.mastercode.enabled = true;
+        self.realName.enabled = true;
+        self.phoneNum.enabled = true;
+        self.address.enabled = true;
+        dateTime = [self.userLogin.allDataSubmit objectForKey:@"sale_date"];
+        NSString *date = [super getNowDateYYYYMMDD];
+        [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSDate *dataNow = [self.dateFormatter dateFromString:date];
+        NSData *newDate = [super getIntervalDateByDays:2 ByDate:dateTime];
         NSNumber *dataStatus = [self.userLogin.allDataSubmit objectForKey:@"status"];
-        //NSLog(@"dataStatus %d",dataStatus);
-        if (dataStatus.intValue == 1)
-        {
+        if ([dataNow compare:newDate] == NSOrderedDescending) {
+            salesCount.enabled = false;
+            saleAllPrice.enabled = false;
+            self.selectChoice2.enabled = false;
+            self.salesPrice.enabled = false;
+            self.memo.enabled = false;
             self.mastercode.enabled = false;
             self.realName.enabled = false;
             self.phoneNum.enabled = false;
@@ -346,6 +358,31 @@
             [self.address setBorderStyle:UITextBorderStyleLine];
             //[self.memo setBorderStyle:UITextBorderStyleLine];
         }
+        //NSLog(@"dataStatus %d",dataStatus);
+//        if (dataStatus.intValue == 1)
+//        {
+//            self.mastercode.enabled = false;
+//            self.realName.enabled = false;
+//            self.phoneNum.enabled = false;
+//            self.address.enabled = false;
+//        }else{
+//            [self.mastercode setBorderStyle:UITextBorderStyleLine];
+//            [self.realName setBorderStyle:UITextBorderStyleLine];
+//            [self.phoneNum setBorderStyle:UITextBorderStyleLine];
+//            [self.address setBorderStyle:UITextBorderStyleLine];
+//            //[self.memo setBorderStyle:UITextBorderStyleLine];
+//        }
+//        if ([dataNow compare:newDate] == NSOrderedDescending) {
+//            salesCount.enabled = false;
+//            saleAllPrice.enabled = false;
+//            self.selectChoice2.enabled = false;
+//            self.salesPrice.enabled = false;
+//            self.memo.enabled = false;
+//            self.mastercode.enabled = false;
+//            self.realName.enabled = false;
+//            self.phoneNum.enabled = false;
+//            self.address.enabled = false;
+//        }
         NSLog(@"dataID , %d", [self.dataID intValue]);
     }else
     {
@@ -360,7 +397,21 @@
         [self.memo setBorderStyle:UITextBorderStyleLine];
     }
     
-   
+    if(self.userLogin.allDataSubmit != nil){
+        
+        NSNumber *dataStatus = [self.userLogin.allDataSubmit objectForKey:@"status"];
+        //NSLog(@"dataStatus %d",dataStatus);
+        if (dataStatus.intValue == 0)
+        {
+            UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+            self.navigationItem.rightBarButtonItem  = rightButton;
+        }
+    }else{
+        if(salesPrice.enabled == true){
+            UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+            self.navigationItem.rightBarButtonItem  = rightButton;
+        }
+    }
 }
 
 -(void) getAllUsualModelNameList:(NSNumber *)user_id

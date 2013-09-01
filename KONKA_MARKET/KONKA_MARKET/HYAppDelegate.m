@@ -9,6 +9,7 @@
 #import "HYAppDelegate.h"
 #import "HYLoginViewController.h"
 #import "WZGuideViewController.h"
+#import "MobClick.h"
 
 @implementation HYAppDelegate
 
@@ -22,7 +23,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [NSThread sleepForTimeInterval:1];
+    [MobClick startWithAppkey:@"52103a0156240b648f012643"];
+    //[NSThread sleepForTimeInterval:8];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
