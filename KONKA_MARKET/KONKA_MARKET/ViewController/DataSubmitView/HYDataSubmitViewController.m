@@ -303,6 +303,9 @@
         address.text = [self.userLogin.dataSubmit objectForKey:@"addresss"];
         
         NSLog(@"dataID , %d", [self.dataID intValue]);
+        
+        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+        self.navigationItem.rightBarButtonItem  = rightButton;
     }
     else if (self.userLogin.allDataSubmit != nil)
     {
@@ -399,13 +402,15 @@
         [self.address setBorderStyle:UITextBorderStyleLine];
         [self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
         [self.memo setBorderStyle:UITextBorderStyleLine];
-    }
-    
-    if(self.userLogin.dataSubmit != nil)
-    {
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
         self.navigationItem.rightBarButtonItem  = rightButton;
     }
+    
+//    if(self.userLogin.dataSubmit != nil)
+//    {
+//        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+//        self.navigationItem.rightBarButtonItem  = rightButton;
+//    }
 }
 
 -(void) getAllUsualModelNameList:(NSNumber *)user_id
