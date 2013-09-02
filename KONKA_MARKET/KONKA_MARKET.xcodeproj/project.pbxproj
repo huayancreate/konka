@@ -2567,9 +2567,7 @@
 				18AEA90217CDDA31005DB5B7 /* mobile_03.html in Resources */,
 				18AEA90317CDDA31005DB5B7 /* style.css in Resources */,
 				189A6C7E17CF442100E0A948 /* HYWageViewController.xib in Resources */,
-<<<<<<< HEAD
 				4F15345017D2FB7100B63710 /* README.md in Resources */,
-=======
 				1870193917D463B30020DC25 /* 下发文件.png in Resources */,
 				1870193A17D463B30020DC25 /* 已审文件.png in Resources */,
 				1870193B17D463B30020DC25 /* 待审文件.png in Resources */,
@@ -2580,7 +2578,6 @@
 				1870194817D463C20020DC25 /* 我的订单.png in Resources */,
 				1870194917D463C20020DC25 /* 订单审核.png in Resources */,
 				1870194A17D463C20020DC25 /* 订单查询.png in Resources */,
->>>>>>> 零售通、资讯平台、协同办公
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
