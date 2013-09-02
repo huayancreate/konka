@@ -9,6 +9,9 @@
 #import "HYCustomR3ViewController.h"
 
 @interface HYCustomR3ViewController ()
+@property(nonatomic, weak) CKCalendarView *calendar;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDate *minimumDate;
 
 @end
 
@@ -24,7 +27,7 @@
 @synthesize userLogin;
 @synthesize customR3List;
 
-@synthesize txtMonth;
+@synthesize btnMonth;
 @synthesize txtCustomName;
 @synthesize txtYwyName;
 @synthesize btnSearch;
@@ -98,9 +101,11 @@
                 break;
             case 1:
                 cell.textLabel.text = [self.mykey objectAtIndex: 1];
-                self.txtMonth = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
-                [self.txtMonth setBorderStyle:UITextBorderStyleLine];
-                [cell addSubview:self.txtMonth];
+                self.btnMonth = [[UIButton alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                [self.btnMonth setTitle:[super getNowDate] forState:UIControlStateNormal];
+                [self.btnMonth addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
+                [self.btnMonth setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [cell addSubview:self.btnMonth];
                 break;
             case 2:
                 cell.textLabel.text = [self.mykey objectAtIndex: 2];
@@ -150,7 +155,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 -(void)loadCustomR3
@@ -215,6 +220,32 @@
 -(IBAction)Search:(id)sender
 {
     
+}
+
+-(IBAction)dataPick:(id)sender
+{
+    CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+    
+    self.calendar = calendar;
+    calendar.delegate = self;
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy年MM月"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"2012年12月"];
+    
+    calendar.onlyShowCurrentMonth = NO;
+    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+    
+    calendar.frame = CGRectMake(10, 10, 300, 320);
+    [self.view addSubview:calendar];
+    //NSLog(@"点击日期事件");
+}
+
+- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+    
+    NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
+    [self.btnMonth setTitle:backStr forState:UIControlStateNormal];
+    [calendar removeFromSuperview];
 }
 
 @end

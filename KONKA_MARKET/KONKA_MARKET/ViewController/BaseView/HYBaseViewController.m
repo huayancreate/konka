@@ -33,6 +33,7 @@
 @synthesize longitude;
 @synthesize flagcount;
 @synthesize screenHeight;
+@synthesize someButton;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,7 +60,8 @@
     self.kkM = [[KonkaManager alloc] init];
     UIImage *backButtonImage = [UIImage imageNamed:@"back"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
-    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+//    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
     
     [someButton addTarget:self action:@selector(backButtonAction:)
@@ -148,6 +150,7 @@
 -(void)backButtonAction:(id)sender
 {
     self.userLogin.password = newpassword;
+    NSLog(@"send %@",sender);
     [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
 }
 

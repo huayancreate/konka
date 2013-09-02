@@ -7,8 +7,9 @@
 //
 
 #import "HYBaseViewController.h"
+#import "CKCalendarView.h"
 
-@interface HYCustomR3ViewController : HYBaseViewController<UITableViewDataSource,UITableViewDelegate>
+@interface HYCustomR3ViewController : HYBaseViewController<UITableViewDataSource,UITableViewDelegate,CKCalendarDelegate>
 
 @property (strong, nonatomic) IBOutlet UILabel *lblR3TotalMoney;
 @property (strong, nonatomic) IBOutlet UILabel *lblR3TotalCount;
@@ -24,7 +25,7 @@
 
 @property (nonatomic,retain) NSArray *mykey;
 
-@property (strong, nonatomic) IBOutlet UITextField *txtMonth;
+@property (strong, nonatomic) IBOutlet UIButton *btnMonth;
 @property (strong, nonatomic) IBOutlet UITextField *txtCustomName;
 @property (strong, nonatomic) IBOutlet UITextField *txtYwyName;
 @property (strong, nonatomic) IBOutlet UIButton *btnSearch;
