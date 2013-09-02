@@ -16,5 +16,8 @@
 }
 
 @property (weak, nonatomic) IBOutlet UIWebView *uiWebView;
+@property (nonatomic, strong) NSString *testRequest;
+@property (nonatomic, strong) NSString *didRequest;
+@property (nonatomic, strong) UIButton *someButton;
 
 @end

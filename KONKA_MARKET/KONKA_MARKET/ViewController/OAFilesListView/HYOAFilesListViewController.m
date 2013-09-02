@@ -12,10 +12,11 @@
 {
     NSMutableURLRequest *request;
 }
-
 @end
 
 @implementation HYOAFilesListViewController
+@synthesize someButton;
+@synthesize testRequest;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    // [[super someButton] addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
     self.uiWebView.delegate = self;
     self.uiWebView.scrollView.delegate = self;
@@ -51,7 +53,18 @@
     NSLog(@"request url %@", urlStr);
     [self loadPage];
     [SVProgressHUD dismiss];
-
+    
+    UIImage *backButtonImage = [UIImage imageNamed:@"back"];
+    CGRect frameimg = CGRectMake(0, 0, 20, 24);
+    self.someButton = [[UIButton alloc] initWithFrame:frameimg];
+    someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+    
+    [someButton addTarget:self action:@selector(linkBackAction:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+    self.navigationItem.leftBarButtonItem  = leftButton;
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,6 +76,7 @@
 //加载网页
 - (void)loadPage {
     NSLog(@"request %@", [request valueForHTTPHeaderField:@"forward"]);
+    testRequest = request.URL.absoluteString;
     [self.uiWebView loadRequest:request];
 }
 
@@ -114,6 +128,20 @@
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
 	
 	return [NSDate date]; // should return date data source was last changed
+}
+
+-(void) linkBackAction:(id)sender{
+    NSLog(@"返回按钮的request: %@",self.testRequest);
+    [someButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventAllTouchEvents];
+}
+-(void)backAction:(id)sender{
+    //self.userLogin.password = newpassword;
+    NSLog(@"send %@",sender);
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+}
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
+    
+    return YES;
 }
 
 @end

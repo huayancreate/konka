@@ -48,6 +48,7 @@
 @property (nonatomic, strong) NSString *newpassword;
 @property (nonatomic, strong) KonkaManager *kkM;
 @property (nonatomic) CGFloat screenHeight;
+@property (nonatomic, strong) UIButton *someButton;
 
 -(void) endRequest:(NSString *)msg;
 -(void) cancelButtonClick:(id)sender;
