@@ -118,6 +118,10 @@
 
 -(void) getUsualModelListLimitByID:(NSNumber *)user_id ByName:(NSString *)name ByPage:(int)page
 {
+    if (name != nil)
+    {
+        name = [@"*" stringByAppendingFormat:@"%@*", name];
+    }
     self.userLogin.modelList = [self.kkM getUsualModelListByUserID:user_id ByName:name ByPage:page];
 }
 
@@ -136,6 +140,7 @@
     if (self.searchTextField.text.length != 0)
     {
         name = self.searchTextField.text;
+        name = [name uppercaseString];
     }
     
     [self getUnusualModelListLimitByID:self.userLogin.user_id ByName:name ByPage:self.page];
@@ -164,6 +169,7 @@
     if (self.searchTextField.text.length != 0)
     {
         name = self.searchTextField.text;
+        name = [name uppercaseString];
     }
     
     [self getUsualModelListLimitByID:self.userLogin.user_id ByName:name ByPage:self.page];
@@ -248,6 +254,7 @@
     if (self.searchTextField.text.length != 0)
     {
         str = self.searchTextField.text;
+        str = [str uppercaseString];
     }
     
     [SVProgressHUD showWithStatus:@"正在更新..." maskType:SVProgressHUDMaskTypeGradient];
@@ -272,6 +279,7 @@
     if (self.searchTextField.text.length != 0)
     {
         str = self.searchTextField.text;
+        str = [str uppercaseString];
     }
     
     
@@ -313,6 +321,7 @@
     if (self.searchTextField.text.length != 0)
     {
         str = self.searchTextField.text;
+        str = [str uppercaseString];
     }
     if (self.page == 0)
     {
@@ -337,6 +346,7 @@
     if (self.searchTextField.text.length != 0)
     {
         str = self.searchTextField.text;
+        str = [str uppercaseString];
     }
     
     if([self.userLogin.modelList count] < 20)
