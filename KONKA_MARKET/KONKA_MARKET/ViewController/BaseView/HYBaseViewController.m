@@ -60,12 +60,11 @@
     self.kkM = [[KonkaManager alloc] init];
     UIImage *backButtonImage = [UIImage imageNamed:@"back"];
     CGRect frameimg = CGRectMake(0, 0, 20, 24);
-//    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
     
-    [someButton addTarget:self action:@selector(backButtonAction:)
-         forControlEvents:UIControlEventTouchUpInside];
+//    [someButton addTarget:self action:@selector(backButtonAction:)
+//         forControlEvents:UIControlEventTouchUpInside];
     [someButton setShowsTouchWhenHighlighted:YES];
     UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
     self.navigationItem.leftBarButtonItem  = leftButton;

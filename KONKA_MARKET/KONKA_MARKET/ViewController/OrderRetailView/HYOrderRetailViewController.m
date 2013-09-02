@@ -32,6 +32,8 @@
     [super viewDidLoad];
     UIView *temp = [[UIView alloc] init];
     [mainTableView setBackgroundView:temp];
+    [[super someButton] addTarget:self action:@selector(backButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
 }
 

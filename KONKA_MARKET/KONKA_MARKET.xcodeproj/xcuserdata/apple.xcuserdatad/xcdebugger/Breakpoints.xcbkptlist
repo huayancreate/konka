@@ -14,22 +14,6 @@
          startingLineNumber = "256"
          endingLineNumber = "256"
          landmarkName = "-viewDidLoad"
-<<<<<<< HEAD
-=======
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "KONKA_MARKET/ViewController/OAFilesListView/HYOAFilesListViewController.m"
-         timestampString = "399959469.246414"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "79"
-         endingLineNumber = "79"
-         landmarkName = "-loadPage"
->>>>>>> 零售通、资讯平台、协同办公
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

@@ -7,6 +7,7 @@
 //
 
 #import "HYOAViewController.h"
+#import "HYBackViewController.h"
 
 @interface HYOAViewController ()
 {
@@ -16,6 +17,9 @@
 @end
 
 @implementation HYOAViewController
+@synthesize didRequest;
+@synthesize detailRequest;
+@synthesize backView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,6 +55,8 @@
     NSLog(@"request url %@", urlStr);
     [self loadPage];
     [SVProgressHUD dismiss];
+    
+    backView = [[HYBackViewController alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,6 +66,7 @@
 
 //加载网页
 - (void)loadPage {
+    didRequest = request;
     [self.uiWebView loadRequest:request];
 }
 
@@ -116,21 +123,12 @@
 #pragma mark -
 #pragma mark webview Methods
 
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSLog(@"_request.URL.absoluteString %@",_request.URL.absoluteString);
-//    request = (NSMutableURLRequest *)_request;
-//    [request setHTTPMethod:@"POST"];
-//    NSString *postString = [@"username=" stringByAppendingString:self.userLogin.user_name];
-//    postString = [postString stringByAppendingString:@"&userpass="];
-//    postString = [postString stringByAppendingString:self.userLogin.password];
-//    postString = [postString stringByAppendingString:@"&user_id="];
-//    NSInteger userId = [self.userLogin.user_id intValue];
-//    NSString *strUserId = [NSString stringWithFormat:@"%d", userId];
-//    postString = [postString stringByAppendingString:strUserId];
-//    NSLog(@"postString111 %@", postString);
-//    [request setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSLog(@"request.URL.absoluteString %@",request.URL.absoluteString);
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"test");
+    NSLog(@"获取请求的request: %@", didRequest);
+    NSLog(@"test end");
+    detailRequest = (NSMutableURLRequest *)_request;
+    [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
     return YES;
 }
 

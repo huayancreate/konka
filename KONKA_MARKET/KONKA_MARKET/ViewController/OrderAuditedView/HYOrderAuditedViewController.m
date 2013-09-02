@@ -16,6 +16,9 @@
 @end
 
 @implementation HYOrderAuditedViewController
+@synthesize didRequest;
+@synthesize detailRequest;
+@synthesize backView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +56,7 @@
     [self loadPage];
     [SVProgressHUD dismiss];
     
+    backView = [[HYBackViewController alloc] init];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,6 +68,7 @@
 //加载网页
 - (void)loadPage {
     NSLog(@"request %@", [request valueForHTTPHeaderField:@"forward"]);
+    didRequest = request;
     [self.uiWebView loadRequest:request];
 }
 
@@ -115,6 +120,15 @@
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
 	
 	return [NSDate date]; // should return date data source was last changed
+}
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"test");
+    NSLog(@"获取请求的request: %@", didRequest);
+    NSLog(@"test end");
+    detailRequest = (NSMutableURLRequest *)_request;
+    [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
+    return YES;
 }
 
 @end

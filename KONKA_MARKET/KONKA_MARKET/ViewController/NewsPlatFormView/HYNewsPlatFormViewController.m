@@ -46,6 +46,8 @@
     
     [self.view addSubview:[TopScrollView shareInstance:self.userLogin.user_name Password:self.userLogin.password Nav:self.navigationController]];
     [self.view addSubview:[RootScrollView shareInstance:self.userLogin.user_name Password:self.userLogin.password Nav:self.navigationController]];
+    [[super someButton] addTarget:self action:@selector(backButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning

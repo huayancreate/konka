@@ -34,6 +34,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[super someButton] addTarget:self action:@selector(backButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"SystemConfigList" ofType:@"plist"];

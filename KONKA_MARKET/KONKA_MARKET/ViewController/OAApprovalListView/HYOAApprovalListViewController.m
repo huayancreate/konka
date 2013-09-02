@@ -16,6 +16,10 @@
 @end
 
 @implementation HYOAApprovalListViewController
+@synthesize didRequest;
+@synthesize detailRequest;
+@synthesize backView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +57,8 @@
     NSLog(@"request url %@", urlStr);
     [self loadPage];
     [SVProgressHUD dismiss];
+    
+    backView = [[HYBackViewController alloc] init];
 
 }
 
@@ -64,6 +70,7 @@
 
 //加载网页
 - (void)loadPage {
+    didRequest = request;
     [self.uiWebView loadRequest:request];
 }
 
@@ -120,5 +127,13 @@
 #pragma mark -
 #pragma mark webview Methods
 
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"test");
+    NSLog(@"获取请求的request: %@", didRequest);
+    NSLog(@"test end");
+    detailRequest = (NSMutableURLRequest *)_request;
+    [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
+    return YES;
+}
 
 @end

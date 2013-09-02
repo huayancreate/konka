@@ -44,6 +44,8 @@
     [self loadPage];
     [SVProgressHUD dismiss];
     
+    [[super someButton] addTarget:self action:@selector(backButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning

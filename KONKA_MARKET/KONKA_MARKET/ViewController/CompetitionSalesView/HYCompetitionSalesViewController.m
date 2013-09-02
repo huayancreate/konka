@@ -87,6 +87,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[super someButton] addTarget:self action:@selector(backButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
     
     [self getStoreList:self.userLogin.user_id];

@@ -7,17 +7,20 @@
 //
 
 #import "HYBaseViewController.h"
+#import "HYBackViewController.h"
 
-@interface HYOAFilesListViewController : HYBaseViewController<UIWebViewDelegate, UIScrollViewDelegate, EGORefreshTableHeaderDelegate> {
+@interface HYOAFilesListViewController : HYBackViewController<UIWebViewDelegate, UIScrollViewDelegate, EGORefreshTableHeaderDelegate> {
     //下拉视图
     EGORefreshTableHeaderView * _refreshHeaderView;
     //刷新标识，是否正在刷新过程中
     BOOL _reloading;
 }
 
-@property (weak, nonatomic) IBOutlet UIWebView *uiWebView;
-@property (nonatomic, strong) NSString *testRequest;
-@property (nonatomic, strong) NSString *didRequest;
-@property (nonatomic, strong) UIButton *someButton;
+@property (strong, nonatomic) IBOutlet UIWebView *uiWebView;
+@property (nonatomic, strong) NSMutableURLRequest *didRequest;
+@property (nonatomic, strong) NSMutableURLRequest *detailRequest;
+//@property (nonatomic, strong) UIButton *someButton;
+@property (nonatomic, strong) HYBackViewController *backView;
+
 
 @end

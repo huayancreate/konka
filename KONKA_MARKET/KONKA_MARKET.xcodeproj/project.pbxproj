@@ -125,6 +125,7 @@
 		18B5A1A017BA34390022613F /* username@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A18E17BA34390022613F /* username@2x.png */; };
 		18B5A1A317BA37E40022613F /* loginbtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A1A117BA37E10022613F /* loginbtn.png */; };
 		18B5A1A417BA37E40022613F /* username.png in Resources */ = {isa = PBXBuildFile; fileRef = 18B5A1A217BA37E20022613F /* username.png */; };
+		18B619E017D4784500056575 /* HYBackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619DF17D4784500056575 /* HYBackViewController.m */; };
 		18BB2C9817BDBD460096ADBB /* HYCustomManageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB2C9617BDBD460096ADBB /* HYCustomManageViewController.m */; };
 		18BB2C9917BDBD460096ADBB /* HYCustomManageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2C9717BDBD460096ADBB /* HYCustomManageViewController.xib */; };
 		18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB2C9C17BDBF820096ADBB /* HYCustomRetailViewController.m */; };
@@ -502,6 +503,8 @@
 		18B5A18E17BA34390022613F /* username@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "username@2x.png"; sourceTree = "<group>"; };
 		18B5A1A117BA37E10022613F /* loginbtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbtn.png; sourceTree = "<group>"; };
 		18B5A1A217BA37E20022613F /* username.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = username.png; sourceTree = "<group>"; };
+		18B619DE17D4784500056575 /* HYBackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBackViewController.h; sourceTree = "<group>"; };
+		18B619DF17D4784500056575 /* HYBackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBackViewController.m; sourceTree = "<group>"; };
 		18BB2C9517BDBD460096ADBB /* HYCustomManageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomManageViewController.h; sourceTree = "<group>"; };
 		18BB2C9617BDBD460096ADBB /* HYCustomManageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomManageViewController.m; sourceTree = "<group>"; };
 		18BB2C9717BDBD460096ADBB /* HYCustomManageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageViewController.xib; sourceTree = "<group>"; };
@@ -2060,6 +2063,8 @@
 				282B2E2E17B3EB37007CD13F /* HYWebBaseViewController.h */,
 				282B2E2F17B3EB37007CD13F /* HYWebBaseViewController.m */,
 				282B2E3017B3EB37007CD13F /* HYWebBaseViewController.xib */,
+				18B619DE17D4784500056575 /* HYBackViewController.h */,
+				18B619DF17D4784500056575 /* HYBackViewController.m */,
 			);
 			path = BaseView;
 			sourceTree = "<group>";
@@ -2681,6 +2686,7 @@
 				18AEA65D17CDCD19005DB5B7 /* HYOrderByMyListViewController.m in Sources */,
 				189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */,
 				4F15344D17D2FB7100B63710 /* Harpy.m in Sources */,
+				18B619E017D4784500056575 /* HYBackViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

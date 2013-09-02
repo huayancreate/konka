@@ -7,6 +7,7 @@
 //
 
 #import "HYOAFilesListViewController.h"
+#import "HYBackViewController.h"
 
 @interface HYOAFilesListViewController ()
 {
@@ -15,8 +16,9 @@
 @end
 
 @implementation HYOAFilesListViewController
-@synthesize someButton;
-@synthesize testRequest;
+@synthesize didRequest;
+@synthesize detailRequest;
+@synthesize backView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,17 +56,8 @@
     [self loadPage];
     [SVProgressHUD dismiss];
     
-    UIImage *backButtonImage = [UIImage imageNamed:@"back"];
-    CGRect frameimg = CGRectMake(0, 0, 20, 24);
-    self.someButton = [[UIButton alloc] initWithFrame:frameimg];
-    someButton = [[UIButton alloc] initWithFrame:frameimg];
-    [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
-    
-    [someButton addTarget:self action:@selector(linkBackAction:)
-         forControlEvents:UIControlEventTouchUpInside];
-    [someButton setShowsTouchWhenHighlighted:YES];
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-    self.navigationItem.leftBarButtonItem  = leftButton;
+    backView = [[HYBackViewController alloc] init];
+//    [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,7 +69,7 @@
 //加载网页
 - (void)loadPage {
     NSLog(@"request %@", [request valueForHTTPHeaderField:@"forward"]);
-    testRequest = request.URL.absoluteString;
+    didRequest = request;
     [self.uiWebView loadRequest:request];
 }
 
@@ -130,17 +123,21 @@
 	return [NSDate date]; // should return date data source was last changed
 }
 
--(void) linkBackAction:(id)sender{
-    NSLog(@"返回按钮的request: %@",self.testRequest);
-    [someButton addTarget:self action:@selector(backAction:) forControlEvents:UIControlEventAllTouchEvents];
-}
--(void)backAction:(id)sender{
-    //self.userLogin.password = newpassword;
-    NSLog(@"send %@",sender);
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
-}
-- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType {
-    
+//-(void) linkBackAction:(id)sender{
+//    if(![didRequest.URL.absoluteString isEqualToString:detailRequest.URL.absoluteString]){
+//        NSLog(@"返回按钮的request: %@",didRequest);
+//        [self.uiWebView loadRequest:didRequest];
+//    }else{
+//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+//    }
+//}
+
+- (BOOL)webView:(UIWebView*)webView shouldStartLoadWithRequest:(NSURLRequest*)_request navigationType:(UIWebViewNavigationType)navigationType{
+    NSLog(@"test");
+    NSLog(@"获取请求的request: %@", didRequest);
+    NSLog(@"test end");
+    detailRequest = (NSMutableURLRequest *)_request;
+    [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
     return YES;
 }
 

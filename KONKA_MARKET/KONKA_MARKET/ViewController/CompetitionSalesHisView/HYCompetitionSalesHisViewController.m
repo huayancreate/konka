@@ -45,7 +45,10 @@
 }
 
 - (void)viewDidLoad
-{[super viewDidLoad];
+{
+    [super viewDidLoad];
+    [[super someButton] addTarget:self action:@selector(backButtonAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
     decoder = [[JSONDecoder alloc] init];    
     dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
     [dateLabel setBackgroundColor:[UIColor clearColor]];
