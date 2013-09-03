@@ -566,6 +566,9 @@
         }
         else if (self.userLogin.allDataSubmit != nil)
         {
+            HYSalesRegistrationViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
+            NSString *currentDate = c.dateLabel.text;
+            [c getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
             //[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]-2];
         }
