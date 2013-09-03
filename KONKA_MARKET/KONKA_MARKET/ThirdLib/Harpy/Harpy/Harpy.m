@@ -78,7 +78,7 @@
     if ( harpyForceUpdate ) { // Force user to update app
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                            message:[NSString stringWithFormat:@"%@ 有新版本. 请现在更新到新版本%@。", appName, currentAppStoreVersion]
                                                            delegate:self
                                                   cancelButtonTitle:kHarpyUpdateButtonTitle
                                                   otherButtonTitles:nil, nil];
@@ -89,7 +89,7 @@
         
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:kHarpyAlertViewTitle
-                                                            message:[NSString stringWithFormat:@"A new version of %@ is available. Please update to version %@ now.", appName, currentAppStoreVersion]
+                                                            message:[NSString stringWithFormat:@"%@ 有新版本. 请现在更新到新版本%@。", appName, currentAppStoreVersion]
                                                            delegate:self
                                                   cancelButtonTitle:kHarpyCancelButtonTitle
                                                   otherButtonTitles:kHarpyUpdateButtonTitle, nil];

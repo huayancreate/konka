@@ -369,6 +369,7 @@
 		28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */; };
 		4F15344D17D2FB7100B63710 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F15344717D2FB7100B63710 /* Harpy.m */; };
 		4F15345017D2FB7100B63710 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F15344B17D2FB7100B63710 /* README.md */; };
+		4FC8D92A17D58EA1007ED137 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC8D92917D58EA1007ED137 /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -931,6 +932,7 @@
 		4F15344717D2FB7100B63710 /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 		4F15344817D2FB7100B63710 /* HarpyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HarpyConstants.h; sourceTree = "<group>"; };
 		4F15344B17D2FB7100B63710 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4FC8D92917D58EA1007ED137 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1891,6 +1893,7 @@
 		28DAE3601783F7B300F12366 = {
 			isa = PBXGroup;
 			children = (
+				4FC8D92917D58EA1007ED137 /* Default.png */,
 				28DAE3741783F7B300F12366 /* KONKA_MARKET */,
 				28DAE36B1783F7B300F12366 /* Frameworks */,
 				28DAE36A1783F7B300F12366 /* Products */,
@@ -2583,6 +2586,7 @@
 				1870194817D463C20020DC25 /* 我的订单.png in Resources */,
 				1870194917D463C20020DC25 /* 订单审核.png in Resources */,
 				1870194A17D463C20020DC25 /* 订单查询.png in Resources */,
+				4FC8D92A17D58EA1007ED137 /* Default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

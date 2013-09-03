@@ -26,7 +26,7 @@
 {
     [Harpy checkVersion];
     [MobClick startWithAppkey:@"52103a0156240b648f012643"];
-    //[NSThread sleepForTimeInterval:8];
+    [NSThread sleepForTimeInterval:8];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
