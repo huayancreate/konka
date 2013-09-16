@@ -121,6 +121,7 @@
     if (name != nil)
     {
         name = [@"*" stringByAppendingFormat:@"%@*", name];
+        NSLog(@"name = %@", name);
     }
     self.userLogin.modelList = [self.kkM getUsualModelListByUserID:user_id ByName:name ByPage:page];
 }

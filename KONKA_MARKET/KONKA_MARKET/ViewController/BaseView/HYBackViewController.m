@@ -50,6 +50,16 @@
     self.uiWebView = _uiWebView;
 }
 
+
+
+- (NSString*) encodeURL:(NSString *)unescapedString
+{
+    NSString* escapedUrlString= (NSString*) CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,(CFStringRef)unescapedString, NULL,(CFStringRef)@"!*'();:@&=+$,/?%#[]", kCFStringEncodingUTF8 ));
+    
+    escapedUrlString = [escapedUrlString stringByAddingPercentEscapesUsingEncoding:kCFStringEncodingUTF8];
+    return escapedUrlString;
+}
+
 -(void)linkBackAction
 {
     NSLog(@"didRequest: %@", self.didRequest.URL.absoluteString);

@@ -36,12 +36,10 @@
         if ( [data length] > 0 && !error ) { // Success
             
             NSDictionary *appData = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
-            NSLog(@"appData %@", [appData objectForKey:@"errorMessage"]);
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 // All versions that have been uploaded to the AppStore
                 NSArray *versionsInAppStore = [[appData valueForKey:@"results"] valueForKey:@"version"];
-                NSLog(@"versionsInAppStore %@", [versionsInAppStore objectAtIndex:0]);
                 if ( ![versionsInAppStore count] ) { // No versions of app in AppStore
                     
                     return;

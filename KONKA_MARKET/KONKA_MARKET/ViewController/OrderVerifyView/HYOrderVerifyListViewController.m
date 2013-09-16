@@ -46,7 +46,7 @@
     [_refreshHeaderView refreshLastUpdatedDate];
     
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=list&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,self.userLogin.user_name,self.userLogin.password,[self.userLogin.user_id intValue] ];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=list&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self.userLogin.user_id intValue] ];
     
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
@@ -127,6 +127,7 @@
     NSLog(@"test");
     NSLog(@"获取请求的request: %@", didRequest);
     NSLog(@"test end");
+    request = (NSMutableURLRequest *)_request;
     detailRequest = (NSMutableURLRequest *)_request;
     [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
     return YES;

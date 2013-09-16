@@ -14,4 +14,7 @@
 @property (nonatomic, strong) UIWebView *uiWebView;
 
 -(void)backButtonAdd:(NSMutableURLRequest *)didRequest detailRequest: (NSMutableURLRequest *)detailRequest uiWebView:(UIWebView *)uiWebView ID:(id)current;
+
+-(NSString*) encodeURL:(NSString *)unescapedString;
+
 @end
