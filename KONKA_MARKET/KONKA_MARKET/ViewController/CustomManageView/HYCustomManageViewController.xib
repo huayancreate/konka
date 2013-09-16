@@ -412,6 +412,7 @@
 					<string key="className">HYCustomManageViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="btnMonth">UIButton</string>
 						<string key="btnSearch">UIButton</string>
 						<string key="lblDeptName">UILabel</string>
 						<string key="lblHostName">UILabel</string>
@@ -425,12 +426,15 @@
 						<string key="lblYwyName">UILabel</string>
 						<string key="lbllinkManTel">UILabel</string>
 						<string key="txtCustomName">UITextField</string>
-						<string key="txtMonth">UITextField</string>
 						<string key="txtR3Code">UITextField</string>
 						<string key="txtYwyName">UITextField</string>
 						<string key="uiTableView">UITableView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="btnMonth">
+							<string key="name">btnMonth</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="btnSearch">
 							<string key="name">btnSearch</string>
 							<string key="candidateClassName">UIButton</string>
@@ -481,10 +485,6 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="txtCustomName">
 							<string key="name">txtCustomName</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="txtMonth">
-							<string key="name">txtMonth</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="txtR3Code">

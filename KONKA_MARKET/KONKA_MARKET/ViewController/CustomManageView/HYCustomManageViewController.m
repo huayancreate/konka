@@ -254,20 +254,22 @@
 -(IBAction)Search:(id)sender
 {
     NSLog(@"获取日期值：%@",self.btnMonth.titleLabel.text);
-//    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-//    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass", nil];
-//    
-//    NSLog(@"username %@",self.userLogin.user_name);
-//    NSLog(@"userpass %@",self.userLogin.password);
-//    
-//    NSLog(@"%@,,,,,",[HYAppUtily stringOutputForDictionary:param]);
-//    
-//    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:CustomManageApi]];
-//    
-//    NSLog(@"url %@", url.absoluteString);
-//    [[[DataProcessing alloc] init] sentRequest:url Parem:param Target:self];
-
-    //NSLog(@"点击查询按钮才会出现的");
+    NSLog(@"当前年份: %@",[super getCurrentYear: self.btnMonth.titleLabel.text]);
+    
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass",self.txtYwyName.text,@"ywy_user_name",self.txtR3Code.text,@"r3_code", nil];
+    
+    NSLog(@"username %@",self.userLogin.user_name);
+    NSLog(@"userpass %@",self.userLogin.password);
+    NSLog(@"ywy_user_name %@",self.txtYwyName.text);
+    NSLog(@"r3_code %@",self.txtR3Code.text);
+    
+    NSLog(@"%@,,,,,",[HYAppUtily stringOutputForDictionary:param]);
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:CustomManageApi]];
+    
+    NSLog(@"url %@", url.absoluteString);
+    [[[DataProcessing alloc] init] sentRequest:url Parem:param Target:self];
 }
 
 -(IBAction)dataPick:(id)sender

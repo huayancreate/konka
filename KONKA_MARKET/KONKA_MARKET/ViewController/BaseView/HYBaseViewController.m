@@ -447,6 +447,22 @@
     return s;
 }
 
+-(NSString *) getCurrentYear:(NSString *)currentDate
+{
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    NSString *year = [NSString stringWithFormat:@"%d",[self.components year]];
+    return year;
+}
+
+-(NSString *) getCurrentMonth:(NSString *)currentDate
+{
+    NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];
+    self.components = [self.cal components:( NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit ) fromDate:dateTime];
+    NSString *month = [NSString stringWithFormat:@"%d",[self.components month]];
+    return month;
+}
+
 -(NSDate *) getDateNow
 {
     NSDate *dateTime = [[NSDate alloc] init];

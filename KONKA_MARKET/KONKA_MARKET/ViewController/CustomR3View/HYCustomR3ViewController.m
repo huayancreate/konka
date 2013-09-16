@@ -83,13 +83,13 @@
         cell = [nib objectAtIndex:0];
         NSDictionary *dic = [self.customR3List objectAtIndex:indexPath.row];
         //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-//        lblR3TotalMoney.text = [dic objectForKey:@"pd_total_money"];
-//        lblCustomName.text = [dic objectForKey:@"customer_name"];
-//        lblR3TotalCount.text = [dic objectForKey:@"pd_count"];
-//        lblAvgMlMoney.text = [dic objectForKey:@"pj_ml_money"];
-//        lblAvgUnitPrice.text = [dic objectForKey:@"pj_unitprice"];
-//        lblTbMlMoney.text = [dic objectForKey:@"tb_ml_money"];
-//        lblTbUnitPrice.text = [dic objectForKey:@"tb_unitprice"];
+        lblR3TotalMoney.text = [dic objectForKey:@"pd_total_money"];
+        lblCustomName.text = [dic objectForKey:@"customer_name"];
+        lblR3TotalCount.text = [dic objectForKey:@"pd_count"];
+        lblAvgMlMoney.text = [dic objectForKey:@"pj_ml_money"];
+        lblAvgUnitPrice.text = [dic objectForKey:@"pj_unitprice"];
+        lblTbMlMoney.text = [dic objectForKey:@"tb_ml_money"];
+        lblTbUnitPrice.text = [dic objectForKey:@"tb_unitprice"];
         
         return cell;    
     }
@@ -157,13 +157,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self.uiTableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 -(void)loadCustomR3
 {
+    NSString *date= [super getNowDate];
+    NSString *year = [super getCurrentYear: date];
+    NSString *month = [super getCurrentMonth: date];
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"user_name",self.userLogin.password, @"password", @"8", @"month", @"2012", @"year", @"getR3MarginListToJson", @"method", nil];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"user_name",self.userLogin.password, @"password", month, @"month", year, @"year", @"getR3MarginListToJson", @"method", nil];
     
     NSLog(@"username %@",self.userLogin.user_name);
     NSLog(@"userpass %@",self.userLogin.password);
@@ -187,8 +190,11 @@
         return;
     }
     [self.customR3List removeAllObjects];
+    for (NSDictionary *dic in [json objectForKey:@"list"]) {
+        [self.customR3List addObject:dic];
+    }
     //for (NSDictionary *dic in json) {
-    [self.customR3List addObject:[json objectForKey:@"list"]];
+    //[self.customR3List addObject:[json objectForKey:@"list"]];
     //}
     UIView *tempView = [[UIView alloc] init];
     [self.uiTableView setBackgroundView:tempView];
@@ -221,7 +227,30 @@
 
 -(IBAction)Search:(id)sender
 {
+    NSString *year = [super getCurrentYear: self.btnMonth.titleLabel.text];
+    NSString *month = [super getCurrentMonth: self.btnMonth.titleLabel.text];
+    NSString *customer_name = self.txtCustomName.text;
+    NSString *ywy_user_name = self.txtYwyName.text;
+    if([customer_name length] == 0){
+        customer_name = @"";
+    }
+    if([ywy_user_name length] == 0){
+        ywy_user_name = @"";
+    }
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"user_name",self.userLogin.password, @"password", month, @"month", year, @"year", @"getR3MarginListToJson", @"method", customer_name,@"customer_name",ywy_user_name,@"ywy_user_name", nil];
     
+    NSLog(@"username %@",self.userLogin.user_name);
+    NSLog(@"userpass %@",self.userLogin.password);
+    NSLog(@"customer_name %@",customer_name);
+    NSLog(@"ywy_user_name %@",ywy_user_name);
+    
+    NSLog(@"%@,,,,,",[HYAppUtily stringOutputForDictionary:param]);
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:CustomR3Api]];
+    
+    NSLog(@"url %@", url.absoluteString);
+    [[[DataProcessing alloc] init] sentRequest:url Parem:param Target:self];
 }
 
 -(IBAction)dataPick:(id)sender
