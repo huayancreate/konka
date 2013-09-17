@@ -26,7 +26,7 @@
 		1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */; };
 		1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */; };
 		1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */; };
-		1834836A17C5A05400AB6524 /* HYCustomDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */; };
+		1834836A17C5A05400AB6524 /* HYCustomManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834836917C5A05400AB6524 /* HYCustomManageTableViewCell.xib */; };
 		183C5AD717C6FB1400DB8FF6 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5ACE17C6FB1400DB8FF6 /* about.png */; };
 		183C5AD817C6FB1400DB8FF6 /* conf_wage.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */; };
 		183C5AD917C6FB1400DB8FF6 /* menu_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */; };
@@ -131,7 +131,7 @@
 		18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BB2C9C17BDBF820096ADBB /* HYCustomRetailViewController.m */; };
 		18BB2C9F17BDBF820096ADBB /* HYCustomRetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */; };
 		18BB2CA117BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */; };
-		18BB2CA317BE02C20096ADBB /* HYCustomManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */; };
+		18BB2CA317BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA217BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib */; };
 		18E3DF7117A25ECA00C9FF02 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */; };
 		18E3DF7217A25ECA00C9FF02 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */; };
 		18E3DF7317A25ECA00C9FF02 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */; };
@@ -394,7 +394,7 @@
 		1830B1CD17B33B5700920F8E /* checkBox_blankCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_blankCheck@2x.png"; sourceTree = "<group>"; };
 		1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_selectCheck.png; sourceTree = "<group>"; };
 		1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_selectCheck@2x.png"; sourceTree = "<group>"; };
-		1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomDetailTableViewCell.xib; sourceTree = "<group>"; };
+		1834836917C5A05400AB6524 /* HYCustomManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageTableViewCell.xib; sourceTree = "<group>"; };
 		183C5ACE17C6FB1400DB8FF6 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conf_wage.png; sourceTree = "<group>"; };
 		183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_refresh.png; sourceTree = "<group>"; };
@@ -513,7 +513,7 @@
 		18BB2C9C17BDBF820096ADBB /* HYCustomRetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomRetailViewController.m; sourceTree = "<group>"; };
 		18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomRetailViewController.xib; sourceTree = "<group>"; };
 		18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomRetailTableViewCell.xib; sourceTree = "<group>"; };
-		18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageTableViewCell.xib; sourceTree = "<group>"; };
+		18BB2CA217BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageDetailTableViewCell.xib; sourceTree = "<group>"; };
 		18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
 		18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
@@ -2203,9 +2203,9 @@
 				282161C417B1EF070090C027 /* HYNewsPlantTabelViewCell.xib */,
 				189F0C2C17B242C200C8B394 /* HYOARetailsTableViewCell.xib */,
 				18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */,
-				18BB2CA217BE02C20096ADBB /* HYCustomManageTableViewCell.xib */,
+				18BB2CA217BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib */,
 				183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */,
-				1834836917C5A05400AB6524 /* HYCustomDetailTableViewCell.xib */,
+				1834836917C5A05400AB6524 /* HYCustomManageTableViewCell.xib */,
 				18AEA64517CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
@@ -2549,11 +2549,11 @@
 				18BB2C9917BDBD460096ADBB /* HYCustomManageViewController.xib in Resources */,
 				18BB2C9F17BDBF820096ADBB /* HYCustomRetailViewController.xib in Resources */,
 				18BB2CA117BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib in Resources */,
-				18BB2CA317BE02C20096ADBB /* HYCustomManageTableViewCell.xib in Resources */,
+				18BB2CA317BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib in Resources */,
 				183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */,
 				183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */,
 				181913A517C4BA0B007A184F /* HYCustomDetailViewController.xib in Resources */,
-				1834836A17C5A05400AB6524 /* HYCustomDetailTableViewCell.xib in Resources */,
+				1834836A17C5A05400AB6524 /* HYCustomManageTableViewCell.xib in Resources */,
 				183C5AD717C6FB1400DB8FF6 /* about.png in Resources */,
 				183C5AD817C6FB1400DB8FF6 /* conf_wage.png in Resources */,
 				183C5AD917C6FB1400DB8FF6 /* menu_refresh.png in Resources */,

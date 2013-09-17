@@ -51,10 +51,16 @@
     self.uiTableView.scrollEnabled = YES;
     self.uiTableView.delegate = self;
     self.uiTableView.dataSource = self;
+    self.uiTableViewSearch.delegate = self;
+    self.uiTableViewSearch.dataSource = self;
     self.mykey = [NSArray arrayWithObjects:@"查询", @"查询月份：", @"客户名称：", @"业务员：", @"", nil];
+    
     
     UIView *tempView = [[UIView alloc] init];
     [self.uiTableView setBackgroundView:tempView];
+    
+    UIView *tempView1 = [[UIView alloc]init];
+    [self.uiTableViewSearch setBackgroundView:tempView1];
 
     [self loadCustomR3];
 }
@@ -67,22 +73,19 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    
-    return 2;
-    //return [self.customR3List count];
+    return 1;
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    if (indexPath.section == 1) {
+    if(tableView == self.uiTableView){
         UITableViewCell *cell = nil;
         cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomR3TableViewCell" owner:self options:nil];
         cell = [nib objectAtIndex:0];
         NSDictionary *dic = [self.customR3List objectAtIndex:indexPath.row];
-        //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
         lblR3TotalMoney.text = [dic objectForKey:@"pd_total_money"];
         lblCustomName.text = [dic objectForKey:@"customer_name"];
         lblR3TotalCount.text = [dic objectForKey:@"pd_count"];
@@ -93,7 +96,7 @@
         
         return cell;    
     }
-    if (indexPath.section == 0) {
+    if(tableView == self.uiTableViewSearch){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
         
         switch (indexPath.row) {
@@ -140,12 +143,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 1)
-    {
+    if(tableView == self.uiTableView){
         return 120;
     }
-    if(indexPath.section == 0)
-    {
+    if(tableView == self.uiTableViewSearch){
         if(indexPath.row == 0){
             return 35;
         }else{
@@ -193,9 +194,6 @@
     for (NSDictionary *dic in [json objectForKey:@"list"]) {
         [self.customR3List addObject:dic];
     }
-    //for (NSDictionary *dic in json) {
-    //[self.customR3List addObject:[json objectForKey:@"list"]];
-    //}
     UIView *tempView = [[UIView alloc] init];
     [self.uiTableView setBackgroundView:tempView];
     [self.uiTableView reloadData];
@@ -204,13 +202,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 5;
-            break;
-        case 1:
-            return [self.customR3List count];
-            break;
+    if(tableView == self.uiTableView){
+        return [self.customR3List count];
+    }
+    if(tableView == self.uiTableViewSearch){
+        return 5;
     }
     return 0;
 }

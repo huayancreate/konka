@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSMutableArray *customR3List;
 @property (nonatomic, retain) HYUserLoginModel *userlogin;
 @property (weak, nonatomic) IBOutlet UITableView *uiTableView;
+@property (weak, nonatomic) IBOutlet UITableView *uiTableViewSearch;
 
 @property (nonatomic,retain) NSArray *mykey;
 

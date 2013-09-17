@@ -34,9 +34,11 @@
 
 #define HomeImageApi @"/webservice/KonkaArticleImgInterface.do"
 
-#define CustomManageApi @"/webservice/KonkaR3ShopInterface.do"
+#define CustomManageDetailApi @"/webservice/KonkaR3ShopInterface.do"
 
 #define CustomR3Api @"/webservice/KonkaR3MarginInterface.do"
+
+#define CustomManageApi @"/webservice/KonkaR3OrSellReportInterface.do"
 
 #define OrderAuditApi @"/KonkaOrderAudit.do"
 

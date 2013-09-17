@@ -19,28 +19,6 @@
 @end
 
 @implementation HYCustomManageViewController
-//@synthesize decoder;
-//@synthesize lblR3Name;
-//@synthesize lblR3Code;
-//@synthesize lblDeptName;
-//@synthesize lblYwyName;
-//@synthesize lblType;
-//
-//@synthesize lblHostName;
-//@synthesize lblLinkManAddr;
-//@synthesize lblLinkManPost;
-//@synthesize lblLinkManMobile;
-//@synthesize lblLinkManName;
-//@synthesize lbllinkManTel;
-//
-//@synthesize userlogin;
-//@synthesize customList;
-//
-//@synthesize btnMonth;
-//@synthesize txtCustomName;
-//@synthesize txtR3Code;
-//@synthesize txtYwyName;
-//@synthesize btnSearch;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,7 +43,11 @@
     self.customList = [[NSMutableArray alloc] init];
     self.uiTableView.delegate = self;
     self.uiTableView.dataSource = self;
-    self.mykey = [NSArray arrayWithObjects:@"查询", @"查询月份：", @"客户名称：", @"R3编码：", @"业务员：", @"", nil];
+    self.uiTableViewSearch.delegate = self;
+    self.uiTableViewSearch.dataSource = self;
+    UIView *tempView1 = [[UIView alloc] init];
+    [self.uiTableViewSearch setBackgroundView:tempView1];
+    self.mykey = [NSArray arrayWithObjects:@"查询", @"查询月份：", @"R3编码：", @"业务员：", @"", nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -77,97 +59,85 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     
-    return 2;
+    return 1;
 }
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
+    
+    if (tableView == self.uiTableViewSearch)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        
+        switch (indexPath.row) {
+            case 0:
+                cell.textLabel.text = [self.mykey objectAtIndex: 0];
+                cell.textLabel.textAlignment = NSTextAlignmentCenter;
+                break;
+            case 1:
+                cell.textLabel.text = [self.mykey objectAtIndex: 1];
+                self.btnMonth = [[UIButton alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                [self.btnMonth setTitle:[super getNowDate] forState:UIControlStateNormal];
+                [self.btnMonth addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
+                [self.btnMonth setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+                [cell addSubview:self.btnMonth];
+                break;
+            case 2:
+                cell.textLabel.text = [self.mykey objectAtIndex: 2];
+                self.txtR3Code = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                [self.txtR3Code setBorderStyle:UITextBorderStyleLine];
+                [cell addSubview:self.txtR3Code];
+                break;
+            case 3:
+                cell.textLabel.text = [self.mykey objectAtIndex: 3];
+                self.txtYwyName = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                [self.txtYwyName setBorderStyle:UITextBorderStyleLine];
+                [cell addSubview:self.txtYwyName];
+                break;
+            case 4:
+                self.btnSearch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+                self.btnSearch.frame = CGRectMake(35, 1, 250, 24);
+                [self.btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
+                [self.btnSearch setTitle:@"查询" forState:UIControlStateNormal];
+                [self.btnSearch addTarget:self action:@selector(Search:) forControlEvents:UIControlEventTouchUpInside];
+                [cell addSubview:self.btnSearch];
+                break;
+                
+        }
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cell;
+    }
+
     if(tableView == self.uiTableView){
-        if (indexPath.section == 1)
-        {
+//        if (indexPath.section == 1)
+//        {
             static NSString *SectionTableMyTag=@"CellCustomManageIdentifier";
             cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
             cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
             NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomManageTableViewCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
             NSDictionary *dic = [self.customList objectAtIndex:indexPath.row];
-            NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-            self.lblR3Name.text = [dic objectForKey:@"r3_name"];
-            self.lblDeptName.text = [dic objectForKey:@"dept_name"];
-            self.lblR3Code.text = [dic objectForKey:@"r3_code"];
-            self.lblType.text = [dic objectForKey:@"c_name"];
-            self.lblYwyName.text = [dic objectForKey:@"ywy_name"];
-            self.lblHostName.text = [dic objectForKey:@"host_name"];
-            self.lblLinkManAddr.text = [dic objectForKey:@"link_man_addr"];
-            self.lblLinkManPost.text = [dic objectForKey:@"link_man_post"];
-            //lblLinkManMobile.text = [dic objectForKey:@"link_man_mobile"];
-            self.lblLinkManName.text = [dic objectForKey:@"link_man_name"];
-            //lbllinkManTel.text = [dic objectForKey:@"link_man_tel"];
+            //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
+            self.lblCustomerName.text = [dic objectForKey:@"r3_name"];
+            self.lblR3Code.text=[dic objectForKey:@"r3_code"];
+            self.lblR3SaleCount.text = [dic objectForKey:@"total_counts_of_buy"];
+            self.lblR3SaleMoney.text = [dic objectForKey:@"total_money_of_buy"];
+            self.lblSaleCount.text = [dic objectForKey:@"total_counts_of_sale"];
+            self.lblSaleMoney.text = [dic objectForKey:@"total_money_of_sale"];
             return cell;
-        }
-        if (indexPath.section == 0)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            
-            switch (indexPath.row) {
-                case 0:
-                    cell.textLabel.text = [self.mykey objectAtIndex: 0];
-                    cell.textLabel.textAlignment = NSTextAlignmentCenter;
-                    break;
-                case 1:
-                    cell.textLabel.text = [self.mykey objectAtIndex: 1];
-                    self.btnMonth = [[UIButton alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
-                    [self.btnMonth setTitle:[super getNowDate] forState:UIControlStateNormal];
-                    [self.btnMonth addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
-                    [self.btnMonth setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-                    [cell addSubview:self.btnMonth];
-                    break;
-                case 2:
-                    cell.textLabel.text = [self.mykey objectAtIndex: 2];
-                    self.txtCustomName = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
-                    [self.txtCustomName setBorderStyle:UITextBorderStyleLine];
-                    [cell addSubview:self.txtCustomName];
-                    break;
-                case 3:
-                    cell.textLabel.text = [self.mykey objectAtIndex: 3];
-                    self.txtR3Code = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
-                    [self.txtR3Code setBorderStyle:UITextBorderStyleLine];
-                    [cell addSubview:self.txtR3Code];
-                    break;
-                case 4:
-                    cell.textLabel.text = [self.mykey objectAtIndex: 4];
-                    self.txtYwyName = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
-                    [self.txtYwyName setBorderStyle:UITextBorderStyleLine];
-                    [cell addSubview:self.txtYwyName];
-                    break;
-                case 5:
-                    self.btnSearch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-                    self.btnSearch.frame = CGRectMake(35, 1, 250, 24);
-                    [self.btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
-                    [self.btnSearch setTitle:@"查询" forState:UIControlStateNormal];
-                    [self.btnSearch addTarget:self action:@selector(Search:) forControlEvents:UIControlEventTouchUpInside];
-                    [cell addSubview:self.btnSearch];
-                    break;
-                    
-            }
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            return cell;
-        }
-    }
+//        }
+    }    //}
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    //indexPath.row
-    if (indexPath.section == 1)
-    {
-        return 170;
+    if(tableView == self.uiTableView){
+        return 140;
     }
-    if(indexPath.section == 0)
-    {
+    if(tableView == self.uiTableViewSearch){
         if(indexPath.row == 0){
             return 35;
         }else{
@@ -178,11 +148,14 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if(indexPath.section == 1){
+    if(tableView == self.uiTableView){
         HYCustomDetailViewController *dataSubmit = [[HYCustomDetailViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
-        dataSubmit.userLogin.customManageList = [self.customList objectAtIndex:indexPath.row];
-        dataSubmit.title = @"R3客户详细信息";
+        NSDictionary *dic = [self.customList objectAtIndex:indexPath.row];
+        //dataSubmit.userLogin.customManageList = [self.customList objectAtIndex:indexPath.row];
+        dataSubmit.customer_name = [dic objectForKey:@"r3_name"];
+        dataSubmit.r3_code = [dic objectForKey:@"r3_code"];
+        dataSubmit.title = @"客户详细信息";
         
         [self.navigationController pushViewController:dataSubmit animated:YES];
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
@@ -192,7 +165,12 @@
 -(void)loadCustom
 {
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass", nil];
+    NSString *date= [super getNowDate];
+    NSString *lastDay = [super getLastDayFromMoth:date];
+    NSString *firstDay = [super getFirstDayFromMoth:date];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,
+                           @"user_name",self.userLogin.password, @"password",@"getKonkaR3OrSellReportForR3ToJson",
+                           @"method",firstDay,@"begin_date",lastDay,@"end_date", nil];
     
     NSLog(@"username %@",self.userLogin.user_name);
     NSLog(@"userpass %@",self.userLogin.password);
@@ -209,15 +187,14 @@
 {
     JSONDecoder *decoder = [[JSONDecoder alloc] init];
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [decoder objectWithData:data];
-    NSLog(@"json count %d",json.count);
-    if ( [json count] == 0)
+    NSDictionary *json = [decoder objectWithData:data];
+    if (json == nil || [json count] == 0)
     {
         [SVProgressHUD showErrorWithStatus:@"数据获取失败"];
         return;
     }
     [self.customList removeAllObjects];
-    for (NSDictionary *dic in json) {
+    for (NSDictionary *dic in [json objectForKey:@"list"]) {
         [self.customList addObject:dic];
     }
     [self.uiTableView reloadData];
@@ -227,13 +204,19 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    switch (section) {
-        case 0:
-            return 6;
-            break;
-        case 1:
-            return [self.customList count];
-            break;
+//    switch (section) {
+//        case 0:
+//            return 5;
+//            break;
+//        case 1:
+//            return [self.customList count];
+//            break;
+//    }
+    if(tableView == self.uiTableViewSearch){
+        return 5;
+    }
+    if(tableView == self.uiTableView){
+        return [self.customList count];
     }
 
     return 0;
@@ -256,9 +239,14 @@
     NSLog(@"获取日期值：%@",self.btnMonth.titleLabel.text);
     NSLog(@"当前年份: %@",[super getCurrentYear: self.btnMonth.titleLabel.text]);
     
-    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"username",self.userLogin.password, @"userpass",self.txtYwyName.text,@"ywy_user_name",self.txtR3Code.text,@"r3_code", nil];
     
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    NSString *lastDay = [super getLastDayFromMoth:self.btnMonth.titleLabel.text];
+    NSString *firstDay = [super getFirstDayFromMoth:self.btnMonth.titleLabel.text];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,
+                           @"user_name",self.userLogin.password, @"password",@"getKonkaR3OrSellReportForR3ToJson",
+                           @"method",firstDay,@"begin_date",lastDay,@"end_date",self.txtR3Code.text,@"r3_code",self.txtYwyName.text,@"ywy_name", nil];
+
     NSLog(@"username %@",self.userLogin.user_name);
     NSLog(@"userpass %@",self.userLogin.password);
     NSLog(@"ywy_user_name %@",self.txtYwyName.text);

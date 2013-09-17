@@ -101,7 +101,7 @@
             customMangeSubmit = [[HYCustomManageViewController alloc]init];
             customMangeSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
-            customMangeSubmit.title = @"R3客户查询";
+            customMangeSubmit.title = @"客户信息查询";
             [self.navigationController pushViewController:customMangeSubmit animated:YES];
             break;
     }

@@ -11,23 +11,11 @@
 
 @interface HYCustomManageViewController : HYBaseViewController<UITableViewDataSource,UITableViewDelegate,CKCalendarDelegate>
 
-@property (strong, nonatomic) IBOutlet UILabel *lblR3Name;
-@property (strong, nonatomic) IBOutlet UILabel *lblR3Code;
-@property (strong, nonatomic) IBOutlet UILabel *lblDeptName;
-@property (strong, nonatomic) IBOutlet UILabel *lblYwyName;
-@property (strong, nonatomic) IBOutlet UILabel *lblType;
-
-@property (strong, nonatomic) IBOutlet UILabel *lblHostName;
-@property (strong, nonatomic) IBOutlet UILabel *lblLinkManMobile;
-@property (strong, nonatomic) IBOutlet UILabel *lblLinkManAddr;
-@property (strong, nonatomic) IBOutlet UILabel *lbllinkManTel;
-@property (strong, nonatomic) IBOutlet UILabel *lblLinkManName;
-@property (strong, nonatomic) IBOutlet UILabel *lblLinkManPost;
-
 @property (nonatomic, retain) HYUserLoginModel *userlogin;
 @property (strong, nonatomic) NSMutableArray *customList;
 
 @property (weak, nonatomic) IBOutlet UITableView *uiTableView;
+@property (weak, nonatomic) IBOutlet UITableView *uiTableViewSearch;
 
 @property (nonatomic,retain) NSArray *mykey;
 
@@ -36,4 +24,12 @@
 @property (strong, nonatomic) IBOutlet UITextField *txtR3Code;
 @property (strong, nonatomic) IBOutlet UITextField *txtYwyName;
 @property (strong, nonatomic) IBOutlet UIButton *btnSearch;
+
+@property (weak, nonatomic) IBOutlet UILabel *lblCustomerName;
+@property (weak, nonatomic) IBOutlet UILabel *lblR3Code;
+@property (weak, nonatomic) IBOutlet UILabel *lblR3SaleMoney;
+@property (weak, nonatomic) IBOutlet UILabel *lblR3SaleCount;
+@property (weak, nonatomic) IBOutlet UILabel *lblSaleMoney;
+@property (weak, nonatomic) IBOutlet UILabel *lblSaleCount;
+
 @end
