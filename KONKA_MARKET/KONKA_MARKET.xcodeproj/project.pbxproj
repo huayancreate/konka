@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		181913A417C4BA0B007A184F /* HYCustomDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 181913A217C4BA0B007A184F /* HYCustomDetailViewController.m */; };
 		181913A517C4BA0B007A184F /* HYCustomDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181913A317C4BA0B007A184F /* HYCustomDetailViewController.xib */; };
+		182A2BAF17E94AC600CE4EBD /* HYDecisionRetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 182A2BAE17E94AC500CE4EBD /* HYDecisionRetailTableViewCell.xib */; };
 		1830B1BE17B33A5000920F8E /* WZGuideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1830B1BD17B33A5000920F8E /* WZGuideViewController.m */; };
 		1830B1D017B33B5700920F8E /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C017B33B5700920F8E /* 1.png */; };
 		1830B1D117B33B5700920F8E /* 1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1C117B33B5700920F8E /* 1@2x.png */; };
@@ -27,6 +28,11 @@
 		1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */; };
 		1830B1DF17B33B5700920F8E /* checkBox_selectCheck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */; };
 		1834836A17C5A05400AB6524 /* HYCustomManageTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1834836917C5A05400AB6524 /* HYCustomManageTableViewCell.xib */; };
+		183BFDFE17EE88A30064DDFA /* HYDecisionRetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183BFDFC17EE88A30064DDFA /* HYDecisionRetailViewController.m */; };
+		183BFDFF17EE88A30064DDFA /* HYDecisionRetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183BFDFD17EE88A30064DDFA /* HYDecisionRetailViewController.xib */; };
+		183BFE0117EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183BFE0017EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib */; };
+		183BFE0617EE94AA0064DDFA /* HYDecisionCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183BFE0417EE94AA0064DDFA /* HYDecisionCompleteViewController.m */; };
+		183BFE0717EE94AA0064DDFA /* HYDecisionCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183BFE0517EE94AA0064DDFA /* HYDecisionCompleteViewController.xib */; };
 		183C5AD717C6FB1400DB8FF6 /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5ACE17C6FB1400DB8FF6 /* about.png */; };
 		183C5AD817C6FB1400DB8FF6 /* conf_wage.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */; };
 		183C5AD917C6FB1400DB8FF6 /* menu_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */; };
@@ -376,6 +382,7 @@
 		181913A117C4BA0B007A184F /* HYCustomDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomDetailViewController.h; sourceTree = "<group>"; };
 		181913A217C4BA0B007A184F /* HYCustomDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomDetailViewController.m; sourceTree = "<group>"; };
 		181913A317C4BA0B007A184F /* HYCustomDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomDetailViewController.xib; sourceTree = "<group>"; };
+		182A2BAE17E94AC500CE4EBD /* HYDecisionRetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionRetailTableViewCell.xib; sourceTree = "<group>"; };
 		1830B1BC17B33A5000920F8E /* WZGuideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WZGuideViewController.h; sourceTree = "<group>"; };
 		1830B1BD17B33A5000920F8E /* WZGuideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WZGuideViewController.m; sourceTree = "<group>"; };
 		1830B1C017B33B5700920F8E /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
@@ -395,6 +402,13 @@
 		1830B1CE17B33B5700920F8E /* checkBox_selectCheck.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkBox_selectCheck.png; sourceTree = "<group>"; };
 		1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkBox_selectCheck@2x.png"; sourceTree = "<group>"; };
 		1834836917C5A05400AB6524 /* HYCustomManageTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageTableViewCell.xib; sourceTree = "<group>"; };
+		183BFDFB17EE88A30064DDFA /* HYDecisionRetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDecisionRetailViewController.h; sourceTree = "<group>"; };
+		183BFDFC17EE88A30064DDFA /* HYDecisionRetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDecisionRetailViewController.m; sourceTree = "<group>"; };
+		183BFDFD17EE88A30064DDFA /* HYDecisionRetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionRetailViewController.xib; sourceTree = "<group>"; };
+		183BFE0017EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionCompleteTableViewCell.xib; sourceTree = "<group>"; };
+		183BFE0317EE94AA0064DDFA /* HYDecisionCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDecisionCompleteViewController.h; sourceTree = "<group>"; };
+		183BFE0417EE94AA0064DDFA /* HYDecisionCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDecisionCompleteViewController.m; sourceTree = "<group>"; };
+		183BFE0517EE94AA0064DDFA /* HYDecisionCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionCompleteViewController.xib; sourceTree = "<group>"; };
 		183C5ACE17C6FB1400DB8FF6 /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		183C5ACF17C6FB1400DB8FF6 /* conf_wage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conf_wage.png; sourceTree = "<group>"; };
 		183C5AD017C6FB1400DB8FF6 /* menu_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu_refresh.png; sourceTree = "<group>"; };
@@ -978,6 +992,16 @@
 			path = CustomDetailView;
 			sourceTree = "<group>";
 		};
+		182A2BB017E94C3200CE4EBD /* DecisionRetailView */ = {
+			isa = PBXGroup;
+			children = (
+				183BFDFB17EE88A30064DDFA /* HYDecisionRetailViewController.h */,
+				183BFDFC17EE88A30064DDFA /* HYDecisionRetailViewController.m */,
+				183BFDFD17EE88A30064DDFA /* HYDecisionRetailViewController.xib */,
+			);
+			path = DecisionRetailView;
+			sourceTree = "<group>";
+		};
 		1830B1BB17B33A5000920F8E /* WZGuideView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1010,6 +1034,16 @@
 				1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		183BFE0217EE94930064DDFA /* DecisionCompleteView */ = {
+			isa = PBXGroup;
+			children = (
+				183BFE0317EE94AA0064DDFA /* HYDecisionCompleteViewController.h */,
+				183BFE0417EE94AA0064DDFA /* HYDecisionCompleteViewController.m */,
+				183BFE0517EE94AA0064DDFA /* HYDecisionCompleteViewController.xib */,
+			);
+			path = DecisionCompleteView;
 			sourceTree = "<group>";
 		};
 		183C5ACD17C6FB1400DB8FF6 /* Help */ = {
@@ -2022,6 +2056,8 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				183BFE0217EE94930064DDFA /* DecisionCompleteView */,
+				182A2BB017E94C3200CE4EBD /* DecisionRetailView */,
 				189A6C7917CF440500E0A948 /* WageView */,
 				18AEA65917CDCD00005DB5B7 /* OrderByMyView */,
 				18AEA65317CDC972005DB5B7 /* OrderAuditedView */,
@@ -2207,6 +2243,8 @@
 				183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */,
 				1834836917C5A05400AB6524 /* HYCustomManageTableViewCell.xib */,
 				18AEA64517CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib */,
+				182A2BAE17E94AC500CE4EBD /* HYDecisionRetailTableViewCell.xib */,
+				183BFE0017EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2587,6 +2625,10 @@
 				1870194917D463C20020DC25 /* 订单审核.png in Resources */,
 				1870194A17D463C20020DC25 /* 订单查询.png in Resources */,
 				4FC8D92A17D58EA1007ED137 /* Default.png in Resources */,
+				182A2BAF17E94AC600CE4EBD /* HYDecisionRetailTableViewCell.xib in Resources */,
+				183BFDFF17EE88A30064DDFA /* HYDecisionRetailViewController.xib in Resources */,
+				183BFE0117EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib in Resources */,
+				183BFE0717EE94AA0064DDFA /* HYDecisionCompleteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2691,6 +2733,8 @@
 				189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */,
 				4F15344D17D2FB7100B63710 /* Harpy.m in Sources */,
 				18B619E017D4784500056575 /* HYBackViewController.m in Sources */,
+				183BFDFE17EE88A30064DDFA /* HYDecisionRetailViewController.m in Sources */,
+				183BFE0617EE94AA0064DDFA /* HYDecisionCompleteViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

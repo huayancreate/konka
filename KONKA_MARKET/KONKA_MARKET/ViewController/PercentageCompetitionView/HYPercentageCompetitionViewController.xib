@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.SystemVersion">12F37</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.39</string>
 		<string key="IBDocument.HIToolboxVersion">626.00</string>
@@ -1351,9 +1351,7 @@
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="dateBtn">UIButton</string>
 						<string key="downLoadTabelView">UITableView</string>
-						<string key="tableViewCell">UITableViewCell</string>
 						<string key="uiModelLabel">UILabel</string>
 						<string key="uiNumLabel">UILabel</string>
 						<string key="uiNumber">UILabel</string>
@@ -1362,17 +1360,9 @@
 						<string key="uiPriceLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="dateBtn">
-							<string key="name">dateBtn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="downLoadTabelView">
 							<string key="name">downLoadTabelView</string>
 							<string key="candidateClassName">UITableView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tableViewCell">
-							<string key="name">tableViewCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="uiModelLabel">
 							<string key="name">uiModelLabel</string>

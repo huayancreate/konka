@@ -44,4 +44,6 @@
 
 #define WageApi @"/wage/"
 
+#define TaskCompleteApi @"/webservice/KonkaR3RankInterface.do"
+
 

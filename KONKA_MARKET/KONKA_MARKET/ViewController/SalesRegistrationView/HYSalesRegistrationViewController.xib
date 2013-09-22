@@ -2,7 +2,7 @@
 <archive type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="8.00">
 	<data>
 		<int key="IBDocument.SystemTarget">1552</int>
-		<string key="IBDocument.SystemVersion">12E55</string>
+		<string key="IBDocument.SystemVersion">12F37</string>
 		<string key="IBDocument.InterfaceBuilderVersion">3084</string>
 		<string key="IBDocument.AppKitVersion">1187.39</string>
 		<string key="IBDocument.HIToolboxVersion">626.00</string>
@@ -573,27 +573,10 @@
 					<string key="className">HYSalesRegistrationViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="dataPick:">id</string>
-						<string key="downMoth:">id</string>
-						<string key="downYear:">id</string>
 						<string key="registrationAction:">id</string>
 						<string key="unRegistrationAction:">id</string>
-						<string key="upMoth:">id</string>
-						<string key="upYear:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="dataPick:">
-							<string key="name">dataPick:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="downMoth:">
-							<string key="name">downMoth:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="downYear:">
-							<string key="name">downYear:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 						<object class="IBActionInfo" key="registrationAction:">
 							<string key="name">registrationAction:</string>
 							<string key="candidateClassName">id</string>
@@ -602,19 +585,9 @@
 							<string key="name">unRegistrationAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="upMoth:">
-							<string key="name">upMoth:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="upYear:">
-							<string key="name">upYear:</string>
-							<string key="candidateClassName">id</string>
-						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="dateBtn">UIButton</string>
 						<string key="registrationBtn">UIButton</string>
-						<string key="tableViewCell">UITableViewCell</string>
 						<string key="uiCellAllLabelModelName">UILabel</string>
 						<string key="uiCellAllLabelNum">UILabel</string>
 						<string key="uiCellAllLabelPrice">UILabel</string>
@@ -629,17 +602,9 @@
 						<string key="unRegistrationBtn">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="dateBtn">
-							<string key="name">dateBtn</string>
-							<string key="candidateClassName">UIButton</string>
-						</object>
 						<object class="IBToOneOutletInfo" key="registrationBtn">
 							<string key="name">registrationBtn</string>
 							<string key="candidateClassName">UIButton</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="tableViewCell">
-							<string key="name">tableViewCell</string>
-							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="uiCellAllLabelModelName">
 							<string key="name">uiCellAllLabelModelName</string>
