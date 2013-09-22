@@ -26,6 +26,7 @@
 @synthesize tableViewCell;
 @synthesize currentDate;
 @synthesize dateLabel;
+@synthesize displayTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -44,12 +45,12 @@
     // Do any additional setup after loading the view from its nib.
     self.taskCompleteList = [[NSMutableArray alloc] init];
     self.taskComplete = [[NSMutableDictionary alloc] init];
-    self.uiTableView.scrollEnabled = YES;
-    self.uiTableView.delegate = self;
-    self.uiTableView.dataSource = self;
-    
+//    self.uiTableView.scrollEnabled = YES;
+//    self.uiTableView.delegate = self;
+//    self.uiTableView.dataSource = self;
+//
     UIView *tempView = [[UIView alloc] init];
-    [self.uiTableView setBackgroundView:tempView];
+//    [self.uiTableView setBackgroundView:tempView];
     
     dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
     [dateLabel setBackgroundColor:[UIColor clearColor]];
@@ -62,6 +63,14 @@
     topTableView.scrollEnabled = NO;
     [topTableView addSubview:dateLabel];
     [self.view addSubview:topTableView];
+    
+    displayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, 320, [super screenHeight]) style:UITableViewStyleGrouped];
+    displayTableView.scrollEnabled = YES;
+    displayTableView.delegate = self;
+    displayTableView.dataSource = self;
+    [displayTableView setBackgroundView:tempView];
+    
+    [self.view addSubview:displayTableView];
     [self loadTaskComplete];
 }
 
@@ -76,7 +85,7 @@
     if(tableView == topTableView){
         return 1;
     }
-    if(tableView == self.uiTableView){
+    if(tableView == self.displayTableView){
         return 2;
     }
     return 0;
@@ -95,7 +104,7 @@
         self.dateLabel.text = [super getNowDate];
         return cell;
     }
-    if(tableView == self.uiTableView)
+    if(tableView == self.displayTableView)
     {
         if(indexPath.section == 1)
         {
@@ -145,7 +154,7 @@
             self.lblSalesMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
             [cell addSubview:self.lblSalesMsg];
             
-            self.lblSales =[[UILabel alloc] initWithFrame:CGRectMake(270, 15, 60, 21)];
+            self.lblSales =[[UILabel alloc] initWithFrame:CGRectMake(265, 15, 60, 21)];
             self.lblSales.text = [[dic1 objectForKey:@"rw_sale"]
                                   stringByAppendingString:@"%"];
             self.lblSales.font = [UIFont fontWithName:@"Helvetica" size:12];
@@ -191,7 +200,7 @@
     {
         return 56;
     }
-    if(tableView == self.uiTableView)
+    if(tableView == self.displayTableView)
     {
         if(indexPath.section == 0){
             return 50;
@@ -258,8 +267,8 @@
     [self.taskComplete setValue:[json objectForKey:@"rw_money"] forKey:@"rw_money"];
     
     UIView *tempView = [[UIView alloc] init];
-    [self.uiTableView setBackgroundView:tempView];
-    [self.uiTableView reloadData];
+    [self.displayTableView setBackgroundView:tempView];
+    [self.displayTableView reloadData];
     [SVProgressHUD dismiss];
 }
 
