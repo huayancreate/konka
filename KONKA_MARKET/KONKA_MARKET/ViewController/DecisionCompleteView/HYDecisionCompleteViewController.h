@@ -14,7 +14,8 @@
 
 @property (nonatomic, strong) IBOutlet UITableView *topTableView;
 @property (nonatomic, strong) IBOutlet UILabel *dateLabel;
-@property (nonatomic, nonatomic) IBOutlet UITableView *displayTableView;
+@property (nonatomic, strong) IBOutlet UITableView *displayTableView;
+@property (nonatomic, strong) IBOutlet UITableView *totalTableView;
 
 @property (weak, nonatomic) IBOutlet UITableView *uiTableView;
 @property (weak, nonatomic) IBOutlet UILabel *lblDeptName;

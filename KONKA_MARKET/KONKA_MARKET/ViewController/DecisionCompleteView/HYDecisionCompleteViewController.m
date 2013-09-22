@@ -27,6 +27,7 @@
 @synthesize currentDate;
 @synthesize dateLabel;
 @synthesize displayTableView;
+@synthesize totalTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,13 +46,7 @@
     // Do any additional setup after loading the view from its nib.
     self.taskCompleteList = [[NSMutableArray alloc] init];
     self.taskComplete = [[NSMutableDictionary alloc] init];
-//    self.uiTableView.scrollEnabled = YES;
-//    self.uiTableView.delegate = self;
-//    self.uiTableView.dataSource = self;
-//
-    UIView *tempView = [[UIView alloc] init];
-//    [self.uiTableView setBackgroundView:tempView];
-    
+        
     dateLabel = [[UILabel alloc] initWithFrame:CGRectMake(130, 22, 111, 19)];
     [dateLabel setBackgroundColor:[UIColor clearColor]];
     
@@ -64,13 +59,22 @@
     [topTableView addSubview:dateLabel];
     [self.view addSubview:topTableView];
     
-    displayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, 320, [super screenHeight]) style:UITableViewStyleGrouped];
+    UIView *tempView = [[UIView alloc] init];
+    displayTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 115, 320, [super screenHeight]-140) style:UITableViewStyleGrouped];
     displayTableView.scrollEnabled = YES;
     displayTableView.delegate = self;
     displayTableView.dataSource = self;
     [displayTableView setBackgroundView:tempView];
-    
     [self.view addSubview:displayTableView];
+    
+    UIView *tempView2 = [[UIView alloc] init];
+    totalTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, 320, 140) style:UITableViewStyleGrouped];
+    totalTableView.scrollEnabled = NO;
+    totalTableView.delegate = self;
+    totalTableView.dataSource = self;
+    [totalTableView setBackgroundView:tempView2];
+    [self.view addSubview:totalTableView];
+    
     [self loadTaskComplete];
 }
 
@@ -82,13 +86,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    if(tableView == topTableView){
-        return 1;
-    }
-    if(tableView == self.displayTableView){
-        return 2;
-    }
-    return 0;
+//    if(tableView == topTableView){
+//        return 1;
+//    }
+//    if(tableView == self.displayTableView){
+//        return 2;
+//    }
+    return 1;
 }
 
 // Customize the appearance of table view cells.
@@ -106,90 +110,93 @@
     }
     if(tableView == self.displayTableView)
     {
-        if(indexPath.section == 1)
-        {
-            cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYDecisionCompleteTableViewCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-            NSDictionary *dic = [self.taskCompleteList objectAtIndex:indexPath.row];
-            self.lblDeptName.text = [dic objectForKey:@"dept_name"];
-            self.lblSale.text = [[dic objectForKey:@"sale"] stringByAppendingString:@"%"];
-            
-            float sale = [[dic objectForKey:@"sale"] floatValue];
-            self.progressView.progress = sale/100;
-            
-            float allPrice = [[dic objectForKey:@"all_price"] floatValue];
-            float rwMoney = [[dic objectForKey:@"rw_money"] floatValue];
-            
-            NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-            [numberFormatter setPositiveFormat:@"###,##0.00;"];
-            NSString *formatAllPrice = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:allPrice]];
-            NSString *formatRwMoney = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:rwMoney]];
-            self.lblAllPrice.text = formatAllPrice;
-            self.lblRwMoney.text = formatRwMoney;
-            return cell;
-        }
-        if(indexPath.section == 0){
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            
-            NSMutableDictionary *dic1 = self.taskComplete;
-            //NSDictionary *dic1 = [self.taskComplete objectAtIndex:indexPath.row];
-            float sale = [[dic1 objectForKey:@"rw_sale"] floatValue];
-            
-            float allPrice = [[dic1 objectForKey:@"total_price"] floatValue];
-            float rwMoney = [[dic1 objectForKey:@"rw_money"] floatValue];
-            
-            NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-            [numberFormatter setPositiveFormat:@"###,##0.00;"];
-            NSString *formatAllPrice = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:allPrice]];
-            NSString *formatRwMoney = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:rwMoney]];
-
-            self.uiProgressView =[[UIProgressView alloc] initWithFrame:CGRectMake(13, 5, 295, 9)];
-            self.uiProgressView.progress = sale/100;
-            [cell addSubview:self.uiProgressView];
-            
-            self.lblSalesMsg =[[UILabel alloc] initWithFrame:CGRectMake(13, 15, 100, 21)];
-            self.lblSalesMsg.text = @"总进度:";
-            self.lblSalesMsg.backgroundColor = [UIColor clearColor];
-            self.lblSalesMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
-            [cell addSubview:self.lblSalesMsg];
-            
-            self.lblSales =[[UILabel alloc] initWithFrame:CGRectMake(265, 15, 60, 21)];
-            self.lblSales.text = [[dic1 objectForKey:@"rw_sale"]
-                                  stringByAppendingString:@"%"];
-            self.lblSales.font = [UIFont fontWithName:@"Helvetica" size:12];
-            self.lblSales.backgroundColor = [UIColor clearColor];
-            self.lblSales.textColor = [UIColor brownColor];
-            [cell addSubview:self.lblSales];
-            
-            self.lblAllPricesMsg =[[UILabel alloc] initWithFrame:
-                                   CGRectMake(13, 30, 120, 21)];
-            self.lblAllPricesMsg.text = @"结算额(万元):";
-            self.lblAllPricesMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
-            self.lblAllPricesMsg.backgroundColor = [UIColor clearColor];
-            [cell addSubview:self.lblAllPricesMsg];
-            
-            self.lblAllPrices =[[UILabel alloc] initWithFrame:CGRectMake(100, 30, 120, 21)];
-            self.lblAllPrices.text = formatAllPrice;
-            self.lblAllPrices.font = [UIFont fontWithName:@"Helvetica" size:12];
-            self.lblAllPrices.backgroundColor = [UIColor clearColor];
-            self.lblAllPrices.textColor = [UIColor redColor];
-            [cell addSubview:self.lblAllPrices];
-            
-            self.lblRwMoneysMsg =[[UILabel alloc] initWithFrame:CGRectMake(160, 30, 120, 21)];
-            self.lblRwMoneysMsg.text = @"任务额(万元):";
-            self.lblRwMoneysMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
-            self.lblRwMoneysMsg.backgroundColor = [UIColor clearColor];
-            [cell addSubview:self.lblRwMoneysMsg];
-            
-            self.lblRwMoneys =[[UILabel alloc] initWithFrame:CGRectMake(240, 30, 120, 21)];
-            self.lblRwMoneys.text = formatRwMoney;
-            self.lblRwMoneys.font = [UIFont fontWithName:@"Helvetica" size:12];
-            self.lblRwMoneys.backgroundColor = [UIColor clearColor];
-            self.lblRwMoneys.textColor = [UIColor redColor];
-            [cell addSubview:self.lblRwMoneys];
-            return cell;
-        }
+        //        if(indexPath.section == 1)
+        //        {
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYDecisionCompleteTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        NSDictionary *dic = [self.taskCompleteList objectAtIndex:indexPath.row];
+        self.lblDeptName.text = [dic objectForKey:@"dept_name"];
+        self.lblSale.text = [[dic objectForKey:@"sale"] stringByAppendingString:@"%"];
+        
+        float sale = [[dic objectForKey:@"sale"] floatValue];
+        self.progressView.progress = sale/100;
+        
+        float allPrice = [[dic objectForKey:@"all_price"] floatValue];
+        float rwMoney = [[dic objectForKey:@"rw_money"] floatValue];
+        
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setPositiveFormat:@"###,##0.00;"];
+        NSString *formatAllPrice = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:allPrice]];
+        NSString *formatRwMoney = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:rwMoney]];
+        self.lblAllPrice.text = formatAllPrice;
+        self.lblRwMoney.text = formatRwMoney;
+        return cell;
+        //}
+        //if(indexPath.section == 0){
+        
+        //}
+    }
+    if(tableView == totalTableView){
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        
+        NSMutableDictionary *dic1 = self.taskComplete;
+        //NSDictionary *dic1 = [self.taskComplete objectAtIndex:indexPath.row];
+        float sale = [[dic1 objectForKey:@"rw_sale"] floatValue];
+        
+        float allPrice = [[dic1 objectForKey:@"total_price"] floatValue];
+        float rwMoney = [[dic1 objectForKey:@"rw_money"] floatValue];
+        
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        [numberFormatter setPositiveFormat:@"###,##0.00;"];
+        NSString *formatAllPrice = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:allPrice]];
+        NSString *formatRwMoney = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:rwMoney]];
+        
+        self.uiProgressView =[[UIProgressView alloc] initWithFrame:CGRectMake(13, 5, 295, 9)];
+        self.uiProgressView.progress = sale/100;
+        [cell addSubview:self.uiProgressView];
+        
+        self.lblSalesMsg =[[UILabel alloc] initWithFrame:CGRectMake(13, 15, 100, 21)];
+        self.lblSalesMsg.text = @"总进度:";
+        self.lblSalesMsg.backgroundColor = [UIColor clearColor];
+        self.lblSalesMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
+        [cell addSubview:self.lblSalesMsg];
+        
+        self.lblSales =[[UILabel alloc] initWithFrame:CGRectMake(265, 15, 60, 21)];
+        self.lblSales.text = [[dic1 objectForKey:@"rw_sale"]
+                              stringByAppendingString:@"%"];
+        self.lblSales.font = [UIFont fontWithName:@"Helvetica" size:12];
+        self.lblSales.backgroundColor = [UIColor clearColor];
+        self.lblSales.textColor = [UIColor brownColor];
+        [cell addSubview:self.lblSales];
+        
+        self.lblAllPricesMsg =[[UILabel alloc] initWithFrame:
+                               CGRectMake(13, 30, 120, 21)];
+        self.lblAllPricesMsg.text = @"结算额(万元):";
+        self.lblAllPricesMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
+        self.lblAllPricesMsg.backgroundColor = [UIColor clearColor];
+        [cell addSubview:self.lblAllPricesMsg];
+        
+        self.lblAllPrices =[[UILabel alloc] initWithFrame:CGRectMake(100, 30, 120, 21)];
+        self.lblAllPrices.text = formatAllPrice;
+        self.lblAllPrices.font = [UIFont fontWithName:@"Helvetica" size:12];
+        self.lblAllPrices.backgroundColor = [UIColor clearColor];
+        self.lblAllPrices.textColor = [UIColor redColor];
+        [cell addSubview:self.lblAllPrices];
+        
+        self.lblRwMoneysMsg =[[UILabel alloc] initWithFrame:CGRectMake(160, 30, 120, 21)];
+        self.lblRwMoneysMsg.text = @"任务额(万元):";
+        self.lblRwMoneysMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
+        self.lblRwMoneysMsg.backgroundColor = [UIColor clearColor];
+        [cell addSubview:self.lblRwMoneysMsg];
+        
+        self.lblRwMoneys =[[UILabel alloc] initWithFrame:CGRectMake(240, 30, 120, 21)];
+        self.lblRwMoneys.text = formatRwMoney;
+        self.lblRwMoneys.font = [UIFont fontWithName:@"Helvetica" size:12];
+        self.lblRwMoneys.backgroundColor = [UIColor clearColor];
+        self.lblRwMoneys.textColor = [UIColor redColor];
+        [cell addSubview:self.lblRwMoneys];
+        return cell;
     }
     return cell;
 }
@@ -202,19 +209,24 @@
     }
     if(tableView == self.displayTableView)
     {
-        if(indexPath.section == 0){
-            return 50;
-        }
-        if(indexPath.section == 1){
-            return 80;
-        }
+//        if(indexPath.section == 0){
+//            return 50;
+//        }
+//        if(indexPath.section == 1){
+//            return 80;
+//        }
+        return 80;
+    }
+    if(tableView == totalTableView)
+    {
+        return 50;
     }
     return 0;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.uiTableView deselectRowAtIndexPath:indexPath animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 -(void)loadTaskComplete
@@ -269,25 +281,26 @@
     UIView *tempView = [[UIView alloc] init];
     [self.displayTableView setBackgroundView:tempView];
     [self.displayTableView reloadData];
+    [self.totalTableView reloadData];
     [SVProgressHUD dismiss];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (tableView == topTableView)
+    if (tableView == topTableView || tableView == totalTableView)
     {
         return 1;
     }
     else
     {
-        switch (section) {
-            case 0:
-                return 1;
-                break;
-            case 1:
-                return [self.taskCompleteList count];
-                break;
-        }
+        //        switch (section) {
+        //            case 0:
+        //                return 1;
+        //                break;
+        //            case 1:
+        return [self.taskCompleteList count];
+        //                break;
+        //        }
     }
     return 0;
 }
