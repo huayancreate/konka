@@ -98,29 +98,38 @@
     }
     if(tableView == self.uiTableViewSearch){
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-        
+        UIImage *image = nil;
         switch (indexPath.row) {
             case 0:
                 cell.textLabel.text = [self.mykey objectAtIndex: 0];
                 cell.textLabel.textAlignment = NSTextAlignmentCenter;
                 break;
             case 1:
+                image = [UIImage imageNamed:@"sys_ico_date.png"];
+                cell.imageView.image = image;
+                
                 cell.textLabel.text = [self.mykey objectAtIndex: 1];
-                self.btnMonth = [[UIButton alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                self.btnMonth = [[UIButton alloc] initWithFrame:CGRectMake(120, 1, 150, 24)];
                 [self.btnMonth setTitle:[super getNowDate] forState:UIControlStateNormal];
                 [self.btnMonth addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
                 [self.btnMonth setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
                 [cell addSubview:self.btnMonth];
                 break;
             case 2:
+                image = [UIImage imageNamed:@"sys_icon_key.png"];
+                cell.imageView.image = image;
+                
                 cell.textLabel.text = [self.mykey objectAtIndex: 2];
-                self.txtCustomName = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                self.txtCustomName = [[UITextField alloc] initWithFrame:CGRectMake(130, 1, 150, 24)];
                 [self.txtCustomName setBorderStyle:UITextBorderStyleLine];
                 [cell addSubview:self.txtCustomName];
                 break;
             case 3:
+                image = [UIImage imageNamed:@"sys_icon_user.png"];
+                cell.imageView.image = image;
+                
                 cell.textLabel.text = [self.mykey objectAtIndex: 3];
-                self.txtYwyName = [[UITextField alloc] initWithFrame:CGRectMake(100, 1, 150, 24)];
+                self.txtYwyName = [[UITextField alloc] initWithFrame:CGRectMake(130, 1, 150, 24)];
                 [self.txtYwyName setBorderStyle:UITextBorderStyleLine];
                 [cell addSubview:self.txtYwyName];
                 break;

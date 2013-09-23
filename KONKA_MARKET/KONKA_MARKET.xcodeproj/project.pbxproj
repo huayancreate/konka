@@ -61,6 +61,14 @@
 		1877606C17F033F900EF3257 /* HYDecisionSalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877606A17F033F900EF3257 /* HYDecisionSalesViewController.m */; };
 		1877606D17F033F900EF3257 /* HYDecisionSalesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877606B17F033F900EF3257 /* HYDecisionSalesViewController.xib */; };
 		1877606F17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */; };
+		1877607317F04AA200EF3257 /* top1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1877607017F04AA200EF3257 /* top1.jpg */; };
+		1877607417F04AA200EF3257 /* top2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1877607117F04AA200EF3257 /* top2.jpg */; };
+		1877607517F04AA200EF3257 /* top3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1877607217F04AA200EF3257 /* top3.jpg */; };
+		1877607817F04CA800EF3257 /* 零售畅销型号.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877607617F04CA800EF3257 /* 零售畅销型号.png */; };
+		1877607917F04CA800EF3257 /* 任务完成情况.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877607717F04CA800EF3257 /* 任务完成情况.png */; };
+		1877607D17F04E6B00EF3257 /* sys_ico_date.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877607A17F04E6B00EF3257 /* sys_ico_date.png */; };
+		1877607E17F04E6B00EF3257 /* sys_icon_key.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877607B17F04E6B00EF3257 /* sys_icon_key.png */; };
+		1877607F17F04E6B00EF3257 /* sys_icon_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 1877607C17F04E6B00EF3257 /* sys_icon_user.png */; };
 		189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A6C7B17CF442100E0A948 /* HYWageViewController.m */; };
 		189A6C7E17CF442100E0A948 /* HYWageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189A6C7C17CF442100E0A948 /* HYWageViewController.xib */; };
 		189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEA17B21C9B00C8B394 /* blackArrow.png */; };
@@ -446,6 +454,14 @@
 		1877606A17F033F900EF3257 /* HYDecisionSalesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDecisionSalesViewController.m; sourceTree = "<group>"; };
 		1877606B17F033F900EF3257 /* HYDecisionSalesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionSalesViewController.xib; sourceTree = "<group>"; };
 		1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionSalesTableViewCell.xib; sourceTree = "<group>"; };
+		1877607017F04AA200EF3257 /* top1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = top1.jpg; sourceTree = "<group>"; };
+		1877607117F04AA200EF3257 /* top2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = top2.jpg; sourceTree = "<group>"; };
+		1877607217F04AA200EF3257 /* top3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = top3.jpg; sourceTree = "<group>"; };
+		1877607617F04CA800EF3257 /* 零售畅销型号.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "零售畅销型号.png"; sourceTree = "<group>"; };
+		1877607717F04CA800EF3257 /* 任务完成情况.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "任务完成情况.png"; sourceTree = "<group>"; };
+		1877607A17F04E6B00EF3257 /* sys_ico_date.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_ico_date.png; sourceTree = "<group>"; };
+		1877607B17F04E6B00EF3257 /* sys_icon_key.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_icon_key.png; sourceTree = "<group>"; };
+		1877607C17F04E6B00EF3257 /* sys_icon_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sys_icon_user.png; sourceTree = "<group>"; };
 		189A6C7A17CF442100E0A948 /* HYWageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWageViewController.h; sourceTree = "<group>"; };
 		189A6C7B17CF442100E0A948 /* HYWageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWageViewController.m; sourceTree = "<group>"; };
 		189A6C7C17CF442100E0A948 /* HYWageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWageViewController.xib; sourceTree = "<group>"; };
@@ -1916,6 +1932,8 @@
 		28DA275217BB29A000DDA062 /* Retail */ = {
 			isa = PBXGroup;
 			children = (
+				1877607617F04CA800EF3257 /* 零售畅销型号.png */,
+				1877607717F04CA800EF3257 /* 任务完成情况.png */,
 				28DA275817BB29A000DDA062 /* 分割线.png */,
 				28DA275917BB29A000DDA062 /* 型号设定.png */,
 				28DA275A17BB29A000DDA062 /* 型号设定@2x.png */,
@@ -1937,6 +1955,12 @@
 		28DA277B17BB315900DDA062 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				1877607A17F04E6B00EF3257 /* sys_ico_date.png */,
+				1877607B17F04E6B00EF3257 /* sys_icon_key.png */,
+				1877607C17F04E6B00EF3257 /* sys_icon_user.png */,
+				1877607017F04AA200EF3257 /* top1.jpg */,
+				1877607117F04AA200EF3257 /* top2.jpg */,
+				1877607217F04AA200EF3257 /* top3.jpg */,
 				28DA277C17BB315A00DDA062 /* back.png */,
 				28DA277D17BB315A00DDA062 /* back@2x.png */,
 				28DA277E17BB315A00DDA062 /* headbg@2x.png */,
@@ -2671,6 +2695,14 @@
 				1877606717F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib in Resources */,
 				1877606D17F033F900EF3257 /* HYDecisionSalesViewController.xib in Resources */,
 				1877606F17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib in Resources */,
+				1877607317F04AA200EF3257 /* top1.jpg in Resources */,
+				1877607417F04AA200EF3257 /* top2.jpg in Resources */,
+				1877607517F04AA200EF3257 /* top3.jpg in Resources */,
+				1877607817F04CA800EF3257 /* 零售畅销型号.png in Resources */,
+				1877607917F04CA800EF3257 /* 任务完成情况.png in Resources */,
+				1877607D17F04E6B00EF3257 /* sys_ico_date.png in Resources */,
+				1877607E17F04E6B00EF3257 /* sys_icon_key.png in Resources */,
+				1877607F17F04E6B00EF3257 /* sys_icon_user.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -127,10 +127,21 @@
         NSString *formatRwMoney = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:rwMoney]];
         self.lblAllPrice.text = formatAllPrice;
         self.lblRwMoney.text = formatRwMoney;
+        UIImage *image = nil;
         if(indexPath.row <3){
+            switch (indexPath.row) {
+                case 0:
+                    image = [UIImage imageNamed:@"top1.jpg"];
+                    break;
+                case 1:
+                    image = [UIImage imageNamed:@"top2.jpg"];
+                    break;
+                case 2:
+                    image = [UIImage imageNamed:@"top3.jpg"];
+                    break;
+            }
             self.lblOrder.text = @"";
-            UIImage *image = [UIImage imageNamed:@"在线订单.png"];
-            cell.imageView.image = [self scaleImage:image toScale:0.3f];
+            cell.imageView.image = image;
         }else{
             NSString *stringInt = [NSString stringWithFormat:@"%d",indexPath.row+1];
             self.lblOrder.text = stringInt;

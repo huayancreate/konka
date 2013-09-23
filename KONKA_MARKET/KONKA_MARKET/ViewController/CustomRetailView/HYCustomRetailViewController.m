@@ -91,18 +91,18 @@
     HYCustomR3ViewController *customR3Submit = nil;
     switch (indexPath.row) {
         case 0:
-            customR3Submit = [[HYCustomR3ViewController alloc]init];
-            customR3Submit.userLogin = self.userLogin;
-            self.userLogin.dataSubmit = nil;
-            customR3Submit.title = @"客户毛利分析";
-            [self.navigationController pushViewController:customR3Submit animated:YES];
-            break;
-        case 1:
             customMangeSubmit = [[HYCustomManageViewController alloc]init];
             customMangeSubmit.userLogin = self.userLogin;
             self.userLogin.dataSubmit = nil;
             customMangeSubmit.title = @"客户信息查询";
             [self.navigationController pushViewController:customMangeSubmit animated:YES];
+            break;
+        case 1:
+            customR3Submit = [[HYCustomR3ViewController alloc]init];
+            customR3Submit.userLogin = self.userLogin;
+            self.userLogin.dataSubmit = nil;
+            customR3Submit.title = @"客户毛利分析";
+            [self.navigationController pushViewController:customR3Submit animated:YES];
             break;
     }
     
