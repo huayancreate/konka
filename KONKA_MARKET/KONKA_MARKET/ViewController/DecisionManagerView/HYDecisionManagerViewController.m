@@ -88,6 +88,10 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIColor *progressColor = [UIColor colorWithRed:255/255.0 green:130/255.0 blue:5/255.0 alpha:1];
+    UIColor *trackColor = [UIColor colorWithRed:224/255.0 green:224/255.0 blue:224/255.0 alpha:1];
+    UIColor *saleColor = [UIColor colorWithRed:173/255.0 green:53/255.0 blue:53/255.0 alpha:1];
+    
     UITableViewCell *cell = nil;
     if (tableView == topTableView){
         NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"TopTableViewCell" owner:self options:nil];
@@ -106,10 +110,11 @@
         NSDictionary *dic = [self.taskCompleteList objectAtIndex:indexPath.row];
         self.lblDeptName.text =[[[dic objectForKey:@"l4_dept_name"] stringByAppendingString:@"-"] stringByAppendingString:[dic objectForKey:@"dept_name"]];
         self.lblSale.text = [[dic objectForKey:@"sale"] stringByAppendingString:@"%"];
-        
+        self.lblSale.textColor = saleColor;
         float sale = [[dic objectForKey:@"sale"] floatValue];
         self.progressView.progress = sale/100;
-        
+        self.progressView.progressTintColor = progressColor;
+        self.progressView.trackTintColor = trackColor;
         float allPrice = [[dic objectForKey:@"all_price"] floatValue];
         float rwMoney = [[dic objectForKey:@"rw_money"] floatValue];
         
@@ -124,7 +129,7 @@
             UIImage *image = [UIImage imageNamed:@"在线订单.png"];
             cell.imageView.image = [self scaleImage:image toScale:0.3f];
         }else{
-            NSString *stringInt = [NSString stringWithFormat:@"%d",indexPath.row];
+            NSString *stringInt = [NSString stringWithFormat:@"%d",indexPath.row+1];
             self.lblOrder.text = stringInt;
         }
         return cell;
@@ -145,7 +150,8 @@
         
         self.uiProgressView =[[UIProgressView alloc] initWithFrame:CGRectMake(13, 5, 295, 9)];
         self.uiProgressView.progress = sale/100;
-        self.uiProgressView.progressTintColor = [UIColor brownColor];
+        self.uiProgressView.progressTintColor = progressColor;
+        self.uiProgressView.trackTintColor = trackColor;
         [cell addSubview:self.uiProgressView];
         
         self.lblSalesMsg =[[UILabel alloc] initWithFrame:CGRectMake(13, 15, 100, 21)];
@@ -154,12 +160,12 @@
         self.lblSalesMsg.font = [UIFont fontWithName:@"Helvetica" size:12];
         [cell addSubview:self.lblSalesMsg];
         
-        self.lblSales =[[UILabel alloc] initWithFrame:CGRectMake(265, 15, 60, 21)];
+        self.lblSales =[[UILabel alloc] initWithFrame:CGRectMake(260, 15, 60, 21)];
         self.lblSales.text = [[dic1 objectForKey:@"rw_sale"]
                               stringByAppendingString:@"%"];
         self.lblSales.font = [UIFont fontWithName:@"Helvetica" size:12];
         self.lblSales.backgroundColor = [UIColor clearColor];
-        self.lblSales.textColor = [UIColor brownColor];
+        self.lblSales.textColor = saleColor;
         [cell addSubview:self.lblSales];
         
         self.lblAllPricesMsg =[[UILabel alloc] initWithFrame:
@@ -182,7 +188,7 @@
         self.lblRwMoneysMsg.backgroundColor = [UIColor clearColor];
         [cell addSubview:self.lblRwMoneysMsg];
         
-        self.lblRwMoneys =[[UILabel alloc] initWithFrame:CGRectMake(240, 30, 120, 21)];
+        self.lblRwMoneys =[[UILabel alloc] initWithFrame:CGRectMake(245, 30, 120, 21)];
         self.lblRwMoneys.text = formatRwMoney;
         self.lblRwMoneys.font = [UIFont fontWithName:@"Helvetica" size:12];
         self.lblRwMoneys.backgroundColor = [UIColor clearColor];
@@ -341,7 +347,6 @@
 }
 
 - (UIImage *)scaleImage:(UIImage *)image toScale:(float)scaleSize
-
 {
     UIGraphicsBeginImageContext(CGSizeMake(image.size.width * scaleSize, image.size.height * scaleSize));
     [image drawInRect:CGRectMake(0, 0, image.size.width * scaleSize, image.size.height * scaleSize)];

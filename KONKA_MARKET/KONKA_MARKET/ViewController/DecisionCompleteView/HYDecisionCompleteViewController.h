@@ -23,6 +23,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblAllPrice;
 @property (weak, nonatomic) IBOutlet UILabel *lblRwMoney;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressView;
+@property (weak, nonatomic) IBOutlet UILabel *lblOrder;
 
 @property (strong, nonatomic) NSMutableArray *taskCompleteList;
 @property (strong, nonatomic) NSMutableDictionary *taskComplete;
