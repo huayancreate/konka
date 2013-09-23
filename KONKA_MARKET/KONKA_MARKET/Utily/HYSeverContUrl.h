@@ -46,4 +46,8 @@
 
 #define TaskCompleteApi @"/webservice/KonkaR3RankInterface.do"
 
+#define TaskManagerApi @"/webservice/KonkaR3RankInterface.do"
+
+#define DecisionModelApi @"/webservice/KonkaSellRankInterface.do"
+
 

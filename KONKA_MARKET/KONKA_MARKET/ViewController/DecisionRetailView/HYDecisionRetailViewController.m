@@ -8,6 +8,8 @@
 
 #import "HYDecisionRetailViewController.h"
 #import "HYDecisionCompleteViewController.h"
+#import "HYDecisionManagerViewController.h"
+#import "HYDecisionSalesViewController.h"
 
 @interface HYDecisionRetailViewController ()
 
@@ -92,6 +94,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     HYDecisionCompleteViewController *completeSubmit = nil;
+    HYDecisionManagerViewController *managerSubmit = nil;
+    HYDecisionSalesViewController *salesSubmit = nil;
     switch (indexPath.row) {
         case 0:
             completeSubmit = [[HYDecisionCompleteViewController alloc] init];
@@ -99,8 +103,17 @@
             completeSubmit.title = @"任务完成情况";
             [self.navigationController pushViewController:completeSubmit animated:YES];
             break;
-            
-        default:
+        case 1:
+            salesSubmit = [[HYDecisionSalesViewController alloc] init];
+            salesSubmit.userLogin = self.userLogin;
+            salesSubmit.title = @"零售畅销型号";
+            [self.navigationController pushViewController:salesSubmit animated:YES];
+            break;
+        case 2:
+            managerSubmit = [[HYDecisionManagerViewController alloc] init];
+            managerSubmit.userLogin = self.userLogin;
+            managerSubmit.title = @"任务完成情况-经办";
+            [self.navigationController pushViewController:managerSubmit animated:YES];
             break;
     }
     

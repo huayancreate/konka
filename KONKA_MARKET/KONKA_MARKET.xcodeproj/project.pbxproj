@@ -55,6 +55,12 @@
 		1870194817D463C20020DC25 /* 我的订单.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870194417D463C20020DC25 /* 我的订单.png */; };
 		1870194917D463C20020DC25 /* 订单审核.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870194517D463C20020DC25 /* 订单审核.png */; };
 		1870194A17D463C20020DC25 /* 订单查询.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870194617D463C20020DC25 /* 订单查询.png */; };
+		1877606417F01CEC00EF3257 /* HYDecisionManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877606217F01CEC00EF3257 /* HYDecisionManagerViewController.m */; };
+		1877606517F01CEC00EF3257 /* HYDecisionManagerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877606317F01CEC00EF3257 /* HYDecisionManagerViewController.xib */; };
+		1877606717F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877606617F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib */; };
+		1877606C17F033F900EF3257 /* HYDecisionSalesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1877606A17F033F900EF3257 /* HYDecisionSalesViewController.m */; };
+		1877606D17F033F900EF3257 /* HYDecisionSalesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877606B17F033F900EF3257 /* HYDecisionSalesViewController.xib */; };
+		1877606F17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */; };
 		189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189A6C7B17CF442100E0A948 /* HYWageViewController.m */; };
 		189A6C7E17CF442100E0A948 /* HYWageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189A6C7C17CF442100E0A948 /* HYWageViewController.xib */; };
 		189F0BF417B21C9B00C8B394 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 189F0BEA17B21C9B00C8B394 /* blackArrow.png */; };
@@ -432,6 +438,14 @@
 		1870194417D463C20020DC25 /* 我的订单.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "我的订单.png"; sourceTree = "<group>"; };
 		1870194517D463C20020DC25 /* 订单审核.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单审核.png"; sourceTree = "<group>"; };
 		1870194617D463C20020DC25 /* 订单查询.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "订单查询.png"; sourceTree = "<group>"; };
+		1877606117F01CEC00EF3257 /* HYDecisionManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDecisionManagerViewController.h; sourceTree = "<group>"; };
+		1877606217F01CEC00EF3257 /* HYDecisionManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDecisionManagerViewController.m; sourceTree = "<group>"; };
+		1877606317F01CEC00EF3257 /* HYDecisionManagerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionManagerViewController.xib; sourceTree = "<group>"; };
+		1877606617F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionManagerTableViewCell.xib; sourceTree = "<group>"; };
+		1877606917F033F900EF3257 /* HYDecisionSalesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDecisionSalesViewController.h; sourceTree = "<group>"; };
+		1877606A17F033F900EF3257 /* HYDecisionSalesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDecisionSalesViewController.m; sourceTree = "<group>"; };
+		1877606B17F033F900EF3257 /* HYDecisionSalesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionSalesViewController.xib; sourceTree = "<group>"; };
+		1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionSalesTableViewCell.xib; sourceTree = "<group>"; };
 		189A6C7A17CF442100E0A948 /* HYWageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWageViewController.h; sourceTree = "<group>"; };
 		189A6C7B17CF442100E0A948 /* HYWageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWageViewController.m; sourceTree = "<group>"; };
 		189A6C7C17CF442100E0A948 /* HYWageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWageViewController.xib; sourceTree = "<group>"; };
@@ -1101,6 +1115,26 @@
 				1870194617D463C20020DC25 /* 订单查询.png */,
 			);
 			path = Orders;
+			sourceTree = "<group>";
+		};
+		1877606017F01CD900EF3257 /* DecisionManagerView */ = {
+			isa = PBXGroup;
+			children = (
+				1877606117F01CEC00EF3257 /* HYDecisionManagerViewController.h */,
+				1877606217F01CEC00EF3257 /* HYDecisionManagerViewController.m */,
+				1877606317F01CEC00EF3257 /* HYDecisionManagerViewController.xib */,
+			);
+			path = DecisionManagerView;
+			sourceTree = "<group>";
+		};
+		1877606817F033E700EF3257 /* DecisionSalesView */ = {
+			isa = PBXGroup;
+			children = (
+				1877606917F033F900EF3257 /* HYDecisionSalesViewController.h */,
+				1877606A17F033F900EF3257 /* HYDecisionSalesViewController.m */,
+				1877606B17F033F900EF3257 /* HYDecisionSalesViewController.xib */,
+			);
+			path = DecisionSalesView;
 			sourceTree = "<group>";
 		};
 		189A6C7917CF440500E0A948 /* WageView */ = {
@@ -2056,6 +2090,8 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				1877606817F033E700EF3257 /* DecisionSalesView */,
+				1877606017F01CD900EF3257 /* DecisionManagerView */,
 				183BFE0217EE94930064DDFA /* DecisionCompleteView */,
 				182A2BB017E94C3200CE4EBD /* DecisionRetailView */,
 				189A6C7917CF440500E0A948 /* WageView */,
@@ -2245,6 +2281,8 @@
 				18AEA64517CD99FF005DB5B7 /* HYOrderRetailTableViewCell.xib */,
 				182A2BAE17E94AC500CE4EBD /* HYDecisionRetailTableViewCell.xib */,
 				183BFE0017EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib */,
+				1877606617F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib */,
+				1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2629,6 +2667,10 @@
 				183BFDFF17EE88A30064DDFA /* HYDecisionRetailViewController.xib in Resources */,
 				183BFE0117EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib in Resources */,
 				183BFE0717EE94AA0064DDFA /* HYDecisionCompleteViewController.xib in Resources */,
+				1877606517F01CEC00EF3257 /* HYDecisionManagerViewController.xib in Resources */,
+				1877606717F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib in Resources */,
+				1877606D17F033F900EF3257 /* HYDecisionSalesViewController.xib in Resources */,
+				1877606F17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2735,6 +2777,8 @@
 				18B619E017D4784500056575 /* HYBackViewController.m in Sources */,
 				183BFDFE17EE88A30064DDFA /* HYDecisionRetailViewController.m in Sources */,
 				183BFE0617EE94AA0064DDFA /* HYDecisionCompleteViewController.m in Sources */,
+				1877606417F01CEC00EF3257 /* HYDecisionManagerViewController.m in Sources */,
+				1877606C17F033F900EF3257 /* HYDecisionSalesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
