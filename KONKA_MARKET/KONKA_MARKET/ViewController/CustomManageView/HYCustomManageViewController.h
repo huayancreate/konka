@@ -29,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblR3Code;
 @property (weak, nonatomic) IBOutlet UILabel *lblR3SaleMoney;
 @property (weak, nonatomic) IBOutlet UILabel *lblR3SaleCount;
+@property (weak, nonatomic) IBOutlet UILabel *lblCredit;
+@property (weak, nonatomic) IBOutlet UILabel *lblBackMoney;
 @property (weak, nonatomic) IBOutlet UILabel *lblSaleMoney;
 @property (weak, nonatomic) IBOutlet UILabel *lblSaleCount;
 

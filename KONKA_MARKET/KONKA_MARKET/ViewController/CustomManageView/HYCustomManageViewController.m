@@ -118,33 +118,32 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }
-
+    
     if(tableView == self.uiTableView){
-//        if (indexPath.section == 1)
-//        {
-            static NSString *SectionTableMyTag=@"CellCustomManageIdentifier";
-            cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
-            cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
-            NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomManageTableViewCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-            NSDictionary *dic = [self.customList objectAtIndex:indexPath.row];
-            //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
-            self.lblCustomerName.text = [dic objectForKey:@"r3_name"];
-            self.lblR3Code.text=[dic objectForKey:@"r3_code"];
-            self.lblR3SaleCount.text = [dic objectForKey:@"total_counts_of_buy"];
-            self.lblR3SaleMoney.text = [dic objectForKey:@"total_money_of_buy"];
-            self.lblSaleCount.text = [dic objectForKey:@"total_counts_of_sale"];
-            self.lblSaleMoney.text = [dic objectForKey:@"total_money_of_sale"];
-            return cell;
-//        }
-    }    //}
+        static NSString *SectionTableMyTag=@"CellCustomManageIdentifier";
+        cell=[tableView dequeueReusableCellWithIdentifier:SectionTableMyTag];
+        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SectionTableMyTag];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYCustomManageTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        NSDictionary *dic = [self.customList objectAtIndex:indexPath.row];
+        //NSLog(@"[dic objectForKey:@c_name] = %@",[dic objectForKey:@"c_name"]);
+        self.lblCustomerName.text = [dic objectForKey:@"r3_name"];
+        self.lblR3Code.text=[dic objectForKey:@"r3_code"];
+        self.lblR3SaleCount.text = [dic objectForKey:@"total_counts_of_buy"];
+        self.lblR3SaleMoney.text = [dic objectForKey:@"total_money_of_buy"];
+        self.lblSaleCount.text = [dic objectForKey:@"total_counts_of_sale"];
+        self.lblSaleMoney.text = [dic objectForKey:@"total_money_of_sale"];
+        self.lblBackMoney.text = [dic objectForKey:@"cur_month_real_backmoney"];
+        self.lblCredit.text = [dic objectForKey:@"credit"];
+        return cell;
+    }
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(tableView == self.uiTableView){
-        return 140;
+        return 155;
     }
     if(tableView == self.uiTableViewSearch){
         if(indexPath.row == 0){
