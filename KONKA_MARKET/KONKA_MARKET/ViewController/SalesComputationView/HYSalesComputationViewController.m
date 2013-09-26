@@ -123,15 +123,15 @@
     salesNum.backgroundColor = [UIColor clearColor];
     
     
-    [self.view addSubview:salesNum];
+    //[self.view addSubview:salesNum];
     
     salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(150, 45, 160, 40)];
     salesMoney.text = @"销售总金额0元";
     salesMoney.font = [UIFont boldSystemFontOfSize:12];
-    [self.view addSubview:salesMoney];
+    //[self.view addSubview:salesMoney];
     salesMoney.backgroundColor = [UIColor clearColor];
     
-    [self.view addSubview:salesMoney];
+    //[self.view addSubview:salesMoney];
     
     self.unselectImg=[UIImage imageNamed:@"sales_unselect.png"];
     self.selectImg=[UIImage imageNamed:@"sales_select.png"];
