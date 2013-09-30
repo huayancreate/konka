@@ -670,6 +670,16 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">303</int>
+						<reference key="object" ref="208985951"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">302</int>
+						<reference key="object" ref="702479549"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">166</int>
 						<reference key="object" ref="395469337"/>
 						<array class="NSMutableArray" key="children">
@@ -709,8 +719,8 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
-						<int key="objectID">287</int>
-						<reference key="object" ref="162188497"/>
+						<int key="objectID">327</int>
+						<reference key="object" ref="922995236"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -719,24 +729,14 @@
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
+						<int key="objectID">287</int>
+						<reference key="object" ref="162188497"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
+					<object class="IBObjectRecord">
 						<int key="objectID">289</int>
 						<reference key="object" ref="566472371"/>
 						<reference key="parent" ref="395469337"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">303</int>
-						<reference key="object" ref="208985951"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">302</int>
-						<reference key="object" ref="702479549"/>
-						<reference key="parent" ref="191373211"/>
-					</object>
-					<object class="IBObjectRecord">
-						<int key="objectID">327</int>
-						<reference key="object" ref="922995236"/>
-						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">326</int>
@@ -816,7 +816,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">455</int>
+			<int key="maxID">456</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -851,17 +851,42 @@
 					<string key="className">HYSalesComputationViewController</string>
 					<string key="superclassName">HYBaseViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="dataPick:">id</string>
+						<string key="downMoth:">id</string>
+						<string key="downYear:">id</string>
 						<string key="modelAction:">id</string>
 						<string key="sizeAction:">id</string>
+						<string key="upMoth:">id</string>
+						<string key="upYear:">id</string>
 						<string key="yearsAction:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="dataPick:">
+							<string key="name">dataPick:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="downMoth:">
+							<string key="name">downMoth:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="downYear:">
+							<string key="name">downYear:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="modelAction:">
 							<string key="name">modelAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="sizeAction:">
 							<string key="name">sizeAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="upMoth:">
+							<string key="name">upMoth:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="upYear:">
+							<string key="name">upYear:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="yearsAction:">
@@ -871,6 +896,8 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="chartView">CPTGraphHostingView</string>
+						<string key="dateBtn">UIButton</string>
+						<string key="tableViewCell">UITableViewCell</string>
 						<string key="uiModelBtn">UIButton</string>
 						<string key="uiSizeBtn">UIButton</string>
 						<string key="uiWebView">UIWebView</string>
@@ -881,6 +908,14 @@
 						<object class="IBToOneOutletInfo" key="chartView">
 							<string key="name">chartView</string>
 							<string key="candidateClassName">CPTGraphHostingView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="dateBtn">
+							<string key="name">dateBtn</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="tableViewCell">
+							<string key="name">tableViewCell</string>
+							<string key="candidateClassName">UITableViewCell</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="uiModelBtn">
 							<string key="name">uiModelBtn</string>
