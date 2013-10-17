@@ -10,6 +10,7 @@
 #import "HYOrderVerifyListViewController.h"
 #import "HYOrderAuditedViewController.h"
 #import "HYOrderByMyListViewController.h"
+#import "HYOrderAddViewController.h"
 
 @interface HYOrderRetailViewController ()
 
@@ -56,30 +57,37 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = nil;
-    switch (indexPath.row) {
-        case 0:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:0];
-            return cell;
-            break;
-        case 1:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:1];
-            return cell;
-            break;
-        case 2:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:2];
-            return cell;
-            break;
-        case 3:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:3];
-            return cell;
-            break;
+    if ([self.userLogin.mobile_user_type intValue] != 20)
+    {
+        switch (indexPath.row) {
+            case 0:
+                cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:0];
+                return cell;
+                break;
+            case 1:
+                cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:1];
+                return cell;
+                break;
+        }
+    }
+    else{
+        switch (indexPath.row) {
+            case 0:
+                cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:2];
+                return cell;
+                break;
+            case 1:
+                cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYOrderRetailTableViewCell" tableView:tableView index:3];
+                return cell;
+                break;
+        }
     }
     return cell;
 }
@@ -97,28 +105,45 @@
     HYOrderVerifyListViewController *verifySubmit = nil;
     HYOrderAuditedViewController *auditedSubmit = nil;
     HYOrderByMyListViewController *ordersbymySubmit= nil;
-    switch (indexPath.row) {
-        case 0:
-            verifySubmit = [[HYOrderVerifyListViewController alloc]init];
-            verifySubmit.userLogin = self.userLogin;
-            self.userLogin.dataSubmit = nil;
-            verifySubmit.title = @"待审订单";
-            [self.navigationController pushViewController:verifySubmit animated:YES];
-            break;
-        case 1:
-            auditedSubmit = [[HYOrderAuditedViewController alloc]init];
-            auditedSubmit.userLogin = self.userLogin;
-            self.userLogin.dataSubmit = nil;
-            auditedSubmit.title = @"已审订单";
-            [self.navigationController pushViewController:auditedSubmit animated:YES];
-            break;
-        case 3:
-            ordersbymySubmit = [[HYOrderByMyListViewController alloc]init];
-            ordersbymySubmit.userLogin = self.userLogin;
-            self.userLogin.dataSubmit = nil;
-            ordersbymySubmit.title = @"我的订单";
-            [self.navigationController pushViewController:ordersbymySubmit animated:YES];
-            break;
+    HYOrderAddViewController *addSubmit = nil;
+    if ([self.userLogin.mobile_user_type intValue] == 20)
+    {
+        switch (indexPath.row) {
+            case 0:
+                addSubmit = [[HYOrderAddViewController alloc]init];
+                addSubmit.userLogin = self.userLogin;
+                self.userLogin.dataSubmit = nil;
+                addSubmit.title = @"在线下单";
+                [self.navigationController pushViewController:addSubmit animated:YES];
+                break;
+            case 1:
+                ordersbymySubmit = [[HYOrderByMyListViewController alloc]init];
+                ordersbymySubmit.userLogin = self.userLogin;
+                self.userLogin.dataSubmit = nil;
+                ordersbymySubmit.title = @"我的订单";
+                [self.navigationController pushViewController:ordersbymySubmit animated:YES];
+                break;
+        }
+   
+    }else{
+        switch (indexPath.row) {
+            case 0:
+                verifySubmit = [[HYOrderVerifyListViewController alloc]init];
+                verifySubmit.userLogin = self.userLogin;
+                self.userLogin.dataSubmit = nil;
+                verifySubmit.title = @"待审订单";
+                [self.navigationController pushViewController:verifySubmit animated:YES];
+                break;
+            case 1:
+                auditedSubmit = [[HYOrderAuditedViewController alloc]init];
+                auditedSubmit.userLogin = self.userLogin;
+                self.userLogin.dataSubmit = nil;
+                auditedSubmit.title = @"已审订单";
+                [self.navigationController pushViewController:auditedSubmit animated:YES];
+                break;
+        }
+
+        
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

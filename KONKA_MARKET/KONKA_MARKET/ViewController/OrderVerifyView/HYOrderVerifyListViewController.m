@@ -46,8 +46,9 @@
     [_refreshHeaderView refreshLastUpdatedDate];
     
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=list&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self.userLogin.user_id intValue] ];
-    
+//    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=list&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self.userLogin.user_id intValue] ];
+
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://qdgl.konka.com/KonkaOrderAudit.do?method=list"]];
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
     request = [[NSMutableURLRequest alloc] initWithURL:url];

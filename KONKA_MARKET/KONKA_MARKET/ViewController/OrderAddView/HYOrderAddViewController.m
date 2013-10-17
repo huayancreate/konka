@@ -1,21 +1,20 @@
 //
-//  HYOrderAuditedViewController.m
+//  HYOrderAddViewController.m
 //  KONKA_MARKET
 //
-//  Created by andychen on 13-8-28.
+//  Created by andychen on 13-10-17.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
-#import "HYOrderAuditedViewController.h"
+#import "HYOrderAddViewController.h"
 
-@interface HYOrderAuditedViewController ()
-{
+@interface HYOrderAddViewController (){
     NSMutableURLRequest *request;
 }
 
 @end
 
-@implementation HYOrderAuditedViewController
+@implementation HYOrderAddViewController
 @synthesize didRequest;
 @synthesize detailRequest;
 @synthesize backView;
@@ -43,11 +42,12 @@
         [self.uiWebView.scrollView addSubview:_refreshHeaderView];
     }
     [_refreshHeaderView refreshLastUpdatedDate];
+    NSLog(@"username %@",self.userLogin.user_name);
+    
+    //NSString *username = [self.userLogin.user_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
-//    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=listaudit&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self.userLogin.user_id intValue] ];
-    
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://qdgl.konka.com/KonkaOrderAudit.do?method=listorder"]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://vip.konka.com/customer/manager/JxcKonkaOrderRegister.do?method=addInMobile"]];
     
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
@@ -119,7 +119,7 @@
 	
 }
 
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)vie{
 	
 	return [NSDate date]; // should return date data source was last changed
 }
