@@ -42,6 +42,8 @@
 
 #define OrderAuditApi @"/KonkaOrderAudit.do"
 
+#define LoginOnGetApi @"/slogin.do"
+
 #define WageApi @"/wage/"
 
 #define TaskCompleteApi @"/webservice/KonkaR3RankInterface.do"

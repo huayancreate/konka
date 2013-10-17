@@ -162,6 +162,8 @@
 		18E3DF7F17A26BE500C9FF02 /* about_line.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF7E17A26BE500C9FF02 /* about_line.png */; };
 		18E3DF8117A270C800C9FF02 /* percent_save.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF8017A270C800C9FF02 /* percent_save.png */; };
 		18E3DF8317A2742A00C9FF02 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF8217A2742A00C9FF02 /* right.png */; };
+		18F36F82180FE4A3005A5872 /* HYOrderAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F36F80180FE4A3005A5872 /* HYOrderAddViewController.m */; };
+		18F36F83180FE4A3005A5872 /* HYOrderAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F36F81180FE4A3005A5872 /* HYOrderAddViewController.xib */; };
 		18FF846617A0F96D00BDD590 /* bg_data.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846517A0F96D00BDD590 /* bg_data.png */; };
 		18FF846E17A1013600BDD590 /* sales_no_reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846817A1013600BDD590 /* sales_no_reg.png */; };
 		18FF846F17A1013600BDD590 /* sales_reg_all.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846917A1013600BDD590 /* sales_reg_all.png */; };
@@ -569,6 +571,9 @@
 		18E3DF7E17A26BE500C9FF02 /* about_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_line.png; sourceTree = "<group>"; };
 		18E3DF8017A270C800C9FF02 /* percent_save.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = percent_save.png; sourceTree = "<group>"; };
 		18E3DF8217A2742A00C9FF02 /* right.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right.png; sourceTree = "<group>"; };
+		18F36F7F180FE4A3005A5872 /* HYOrderAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOrderAddViewController.h; sourceTree = "<group>"; };
+		18F36F80180FE4A3005A5872 /* HYOrderAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOrderAddViewController.m; sourceTree = "<group>"; };
+		18F36F81180FE4A3005A5872 /* HYOrderAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderAddViewController.xib; sourceTree = "<group>"; };
 		18FF846517A0F96D00BDD590 /* bg_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_data.png; sourceTree = "<group>"; };
 		18FF846817A1013600BDD590 /* sales_no_reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_no_reg.png; sourceTree = "<group>"; };
 		18FF846917A1013600BDD590 /* sales_reg_all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_reg_all.png; sourceTree = "<group>"; };
@@ -1393,6 +1398,16 @@
 			path = about;
 			sourceTree = "<group>";
 		};
+		18F36F7E180FE4A3005A5872 /* OrderAddView */ = {
+			isa = PBXGroup;
+			children = (
+				18F36F7F180FE4A3005A5872 /* HYOrderAddViewController.h */,
+				18F36F80180FE4A3005A5872 /* HYOrderAddViewController.m */,
+				18F36F81180FE4A3005A5872 /* HYOrderAddViewController.xib */,
+			);
+			path = OrderAddView;
+			sourceTree = "<group>";
+		};
 		18FF846717A1003600BDD590 /* salesregister */ = {
 			isa = PBXGroup;
 			children = (
@@ -2114,6 +2129,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18F36F7E180FE4A3005A5872 /* OrderAddView */,
 				1877606817F033E700EF3257 /* DecisionSalesView */,
 				1877606017F01CD900EF3257 /* DecisionManagerView */,
 				183BFE0217EE94930064DDFA /* DecisionCompleteView */,
@@ -2642,6 +2658,7 @@
 				28DA279017BB63D200DDA062 /* 栏目分割线.png in Resources */,
 				28DA279117BB63D200DDA062 /* 资讯平台.jpg in Resources */,
 				28DA279217BB63D200DDA062 /* 返回.png in Resources */,
+				18F36F83180FE4A3005A5872 /* HYOrderAddViewController.xib in Resources */,
 				28DA279417BB648C00DDA062 /* newsbtnbg.png in Resources */,
 				28DA279617BB6B7900DDA062 /* homebg@2x.png in Resources */,
 				28352CE917BC6E1E007215F9 /* HYOAApprovalListViewController.xib in Resources */,
@@ -2771,6 +2788,7 @@
 				28FFABC517A64B63009DDF28 /* WSChartObject.m in Sources */,
 				28FFABC617A64B63009DDF28 /* WSGlobalCore.m in Sources */,
 				28FFABD817A64BB3009DDF28 /* WSAreaLayer.m in Sources */,
+				18F36F82180FE4A3005A5872 /* HYOrderAddViewController.m in Sources */,
 				28FFABD917A64BB3009DDF28 /* WSBarLayer.m in Sources */,
 				28FFABDA17A64BB3009DDF28 /* WSColumnLayer.m in Sources */,
 				28FFABDB17A64BB3009DDF28 /* WSCoordinateLayer.m in Sources */,
