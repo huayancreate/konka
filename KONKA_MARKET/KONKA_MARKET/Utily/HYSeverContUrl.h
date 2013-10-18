@@ -12,6 +12,8 @@
 
 #define BaseURL @"http://qdgl.konka.com"
 
+#define BaseVipURL @"http://vip.konka.com"
+
 #define DataSubmitApi @"/MobileSubmit.do"
 
 #define DataStatisticApi @"/MobileStatistic.do"

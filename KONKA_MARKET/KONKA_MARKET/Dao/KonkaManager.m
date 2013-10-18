@@ -148,7 +148,7 @@
     
     for (id akey in [dic allKeys]) {
         if (userEntity)
-        [userEntity setValue:[dic objectForKey:akey] forKey:akey];
+            [userEntity setValue:[dic objectForKey:akey] forKey:akey];
     }
     
     [self saveContext];
@@ -191,7 +191,9 @@
     [fetchRequest setPredicate:predicate];
     
     NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
-    
+    if ([result count] == 0) {
+        return;
+    }
     UserEntity *userEntity = [result objectAtIndex:0];
     userEntity.dataPatch = dataPatch;
     
@@ -255,6 +257,7 @@
     [fetchRequest setPredicate:predicate];
     
     NSArray * result = [self.managedObjectContext executeFetchRequest:fetchRequest error:nil];
+
     UserEntity *en = [result objectAtIndex:0];
     
     en.real_name = real_name;

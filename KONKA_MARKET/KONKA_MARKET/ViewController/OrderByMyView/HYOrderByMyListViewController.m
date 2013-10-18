@@ -49,7 +49,7 @@
     //NSString *username = [self.userLogin.user_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://vip.konka.com/customer/manager/JxcKonkaOrderRegister.do?method=listInMobile"]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseVipURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://vip.konka.com/customer/manager/JxcKonkaOrderRegister.do?method=listInMobile"]];
     
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
