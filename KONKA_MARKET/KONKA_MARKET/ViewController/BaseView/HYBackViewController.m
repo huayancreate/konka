@@ -62,14 +62,20 @@
 
 -(void)linkBackAction
 {
-    NSLog(@"didRequest: %@", self.didRequest.URL.absoluteString);
-    NSLog(@"detailRequest: %@", self.detailRequest.URL.absoluteString);
-    if(![self.didRequest.URL.absoluteString isEqualToString:self.detailRequest.URL.absoluteString]){
-        NSLog(@"返回按钮的request: %@",didRequest);
-        [self.uiWebView loadRequest:self.didRequest];
-    }else{
+    [self.uiWebView goBack];
+    if([self.detailRequest.URL.absoluteString isEqualToString:@"about:blank"]){
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
     }
+    //    BOOL result = [self.detailRequest.URL.absoluteString isEqualToString:@"about:blank"];
+    //    NSLog(@"result:%d",result);
+    //    NSLog(@"didRequest: %@", self.didRequest.URL.absoluteString);
+    //    NSLog(@"detailRequest: %@", self.detailRequest.URL.absoluteString);
+    //    if(![self.didRequest.URL.absoluteString isEqualToString:self.detailRequest.URL.absoluteString]){
+    //        NSLog(@"返回按钮的request: %@",didRequest);
+    //        [self.uiWebView loadRequest:self.didRequest];
+    //    }else{
+    //        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+    //    }
 }
 
 @end
