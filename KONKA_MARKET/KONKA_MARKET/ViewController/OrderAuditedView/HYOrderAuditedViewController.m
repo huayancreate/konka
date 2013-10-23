@@ -47,7 +47,7 @@
     
 //    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=listaudit&username=%@&userpass=%@&user_id=%d", BaseURL, OrderAuditApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self.userLogin.user_id intValue] ];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://qdgl.konka.com/KonkaOrderAudit.do?method=listaudit"]];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://qdgl.konka.com/KonkaOrderAudit.do?method=listorder"]];
     
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
