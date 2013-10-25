@@ -393,6 +393,7 @@
         HYHomeViewController *homeview = [[HYHomeViewController alloc] init];
         
         homeview.userLogin = self.userLogin;
+        NSLog(@"homeview.userLogin.storeList %d",[homeview.userLogin.storeList count]);
         
         NSLog(@"homeview.userLogin %@",homeview.userLogin.user_name);
         

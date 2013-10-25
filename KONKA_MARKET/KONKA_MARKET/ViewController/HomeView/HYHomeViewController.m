@@ -69,6 +69,8 @@
 //        [promotersList addObject:dic5];
         [promotersList addObject:dic6];
         [promotersList addObject:dic7];
+        
+        
     }
     return self;
 }
@@ -138,6 +140,10 @@
     if (self.userLogin.mobile_user_type == nil || [self.userLogin.mobile_user_type intValue] == 30)
     {
         viewList = promotersList;
+    }
+    if ([self.userLogin.mobile_user_type intValue] == 40)
+    {
+        viewList = leaderList;
     }
     NSLog(@"count %d", [viewList count]);
     [self createMainView:viewList];

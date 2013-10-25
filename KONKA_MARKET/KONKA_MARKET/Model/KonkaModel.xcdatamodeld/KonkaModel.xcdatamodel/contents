@@ -1,41 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="11G63" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3400" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="BaseDataEntity" representedClassName="BaseDataEntity" syncable="YES">
         <attribute name="addon1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="addon2" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="base_id" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="flag" optional="YES" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="flag" optional="YES" attributeType="Integer 32" syncable="YES"/>
         <attribute name="list_type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="BaseDataJSONEntity" representedClassName="BaseDataJSONEntity" syncable="YES">
         <attribute name="json" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="PercentEntity" representedClassName="PercentEntity" syncable="YES">
         <attribute name="model_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percent" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="percent_stype" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="SetUsualEntity" representedClassName="SetUsualEntity" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="UserEntity" representedClassName="UserEntity" syncable="YES">
         <attribute name="dataPatch" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="department" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="real_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="sid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="user_id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="user_name" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="BaseDataEntity" positionX="-3942" positionY="-873" width="128" height="150"/>
-        <element name="PercentEntity" positionX="160" positionY="192" width="128" height="105"/>
-        <element name="UserEntity" positionX="-3611" positionY="-900" width="128" height="135"/>
-        <element name="BaseDataJSONEntity" positionX="-3978" positionY="-684" width="128" height="75"/>
-        <element name="SetUsualEntity" positionX="-3798" positionY="-819" width="128" height="75"/>
+        <element name="BaseDataEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="BaseDataJSONEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PercentEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="SetUsualEntity" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="UserEntity" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
