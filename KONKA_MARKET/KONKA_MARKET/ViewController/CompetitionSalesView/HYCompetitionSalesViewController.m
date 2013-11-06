@@ -134,7 +134,7 @@
     self.numLabel.text = @"台";
     
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
-    [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
+    [self.saleAllPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     
     self.saleAllPrice.clearsOnBeginEditing = YES;
     
@@ -510,11 +510,11 @@
         
         if ( (pointRange.length > 0) && (pointRange.location < range.location  || pointRange.location > range.location + range.length) )
         {
-            numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+            numbers = [NSCharacterSet characterSetWithCharactersInString:@"-0123456789"];
         }
         else
         {
-            numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
+            numbers = [NSCharacterSet characterSetWithCharactersInString:@"-0123456789."];
         }
         
         if ( [textField.text isEqualToString:@""] && [string isEqualToString:@"."] )

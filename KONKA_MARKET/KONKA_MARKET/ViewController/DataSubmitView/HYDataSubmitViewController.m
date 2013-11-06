@@ -207,8 +207,8 @@
     
     
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
-    [self.saleAllPrice setKeyboardType:UIKeyboardTypeDecimalPad];
-    [self.salesPrice setKeyboardType:UIKeyboardTypeDecimalPad];
+    [self.saleAllPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    [self.salesPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.phoneNum setKeyboardType:UIKeyboardTypeNamePhonePad];
     
     
@@ -256,7 +256,7 @@
     if (self.userLogin.dataSubmit != nil)
     {
         storeName.enabled = false;
-        self.selectChoice2.enabled = false;
+        self.selectChoice2.enabled = true;
         salesCount.enabled = true;
         saleAllPrice.enabled = true;
         self.salesPrice.enabled = true;
@@ -333,7 +333,7 @@
         storeName.enabled = false;
         salesCount.enabled = true;
         saleAllPrice.enabled = true;
-        self.selectChoice2.enabled = false;
+        self.selectChoice2.enabled = true;
         self.salesPrice.enabled = true;
         self.memo.enabled = true;
         self.mastercode.enabled = true;
@@ -1082,11 +1082,11 @@
         
         if ( (pointRange.length > 0) && (pointRange.location < range.location  || pointRange.location > range.location + range.length) )
         {
-            numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+            numbers = [NSCharacterSet characterSetWithCharactersInString:@"-0123456789"];
         }
         else
         {
-            numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789."];
+            numbers = [NSCharacterSet characterSetWithCharactersInString:@"-0123456789."];
         }
         
         if ( [textField.text isEqualToString:@""] && [string isEqualToString:@"."] )
