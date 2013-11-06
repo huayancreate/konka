@@ -507,6 +507,7 @@
         NSScanner      *scanner    = [NSScanner scannerWithString:string];
         NSCharacterSet *numbers;
         NSRange         pointRange = [textField.text rangeOfString:@"."];
+        NSRange pointNumber = [string rangeOfString:@"-"];
         
         if ( (pointRange.length > 0) && (pointRange.location < range.location  || pointRange.location > range.location + range.length) )
         {
@@ -517,11 +518,10 @@
             numbers = [NSCharacterSet characterSetWithCharactersInString:@"-0123456789."];
         }
         
-        if ( [textField.text isEqualToString:@""] && [string isEqualToString:@"."] )
+        if ( [textField.text isEqualToString:@""] && [string isEqualToString:@"."])
         {
             return NO;
         }
-        
         short remain = 2; //默认保留2位小数
         
         NSString *tempStr = [textField.text stringByAppendingString:string];
@@ -549,6 +549,23 @@
             }
         }
         
+        //if(pointNumber.length>0)
+        
+        
+        if([textField.text length] == 1){
+            if([string isEqualToString:@"-"]){ //当输入框内已经含有“-”时，如果再输入“-”则被视为无效。
+                return YES;
+            }
+        }
+        else{
+            if([textField.text length] > 1){ //判断输入框内是否含有“-”。
+                //if(pointNumber.length == 1 && pointNumber.location ==0){
+                if([string isEqualToString:@"-"]){ //当输入框内已经含有“-”时，如果再输入“-”则被视为无效。
+                    return NO;
+                }
+            }
+        }
+    
         NSString *buffer;
         if ( ![scanner scanCharactersFromSet:numbers intoString:&buffer] && ([string length] != 0) )
         {

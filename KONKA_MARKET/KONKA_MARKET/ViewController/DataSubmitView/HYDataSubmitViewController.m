@@ -1121,6 +1121,20 @@
             }
         }
         
+        if([textField.text length] == 1){
+            if([string isEqualToString:@"-"]){ //当输入框内已经含有“-”时，如果再输入“-”则被视为无效。
+                return YES;
+            }
+        }
+        else{
+            if([textField.text length] > 1){ //判断输入框内是否含有“-”。
+                //if(pointNumber.length == 1 && pointNumber.location ==0){
+                if([string isEqualToString:@"-"]){ //当输入框内已经含有“-”时，如果再输入“-”则被视为无效。
+                    return NO;
+                }
+            }
+        }
+        
         NSString *buffer;
         if ( ![scanner scanCharactersFromSet:numbers intoString:&buffer] && ([string length] != 0) )
         {
