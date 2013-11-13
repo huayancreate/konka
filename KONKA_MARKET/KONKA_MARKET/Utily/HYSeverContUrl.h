@@ -54,4 +54,8 @@
 
 #define DecisionModelApi @"/webservice/KonkaSellRankInterface.do"
 
+#define VersionApi @"/files/konka/index_iphone.html"
+
+#define CheckVersionApi @"/files/konka/konka-mobile-ios.ini"
+
 
