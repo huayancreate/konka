@@ -253,7 +253,7 @@
     return s;
 }
 
--(NSData *) getIntervalDateByDays:(int) days ByDate:(NSString *) currentDate
+-(NSDate *) getIntervalDateByDays:(int) days ByDate:(NSString *) currentDate
 {
     [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSDate *dateTime = [self.dateFormatter dateFromString:currentDate];

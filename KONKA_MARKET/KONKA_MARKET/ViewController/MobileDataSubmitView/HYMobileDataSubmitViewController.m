@@ -1,20 +1,26 @@
 //
-//  HYDataSubmitViewController.m
+//  HYMobileDataSubmitViewController.m
 //  KONKA_MARKET
 //
-//  Created by archon on 13-7-18.
+//  Created by andychen on 13-11-14.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
-#import "HYDataSubmitViewController.h"
-#import "HYSalesRegistrationViewController.h"
+#import "HYMobileDataSubmitViewController.h"
+
+#import "HYMobileHistoryViewController.h"
 #import "KonkaManager.h"
 
 #define NUMBERS @"0123456789\n"
 #define NUMBERSPERIOD @"0123456789xX\n"
 
 
-@interface HYDataSubmitViewController ()
+@interface HYMobileDataSubmitViewController ()
+@property(nonatomic, weak) CKCalendarView *calendar;
+@property(nonatomic, strong) NSDateFormatter *dateFormatter;
+@property(nonatomic, strong) NSDate *minimumDate;
+
+
 @property (nonatomic, strong) AutocompletionTableView *autoCompleter;
 @property (nonatomic, strong) UILabel *storeName;
 @property (nonatomic, strong) UITextField *memo;
@@ -22,30 +28,29 @@
 @property (nonatomic, strong) UITextField *selectChoice2;
 @property (nonatomic, strong) UITextField *salesCount;
 @property (nonatomic, strong) UITextField *salesPrice;
-@property (nonatomic, strong) UITextField *realName;
-@property (nonatomic, strong) UITextField *phoneNum;
-@property (nonatomic, strong) UITextField *address;
-@property (nonatomic, strong) UITextField *mastercode;
+@property (nonatomic, strong) UIButton *upDate;
+@property (nonatomic, strong) UIButton *downDate;
+
 @property (nonatomic, strong) UILabel *numLabel;
 @property (nonatomic, strong) UILabel *priceLabel;
 @property (nonatomic, strong) UILabel *priceLabel1;
 @property (nonatomic, strong) NSString *submitMemo;
-@property (nonatomic, strong) NSString *submitSaleTime;
+//@property (nonatomic, strong) NSString *submitSaleTime;
 @property (nonatomic, strong) NSString *submitSelectChoice2;
 @property (nonatomic, strong) NSString *submitStoreID;
 @property (nonatomic, strong) NSString *submitSalesCount;
 @property (nonatomic, strong) NSString *submitSalesPrice;
-@property (nonatomic, strong) NSString *submitRealname;
-@property (nonatomic, strong) NSString *submitPhonenum;
-@property (nonatomic, strong) NSString *submitAddress;
-@property (nonatomic, strong) NSString *submitMastercode;
+@property (nonatomic, strong) NSString *submitUpDate;
+@property (nonatomic, strong) NSString *submitDownDate;
+//@property (nonatomic, strong) NSString *submitAddress;
+//@property (nonatomic, strong) NSString *submitMastercode;
 @property (nonatomic, strong) NSNumber *dataID;
 @property (nonatomic, strong) NSString *dateTime;
-@property (nonatomic, strong) NSDateFormatter * dateFormatter;
+@property (nonatomic) NSInteger *flagTag;
 
 @end
 
-@implementation HYDataSubmitViewController
+@implementation HYMobileDataSubmitViewController
 @synthesize cellLabel;
 @synthesize cellTextField;
 @synthesize mainTableView;
@@ -61,28 +66,30 @@
 @synthesize storeName;
 @synthesize uibgLabel;
 @synthesize submitMemo;
-@synthesize submitSaleTime;
+//@synthesize submitSaleTime;
 @synthesize submitSelectChoice2;
 @synthesize submitStoreID;
 @synthesize submitSalesCount;
 @synthesize submitSalesPrice;
-@synthesize submitRealname;
-@synthesize submitPhonenum;
-@synthesize submitAddress;
-@synthesize submitMastercode;
+//@synthesize submitRealname;
+//@synthesize submitPhonenum;
+//@synthesize submitAddress;
+//@synthesize submitMastercode;
 @synthesize memo;
 @synthesize salesCount;
 @synthesize salesPrice;
 @synthesize saleAllPrice;
-@synthesize realName;
-@synthesize phoneNum;
-@synthesize address;
-@synthesize mastercode;
+@synthesize upDate;
+@synthesize downDate;
 @synthesize dataID;
 @synthesize priceLabel;
 @synthesize numLabel;
 @synthesize priceLabel1;
 @synthesize dateTime;
+@synthesize flagTag;
+@synthesize submitDownDate;
+@synthesize submitUpDate;
+@synthesize is_up;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -127,22 +134,6 @@
     
     [self getStoreList:self.userLogin.user_id];
     
-//    self.userLogin.storeList = nil;
-//    
-//    if (self.userLogin.storeList == nil)
-//    {
-//        [super errorMsg:@"没有相应的门店对应！"];
-//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 1] animated:YES];
-//        return;
-//    }
-//    
-//    if ([self.userLogin.storeList count] == 0)
-//    {
-//        [super errorMsg:@"没有相应的门店对应！"];
-//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
-//    }
-//
-    
     mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, ([super screenHeight] - 100)) style:UITableViewStyleGrouped];
     mainTableView.scrollEnabled = YES;
     
@@ -171,31 +162,33 @@
     self.memo = [[UITextField alloc] initWithFrame:textFieldRect];
     self.memo.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-
-    
     self.priceLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.priceLabel1 setBackgroundColor:[UIColor clearColor]];
     self.priceLabel1.text = @"元";
-    
     self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.priceLabel setBackgroundColor:[UIColor clearColor]];
     self.priceLabel.text = @"元";
-    
     self.numLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     [self.numLabel setBackgroundColor:[UIColor clearColor]];
     self.numLabel.text = @"台";
-    
-    self.realName = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.phoneNum = [[UITextField alloc] initWithFrame:textFieldRect];
-    self.address = [[UITextField alloc] initWithFrame:textFieldRect];
-    
-    self.mastercode = [[UITextField alloc] initWithFrame:textFieldRect];
     
     self.salesCount = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     self.salesPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     self.salesPrice.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.saleAllPrice = [[UITextField alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
     self.saleAllPrice.clearButtonMode = UITextFieldViewModeWhileEditing;
+    
+    self.upDate = [[UIButton alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    [self.upDate setTitle:[super getNowDateYYYYMMDD] forState:UIControlStateNormal];
+    [self.upDate addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.upDate setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.upDate.tag = 0;
+    
+    self.downDate = [[UIButton alloc] initWithFrame:CGRectMake(117, 10, 145, 30)];
+    //[self.downDate setTitle:[super getNowDateYYYYMMDD] forState:UIControlStateNormal];
+    [self.downDate addTarget:self action:@selector(dataPick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.downDate setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    self.downDate.tag = 1;
     
     self.salesPrice.delegate = self;
     self.saleAllPrice.delegate = self;
@@ -205,21 +198,11 @@
     saleAllPrice.text = @"0.0";
     salesPrice.text = @"0.0";
     
-    
     [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.salesPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-    [self.phoneNum setKeyboardType:UIKeyboardTypeNamePhonePad];
-    
     
     [self.memo addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.realName addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.phoneNum addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.phoneNum setKeyboardType:UIKeyboardTypeNumberPad];
-    
-    [self.address addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-    [self.mastercode addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
-
     
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.salesCount addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
@@ -230,13 +213,10 @@
     [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     [self.saleAllPrice addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingChanged];
     
-    
     [self.selectChoice2 addTarget:self.autoCompleter action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.selectChoice2 addTarget:self action:@selector(textFieldDidEndEditing:) forControlEvents:UIControlEventEditingDidEndOnExit];
     
-       
     CGRect labelFieldRect = CGRectMake(0, 0, 175, 30);
-    
     storeName = [[UILabel alloc] initWithFrame:labelFieldRect];
     
     NSDictionary *dic = [self.userLogin.storeList objectAtIndex:0];
@@ -261,156 +241,84 @@
         saleAllPrice.enabled = true;
         self.salesPrice.enabled = true;
         self.memo.enabled = true;
-        [self.mastercode setBorderStyle:UITextBorderStyleLine];
-        [self.realName setBorderStyle:UITextBorderStyleLine];
-        [self.phoneNum setBorderStyle:UITextBorderStyleLine];
-        [self.address setBorderStyle:UITextBorderStyleLine];
-        //[self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
-        //[self.memo setBorderStyle:UITextBorderStyleLine];
-
+        
         NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
         [numberFormatter setUsesGroupingSeparator:NO];
         storeName.text = [self.userLogin.dataSubmit objectForKey:@"dept_name"];
-//        dateTime = [self.userLogin.dataSubmit objectForKey:@"sale_date"];
-//        NSString *date = [super getNowDateYYYYMMDD];
-//        [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
-//        NSDate *dataNow = [self.dateFormatter dateFromString:date];
-//        NSData *newDate = [super getIntervalDateByDays:2 ByDate:dateTime];
-//        if ([dataNow compare:newDate] == NSOrderedDescending) {
-//            storeName.enabled = false;
-//            self.selectChoice2.enabled = false;
-//            salesCount.enabled = false;
-//            saleAllPrice.enabled = false;
-//            self.salesPrice.enabled = false;
-//            self.memo.enabled = false;
-//        }
+        
         salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"num"]];
         [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"all_price"]];
+        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.dataSubmit objectForKey:@"price"]];
         NSLog(@"saleAllPrice.text %@",saleAllPrice.text);
         salesPrice.text = [self calPrice];
         self.selectChoice2.text = [self.userLogin.dataSubmit objectForKey:@"model_name"];
         self.dataID = [self.userLogin.dataSubmit objectForKey:@"id"];
         
+        NSLog(@"up_date %@",[self.userLogin.dataSubmit objectForKey:@"up_date"]);
+        
+        NSLog(@"down_date %@",[self.userLogin.dataSubmit objectForKey:@"down_date"]);
+        
+        [self.upDate setTitle:[self.userLogin.dataSubmit objectForKey:@"up_date"] forState:UIControlStateNormal];
+        [self.downDate setTitle:[self.userLogin.dataSubmit objectForKey:@"down_date"] forState:UIControlStateNormal];
+        
+        //self.upDate.titleLabel.text = [self.userLogin.allDataSubmit objectForKey:@"up_date"];
+        //self.downDate.titleLabel.text = [self.userLogin.allDataSubmit objectForKey:@"down_date"];
+        
+        self.dataID = [self.userLogin.dataSubmit objectForKey:@"id"];
         memo.text = [self.userLogin.dataSubmit objectForKey:@"memo"];
-        
-        mastercode.text = [self.userLogin.dataSubmit objectForKey:@"mastercode"];
-        
-        realName.text = [self.userLogin.dataSubmit objectForKey:@"realname"];
-        
-        phoneNum.text = [self.userLogin.dataSubmit objectForKey:@"phonenum"];
-        
-        address.text = [self.userLogin.dataSubmit objectForKey:@"addresss"];
         
         NSLog(@"dataID , %d", [self.dataID intValue]);
         
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
         self.navigationItem.rightBarButtonItem  = rightButton;
-    }
-    else if (self.userLogin.allDataSubmit != nil)
-    {
-        NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
-        [numberFormatter setUsesGroupingSeparator:NO];
-        storeName.text = [self.userLogin.allDataSubmit objectForKey:@"dept_name"];
-        salesCount.text = [numberFormatter stringFromNumber:[self.userLogin.allDataSubmit objectForKey:@"num"]];
-        [numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-        saleAllPrice.text = [numberFormatter stringFromNumber:[self.userLogin.allDataSubmit objectForKey:@"all_price"]];
-        NSLog(@"saleAllPrice.text %@",saleAllPrice.text);
-        salesPrice.text = [self calPrice];
-        self.selectChoice2.text = [self.userLogin.allDataSubmit objectForKey:@"model_name"];
-        self.dataID = [self.userLogin.allDataSubmit objectForKey:@"id"];
         
-        memo.text = [self.userLogin.allDataSubmit objectForKey:@"memo"];
-        
-        mastercode.text = [self.userLogin.allDataSubmit objectForKey:@"mastercode"];
-        
-        realName.text = [self.userLogin.allDataSubmit objectForKey:@"realname"];
-        
-        phoneNum.text = [self.userLogin.allDataSubmit objectForKey:@"phonenum"];
-        
-        address.text = [self.userLogin.allDataSubmit objectForKey:@"addresss"];
-        
-        storeName.enabled = false;
-        salesCount.enabled = true;
-        saleAllPrice.enabled = true;
-        self.selectChoice2.enabled = true;
-        self.salesPrice.enabled = true;
-        self.memo.enabled = true;
-        self.mastercode.enabled = true;
-        self.realName.enabled = true;
-        self.phoneNum.enabled = true;
-        self.address.enabled = true;
-        dateTime = [self.userLogin.allDataSubmit objectForKey:@"sale_date"];
-        NSString *date = [super getNowDateYYYYMMDD];
-        [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        NSDate *dataNow = [self.dateFormatter dateFromString:date];
-        NSDate *newDate = [super getIntervalDateByDays:2 ByDate:dateTime];
-        NSNumber *dataStatus = [self.userLogin.allDataSubmit objectForKey:@"status"];
-        if ([dataNow compare:newDate] == NSOrderedDescending) {
+        if([is_up isEqualToString:@"0"]){
             salesCount.enabled = false;
             saleAllPrice.enabled = false;
             self.selectChoice2.enabled = false;
-            self.salesPrice.enabled = false;
             self.memo.enabled = false;
-            self.mastercode.enabled = false;
-            self.realName.enabled = false;
-            self.phoneNum.enabled = false;
-            self.address.enabled = false;
-        }else{
-            [self.mastercode setBorderStyle:UITextBorderStyleLine];
-            [self.realName setBorderStyle:UITextBorderStyleLine];
-            [self.phoneNum setBorderStyle:UITextBorderStyleLine];
-            [self.address setBorderStyle:UITextBorderStyleLine];
-            UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-            self.navigationItem.rightBarButtonItem  = rightButton;
-            //[self.memo setBorderStyle:UITextBorderStyleLine];
+            self.upDate.enabled = false;
+            self.downDate.enabled = false;
+            someButton.hidden = true;
         }
-        //NSLog(@"dataStatus %d",dataStatus);
-//        if (dataStatus.intValue == 1)
-//        {
-//            self.mastercode.enabled = false;
-//            self.realName.enabled = false;
-//            self.phoneNum.enabled = false;
-//            self.address.enabled = false;
-//        }else{
-//            [self.mastercode setBorderStyle:UITextBorderStyleLine];
-//            [self.realName setBorderStyle:UITextBorderStyleLine];
-//            [self.phoneNum setBorderStyle:UITextBorderStyleLine];
-//            [self.address setBorderStyle:UITextBorderStyleLine];
-//            //[self.memo setBorderStyle:UITextBorderStyleLine];
-//        }
-//        if ([dataNow compare:newDate] == NSOrderedDescending) {
-//            salesCount.enabled = false;
-//            saleAllPrice.enabled = false;
-//            self.selectChoice2.enabled = false;
-//            self.salesPrice.enabled = false;
-//            self.memo.enabled = false;
-//            self.mastercode.enabled = false;
-//            self.realName.enabled = false;
-//            self.phoneNum.enabled = false;
-//            self.address.enabled = false;
-//        }
-        NSLog(@"dataID , %d", [self.dataID intValue]);
-    }else
+        else{
+            dateTime = [self.userLogin.dataSubmit objectForKey:@"report_date"];
+            NSString *date = [super getNowDateYYYYMMDD];
+            [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+            NSDate *dataNow = [self.dateFormatter dateFromString:date];
+            NSDate *newDate = [super getIntervalDateByDays:2 ByDate:dateTime];
+            if ([dataNow compare:newDate] == NSOrderedDescending) { //判断数据是否在2天内
+                salesCount.enabled = false;
+                //saleAllPrice.enabled = false;
+                self.selectChoice2.enabled = false;
+                //self.memo.enabled = false;
+                self.upDate.enabled = false;
+                [self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
+                [self.memo setBorderStyle:UITextBorderStyleLine];
+                //self.downDate.enabled = false;
+            }else{
+                self.storeName.enabled = true;
+                [self.selectChoice2 setBorderStyle:UITextBorderStyleLine];
+                [self.salesCount setBorderStyle:UITextBorderStyleLine];
+                [self.salesPrice setBorderStyle:UITextBorderStyleLine];
+                [self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
+                [self.memo setBorderStyle:UITextBorderStyleLine];
+                UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+                self.navigationItem.rightBarButtonItem  = rightButton;
+            }
+            
+        }
+    }
+    else
     {
         [self.selectChoice2 setBorderStyle:UITextBorderStyleLine];
         [self.salesCount setBorderStyle:UITextBorderStyleLine];
         [self.salesPrice setBorderStyle:UITextBorderStyleLine];
-        [self.mastercode setBorderStyle:UITextBorderStyleLine];
-        [self.realName setBorderStyle:UITextBorderStyleLine];
-        [self.phoneNum setBorderStyle:UITextBorderStyleLine];
-        [self.address setBorderStyle:UITextBorderStyleLine];
         [self.saleAllPrice setBorderStyle:UITextBorderStyleLine];
         [self.memo setBorderStyle:UITextBorderStyleLine];
         UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
         self.navigationItem.rightBarButtonItem  = rightButton;
     }
-    
-//    if(self.userLogin.dataSubmit != nil)
-//    {
-//        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
-//        self.navigationItem.rightBarButtonItem  = rightButton;
-//    }
 }
 
 -(void) getAllUsualModelNameList:(NSNumber *)user_id
@@ -458,75 +366,25 @@
     {
         submitSalesCount = self.salesCount.text;
     }
+    submitUpDate = self.upDate.titleLabel.text;
+    submitDownDate = self.downDate.titleLabel.text;
     
-    if (self.realName.text == nil)
-    {
-        submitRealname = @"";
-    }else
-    {
-        submitRealname = self.realName.text;
-    }
-    
-    if (self.phoneNum.text == nil)
-    {
-        submitPhonenum = @"";
-    }else
-    {
-        submitPhonenum = self.phoneNum.text;
-    }
-    
-    if (self.address.text == nil)
-    {
-        submitAddress = @"";
-    }else
-    {
-        submitAddress = self.address.text;
-    }
-    
-    if (self.mastercode.text == nil)
-    {
-        submitMastercode = @"";
-    }else
-    {
-        submitMastercode = self.mastercode.text;
+    NSDate *upDate =[self.dateFormatter dateFromString: submitUpDate];
+    NSDate *downDate =[self.dateFormatter dateFromString: submitDownDate];
+    if([upDate compare:downDate] == NSOrderedDescending){
+        [super errorMsg:@"上样日期不能大于下架日期"];
+        return;
     }
     
     NSDictionary *params = nil;
     
     if (self.dataID == nil)
     {
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",nil];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit04",@"method",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"count",submitSalesPrice,@"price",submitSelectChoice2,@"pd_id",submitUpDate,@"up_date",submitDownDate,@"down_date",[super getNowDateYYYYMMDD],@"report_date",nil];
     }else
     {
-        if ([self.realName.text isEqualToString:@""])
-        {
-            [super errorMsg:@"顾客姓名不能为空！"];
-            return;
-        }
-        if ([self.phoneNum.text isEqualToString:@""])
-        {
-            [super errorMsg:@"顾客电话不能为空！"];
-            return;
-        }
-        if (self.realName.text == nil)
-        {
-            submitRealname = @"";
-        }else
-        {
-            submitRealname = self.realName.text;
-        }
-        
-        if (self.phoneNum.text == nil)
-        {
-            submitPhonenum = @"";
-        }else
-        {
-            submitPhonenum = self.phoneNum.text;
-        }
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",self.dataID,@"id",nil];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit04",@"method",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"count",submitSalesPrice,@"price",submitSelectChoice2,@"pd_id",submitUpDate,@"up_date",submitDownDate,@"down_date",self.dataID,@"id",[super getNowDateYYYYMMDD],@"report_date",nil];
     }
-    
-
     
     NSLog(@"submit params %@", [HYAppUtily stringOutputForDictionary:params]);
     
@@ -553,20 +411,17 @@
         saleAllPrice.text = @"0.0";
         salesPrice.text = @"0.0";
         memo.text = nil;
-        realName.text = nil;
-        address.text = nil;
-        phoneNum.text = nil;
-        mastercode.text = nil;
+        
         if (self.userLogin.dataSubmit != nil)
         {
-            HYSalesRegistrationViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
+            HYMobileHistoryViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
             NSString *currentDate = c.dateLabel.text;
             [c getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
         }
         else if (self.userLogin.allDataSubmit != nil)
         {
-            HYSalesRegistrationViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
+            HYMobileHistoryViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
             NSString *currentDate = c.dateLabel.text;
             [c getHisDataByStartTime:[super getFirstDayFromMoth:currentDate] endTime:[super getLastDayFromMoth:currentDate]];
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
@@ -590,9 +445,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    if (tableView == mainTableView) {
-        return 2;
-    }
+    //    if (tableView == mainTableView) {
+    //        return 2;
+    //    }
     return 1;
 }
 
@@ -600,14 +455,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     if (tableView == mainTableView) {
-        switch (section) {
-            case 0:
-                return 7;
-                break;
-            case 1:
-                return 4;
-                break;
-        }
+        return 8;
     }
     if(tableView == dropDownTableView)
     {
@@ -617,14 +465,14 @@
 }
 
 -(HYTableViewCell *) createTabelViewCellForIndentifier: (NSString *) indentifier NibNamed: (NSString *) nibName tableView:(UITableView *)tableView index:(int) index{
-
+    
     HYTableViewCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier: indentifier];
     NSArray *nib=[[NSBundle mainBundle]loadNibNamed:nibName owner:self options:nil];
     cell = [nib objectAtIndex:index];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
-
+    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -652,7 +500,7 @@
     dropDownTableView.delegate = self;
     dropDownTableView.dataSource = self;
     [self.view addSubview:dropDownTableView];
-
+    
 }
 
 
@@ -672,7 +520,6 @@
         self.cellLabel.text = [dic objectForKey:@"name"];
         return cell;
     }
-    
     
     if (tableView == mainTableView) {
         switch (indexPath.section) {
@@ -694,60 +541,46 @@
                         break;
                     case 3:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.upDate;
+                        self.cellLabel4.text = @"上样日期";
+                        return cell;
+                        break;
+                    case 4:
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        cell.accessoryView = self.downDate;
+                        self.cellLabel4.text = @"下架日期";
+                        return cell;
+                        break;
+                    case 5:
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
                         [cell.contentView addSubview:self.salesCount];
                         cell.accessoryView = self.numLabel;
                         self.cellLabel4.text = @"数量";
                         return cell;
                         break;
-                    case 4:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        [cell.contentView addSubview:self.salesPrice];
-                        cell.accessoryView = self.priceLabel1;
-                        self.cellLabel4.text = @"单价";
-                        return cell;
-                        break;
-                    case 5:
+                        //                    case 6:
+                        //                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
+                        //                        [cell.contentView addSubview:self.salesPrice];
+                        //                        cell.accessoryView = self.priceLabel1;
+                        //                        self.cellLabel4.text = @"单价";
+                        //                        return cell;
+                        //                        break;
+                    case 6:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
                         [cell.contentView addSubview:self.saleAllPrice];
                         cell.accessoryView = self.priceLabel;
-                        self.cellLabel4.text = @"金额";
+                        self.cellLabel4.text = @"挂牌价";
                         return cell;
                         break;
-                    case 6:
+                    case 7:
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
                         cell.accessoryView = self.memo;
                         self.cellLabel4.text = @"备注";
                         return cell;
                         break;
+                        
                 }
                 break;
-            case 1:
-                switch (indexPath.row) {
-                    case 0:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.realName;
-                        self.cellLabel4.text = @"顾客姓名";
-                        return cell;
-                        break;
-                    case 1:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.phoneNum;
-                        self.cellLabel4.text = @"顾客电话";
-                        return cell;
-                        break;
-                    case 2:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.address;
-                        self.cellLabel4.text = @"顾客地址";
-                        return cell;
-                        break;
-                    case 3:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
-                        cell.accessoryView = self.mastercode;
-                        self.cellLabel4.text = @"顾客身份证";
-                        return cell;
-                        break;
-                }
         }
         
         if (indexPath.section == 0 && indexPath.row == 1)
@@ -916,9 +749,9 @@
     
     [cancelButton.titleLabel setFont:[UIFont boldSystemFontOfSize:20]];
     
-    [cancelButton addTarget:self action:@selector(dismissOverlayView:)forControlEvents:UIControlEventTouchUpInside];  
+    [cancelButton addTarget:self action:@selector(dismissOverlayView:)forControlEvents:UIControlEventTouchUpInside];
     
-    [reader.view addSubview:cancelButton];  
+    [reader.view addSubview:cancelButton];
     
 }
 
@@ -973,12 +806,12 @@
     {
         [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
     }else{
-        HYSalesRegistrationViewController *srView = [[HYSalesRegistrationViewController alloc] init];
+        HYMobileHistoryViewController *srView = [[HYMobileHistoryViewController alloc] init];
         srView.userLogin = self.userLogin;
-        srView.title = @"销售登记";
+        srView.title = @"样机历史";
         [self.navigationController pushViewController:srView animated:YES];
     }
-
+    
 }
 
 -(NSString *)calPrice
@@ -1055,26 +888,6 @@
 #pragma mark UITextField
 - (BOOL) textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    if (textField == self.salesCount || textField == self.phoneNum)
-    {
-        NSCharacterSet *cs;
-        cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS] invertedSet];
-        NSString *filtered =
-        [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        BOOL basic = [string isEqualToString:filtered];
-        return basic;
-    }
-    
-    if (textField == self.mastercode)
-    {
-        NSCharacterSet *cs;
-        cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERSPERIOD] invertedSet];
-        NSString *filtered =
-        [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
-        BOOL basic = [string isEqualToString:filtered];
-        return basic;
-    }
-    
     if (textField == self.saleAllPrice || textField == self.salesPrice) {
         NSScanner      *scanner    = [NSScanner scannerWithString:string];
         NSCharacterSet *numbers;
@@ -1144,6 +957,38 @@
     }
     
     return YES;
+}
+
+-(IBAction)dataPick:(id)sender
+{
+    UIButton *btn = (UIButton *)sender;
+    flagTag = btn.tag;
+    
+    CKCalendarView *calendar = [[CKCalendarView alloc] initWithStartDay:startMonday];
+    self.calendar = calendar;
+    calendar.delegate = self;
+    
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    [self.dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    self.minimumDate = [self.dateFormatter dateFromString:@"2012-12-01"];
+    
+    calendar.onlyShowCurrentMonth = NO;
+    calendar.adaptHeightToNumberOfWeeksInMonth = YES;
+    
+    calendar.frame = CGRectMake(10, 10, 300, 320);
+    [self.view addSubview:calendar];
+    //NSLog(@"点击日期事件");
+}
+
+- (void)calendar:(CKCalendarView *)calendar didSelectDate:(NSDate *)date {
+    
+    NSString *backStr = [[NSString alloc] initWithFormat:[self.dateFormatter stringFromDate:date]];
+    if(flagTag == 0){
+        [self.upDate setTitle:backStr forState:UIControlStateNormal];
+    }else{
+        [self.downDate setTitle:backStr forState:UIControlStateNormal];
+    }
+    [calendar removeFromSuperview];
 }
 
 @end

@@ -13,6 +13,7 @@
 #import "HYSalesComputationViewController.h"
 #import "HYPercentageCompetitionViewController.h"
 #import "HYModelConfigViewController.h"
+#import "HYMobileDataSubmitViewController.h"
 
 @interface HYRetailViewController ()
 
@@ -93,6 +94,10 @@
             cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYRetailsTableViewCell" tableView:tableView index:5];
             return cell;
             break;
+        case 6:
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYRetailsTableViewCell" tableView:tableView index:6];
+            return cell;
+            break;
     }
     return cell;
 }
@@ -114,6 +119,7 @@
     HYSalesComputationViewController *salesComputationView = nil;
     HYPercentageCompetitionViewController *percentageView = nil;
     HYModelConfigViewController *modelConfigView = nil;
+    HYMobileDataSubmitViewController *mobileDataSubmit = Nil;
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self getStoreList:self.userLogin.user_id];
     [self getAllUsualModelNameList:self.userLogin.user_id];
@@ -176,6 +182,30 @@
             [self.navigationController pushViewController:csalesView animated:YES];
             break;
         case 3:
+            mobileDataSubmit = [[HYMobileDataSubmitViewController alloc]init];
+            mobileDataSubmit.userLogin = self.userLogin;
+            self.userLogin.dataSubmit = nil;
+            self.userLogin.allDataSubmit = nil;
+            if ([self.userLogin.storeList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未关联任何门店，无法进行数据上报工作，请重新登录后再尝试下，如重新登录后还出现此错误提示，请联系分公司系统管理员"];
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+                return;
+            }
+            if([self.userLogin.modelNameList count] == 0)
+            {
+                [super errorMsg:@"系统检测到您未设置常用的产品型号，请先进行常用型号设定后再进行其他操作"];
+                modelConfigView = [[HYModelConfigViewController alloc] init];
+                modelConfigView.userLogin = self.userLogin;
+                modelConfigView.title = @"型号设定";
+                [self.navigationController pushViewController:modelConfigView animated:YES];
+                return;
+                //NSLog(@"test111");
+            }
+            mobileDataSubmit.title = @"样机管理";
+            [self.navigationController pushViewController:mobileDataSubmit animated:YES];
+            break;
+        case 4:
             salesComputationView = [[HYSalesComputationViewController alloc] init];
             salesComputationView.userLogin = self.userLogin;
             if ([self.userLogin.storeList count] == 0)
@@ -188,7 +218,7 @@
             
             [self.navigationController pushViewController:salesComputationView animated:YES];
             break;
-        case 4:
+        case 5:
             percentageView = [[HYPercentageCompetitionViewController alloc] init];
             percentageView.userLogin = self.userLogin;
             if ([self.userLogin.storeList count] == 0)
@@ -201,7 +231,7 @@
             
             [self.navigationController pushViewController:percentageView animated:YES];
             break;
-        case 5:
+        case 6:
             modelConfigView = [[HYModelConfigViewController alloc] init];
             modelConfigView.userLogin = self.userLogin;
             if ([self.userLogin.storeList count] == 0)
