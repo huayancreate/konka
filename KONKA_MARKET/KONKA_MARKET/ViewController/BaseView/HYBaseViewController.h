@@ -65,7 +65,7 @@
 -(NSString *) getLastDayFromMoth:(NSString *)date;
 -(NSString *) getFirstDayFromYear:(NSString *)date;
 -(NSString *) getLastDayFromYear:(NSString *)date;
--(NSData *) getIntervalDateByDays:(int) days ByDate:(NSString *) currentDate;
+-(NSDate *) getIntervalDateByDays:(int) days ByDate:(NSString *) currentDate;
 -(NSData *) getDateNow;
 -(NSString *) getCurrentYear:(NSString *)currentDate;
 -(NSString *) getCurrentMonth:(NSString *)currentDate;

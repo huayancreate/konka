@@ -207,13 +207,15 @@
 static float progress = 0.0f;
 
 - (void)increaseProgress {
-    progress+=0.1f;
-    [SVProgressHUD showProgress:progress status:@"正在检查版本..."];
+    //progress+=0.1f;
+    //[SVProgressHUD showProgress:progress status:@"正在检查版本..."];
     
-    if(progress < 1.0f)
-        [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3];
-    else
-        [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.4f];
+    [Harpy checkVersion];
+    
+//    if(progress < 1.0f)
+//        [self performSelector:@selector(increaseProgress) withObject:nil afterDelay:0.3];
+//    else
+//        [self performSelector:@selector(dismiss) withObject:nil afterDelay:0.4f];
 }
 
 -(void)dismiss{

@@ -10,6 +10,7 @@
 #import "HYDecisionCompleteViewController.h"
 #import "HYDecisionManagerViewController.h"
 #import "HYDecisionSalesViewController.h"
+#import "HYSyntheticalViewController.h"
 
 @interface HYDecisionRetailViewController ()
 
@@ -57,7 +58,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -75,6 +76,10 @@
             break;
         case 2:
             cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:2];
+            return cell;
+            break;
+        case 3:
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:3];
             return cell;
             break;
 
@@ -96,20 +101,27 @@
     HYDecisionCompleteViewController *completeSubmit = nil;
     HYDecisionManagerViewController *managerSubmit = nil;
     HYDecisionSalesViewController *salesSubmit = nil;
+    HYSyntheticalViewController *syntheticalSubmit = nil;
     switch (indexPath.row) {
         case 0:
+            syntheticalSubmit = [[HYSyntheticalViewController alloc] init];
+            syntheticalSubmit.userLogin = self.userLogin;
+            syntheticalSubmit.title = @"综合数据统计分析";
+            [self.navigationController pushViewController:syntheticalSubmit animated:YES];
+            break;
+        case 1:
             completeSubmit = [[HYDecisionCompleteViewController alloc] init];
             completeSubmit.userLogin = self.userLogin;
             completeSubmit.title = @"任务完成情况";
             [self.navigationController pushViewController:completeSubmit animated:YES];
             break;
-        case 1:
+        case 2:
             salesSubmit = [[HYDecisionSalesViewController alloc] init];
             salesSubmit.userLogin = self.userLogin;
             salesSubmit.title = @"零售畅销型号";
             [self.navigationController pushViewController:salesSubmit animated:YES];
             break;
-        case 2:
+        case 3:
             managerSubmit = [[HYDecisionManagerViewController alloc] init];
             managerSubmit.userLogin = self.userLogin;
             managerSubmit.title = @"任务完成情况-经办";

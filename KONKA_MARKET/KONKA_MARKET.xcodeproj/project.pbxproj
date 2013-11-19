@@ -164,6 +164,13 @@
 		18E3DF8317A2742A00C9FF02 /* right.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF8217A2742A00C9FF02 /* right.png */; };
 		18F36F82180FE4A3005A5872 /* HYOrderAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18F36F80180FE4A3005A5872 /* HYOrderAddViewController.m */; };
 		18F36F83180FE4A3005A5872 /* HYOrderAddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F36F81180FE4A3005A5872 /* HYOrderAddViewController.xib */; };
+		18FEF1D6183468B300AB9879 /* HYMobileDataSubmitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEF1D4183468B300AB9879 /* HYMobileDataSubmitViewController.m */; };
+		18FEF1D7183468B300AB9879 /* HYMobileDataSubmitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEF1D5183468B300AB9879 /* HYMobileDataSubmitViewController.xib */; };
+		18FEF1DC1834AE4400AB9879 /* HYMobileHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEF1DA1834AE4400AB9879 /* HYMobileHistoryViewController.m */; };
+		18FEF1DD1834AE4400AB9879 /* HYMobileHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEF1DB1834AE4400AB9879 /* HYMobileHistoryViewController.xib */; };
+		18FEF1DF1834B25500AB9879 /* HYMobileHistoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEF1DE1834B25500AB9879 /* HYMobileHistoryTableViewCell.xib */; };
+		18FEF1E91835CDEE00AB9879 /* HYSyntheticalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18FEF1E71835CDEE00AB9879 /* HYSyntheticalViewController.m */; };
+		18FEF1EA1835CDEE00AB9879 /* HYSyntheticalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FEF1E81835CDEE00AB9879 /* HYSyntheticalViewController.xib */; };
 		18FF846617A0F96D00BDD590 /* bg_data.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846517A0F96D00BDD590 /* bg_data.png */; };
 		18FF846E17A1013600BDD590 /* sales_no_reg.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846817A1013600BDD590 /* sales_no_reg.png */; };
 		18FF846F17A1013600BDD590 /* sales_reg_all.png in Resources */ = {isa = PBXBuildFile; fileRef = 18FF846917A1013600BDD590 /* sales_reg_all.png */; };
@@ -574,6 +581,16 @@
 		18F36F7F180FE4A3005A5872 /* HYOrderAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYOrderAddViewController.h; sourceTree = "<group>"; };
 		18F36F80180FE4A3005A5872 /* HYOrderAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYOrderAddViewController.m; sourceTree = "<group>"; };
 		18F36F81180FE4A3005A5872 /* HYOrderAddViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYOrderAddViewController.xib; sourceTree = "<group>"; };
+		18FEF1D3183468B300AB9879 /* HYMobileDataSubmitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMobileDataSubmitViewController.h; sourceTree = "<group>"; };
+		18FEF1D4183468B300AB9879 /* HYMobileDataSubmitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMobileDataSubmitViewController.m; sourceTree = "<group>"; };
+		18FEF1D5183468B300AB9879 /* HYMobileDataSubmitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMobileDataSubmitViewController.xib; sourceTree = "<group>"; };
+		18FEF1D91834AE4400AB9879 /* HYMobileHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYMobileHistoryViewController.h; sourceTree = "<group>"; };
+		18FEF1DA1834AE4400AB9879 /* HYMobileHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYMobileHistoryViewController.m; sourceTree = "<group>"; };
+		18FEF1DB1834AE4400AB9879 /* HYMobileHistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMobileHistoryViewController.xib; sourceTree = "<group>"; };
+		18FEF1DE1834B25500AB9879 /* HYMobileHistoryTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYMobileHistoryTableViewCell.xib; sourceTree = "<group>"; };
+		18FEF1E61835CDEE00AB9879 /* HYSyntheticalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYSyntheticalViewController.h; sourceTree = "<group>"; };
+		18FEF1E71835CDEE00AB9879 /* HYSyntheticalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSyntheticalViewController.m; sourceTree = "<group>"; };
+		18FEF1E81835CDEE00AB9879 /* HYSyntheticalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYSyntheticalViewController.xib; sourceTree = "<group>"; };
 		18FF846517A0F96D00BDD590 /* bg_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_data.png; sourceTree = "<group>"; };
 		18FF846817A1013600BDD590 /* sales_no_reg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_no_reg.png; sourceTree = "<group>"; };
 		18FF846917A1013600BDD590 /* sales_reg_all.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sales_reg_all.png; sourceTree = "<group>"; };
@@ -1408,6 +1425,36 @@
 			path = OrderAddView;
 			sourceTree = "<group>";
 		};
+		18FEF1C81834676C00AB9879 /* MobileDataSubmitView */ = {
+			isa = PBXGroup;
+			children = (
+				18FEF1D3183468B300AB9879 /* HYMobileDataSubmitViewController.h */,
+				18FEF1D4183468B300AB9879 /* HYMobileDataSubmitViewController.m */,
+				18FEF1D5183468B300AB9879 /* HYMobileDataSubmitViewController.xib */,
+			);
+			path = MobileDataSubmitView;
+			sourceTree = "<group>";
+		};
+		18FEF1D81834AE2F00AB9879 /* MobileHistoryView */ = {
+			isa = PBXGroup;
+			children = (
+				18FEF1D91834AE4400AB9879 /* HYMobileHistoryViewController.h */,
+				18FEF1DA1834AE4400AB9879 /* HYMobileHistoryViewController.m */,
+				18FEF1DB1834AE4400AB9879 /* HYMobileHistoryViewController.xib */,
+			);
+			path = MobileHistoryView;
+			sourceTree = "<group>";
+		};
+		18FEF1E01835C73E00AB9879 /* SyntheticalView */ = {
+			isa = PBXGroup;
+			children = (
+				18FEF1E61835CDEE00AB9879 /* HYSyntheticalViewController.h */,
+				18FEF1E71835CDEE00AB9879 /* HYSyntheticalViewController.m */,
+				18FEF1E81835CDEE00AB9879 /* HYSyntheticalViewController.xib */,
+			);
+			path = SyntheticalView;
+			sourceTree = "<group>";
+		};
 		18FF846717A1003600BDD590 /* salesregister */ = {
 			isa = PBXGroup;
 			children = (
@@ -2129,6 +2176,9 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18FEF1E01835C73E00AB9879 /* SyntheticalView */,
+				18FEF1D81834AE2F00AB9879 /* MobileHistoryView */,
+				18FEF1C81834676C00AB9879 /* MobileDataSubmitView */,
 				18F36F7E180FE4A3005A5872 /* OrderAddView */,
 				1877606817F033E700EF3257 /* DecisionSalesView */,
 				1877606017F01CD900EF3257 /* DecisionManagerView */,
@@ -2323,6 +2373,7 @@
 				183BFE0017EE91EF0064DDFA /* HYDecisionCompleteTableViewCell.xib */,
 				1877606617F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib */,
 				1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */,
+				18FEF1DE1834B25500AB9879 /* HYMobileHistoryTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2537,6 +2588,7 @@
 				282BAE3017A60BE600988D92 /* konka_production_01.jpg in Resources */,
 				282BAE3117A60BE600988D92 /* konka_production_02.jpg in Resources */,
 				282BAE3217A60BE600988D92 /* konka_production_03.jpg in Resources */,
+				18FEF1DF1834B25500AB9879 /* HYMobileHistoryTableViewCell.xib in Resources */,
 				282BAE3317A60BE600988D92 /* konka_production_04.jpg in Resources */,
 				28FFABAD17A63353009DDF28 /* HYRetailsTableViewCell.xib in Resources */,
 				289D87F017AEDE2B00DDAB68 /* SVProgressHUD.bundle in Resources */,
@@ -2571,6 +2623,7 @@
 				189F0C4617B2518500C8B394 /* sys_nav_08.jpg in Resources */,
 				189F0C4717B2518500C8B394 /* sys_nav_09.jpg in Resources */,
 				189F0C4817B2518500C8B394 /* sys_nav_10.jpg in Resources */,
+				18FEF1D7183468B300AB9879 /* HYMobileDataSubmitViewController.xib in Resources */,
 				1830B1D017B33B5700920F8E /* 1.png in Resources */,
 				1830B1D117B33B5700920F8E /* 1@2x.png in Resources */,
 				1830B1D217B33B5700920F8E /* 2.png in Resources */,
@@ -2638,6 +2691,7 @@
 				28DA276C17BB29A000DDA062 /* 分割线.png in Resources */,
 				28DA276D17BB29A000DDA062 /* 型号设定.png in Resources */,
 				28DA276E17BB29A000DDA062 /* 型号设定@2x.png in Resources */,
+				18FEF1EA1835CDEE00AB9879 /* HYSyntheticalViewController.xib in Resources */,
 				28DA277017BB29A000DDA062 /* 康佳logo.png in Resources */,
 				28DA277117BB29A000DDA062 /* 提成测算.png in Resources */,
 				28DA277217BB29A000DDA062 /* 提成测算@2x.png in Resources */,
@@ -2715,6 +2769,7 @@
 				1877607317F04AA200EF3257 /* top1.jpg in Resources */,
 				1877607417F04AA200EF3257 /* top2.jpg in Resources */,
 				1877607517F04AA200EF3257 /* top3.jpg in Resources */,
+				18FEF1DD1834AE4400AB9879 /* HYMobileHistoryViewController.xib in Resources */,
 				1877607817F04CA800EF3257 /* 零售畅销型号.png in Resources */,
 				1877607917F04CA800EF3257 /* 任务完成情况.png in Resources */,
 				1877607D17F04E6B00EF3257 /* sys_ico_date.png in Resources */,
@@ -2773,6 +2828,7 @@
 				284CAB1D1799122900943B7D /* HYPasswordConfigViewController.m in Sources */,
 				282020EE179A8969000C1C44 /* HYCompetitionSalesViewController.m in Sources */,
 				28247465179E928400E93EA1 /* UserEntity.m in Sources */,
+				18FEF1D6183468B300AB9879 /* HYMobileDataSubmitViewController.m in Sources */,
 				28FBA6D0179F7C2900CF4284 /* KonkaManager.m in Sources */,
 				28FBA6D3179F7C7600CF4284 /* HYUserLoginModel.m in Sources */,
 				289E791417A10BE500BA67D3 /* BaseDataEntity.m in Sources */,
@@ -2795,6 +2851,7 @@
 				28FFABDC17A64BB3009DDF28 /* WSLegendLayer.m in Sources */,
 				28FFABDD17A64BB3009DDF28 /* WSLineLayer.m in Sources */,
 				28FFABDE17A64BB3009DDF28 /* WSScatterLayer.m in Sources */,
+				18FEF1DC1834AE4400AB9879 /* HYMobileHistoryViewController.m in Sources */,
 				28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */,
 				289D87F117AEDE2B00DDAB68 /* SVProgressHUD.m in Sources */,
 				282FDF4A17B0DC200018DC76 /* HYCalculatePercentage.m in Sources */,
@@ -2812,6 +2869,7 @@
 				28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */,
 				28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */,
 				18BB2C9817BDBD460096ADBB /* HYCustomManageViewController.m in Sources */,
+				18FEF1E91835CDEE00AB9879 /* HYSyntheticalViewController.m in Sources */,
 				18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */,
 				183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */,
 				281A5E8317C222D300B14DB8 /* BaseDataJSONEntity.m in Sources */,

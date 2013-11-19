@@ -7,6 +7,7 @@
 //
 
 #import "HYBaseViewController.h"
+#import "Harpy.h"
 
 @interface HYSystemConfigViewController : HYBaseViewController<UITableViewDataSource,UITableViewDelegate>
 

@@ -54,4 +54,10 @@
 
 #define DecisionModelApi @"/webservice/KonkaSellRankInterface.do"
 
+#define VersionApi @"/files/konka/index_iphone.html" //app安装地址
+
+#define CheckVersionApi @"/files/konka/konka-mobile-ios.ini" //自动更新地址
+
+#define SyntheticalApi @"/webservice/KonkaR3JsBackMoneySail.do" //综合数据分析
+
 
