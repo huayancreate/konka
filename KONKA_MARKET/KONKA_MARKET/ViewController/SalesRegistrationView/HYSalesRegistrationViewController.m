@@ -127,6 +127,8 @@
     UITapGestureRecognizer *gesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(firstHandle:)];
     [self.uibgLabel addGestureRecognizer:gesture];
     
+    self.userLogin.store_id = nil;
+    
 }
 
 
@@ -255,14 +257,17 @@
     if (tableView == downTableView){
         NSDictionary *dic = [self.userLogin.salesRegisterList objectAtIndex:indexPath.row];
         NSLog(@"1111 %@", [dic objectForKey:@"memo"]);
+        NSLog(@"store_id %@", [dic objectForKey:@"dept_id"]);
         if ([self.status isEqualToString:@"0"])
         {
             self.userLogin.allDataSubmit = nil;
             self.userLogin.dataSubmit = dic;
+            self.userLogin.store_id = [dic objectForKey:@"dept_id"];
         }else
         {
             self.userLogin.dataSubmit = nil;
             self.userLogin.allDataSubmit = dic;
+            self.userLogin.store_id = [dic objectForKey:@"dept_id"];
         }
         HYDataSubmitViewController *dataSubmit = [[HYDataSubmitViewController alloc]init];
         dataSubmit.userLogin = self.userLogin;
@@ -288,6 +293,8 @@
 
 -(void) endRequest:(NSString *)msg
 {
+    
+    NSLog(@"msg %@" , msg);
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     
     NSArray *json = [decoder objectWithData:data];

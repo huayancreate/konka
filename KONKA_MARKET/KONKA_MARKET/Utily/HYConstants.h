@@ -16,4 +16,4 @@
 
 #define GPSUpdateTimer 6000
 
-#define DevVersion @"开发版本:1.0.0.201311061500"
+#define DevVersion @"开发版本:2.0.0.201311081200"

@@ -349,6 +349,8 @@
         NSLog(@"remote dataPatch %@",dataPatch);
         [self.kkM updateDataPatch:dataPatch ByUserID:user_id];
         
+        [self.kkM deleteBaseDataByUserID:user_id];
+        
         [self.kkM insertBaseDataByJson:msg ByUserID:self.userLogin.user_id];
         
         /*

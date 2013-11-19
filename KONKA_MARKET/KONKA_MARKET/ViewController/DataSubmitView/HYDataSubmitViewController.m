@@ -10,7 +10,7 @@
 #import "HYSalesRegistrationViewController.h"
 #import "KonkaManager.h"
 
-#define NUMBERS @"0123456789\n"
+#define NUMBERS @"-0123456789\n"
 #define NUMBERSPERIOD @"0123456789xX\n"
 
 
@@ -206,7 +206,7 @@
     salesPrice.text = @"0.0";
     
     
-    [self.salesCount setKeyboardType:UIKeyboardTypeNumberPad];
+    [self.salesCount setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.saleAllPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.salesPrice setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
     [self.phoneNum setKeyboardType:UIKeyboardTypeNamePhonePad];
@@ -433,7 +433,15 @@
     
     submitSelectChoice2 = [self.kkM findModelID:self.userLogin.user_id ByName:self.selectChoice2.text];
     
-    submitStoreID = [self.kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
+    if(self.userLogin.store_id == nil)
+    {
+        submitStoreID = [self.kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
+    }else
+    {
+        NSLog(@"[self.userLogin.user_id intValue] : %d" , [self.userLogin.store_id intValue]);
+        submitStoreID = [NSString stringWithFormat:@"%d",[self.userLogin.store_id intValue]];
+    }
+    
     
     if (self.memo.text == nil)
     {

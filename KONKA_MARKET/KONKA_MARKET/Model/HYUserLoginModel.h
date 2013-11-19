@@ -33,5 +33,6 @@
 @property (nonatomic, strong) NSDictionary *allDataSubmit;
 @property (nonatomic, strong) NSNumber *mobile_user_type;
 @property (nonatomic, strong) NSDictionary *customManageList;
+@property (nonatomic, strong) NSNumber *store_id;
 
 @end

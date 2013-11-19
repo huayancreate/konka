@@ -28,5 +28,6 @@
 @synthesize allDataSubmit;
 @synthesize mobile_user_type;
 @synthesize customManageList;
+@synthesize store_id;
 
 @end
