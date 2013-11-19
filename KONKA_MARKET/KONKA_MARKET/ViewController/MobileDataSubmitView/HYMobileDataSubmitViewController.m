@@ -411,6 +411,8 @@
         saleAllPrice.text = @"0.0";
         salesPrice.text = @"0.0";
         memo.text = nil;
+        downDate.titleLabel.text = @"";
+        [self.upDate setTitle:[super getNowDateYYYYMMDD] forState:UIControlStateNormal];
         
         if (self.userLogin.dataSubmit != nil)
         {
@@ -843,39 +845,39 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    if (textField == self.salesCount)
-    {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setUsesGroupingSeparator:NO];
-        NSNumber *temp = [f numberFromString:self.salesPrice.text];
-        NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
-        
-        self.saleAllPrice.text = [f stringFromNumber:temp];
-    }
-    if (textField == self.saleAllPrice)
-    {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setUsesGroupingSeparator:NO];
-        NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
-        NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
-        
-        self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
-    }
-    if (textField == self.salesPrice)
-    {
-        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-        [f setNumberStyle:NSNumberFormatterDecimalStyle];
-        [f setUsesGroupingSeparator:NO];
-        NSNumber *temp = [f numberFromString:self.salesPrice.text];
-        NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
-        
-        self.saleAllPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
-    }
+//    if (textField == self.salesCount)
+//    {
+//        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+//        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+//        [f setUsesGroupingSeparator:NO];
+//        NSNumber *temp = [f numberFromString:self.salesPrice.text];
+//        NSNumber *count = [f numberFromString:self.salesCount.text];
+//        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
+//        
+//        self.saleAllPrice.text = [f stringFromNumber:temp];
+//    }
+//    if (textField == self.saleAllPrice)
+//    {
+//        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+//        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+//        [f setUsesGroupingSeparator:NO];
+//        NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
+//        NSNumber *count = [f numberFromString:self.salesCount.text];
+//        temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
+//        
+//        self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
+//    }
+//    if (textField == self.salesPrice)
+//    {
+//        NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+//        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+//        [f setUsesGroupingSeparator:NO];
+//        NSNumber *temp = [f numberFromString:self.salesPrice.text];
+//        NSNumber *count = [f numberFromString:self.salesCount.text];
+//        temp = [NSNumber numberWithFloat:[temp floatValue] * [count intValue]];
+//        
+//        self.saleAllPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
+//    }
 }
 
 -(void)firstHandle:(UIGestureRecognizer *)gestureRecognizer
