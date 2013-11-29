@@ -67,6 +67,33 @@ static DataProcessing *instance;
     return NO;
 
 }
+-(BOOL) sentSynRequest:(NSURL *)url Parem:(NSDictionary*)parem  Target:(id)target
+{
+    @try {
+        if (url) {
+            ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
+            [request setDelegate:target];
+            if (parem) {
+                NSArray *array = [parem allKeys];
+                for (int i= 0; i <[array count]; i++) {
+                    NSLog(@"parem %@",[parem objectForKey:[array objectAtIndex:i]]);
+                    [request setPostValue:[parem objectForKey:[array objectAtIndex:i]] forKey:[array objectAtIndex:i]];
+                }
+                
+            }
+            
+            [request setPersistentConnectionTimeoutSeconds:15];
+            [request setNumberOfTimesToRetryOnTimeout:1];
+            [request startSynchronous];
+            return YES;
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"exception:%@",exception);
+    }
+    return NO;
+    
+}
 
 -(BOOL) sentGetRequest:(NSString *)url Parem:(NSDictionary*)parem  Target:(id)target
 {

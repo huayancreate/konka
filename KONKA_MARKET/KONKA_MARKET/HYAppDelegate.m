@@ -11,12 +11,15 @@
 #import "WZGuideViewController.h"
 #import "MobClick.h"
 #import "Harpy.h"
+#import "DataProcessing.h"
+#import "SDImageView+SDWebCache.h"
 
 @implementation HYAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
+@synthesize defaultView;
 
 
 #pragma mark -
@@ -26,7 +29,6 @@
 {
     [Harpy checkVersion];
     [MobClick startWithAppkey:@"52103a0156240b648f012643"];
-    [NSThread sleepForTimeInterval:1];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -35,6 +37,12 @@
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
+    
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"getJson",@"method",@"1103",@"type_id",nil];
+    
+    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:HomeImageApi]];
+    
+    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
     // Override point for customization after application launch.
 
     //HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
@@ -42,20 +50,10 @@
 //    HYScrollPageViewController *scrollView = [[HYScrollPageViewController alloc]initWithNibName:@"HYScrollPageViewController" bundle:nil];
     
     //self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
-    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
-    self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
-
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = self.navController;
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        [WZGuideViewController show];
-    }
-    else{
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-    }
+    
+    
+    
     
     return YES;
 }
@@ -181,6 +179,65 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+#pragma mark -
+#pragma mark DataProcesse
+- (void) requestFinished:(ASIHTTPRequest *)request
+{
+    NSString *responsestring = [request responseString];
+    //NSLog(@"responsestring:%@",responsestring);
+    [self performSelectorOnMainThread:@selector(endRequest:) withObject:responsestring waitUntilDone:YES];
+}
+
+- (void)requestFailed:(ASIHTTPRequest *)request
+{
+    NSString *responsestring = @"服务器连接失败";
+    [self performSelectorOnMainThread:@selector(endFailedRequest:) withObject:responsestring waitUntilDone:YES];
+}
+
+-(void) endFailedRequest:(NSString *)msg
+{
+    NSLog(@"msg %@", msg);
+}
+
+-(void) endRequest:(NSString *)msg
+{
+    JSONDecoder *decoder = [[JSONDecoder alloc] init];
+    
+    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *json = [decoder objectWithData:data];
+    NSDictionary *dic = [json objectAtIndex:0];
+    NSString *strUrl = [dic objectForKey:@"image_path"];
+    NSLog(@"strUrl: %@", strUrl);
+    NSURL *url = [[NSURL alloc] initWithString:strUrl];
+    
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height)];
+    
+    [defaultView setImageWithURL:url];
+    
+    [self.window addSubview:defaultView];
+    [self.window bringSubviewToFront:defaultView];
+    
+    [NSThread sleepForTimeInterval:7];
+    
+    NSLog(@"strUrl: %d", 1);
+    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
+    self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.navController;
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        [WZGuideViewController show];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    }
+    NSLog(@"strUrl: %d", 2);
 }
 
 @end

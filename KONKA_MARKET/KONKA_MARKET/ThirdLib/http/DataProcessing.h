@@ -20,6 +20,7 @@
 -(BOOL) sentGetRequest:(NSString *)url Parem:(NSDictionary*)parem  Target:(id)target;
 -(BOOL) sentRequest:(NSURL *)url Parem:(NSDictionary*)parem Files:(NSDictionary*)files Target:(id)target;
 -(BOOL) sentPostRequest:(NSURL *)url Parem:(NSDictionary*)parem Target:(id)target ;
+-(BOOL) sentSynRequest:(NSURL *)url Parem:(NSDictionary*)parem  Target:(id)target;
 
 -(NSString *) sentSynchronousRequest:(NSURL *)url Parem:(NSDictionary*)parem Files:(NSDictionary*)files Target:(id)target;
 
