@@ -38,11 +38,46 @@
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
     
     
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"getJson",@"method",@"1103",@"type_id",nil];
+//    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:@"getJson",@"method",@"1103",@"type_id",nil];
+//    
+//    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:HomeImageApi]];
+//    
+//    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+    
     
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:HomeImageApi]];
     
-    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
+    [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
+    
+    NSString *str = @"method=getJson&type_id=1103";//设置参数
+    
+    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
+    [request setHTTPBody:data];
+    //第三步，连接服务器
+    
+    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+    
+    NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"str1 %@",str1);
+    
+    JSONDecoder *decoder = [[JSONDecoder alloc] init];
+    
+    NSData *resdata = [str1 dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *json = [decoder objectWithData:resdata];
+    NSDictionary *dic = [json objectAtIndex:0];
+    NSString *strUrl = [dic objectForKey:@"image_path"];
+    NSLog(@"strUrl: %@", strUrl);
+    NSURL *urlimg = [[NSURL alloc] initWithString:strUrl];
+    
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height)];
+    
+    [defaultView setImageWithURL:urlimg refreshCache:YES];
+    
+    [self.window addSubview:defaultView];
+    [self.window bringSubviewToFront:defaultView];
     
     
     
