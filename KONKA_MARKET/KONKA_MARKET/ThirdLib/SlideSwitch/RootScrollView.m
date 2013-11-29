@@ -56,7 +56,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.delegate = self;
-        self.viewNameArray = [NSArray arrayWithObjects:@"全部", @"要闻", @"动态", @"新品", @"竞品", @"其他", nil];
+        self.viewNameArray = [NSArray arrayWithObjects:@"全部", @"动态", @"产品", @"通知", @"其他", nil];
         self.contentSize = CGSizeMake(320*[viewNameArray count], [Globle shareInstance].globleHeight-44);
         self.pagingEnabled = YES;
         self.userInteractionEnabled = YES;
@@ -160,15 +160,15 @@
     {
         [tabelViewImportNews reloadData];
     }
-    if ([tittle_id isEqualToString:@"1030"])
-    {
-        [tabelViewDym reloadData];
-    }
+//    if ([tittle_id isEqualToString:@"1030"])
+//    {
+//        [tabelViewDym reloadData];
+//    }
     if ([tittle_id isEqualToString:@"1040"])
     {
         [tabelViewNewProduct reloadData];
     }
-    if ([tittle_id isEqualToString:@"1050"])
+    if ([tittle_id isEqualToString:@"-1"])
     {
         [tabelViewComp reloadData];
     }
@@ -191,16 +191,16 @@
             case 1:
                 self.tabelViewImportNews = mainTableView;
                 break;
+//            case 2:
+//                self.tabelViewDym = mainTableView;
+//                break;
             case 2:
-                self.tabelViewDym = mainTableView;
-                break;
-            case 3:
                 self.tabelViewNewProduct = mainTableView;
                 break;
-            case 4:
+            case 3:
                 self.tabelViewComp = mainTableView;
                 break;
-            case 5:
+            case 4:
                 self.tabelViewOther = mainTableView;
                 break;
         }
@@ -340,19 +340,19 @@ int _lastPosition = 0;
             tittle_id = @"1020";
             [self loadNewsPlat];
             break;
+//        case 2:
+//            tittle_id = @"1030";
+//            [self loadNewsPlat];
+//            break;
         case 2:
-            tittle_id = @"1030";
-            [self loadNewsPlat];
-            break;
-        case 3:
             tittle_id = @"1040";
             [self loadNewsPlat];
             break;
-        case 4:
-            tittle_id = @"1050";
+        case 3:
+            tittle_id = @"-1";
             [self loadNewsPlat];
             break;
-        case 5:
+        case 4:
             tittle_id = @"1060";
             [self loadNewsPlat];
             break;

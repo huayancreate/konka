@@ -13,6 +13,7 @@
 #import "Harpy.h"
 #import "DataProcessing.h"
 #import "SDImageView+SDWebCache.h"
+#import "HYConstants.h"
 
 @implementation HYAppDelegate
 
@@ -20,6 +21,9 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize defaultView;
+@synthesize versionView;
+@synthesize lblTips;
+@synthesize lblVersion;
 
 
 #pragma mark -
@@ -269,12 +273,35 @@
     NSURL *url = [[NSURL alloc] initWithString:strUrl];
     
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height)];
-    
+    defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height-120)];
     [defaultView setImageWithURL:url];
+    UIView *_view = [[UIView alloc] initWithFrame:CGRectMake(0, 360, screenBounds.size.width, 250)];
+    _view.backgroundColor = [UIColor whiteColor];
+    
+    versionView  = [[UIImageView alloc]initWithFrame:CGRectMake(65,400, 189, 24)];
+    [versionView setImage:[UIImage imageNamed:@"loginlogo"]];
+    
+    lblTips = [[UILabel alloc] initWithFrame:CGRectMake(65, 425, 230, 24)];
+    lblTips.text = @"渠道管理信息系统@多媒体渠道管理部";
+    lblTips.font =  [UIFont fontWithName:@"Helvetica" size:11];
+    lblTips.textColor = [UIColor blackColor];
+    
+    lblVersion = [[UILabel alloc] initWithFrame:CGRectMake(200,460, 230, 24)];
+    lblVersion.font =  [UIFont fontWithName:@"Helvetica" size:9];
+    lblVersion.text = DevVersion;
+    lblVersion.textColor = [UIColor blackColor];
+    
     
     [self.window addSubview:defaultView];
+    [self.window addSubview:_view];
+    [self.window addSubview:versionView];
+    [self.window addSubview:lblTips];
+    [self.window addSubview:lblVersion];
     [self.window bringSubviewToFront:defaultView];
+    [self.window bringSubviewToFront:_view];
+    [self.window bringSubviewToFront:versionView];
+    [self.window bringSubviewToFront:lblTips];
+    [self.window bringSubviewToFront:lblVersion];
 }
 
 @end

@@ -13,7 +13,7 @@
 //按钮空隙
 #define BUTTONGAP 3
 //按钮长度
-#define BUTTONWIDTH 50
+#define BUTTONWIDTH 60
 //按钮宽度
 #define BUTTONHEIGHT 30
 //滑条CONTENTSIZEX
@@ -54,7 +54,7 @@
         self.pagingEnabled = NO;
         self.showsHorizontalScrollIndicator = NO;
         self.showsVerticalScrollIndicator = NO;
-        self.nameArray = [NSArray arrayWithObjects:@"全部", @"要闻", @"动态", @"新品", @"竞品", @"其他", nil];
+        self.nameArray = [NSArray arrayWithObjects:@"全部", @"动态", @"产品", @"通知", @"其他", nil];
         self.contentSize = CGSizeMake(0, 44);
         
         userSelectedChannelID = 100;
@@ -67,7 +67,7 @@
 
 - (void)initWithNameButtons
 {
-    shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, 49, 44)];
+    shadowImageView = [[UIImageView alloc] initWithFrame:CGRectMake(5, 0, 60, 44)];
     [shadowImageView setImage:[UIImage imageNamed:@"red_line_and_shadow.png"]];
     [self addSubview:shadowImageView];
     
@@ -107,7 +107,7 @@
         
         [UIView animateWithDuration:0.25 animations:^{
             
-            [shadowImageView setFrame:CGRectMake(sender.frame.origin.x, 0, 49, 44)];
+            [shadowImageView setFrame:CGRectMake(sender.frame.origin.x, 0, 60, 44)];
             
         } completion:^(BOOL finished) {
             if (finished) {
@@ -127,16 +127,16 @@
                     case 101:
                         title_id = @"1020";
                         break;
+//                    case 102:
+//                        title_id = @"1030";
+//                        break;
                     case 102:
-                        title_id = @"1030";
-                        break;
-                    case 103:
                         title_id = @"1040";
                         break;
-                    case 104:
-                        title_id = @"1050";
+                    case 103:
+                        title_id = @"-1";
                         break;
-                    case 105:
+                    case 104:
                         title_id = @"1060";
                 }
                 rootView.tittle_id = title_id;
@@ -178,7 +178,7 @@
     
     [UIView animateWithDuration:0.25 animations:^{
         
-        [shadowImageView setFrame:CGRectMake(button.frame.origin.x, 0, 49, 44)];
+        [shadowImageView setFrame:CGRectMake(button.frame.origin.x, 0, 60, 44)];
         
     } completion:^(BOOL finished) {
         if (finished) {
