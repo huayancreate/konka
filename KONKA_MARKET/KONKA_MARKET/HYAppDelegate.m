@@ -43,6 +43,27 @@
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:HomeImageApi]];
     
     [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
+    
+    
+    
+    [NSThread sleepForTimeInterval:7];
+    
+    NSLog(@"strUrl: %d", 1);
+    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
+    self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.rootViewController = self.navController;
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        [WZGuideViewController show];
+    }
+    else{
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+    }
+    NSLog(@"strUrl: %d", 2);
     // Override point for customization after application launch.
 
     //HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
@@ -219,25 +240,6 @@
     
     [self.window addSubview:defaultView];
     [self.window bringSubviewToFront:defaultView];
-    
-    [NSThread sleepForTimeInterval:7];
-    
-    NSLog(@"strUrl: %d", 1);
-    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
-    self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
-    
-    self.window.backgroundColor = [UIColor whiteColor];
-    self.window.rootViewController = self.navController;
-    
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        [WZGuideViewController show];
-    }
-    else{
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-    }
-    NSLog(@"strUrl: %d", 2);
 }
 
 @end
