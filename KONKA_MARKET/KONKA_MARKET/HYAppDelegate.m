@@ -14,6 +14,7 @@
 #import "DataProcessing.h"
 #import "SDImageView+SDWebCache.h"
 #import "HYConstants.h"
+#import "HYWelComeViewController.h"
 
 @implementation HYAppDelegate
 
@@ -49,60 +50,29 @@
 //    [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
     
     
-    NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:HomeImageApi]];
+    HYWelComeViewController *welCome = [[HYWelComeViewController alloc] initWithNibName:@"HYWelComeViewController" bundle:nil];
     
-    NSMutableURLRequest *request = [[NSMutableURLRequest alloc]initWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:10];
-    [request setHTTPMethod:@"POST"];//设置请求方式为POST，默认为GET
-    
-    NSString *str = @"method=getJson&type_id=1103";//设置参数
-    
-    NSData *data = [str dataUsingEncoding:NSUTF8StringEncoding];
-    [request setHTTPBody:data];
-    //第三步，连接服务器
-    
-    NSData *received = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    
-    NSString *str1 = [[NSString alloc]initWithData:received encoding:NSUTF8StringEncoding];
-    
-    NSLog(@"str1 %@",str1);
-    
-    JSONDecoder *decoder = [[JSONDecoder alloc] init];
-    
-    NSData *resdata = [str1 dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [decoder objectWithData:resdata];
-    NSDictionary *dic = [json objectAtIndex:0];
-    NSString *strUrl = [dic objectForKey:@"image_path"];
-    NSLog(@"strUrl: %@", strUrl);
-    NSURL *urlimg = [[NSURL alloc] initWithString:strUrl];
-    
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height)];
-    
-    [defaultView setImageWithURL:urlimg refreshCache:YES];
-    
-    [self.window addSubview:defaultView];
-    [self.window bringSubviewToFront:defaultView];
-    
-    
-    
-    [NSThread sleepForTimeInterval:7];
-    
-    NSLog(@"strUrl: %d", 1);
-    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
-    self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
-    
+    self.navController = [[UINavigationController alloc]initWithRootViewController:welCome];
     self.window.backgroundColor = [UIColor whiteColor];
     self.window.rootViewController = self.navController;
     
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
-        [WZGuideViewController show];
-    }
-    else{
-        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
-    }
-    NSLog(@"strUrl: %d", 2);
+    
+//    NSLog(@"strUrl: %d", 1);
+//    HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
+//    self.navController = [[UINavigationController alloc]initWithRootViewController:loginView];
+//    
+//    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.rootViewController = self.navController;
+//    
+//    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"everLaunched"]) {
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"everLaunched"];
+//        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+//        [WZGuideViewController show];
+//    }
+//    else{
+//        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
+//    }
+//    NSLog(@"strUrl: %d", 2);
     // Override point for customization after application launch.
 
     //HYLoginViewController *loginView = [[HYLoginViewController alloc]initWithNibName:@"HYLoginViewController" bundle:nil];
@@ -240,68 +210,4 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
-
-#pragma mark -
-#pragma mark DataProcesse
-- (void) requestFinished:(ASIHTTPRequest *)request
-{
-    NSString *responsestring = [request responseString];
-    //NSLog(@"responsestring:%@",responsestring);
-    [self performSelectorOnMainThread:@selector(endRequest:) withObject:responsestring waitUntilDone:YES];
-}
-
-- (void)requestFailed:(ASIHTTPRequest *)request
-{
-    NSString *responsestring = @"服务器连接失败";
-    [self performSelectorOnMainThread:@selector(endFailedRequest:) withObject:responsestring waitUntilDone:YES];
-}
-
--(void) endFailedRequest:(NSString *)msg
-{
-    NSLog(@"msg %@", msg);
-}
-
--(void) endRequest:(NSString *)msg
-{
-    JSONDecoder *decoder = [[JSONDecoder alloc] init];
-    
-    NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
-    NSArray *json = [decoder objectWithData:data];
-    NSDictionary *dic = [json objectAtIndex:0];
-    NSString *strUrl = [dic objectForKey:@"image_path"];
-    NSLog(@"strUrl: %@", strUrl);
-    NSURL *url = [[NSURL alloc] initWithString:strUrl];
-    
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height-120)];
-    [defaultView setImageWithURL:url];
-    UIView *_view = [[UIView alloc] initWithFrame:CGRectMake(0, 360, screenBounds.size.width, 250)];
-    _view.backgroundColor = [UIColor whiteColor];
-    
-    versionView  = [[UIImageView alloc]initWithFrame:CGRectMake(65,400, 189, 24)];
-    [versionView setImage:[UIImage imageNamed:@"loginlogo"]];
-    
-    lblTips = [[UILabel alloc] initWithFrame:CGRectMake(65, 425, 230, 24)];
-    lblTips.text = @"渠道管理信息系统@多媒体渠道管理部";
-    lblTips.font =  [UIFont fontWithName:@"Helvetica" size:11];
-    lblTips.textColor = [UIColor blackColor];
-    
-    lblVersion = [[UILabel alloc] initWithFrame:CGRectMake(200,460, 230, 24)];
-    lblVersion.font =  [UIFont fontWithName:@"Helvetica" size:9];
-    lblVersion.text = DevVersion;
-    lblVersion.textColor = [UIColor blackColor];
-    
-    
-    [self.window addSubview:defaultView];
-    [self.window addSubview:_view];
-    [self.window addSubview:versionView];
-    [self.window addSubview:lblTips];
-    [self.window addSubview:lblVersion];
-    [self.window bringSubviewToFront:defaultView];
-    [self.window bringSubviewToFront:_view];
-    [self.window bringSubviewToFront:versionView];
-    [self.window bringSubviewToFront:lblTips];
-    [self.window bringSubviewToFront:lblVersion];
-}
-
 @end

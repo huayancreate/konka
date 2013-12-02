@@ -185,7 +185,9 @@
     }
     
     if([cell.textLabel.text isEqualToString:@"重新登录"]){
-        [self.navigationController popToRootViewControllerAnimated:YES]; 
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+        [self.navigationController popToViewController: [self.navigationController.viewControllers objectAtIndex: (1)] animated:YES];
+        NSLog(@"self.navigationController.viewControllers count %d" , [self.navigationController.viewControllers count]);
     }
     
     if([cell.textLabel.text isEqualToString:@"新手指南"]){

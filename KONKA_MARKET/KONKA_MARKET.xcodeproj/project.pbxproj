@@ -399,6 +399,8 @@
 		4F15344D17D2FB7100B63710 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F15344717D2FB7100B63710 /* Harpy.m */; };
 		4F15345017D2FB7100B63710 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F15344B17D2FB7100B63710 /* README.md */; };
 		4FC8D92A17D58EA1007ED137 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FC8D92917D58EA1007ED137 /* Default.png */; };
+		4FD93769184C36FA00513462 /* HYWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD93767184C36FA00513462 /* HYWelComeViewController.m */; };
+		4FD9376A184C36FA00513462 /* HYWelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD93768184C36FA00513462 /* HYWelComeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -999,6 +1001,9 @@
 		4F15344817D2FB7100B63710 /* HarpyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HarpyConstants.h; sourceTree = "<group>"; };
 		4F15344B17D2FB7100B63710 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		4FC8D92917D58EA1007ED137 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4FD93766184C36FA00513462 /* HYWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWelComeViewController.h; sourceTree = "<group>"; };
+		4FD93767184C36FA00513462 /* HYWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWelComeViewController.m; sourceTree = "<group>"; };
+		4FD93768184C36FA00513462 /* HYWelComeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWelComeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2176,6 +2181,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4FD93765184C36BF00513462 /* WelcomeView */,
 				18FEF1E01835C73E00AB9879 /* SyntheticalView */,
 				18FEF1D81834AE2F00AB9879 /* MobileHistoryView */,
 				18FEF1C81834676C00AB9879 /* MobileDataSubmitView */,
@@ -2454,6 +2460,16 @@
 			path = Harpy;
 			sourceTree = "<group>";
 		};
+		4FD93765184C36BF00513462 /* WelcomeView */ = {
+			isa = PBXGroup;
+			children = (
+				4FD93766184C36FA00513462 /* HYWelComeViewController.h */,
+				4FD93767184C36FA00513462 /* HYWelComeViewController.m */,
+				4FD93768184C36FA00513462 /* HYWelComeViewController.xib */,
+			);
+			path = WelcomeView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -2671,6 +2687,7 @@
 				28DA272C17BB1CD600DDA062 /* 当前圆点.png in Resources */,
 				28DA272D17BB1CD600DDA062 /* 演示.jpg in Resources */,
 				28DA272E17BB1CD600DDA062 /* 电商平台.png in Resources */,
+				4FD9376A184C36FA00513462 /* HYWelComeViewController.xib in Resources */,
 				28DA272F17BB1CD600DDA062 /* 系统设置.png in Resources */,
 				28DA273017BB1CD600DDA062 /* 行政办公.png in Resources */,
 				28DA273117BB1CD600DDA062 /* 订单系统.png in Resources */,
@@ -2865,6 +2882,7 @@
 				189F0C1C17B22D9800C8B394 /* TopScrollView.m in Sources */,
 				189F0C2A17B23E4900C8B394 /* HYOARetailViewController.m in Sources */,
 				1830B1BE17B33A5000920F8E /* WZGuideViewController.m in Sources */,
+				4FD93769184C36FA00513462 /* HYWelComeViewController.m in Sources */,
 				282B2E3117B3EB37007CD13F /* HYWebBaseViewController.m in Sources */,
 				28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */,
 				28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */,
