@@ -64,18 +64,21 @@
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     defaultView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, screenBounds.size.width, screenBounds.size.height-120)];
     [defaultView setImageWithURL:url];
-    UIView *_view = [[UIView alloc] initWithFrame:CGRectMake(0, 360, screenBounds.size.width, 250)];
+    
+    
+    //添加logo
+    UIView *_view = [[UIView alloc] initWithFrame:CGRectMake(0, screenBounds.size.height - 120, screenBounds.size.width, 120)];
     _view.backgroundColor = [UIColor whiteColor];
     
-    versionView  = [[UIImageView alloc]initWithFrame:CGRectMake(65,400, 189, 24)];
+    versionView  = [[UIImageView alloc]initWithFrame:CGRectMake(65,screenBounds.size.height - 80, 189, 24)];
     [versionView setImage:[UIImage imageNamed:@"loginlogo"]];
     
-    lblTips = [[UILabel alloc] initWithFrame:CGRectMake(65, 425, 230, 24)];
+    lblTips = [[UILabel alloc] initWithFrame:CGRectMake(65, screenBounds.size.height - 55, 230, 24)];
     lblTips.text = @"渠道管理信息系统@多媒体渠道管理部";
     lblTips.font =  [UIFont fontWithName:@"Helvetica" size:11];
     lblTips.textColor = [UIColor blackColor];
     
-    lblVersion = [[UILabel alloc] initWithFrame:CGRectMake(200,460, 230, 24)];
+    lblVersion = [[UILabel alloc] initWithFrame:CGRectMake(190, screenBounds.size.height - 20, 230, 24)];
     lblVersion.font =  [UIFont fontWithName:@"Helvetica" size:9];
     lblVersion.text = DevVersion;
     lblVersion.textColor = [UIColor blackColor];
