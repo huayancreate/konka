@@ -60,4 +60,8 @@
 
 #define SyntheticalApi @"/webservice/KonkaR3JsBackMoneySail.do" //综合数据分析
 
+#define RetailDetailsApi @"/webservice/KonkaMobileSailDataJson.do" //零售汇总
+
+#define InvoicApi @"/webservice/KonkaMobileSailDataSearchToMob.do" //进销存
+
 

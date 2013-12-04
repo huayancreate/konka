@@ -11,6 +11,8 @@
 #import "HYDecisionManagerViewController.h"
 #import "HYDecisionSalesViewController.h"
 #import "HYSyntheticalViewController.h"
+#import "HYRetailDetailsViewController.h"
+#import "HYDecisionInvoicViewController.h"
 
 @interface HYDecisionRetailViewController ()
 
@@ -58,7 +60,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -82,6 +84,14 @@
             cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:3];
             return cell;
             break;
+        case 4:
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:4];
+            return cell;
+            break;
+        case 5:
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:5];
+            return cell;
+            break;
 
     }
     return cell;
@@ -102,6 +112,8 @@
     HYDecisionManagerViewController *managerSubmit = nil;
     HYDecisionSalesViewController *salesSubmit = nil;
     HYSyntheticalViewController *syntheticalSubmit = nil;
+    HYRetailDetailsViewController *retailSumbit = nil;
+    HYDecisionInvoicViewController *invoicSubmit = nil;
     switch (indexPath.row) {
         case 0:
             syntheticalSubmit = [[HYSyntheticalViewController alloc] init];
@@ -126,6 +138,18 @@
             managerSubmit.userLogin = self.userLogin;
             managerSubmit.title = @"任务完成情况-经办";
             [self.navigationController pushViewController:managerSubmit animated:YES];
+            break;
+        case 4:
+            invoicSubmit = [[HYDecisionInvoicViewController alloc] init];
+            invoicSubmit.userLogin = self.userLogin;
+            invoicSubmit.title = @"进销存分析";
+            [self.navigationController pushViewController:invoicSubmit animated:YES];
+            break;
+        case 5:
+            retailSumbit = [[HYRetailDetailsViewController alloc] init];
+            retailSumbit.userLogin = self.userLogin;
+            retailSumbit.title = @"零售明细查询";
+            [self.navigationController pushViewController:retailSumbit animated:YES];
             break;
     }
     

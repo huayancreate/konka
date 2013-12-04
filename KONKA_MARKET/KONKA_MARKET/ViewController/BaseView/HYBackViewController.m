@@ -77,17 +77,17 @@
     NSLog(@"detailRequest: %@", self.detailRequest.URL.absoluteString);
     [self.uiWebView goBack];
     
-    if([self.detailRequest.URL.absoluteString isEqualToString:self.didRequest.URL.absoluteString] ||
-       [self.detailRequest.URL.absoluteString isEqualToString:@"about:blank"]){
-        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
-    }else{
+    if(![self.detailRequest.URL.absoluteString isEqualToString:self.didRequest.URL.absoluteString]){
         NSString *return_url = @"__return_url";
         NSRange foundObj=[self.didRequest.URL.absoluteString rangeOfString:return_url options:NSCaseInsensitiveSearch];
         if(foundObj.length>0) {
             NSArray *firstSplit = [self.didRequest.URL.absoluteString componentsSeparatedByString:@"&"];
             NSString *_return_url = [[firstSplit objectAtIndex:3] stringByReplacingOccurrencesOfString:@"__return_url=" withString:@""];
-            NSString *request = [self encodeURL: self.detailRequest.URL.absoluteString];
             
+            NSString *request = [self encodeURL: self.detailRequest.URL.absoluteString];
+            if([self.detailRequest.URL.absoluteString isEqualToString:@"about:blank"]){
+                [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
+            }
             if([_return_url isEqualToString: request]){
                 [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
             }
@@ -96,8 +96,10 @@
         {
             [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
         }
-        
+    }else{
+        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
     }
+
 }
 
 @end

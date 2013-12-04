@@ -1,21 +1,22 @@
 //
-//  HYOrderVerifyListViewController.m
+//  HYDecisionInvoicViewController.m
 //  KONKA_MARKET
 //
-//  Created by andychen on 13-8-28.
+//  Created by andychen on 13-12-4.
 //  Copyright (c) 2013年 archon. All rights reserved.
 //
 
-#import "HYOrderVerifyListViewController.h"
+#import "HYDecisionInvoicViewController.h"
 
-@interface HYOrderVerifyListViewController ()
+@interface HYDecisionInvoicViewController ()
 {
     NSMutableURLRequest *request;
 }
 
+
 @end
 
-@implementation HYOrderVerifyListViewController
+@implementation HYDecisionInvoicViewController
 @synthesize didRequest;
 @synthesize detailRequest;
 @synthesize backView;
@@ -33,6 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     self.uiWebView.delegate = self;
     self.uiWebView.scrollView.delegate = self;
@@ -45,14 +47,8 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     NSLog(@"username %@",self.userLogin.user_name);
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?user_name=%@&password=%@&user_id=%@",BaseURL,InvoicApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,self.userLogin.user_id];
     
-    //NSString *username = [self.userLogin.user_name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    
-//    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseVipURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://vip.konka.com/customer/manager/JxcKonkaOrderRegister.do?method=listInMobile"]];
-//    
-//    NSURL *url = [[NSURL alloc] initWithString:urlStr];
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?method=loginOnGet&__username=%@&__password=%@&__return_url=%@", BaseURL, LoginOnGetApi,[self encodeURL:self.userLogin.user_name],self.userLogin.password,[self encodeURL:@"http://qdgl.konka.com/KonkaOrderAudit.do?method=list"]];
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
     request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -84,8 +80,6 @@
     _reloading = YES;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    detailRequest = (NSMutableURLRequest *)webView.request;
-    NSLog(@"detailrequest 12312 %@",detailRequest.URL.absoluteString);
     _reloading = NO;
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.uiWebView.scrollView];
 }
@@ -134,8 +128,8 @@
     NSLog(@"test");
     NSLog(@"获取请求的request: %@", didRequest);
     NSLog(@"test end");
-    //request = (NSMutableURLRequest *)_request;
-    //detailRequest = (NSMutableURLRequest *)_request;
+    request = (NSMutableURLRequest *)_request;
+    detailRequest = (NSMutableURLRequest *)_request;
     [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
     return YES;
 }

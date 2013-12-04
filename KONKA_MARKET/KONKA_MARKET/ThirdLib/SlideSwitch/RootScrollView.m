@@ -82,11 +82,12 @@
 -(void)loadNewsPlat
 {
     [SVProgressHUD showWithStatus:@"数据获取中..." maskType:SVProgressHUDMaskTypeGradient];
-    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userlogin.user_name,@"username",self.userlogin.password,@"password",@"getJson",@"method",@"1",@"type",@"1",@"pager.requestPage",@"40",@"pager.pageSize",tittle_id,@"article_type_id",nil];
+    NSDictionary *params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userlogin.user_name,@"username",self.userlogin.password,@"userpass",@"getJson",@"method",@"1",@"type",@"1",@"pager.requestPage",@"40",@"pager.pageSize",tittle_id,@"article_type_id",nil];
     
     NSLog(@"%@,,,,,",[HYAppUtily stringOutputForDictionary:params]);
     
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:ArticleInfoInterfaceApi]];
+    NSLog(@"url %@",url.absoluteString);
     
     [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
 }

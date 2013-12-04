@@ -45,6 +45,14 @@
 		183CE90617C308440041462B /* HYCustomR3TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90517C308440041462B /* HYCustomR3TableViewCell.xib */; };
 		183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 183CE90917C30B860041462B /* HYCustomR3ViewController.m */; };
 		183CE90C17C30B860041462B /* HYCustomR3ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */; };
+		184E7795184EF2E600AE03E0 /* HYRetailSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184E7793184EF2E600AE03E0 /* HYRetailSearchViewController.m */; };
+		184E7796184EF2E600AE03E0 /* HYRetailSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E7794184EF2E600AE03E0 /* HYRetailSearchViewController.xib */; };
+		184E779A184EF3D200AE03E0 /* HYRetailDetailsContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184E7798184EF3D200AE03E0 /* HYRetailDetailsContentViewController.m */; };
+		184E779B184EF3D200AE03E0 /* HYRetailDetailsContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E7799184EF3D200AE03E0 /* HYRetailDetailsContentViewController.xib */; };
+		184E779F184EF3F000AE03E0 /* HYRetailDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 184E779D184EF3F000AE03E0 /* HYRetailDetailsViewController.m */; };
+		184E77A0184EF3F000AE03E0 /* HYRetailDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E779E184EF3F000AE03E0 /* HYRetailDetailsViewController.xib */; };
+		184E77A2184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E77A1184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib */; };
+		184E77A4184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E77A3184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib */; };
 		1870193917D463B30020DC25 /* 下发文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870193517D463B30020DC25 /* 下发文件.png */; };
 		1870193A17D463B30020DC25 /* 已审文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870193617D463B30020DC25 /* 已审文件.png */; };
 		1870193B17D463B30020DC25 /* 待审文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870193717D463B30020DC25 /* 待审文件.png */; };
@@ -152,6 +160,8 @@
 		18BB2C9F17BDBF820096ADBB /* HYCustomRetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */; };
 		18BB2CA117BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */; };
 		18BB2CA317BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18BB2CA217BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib */; };
+		18C4E237184F0FFD00CA5347 /* HYDecisionInvoicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4E235184F0FFD00CA5347 /* HYDecisionInvoicViewController.m */; };
+		18C4E238184F0FFD00CA5347 /* HYDecisionInvoicViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C4E236184F0FFD00CA5347 /* HYDecisionInvoicViewController.xib */; };
 		18E3DF7117A25ECA00C9FF02 /* left_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */; };
 		18E3DF7217A25ECA00C9FF02 /* left_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */; };
 		18E3DF7317A25ECA00C9FF02 /* right_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */; };
@@ -447,6 +457,17 @@
 		183CE90817C30B860041462B /* HYCustomR3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYCustomR3ViewController.h; sourceTree = "<group>"; };
 		183CE90917C30B860041462B /* HYCustomR3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYCustomR3ViewController.m; sourceTree = "<group>"; };
 		183CE90A17C30B860041462B /* HYCustomR3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomR3ViewController.xib; sourceTree = "<group>"; };
+		184E7792184EF2E600AE03E0 /* HYRetailSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRetailSearchViewController.h; sourceTree = "<group>"; };
+		184E7793184EF2E600AE03E0 /* HYRetailSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRetailSearchViewController.m; sourceTree = "<group>"; };
+		184E7794184EF2E600AE03E0 /* HYRetailSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailSearchViewController.xib; sourceTree = "<group>"; };
+		184E7797184EF3D200AE03E0 /* HYRetailDetailsContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRetailDetailsContentViewController.h; sourceTree = "<group>"; };
+		184E7798184EF3D200AE03E0 /* HYRetailDetailsContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRetailDetailsContentViewController.m; sourceTree = "<group>"; };
+		184E7799184EF3D200AE03E0 /* HYRetailDetailsContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsContentViewController.xib; sourceTree = "<group>"; };
+		184E779C184EF3F000AE03E0 /* HYRetailDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYRetailDetailsViewController.h; sourceTree = "<group>"; };
+		184E779D184EF3F000AE03E0 /* HYRetailDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYRetailDetailsViewController.m; sourceTree = "<group>"; };
+		184E779E184EF3F000AE03E0 /* HYRetailDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsViewController.xib; sourceTree = "<group>"; };
+		184E77A1184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		184E77A3184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsContentTableViewCell.xib; sourceTree = "<group>"; };
 		1870193517D463B30020DC25 /* 下发文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下发文件.png"; sourceTree = "<group>"; };
 		1870193617D463B30020DC25 /* 已审文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已审文件.png"; sourceTree = "<group>"; };
 		1870193717D463B30020DC25 /* 待审文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待审文件.png"; sourceTree = "<group>"; };
@@ -569,6 +590,9 @@
 		18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomRetailViewController.xib; sourceTree = "<group>"; };
 		18BB2CA017BDC04C0096ADBB /* HYCustomRetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomRetailTableViewCell.xib; sourceTree = "<group>"; };
 		18BB2CA217BE02C20096ADBB /* HYCustomManageDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYCustomManageDetailTableViewCell.xib; sourceTree = "<group>"; };
+		18C4E234184F0FFD00CA5347 /* HYDecisionInvoicViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYDecisionInvoicViewController.h; sourceTree = "<group>"; };
+		18C4E235184F0FFD00CA5347 /* HYDecisionInvoicViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDecisionInvoicViewController.m; sourceTree = "<group>"; };
+		18C4E236184F0FFD00CA5347 /* HYDecisionInvoicViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYDecisionInvoicViewController.xib; sourceTree = "<group>"; };
 		18E3DF6D17A25ECA00C9FF02 /* left_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow.png; sourceTree = "<group>"; };
 		18E3DF6E17A25ECA00C9FF02 /* left_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "left_arrow@2x.png"; sourceTree = "<group>"; };
 		18E3DF6F17A25ECA00C9FF02 /* right_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = right_arrow.png; sourceTree = "<group>"; };
@@ -1039,6 +1063,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		180DE32C184C906C003E5F65 /* RetailDetailsContentView */ = {
+			isa = PBXGroup;
+			children = (
+				184E7797184EF3D200AE03E0 /* HYRetailDetailsContentViewController.h */,
+				184E7798184EF3D200AE03E0 /* HYRetailDetailsContentViewController.m */,
+				184E7799184EF3D200AE03E0 /* HYRetailDetailsContentViewController.xib */,
+			);
+			path = RetailDetailsContentView;
+			sourceTree = "<group>";
+		};
 		181913A017C4B9F1007A184F /* CustomDetailView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1091,6 +1125,16 @@
 				1830B1CF17B33B5700920F8E /* checkBox_selectCheck@2x.png */,
 			);
 			path = Image;
+			sourceTree = "<group>";
+		};
+		18368E28184C5CC900715661 /* RetailDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				184E779C184EF3F000AE03E0 /* HYRetailDetailsViewController.h */,
+				184E779D184EF3F000AE03E0 /* HYRetailDetailsViewController.m */,
+				184E779E184EF3F000AE03E0 /* HYRetailDetailsViewController.xib */,
+			);
+			path = RetailDetailsView;
 			sourceTree = "<group>";
 		};
 		183BFE0217EE94930064DDFA /* DecisionCompleteView */ = {
@@ -1178,6 +1222,16 @@
 				1877606B17F033F900EF3257 /* HYDecisionSalesViewController.xib */,
 			);
 			path = DecisionSalesView;
+			sourceTree = "<group>";
+		};
+		187F75CE184DC75F007AF7B9 /* RetailSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				184E7792184EF2E600AE03E0 /* HYRetailSearchViewController.h */,
+				184E7793184EF2E600AE03E0 /* HYRetailSearchViewController.m */,
+				184E7794184EF2E600AE03E0 /* HYRetailSearchViewController.xib */,
+			);
+			path = RetailSearchView;
 			sourceTree = "<group>";
 		};
 		189A6C7917CF440500E0A948 /* WageView */ = {
@@ -1388,6 +1442,16 @@
 				18BB2C9D17BDBF820096ADBB /* HYCustomRetailViewController.xib */,
 			);
 			path = CustomRetailView;
+			sourceTree = "<group>";
+		};
+		18C4E233184F0FE300CA5347 /* DecisionInvoicView */ = {
+			isa = PBXGroup;
+			children = (
+				18C4E234184F0FFD00CA5347 /* HYDecisionInvoicViewController.h */,
+				18C4E235184F0FFD00CA5347 /* HYDecisionInvoicViewController.m */,
+				18C4E236184F0FFD00CA5347 /* HYDecisionInvoicViewController.xib */,
+			);
+			path = DecisionInvoicView;
 			sourceTree = "<group>";
 		};
 		18E3DF6C17A25ECA00C9FF02 /* calendar */ = {
@@ -2181,6 +2245,10 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				18C4E233184F0FE300CA5347 /* DecisionInvoicView */,
+				187F75CE184DC75F007AF7B9 /* RetailSearchView */,
+				180DE32C184C906C003E5F65 /* RetailDetailsContentView */,
+				18368E28184C5CC900715661 /* RetailDetailsView */,
 				4FD93765184C36BF00513462 /* WelcomeView */,
 				18FEF1E01835C73E00AB9879 /* SyntheticalView */,
 				18FEF1D81834AE2F00AB9879 /* MobileHistoryView */,
@@ -2380,6 +2448,8 @@
 				1877606617F01DDD00EF3257 /* HYDecisionManagerTableViewCell.xib */,
 				1877606E17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib */,
 				18FEF1DE1834B25500AB9879 /* HYMobileHistoryTableViewCell.xib */,
+				184E77A1184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib */,
+				184E77A3184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib */,
 			);
 			path = BaseViewXIB;
 			sourceTree = "<group>";
@@ -2698,6 +2768,7 @@
 				28DA274817BB218900DDA062 /* 促销管理@2x.png in Resources */,
 				28DA274917BB218900DDA062 /* 电商平台@2x.png in Resources */,
 				28DA274A17BB218900DDA062 /* 订单系统@2x.png in Resources */,
+				18C4E238184F0FFD00CA5347 /* HYDecisionInvoicViewController.xib in Resources */,
 				28DA274B17BB218900DDA062 /* 决策分析@2x.png in Resources */,
 				28DA274C17BB218900DDA062 /* 客户管理@2x.png in Resources */,
 				28DA274D17BB218900DDA062 /* 零售通@2x.png in Resources */,
@@ -2792,6 +2863,11 @@
 				1877607D17F04E6B00EF3257 /* sys_ico_date.png in Resources */,
 				1877607E17F04E6B00EF3257 /* sys_icon_key.png in Resources */,
 				1877607F17F04E6B00EF3257 /* sys_icon_user.png in Resources */,
+				184E7796184EF2E600AE03E0 /* HYRetailSearchViewController.xib in Resources */,
+				184E779B184EF3D200AE03E0 /* HYRetailDetailsContentViewController.xib in Resources */,
+				184E77A0184EF3F000AE03E0 /* HYRetailDetailsViewController.xib in Resources */,
+				184E77A2184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib in Resources */,
+				184E77A4184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2823,6 +2899,7 @@
 				28DAE5901783FECF00F12366 /* ASIHTTPRequest.m in Sources */,
 				28DAE5911783FECF00F12366 /* ASIInputStream.m in Sources */,
 				28DAE5921783FECF00F12366 /* ASINetworkQueue.m in Sources */,
+				18C4E237184F0FFD00CA5347 /* HYDecisionInvoicViewController.m in Sources */,
 				28DAE5931783FECF00F12366 /* Reachability.m in Sources */,
 				28DAE5941783FECF00F12366 /* DataProcessing.m in Sources */,
 				28DAE597178400A000F12366 /* HYAppUtily.m in Sources */,
@@ -2905,6 +2982,9 @@
 				183BFE0617EE94AA0064DDFA /* HYDecisionCompleteViewController.m in Sources */,
 				1877606417F01CEC00EF3257 /* HYDecisionManagerViewController.m in Sources */,
 				1877606C17F033F900EF3257 /* HYDecisionSalesViewController.m in Sources */,
+				184E7795184EF2E600AE03E0 /* HYRetailSearchViewController.m in Sources */,
+				184E779A184EF3D200AE03E0 /* HYRetailDetailsContentViewController.m in Sources */,
+				184E779F184EF3F000AE03E0 /* HYRetailDetailsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
