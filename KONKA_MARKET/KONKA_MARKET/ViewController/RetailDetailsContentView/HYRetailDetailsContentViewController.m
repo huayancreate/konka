@@ -7,6 +7,7 @@
 //
 
 #import "HYRetailDetailsContentViewController.h"
+#import "HYRetailSearchViewController.h"
 
 @interface HYRetailDetailsContentViewController ()
 
@@ -250,8 +251,11 @@
     return scaledImage;
 }
 
--(void)Back:(id)sender{
-    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3] animated:YES];
+-(void)search:(id)sender{
+    HYRetailSearchViewController *searchView = [[HYRetailSearchViewController alloc] init];
+    searchView.title = @"高级搜索";
+    searchView.userLogin = self.userLogin;
+    [self.navigationController pushViewController:searchView animated:YES];
 }
 
 @end
