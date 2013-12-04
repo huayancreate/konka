@@ -78,7 +78,7 @@
             break;
         case 2:
             self.btnSearch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            btnSearch.frame = CGRectMake(25, 1, 100, 24);
+            btnSearch.frame = CGRectMake(25, 1, 100, 26);
             [btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
             [btnSearch setTitle:@"查询" forState:UIControlStateNormal];
             [btnSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -86,7 +86,7 @@
             [cell addSubview:self.btnSearch];
             
             btnBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            btnBack.frame = CGRectMake(180, 1, 100, 24);
+            btnBack.frame = CGRectMake(180, 1, 100, 26);
             [btnBack setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
             [btnBack setTitle:@"返回" forState:UIControlStateNormal];
             [btnBack setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -99,7 +99,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 28;
+    return 35;
     //    if(tableView == self.uiTableView)
     //    {
     //        return 60;

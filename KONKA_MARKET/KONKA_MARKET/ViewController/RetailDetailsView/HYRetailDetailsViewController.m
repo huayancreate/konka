@@ -87,13 +87,13 @@
     [self.view addSubview:salesMoney];
     
     if(startTime.length <= 0 && endTime.length <= 0){
-        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(105, 8, 115, 25)];
+        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(105, 5, 115, 25)];
         [dateLabel setTitle:@"日期：当天" forState:UIControlStateNormal];
         startTime = [[super getNowDateYYYYMMDD] stringByAppendingString:@" 00:00:00"];
         endTime = [[super getNowDateYYYYMMDD] stringByAppendingString:@" 23:59:59"];
         
     }else{
-        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(36, 8, 250, 25)];
+        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, 250, 25)];
         NSString *content = [@"日期:" stringByAppendingString: startTime];
         content = [content stringByAppendingString:@"至"];
         content = [content stringByAppendingString:endTime];
