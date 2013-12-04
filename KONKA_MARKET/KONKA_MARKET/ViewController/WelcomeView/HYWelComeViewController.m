@@ -120,4 +120,15 @@
     [super viewWillAppear:animated];
 }
 
+-(void) endFailedRequest:(NSString *)msg
+{
+    [super errorMsg:@"网络有问题！请联系客服！"];
+    [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                     target:self
+                                   selector:@selector(delayMethod)
+                                   userInfo:nil
+                                    repeats:NO];
+    return;
+}
+
 @end
