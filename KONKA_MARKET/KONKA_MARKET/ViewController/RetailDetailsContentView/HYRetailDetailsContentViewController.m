@@ -250,4 +250,8 @@
     return scaledImage;
 }
 
+-(void)Back:(id)sender{
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:3] animated:YES];
+}
+
 @end
