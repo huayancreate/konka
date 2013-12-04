@@ -36,8 +36,20 @@
     [super viewDidLoad];
     
     // Do any additional setup after loading the view from its nib.
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    self.uiWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, screenBounds.size.height, screenBounds.size.width)];
     self.uiWebView.delegate = self;
     self.uiWebView.scrollView.delegate = self;
+
+    [super viewWillAppear:true];
+    CGFloat duration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:duration];
+    self.navigationController.view.transform = CGAffineTransformIdentity;
+    self.navigationController.view.transform = CGAffineTransformMakeRotation(M_PI*(90)/180.0);
+    self.navigationController.view.bounds = CGRectMake(0, 0, screenBounds.size.height, screenBounds.size.width);
+    [UIView commitAnimations];
+    [[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationLandscapeRight animated:YES];
     
     //初始化refreshView，添加到webview 的 scrollView子视图中
     if (_refreshHeaderView == nil) {
@@ -57,6 +69,8 @@
     NSLog(@"request url %@", urlStr);
     [self loadPage];
     [SVProgressHUD dismiss];
+    
+    [self.view addSubview:self.uiWebView];
     
     backView = [[HYBackViewController alloc] init];
 }

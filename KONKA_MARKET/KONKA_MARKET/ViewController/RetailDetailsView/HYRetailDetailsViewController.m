@@ -66,7 +66,7 @@
     self.navigationItem.leftBarButtonItem  = leftButton;
     
     UIView *tempView = [[UIView alloc] init];
-    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,30, 320, [super screenHeight]-140) style:UITableViewStyleGrouped];
+    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0,65, 320, [super screenHeight]-140) style:UITableViewStyleGrouped];
     uiTableView.scrollEnabled = YES;
     uiTableView.delegate = self;
     uiTableView.dataSource = self;
@@ -74,26 +74,26 @@
     [self.view addSubview:uiTableView];
     
     
-    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 15, 145, 40)];
+    salesNum = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 145, 40)];
     salesNum.text = @"销售数量台:0";
     salesNum.font = [UIFont boldSystemFontOfSize:12];
     salesNum.backgroundColor = [UIColor clearColor];
     [self.view addSubview:salesNum];
     
-    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(150, 15, 160, 40)];
+    salesMoney = [[UILabel alloc] initWithFrame:CGRectMake(150, 25, 160, 40)];
     salesMoney.text = @"销售金额元:0";
     salesMoney.font = [UIFont boldSystemFontOfSize:12];
     salesMoney.backgroundColor = [UIColor clearColor];
     [self.view addSubview:salesMoney];
     
     if(startTime.length <= 0 && endTime.length <= 0){
-        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(105, 5, 111, 19)];
+        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(105, 8, 115, 25)];
         [dateLabel setTitle:@"日期：当天" forState:UIControlStateNormal];
         startTime = [[super getNowDateYYYYMMDD] stringByAppendingString:@" 00:00:00"];
         endTime = [[super getNowDateYYYYMMDD] stringByAppendingString:@" 23:59:59"];
         
     }else{
-        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(36, 5, 250, 19)];
+        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(36, 8, 250, 25)];
         NSString *content = [@"日期:" stringByAppendingString: startTime];
         content = [content stringByAppendingString:@"至"];
         content = [content stringByAppendingString:endTime];
@@ -103,7 +103,7 @@
     }
     [dateLabel setBackgroundColor:[UIColor clearColor]];
     [dateLabel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [dateLabel setFont:[UIFont fontWithName:@"Helvetica" size:10]];
+    [dateLabel setFont:[UIFont fontWithName:@"Helvetica" size:12]];
     [self.view addSubview:dateLabel];
     
     [dateLabel addTarget:self action:@selector(search:)
@@ -160,8 +160,8 @@
     HYRetailDetailsContentViewController *contentView = [[HYRetailDetailsContentViewController alloc] init];
     contentView.title = @"零售明细";
     contentView.userLogin = self.userLogin;
-//    contentView.startTime = startTime;
-//    contentView.endTime = endTime;
+    contentView.startTime = startTime;
+    contentView.endTime = endTime;
     [self.navigationController pushViewController:contentView animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];

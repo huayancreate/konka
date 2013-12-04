@@ -78,16 +78,18 @@
             break;
         case 2:
             self.btnSearch = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            btnSearch.frame = CGRectMake(60, 1, 80, 24);
+            btnSearch.frame = CGRectMake(25, 1, 100, 24);
             [btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
             [btnSearch setTitle:@"查询" forState:UIControlStateNormal];
+            [btnSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btnSearch addTarget:self action:@selector(Search:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:self.btnSearch];
             
             btnBack = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            btnBack.frame = CGRectMake(160, 1, 80, 24);
+            btnBack.frame = CGRectMake(180, 1, 100, 24);
             [btnBack setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
             [btnBack setTitle:@"返回" forState:UIControlStateNormal];
+            [btnBack setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [btnBack addTarget:self action:@selector(Back:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:self.btnBack];
             break;
@@ -113,7 +115,7 @@
     //    //self.userLogin.dataSubmit = resultList;
     //    [self.navigationController pushViewController:contentView animated:YES];
     //
-    //    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 -(void)loadRetail

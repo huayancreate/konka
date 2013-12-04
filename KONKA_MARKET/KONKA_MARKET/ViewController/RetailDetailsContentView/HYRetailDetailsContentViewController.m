@@ -41,7 +41,7 @@
     
     self.resultList = [[NSMutableArray alloc] init];
     UIView *tempView = [[UIView alloc] init];
-    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, [super screenHeight]-60) style:UITableViewStyleGrouped];
+    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, [super screenHeight]-60) style:UITableViewStyleGrouped];
     uiTableView.scrollEnabled = YES;
     uiTableView.delegate = self;
     uiTableView.dataSource = self;
@@ -50,12 +50,12 @@
     
     
     if(startTime.length <= 0 && endTime.length <= 0){
-        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(105, 5, 111, 19)];
+        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(105, 8, 111, 25)];
         [dateLabel setTitle:@"日期：当天" forState:UIControlStateNormal];
         startTime = [[super getNowDateYYYYMMDD] stringByAppendingString:@" 00:00:00"];
         
     }else{
-        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(40, 5, 250, 19)];
+        dateLabel = [[UIButton alloc] initWithFrame:CGRectMake(40, 8, 250, 25)];
         NSString *content = [@"日期:" stringByAppendingString:startTime];
         content = [content stringByAppendingString:@"至"];
         content = [content stringByAppendingString:endTime];
@@ -65,7 +65,7 @@
     }
     [dateLabel setBackgroundColor:[UIColor clearColor]];
     [dateLabel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [dateLabel setFont:[UIFont fontWithName:@"Helvetica" size:10]];
+    [dateLabel setFont:[UIFont fontWithName:@"Helvetica" size:12]];
     [self.view addSubview:dateLabel];
     
     [dateLabel addTarget:self action:@selector(search:)
