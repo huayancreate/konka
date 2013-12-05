@@ -82,6 +82,7 @@
     _reloading = YES;
 }
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    detailRequest = (NSMutableURLRequest *)webView.request;
     _reloading = NO;
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.uiWebView.scrollView];
 }
@@ -130,8 +131,8 @@
     NSLog(@"test");
     NSLog(@"获取请求的request: %@", didRequest);
     NSLog(@"test end");
-    request = (NSMutableURLRequest *)_request;
-    detailRequest = (NSMutableURLRequest *)_request;
+    //request = (NSMutableURLRequest *)_request;
+    //detailRequest = (NSMutableURLRequest *)_request;
     [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
     return YES;
 }
