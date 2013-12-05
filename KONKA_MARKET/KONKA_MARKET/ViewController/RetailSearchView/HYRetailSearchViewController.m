@@ -81,7 +81,7 @@
             btnSearch.frame = CGRectMake(25, 1, 100, 26);
             [btnSearch setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
             [btnSearch setTitle:@"查询" forState:UIControlStateNormal];
-            [btnSearch setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btnSearch setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [btnSearch addTarget:self action:@selector(Search:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:self.btnSearch];
             
@@ -89,11 +89,12 @@
             btnBack.frame = CGRectMake(180, 1, 100, 26);
             [btnBack setBackgroundImage:[UIImage imageNamed:@"sales_reg_foot"] forState:UIControlStateNormal];
             [btnBack setTitle:@"返回" forState:UIControlStateNormal];
-            [btnBack setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+            [btnBack setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
             [btnBack addTarget:self action:@selector(Back:) forControlEvents:UIControlEventTouchUpInside];
             [cell addSubview:self.btnBack];
             break;
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 

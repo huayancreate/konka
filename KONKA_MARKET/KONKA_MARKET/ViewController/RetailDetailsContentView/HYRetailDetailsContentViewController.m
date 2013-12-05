@@ -57,13 +57,13 @@
     UIView *tempView = [[UIView alloc] init];
     UIView *tempView1 = [[UIView alloc] init];
     
-    heardTableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, 75)
+    heardTableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, 55)
                                                 style:UITableViewStyleGrouped];
     heardTableView.delegate = self;
     heardTableView.dataSource = self;
     heardTableView.scrollEnabled = NO;
     
-    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 155, 320, [super screenHeight]-80)
+    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 72, 320, [super screenHeight]-80)
                                                style:UITableViewStyleGrouped];
     uiTableView.scrollEnabled = YES;
     uiTableView.delegate = self;
