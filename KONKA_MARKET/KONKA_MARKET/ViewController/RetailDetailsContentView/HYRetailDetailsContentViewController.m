@@ -23,6 +23,9 @@
 @synthesize endTime;
 @synthesize startTime;
 @synthesize dateLabel;
+@synthesize store_id;
+@synthesize heardTableView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,14 +43,34 @@
                  forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
     
+    UIImage *backButtonImage = [UIImage imageNamed:@"btn_search"];
+    CGRect frameimg = CGRectMake(0, 0, 32, 24);
+    UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
+    [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
+    [someButton addTarget:self action:@selector(search:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [someButton setShowsTouchWhenHighlighted:YES];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
+    self.navigationItem.rightBarButtonItem  = rightButton;
+    
     self.resultList = [[NSMutableArray alloc] init];
     UIView *tempView = [[UIView alloc] init];
-    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, [super screenHeight]-60) style:UITableViewStyleGrouped];
+    
+    heardTableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 120)
+                                                style:UITableViewStyleGrouped];
+    heardTableView.delegate = self;
+    heardTableView.dataSource = self;
+    
+    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, 320, [super screenHeight]-80)
+                                               style:UITableViewStyleGrouped];
     uiTableView.scrollEnabled = YES;
     uiTableView.delegate = self;
     uiTableView.dataSource = self;
+    
     [uiTableView setBackgroundView:tempView];
+    //[heardTableView setBackgroundView:tempView];
     [self.view addSubview:uiTableView];
+    [self.view addSubview:heardTableView];
     
     
     if(startTime.length <= 0 && endTime.length <= 0){
@@ -100,23 +123,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
+   
+    if(tableView == self.heardTableView)
+    {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        //cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYRetailDetailsContentTableViewCell" tableView:tableView index:0];
+        NSArray *nib=[[NSBundle mainBundle]loadNibNamed:@"HYRetailDetailsContentTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+        
+        //[tableView insertRowsAtIndexPaths:0 withRowAnimation:UITableViewRowAnimationNone];
+        return cell;
+    }
     if(tableView == self.uiTableView)
     {
-        switch (indexPath.row) {
-            case 0:
-                cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYRetailDetailsContentTableViewCell" tableView:tableView index:0];
-                return cell;
-                break;
-            default:
-                cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYRetailDetailsContentTableViewCell" tableView:tableView index:1];
-                NSDictionary *dic = [self.resultList objectAtIndex:(indexPath.row - 1)];
-                NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
-                self.lblModelName.text = [dic objectForKey:@"md_name"];
-                self.lblSaleMoney.text = [formatter stringFromNumber: [dic objectForKey:@"sail_price"]];
-                self.lblSaleCount.text = [formatter stringFromNumber: [dic objectForKey:@"sail_num"]];
-                return cell;
-                break;
-        }
+        NSDictionary *dic = [self.resultList objectAtIndex:indexPath.row];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+        cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYRetailDetailsContentTableViewCell" tableView:tableView index:1];
+        NSLog(@"indexPath.row %d",indexPath.row);
+        
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        self.lblModelName.text = [dic objectForKey:@"md_name"];
+        self.lblSaleMoney.text = [formatter stringFromNumber: [dic objectForKey:@"sail_price"]];
+        self.lblSaleCount.text = [formatter stringFromNumber: [dic objectForKey:@"sail_num"]];
         return cell;
     }
     return cell;
@@ -145,7 +173,7 @@
     //    NSString *firstDay = [super getFirstDayFromMoth:date];
     //    NSString *lastDay = [super getLastDayFromMoth:date];
     [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
-    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"user_name",self.userLogin.user_id, @"user_id",self.userLogin.password,@"userpass", @"1", @"pager.requestPage", @"10000", @"pager.pageSize", @"2", @"type_value",@"11385",@"store_id",startTime,@"startime",endTime,@"endtime",nil];
+    NSDictionary *param = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name, @"user_name",self.userLogin.user_id, @"user_id",self.userLogin.password,@"userpass", @"1", @"pager.requestPage", @"10000", @"pager.pageSize", @"2", @"type_value",store_id,@"store_id",startTime,@"startime",endTime,@"endtime",nil];
     
     NSLog(@"username %@",self.userLogin.user_name);
     NSLog(@"userpass %@",self.userLogin.password);
@@ -181,6 +209,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    if(tableView == self.heardTableView){
+        return 1;
+    }
     return [resultList count];
     //return [self.modelList count];
 }

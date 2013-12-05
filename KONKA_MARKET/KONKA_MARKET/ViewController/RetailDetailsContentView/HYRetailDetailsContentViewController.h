@@ -21,7 +21,9 @@ CKCalendarDelegate>
 @property(nonatomic, strong) NSMutableArray *resultList;
 @property(nonatomic, strong) NSString *startTime;
 @property(nonatomic, strong) NSString *endTime;
-@property (nonatomic, strong) UIButton *dateLabel;
+@property(nonatomic, strong) UIButton *dateLabel;
+@property(nonatomic, strong) NSString *store_id;
+@property(nonatomic, strong) UITableView *heardTableView;
 
 @property (strong, nonatomic) IBOutlet UILabel *lblSaleMoney;
 @property (strong, nonatomic) IBOutlet UILabel *lblSaleCount;

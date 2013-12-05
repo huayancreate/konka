@@ -76,12 +76,12 @@
     lblTips = [[UILabel alloc] initWithFrame:CGRectMake(65, screenBounds.size.height - 55, 230, 24)];
     lblTips.text = @"渠道管理信息系统@多媒体渠道管理部";
     lblTips.font =  [UIFont fontWithName:@"Helvetica" size:11];
-    lblTips.textColor = [UIColor blackColor];
+    lblTips.textColor = [UIColor underPageBackgroundColor];
     
     lblVersion = [[UILabel alloc] initWithFrame:CGRectMake(190, screenBounds.size.height - 20, 230, 24)];
     lblVersion.font =  [UIFont fontWithName:@"Helvetica" size:9];
     lblVersion.text = DevVersion;
-    lblVersion.textColor = [UIColor blackColor];
+    lblVersion.textColor = [UIColor underPageBackgroundColor];
     
     
     [self.view addSubview:defaultView];

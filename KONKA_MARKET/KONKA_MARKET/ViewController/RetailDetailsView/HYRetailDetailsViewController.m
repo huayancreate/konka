@@ -44,7 +44,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.resultList = [[NSMutableArray alloc] init];
-    UIImage *backButtonImage = [UIImage imageNamed:@"right.png"];
+    UIImage *backButtonImage = [UIImage imageNamed:@"btn_search"];
     CGRect frameimg = CGRectMake(0, 0, 32, 24);
     UIButton *someButton = [[UIButton alloc] initWithFrame:frameimg];
     [someButton setBackgroundImage:backButtonImage forState:UIControlStateNormal];
@@ -157,11 +157,13 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSDictionary *dic = [self.resultList objectAtIndex:indexPath.row];
     HYRetailDetailsContentViewController *contentView = [[HYRetailDetailsContentViewController alloc] init];
     contentView.title = @"零售明细";
     contentView.userLogin = self.userLogin;
     contentView.startTime = startTime;
     contentView.endTime = endTime;
+    contentView.store_id = [dic objectForKey:@"store_id"];
     [self.navigationController pushViewController:contentView animated:YES];
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
