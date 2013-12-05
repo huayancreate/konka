@@ -55,20 +55,22 @@
     
     self.resultList = [[NSMutableArray alloc] init];
     UIView *tempView = [[UIView alloc] init];
+    UIView *tempView1 = [[UIView alloc] init];
     
-    heardTableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 120)
+    heardTableView  = [[UITableView alloc] initWithFrame:CGRectMake(0, 30, 320, 75)
                                                 style:UITableViewStyleGrouped];
     heardTableView.delegate = self;
     heardTableView.dataSource = self;
+    heardTableView.scrollEnabled = NO;
     
-    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 150, 320, [super screenHeight]-80)
+    uiTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 155, 320, [super screenHeight]-80)
                                                style:UITableViewStyleGrouped];
     uiTableView.scrollEnabled = YES;
     uiTableView.delegate = self;
     uiTableView.dataSource = self;
     
     [uiTableView setBackgroundView:tempView];
-    //[heardTableView setBackgroundView:tempView];
+    [heardTableView setBackgroundView:tempView1];
     [self.view addSubview:uiTableView];
     [self.view addSubview:heardTableView];
     
