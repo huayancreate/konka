@@ -408,6 +408,7 @@
 		28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */; };
 		4F15344D17D2FB7100B63710 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F15344717D2FB7100B63710 /* Harpy.m */; };
 		4F15345017D2FB7100B63710 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F15344B17D2FB7100B63710 /* README.md */; };
+		4F8D67BC1850334E00219F13 /* btn_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8D67BB1850334E00219F13 /* btn_search.png */; };
 		4FD93769184C36FA00513462 /* HYWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD93767184C36FA00513462 /* HYWelComeViewController.m */; };
 		4FD9376A184C36FA00513462 /* HYWelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD93768184C36FA00513462 /* HYWelComeViewController.xib */; };
 /* End PBXBuildFile section */
@@ -1023,6 +1024,7 @@
 		4F15344717D2FB7100B63710 /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 		4F15344817D2FB7100B63710 /* HarpyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HarpyConstants.h; sourceTree = "<group>"; };
 		4F15344B17D2FB7100B63710 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4F8D67BB1850334E00219F13 /* btn_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_search.png; sourceTree = "<group>"; };
 		4FD93766184C36FA00513462 /* HYWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWelComeViewController.h; sourceTree = "<group>"; };
 		4FD93767184C36FA00513462 /* HYWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWelComeViewController.m; sourceTree = "<group>"; };
 		4FD93768184C36FA00513462 /* HYWelComeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWelComeViewController.xib; sourceTree = "<group>"; };
@@ -2084,6 +2086,7 @@
 		28DA277B17BB315900DDA062 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				4F8D67BB1850334E00219F13 /* btn_search.png */,
 				1877607A17F04E6B00EF3257 /* sys_ico_date.png */,
 				1877607B17F04E6B00EF3257 /* sys_icon_key.png */,
 				1877607C17F04E6B00EF3257 /* sys_icon_user.png */,
@@ -2856,6 +2859,7 @@
 				18FEF1DD1834AE4400AB9879 /* HYMobileHistoryViewController.xib in Resources */,
 				1877607817F04CA800EF3257 /* 零售畅销型号.png in Resources */,
 				1877607917F04CA800EF3257 /* 任务完成情况.png in Resources */,
+				4F8D67BC1850334E00219F13 /* btn_search.png in Resources */,
 				1877607D17F04E6B00EF3257 /* sys_ico_date.png in Resources */,
 				1877607E17F04E6B00EF3257 /* sys_icon_key.png in Resources */,
 				1877607F17F04E6B00EF3257 /* sys_icon_user.png in Resources */,
