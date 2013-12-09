@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *percentList;
 @property (nonatomic, strong) NSArray *salesList;
 @property (nonatomic, strong) NSMutableArray *cellPercentList;
+@property (nonatomic, strong) NSDecimalNumber *deduct;
 
 -(void) cal;
 

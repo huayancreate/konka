@@ -16,6 +16,7 @@
 @synthesize percentList;
 @synthesize percentPrice;
 @synthesize cellPercentList;
+@synthesize deduct;
 
 -(void)calCellPercentList
 {
@@ -23,10 +24,11 @@
     for (NSDictionary *dic in salesList) {
         NSNumber *num = [dic objectForKey:@"num"];
         NSString *modelname = [dic objectForKey:@"model_name"];
+        NSDecimalNumber *deductnum = [dic objectForKey:@"deduct"];
         NSMutableDictionary *tempDic = [[NSMutableDictionary alloc] init];
         [tempDic setValue:modelname forKey:@"modelname"];
         [tempDic setValue:num forKey:@"num"];
-        [tempDic setValue:[self calPriceByName:modelname AndNum:num AndPrice:[dic objectForKey:@"all_price"]] forKey:@"percentage"];
+        [tempDic setValue:[deductnum stringValue] forKey:@"percentage"];
         [self.cellPercentList addObject:tempDic];
     }
     NSLog(@"cellPercentList count = %d", [self.cellPercentList count]);

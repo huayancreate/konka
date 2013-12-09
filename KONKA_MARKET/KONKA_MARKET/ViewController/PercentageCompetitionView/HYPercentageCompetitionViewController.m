@@ -110,6 +110,7 @@
 
 -(void) endRequest:(NSString *)msg
 {
+    NSLog(@"msg %@", msg);
     NSData *data = [msg dataUsingEncoding:NSUTF8StringEncoding];
     
     json = [decoder objectWithData:data];
@@ -154,44 +155,69 @@
 
 -(void) calPercentage:(NSArray *)_json
 {
+    NSLog(@"_json count %d" , [_json count]);
+    
+    
+    NSLog(@"hyc.deduct %.2f", [hyc.deduct doubleValue]);
+    
+    
+    
+    
+    
     hyc = [[HYCalculatePercentage alloc] init];
     hyc.percentList = [[NSMutableArray alloc] init];
     
     hyc.allnum = [[NSNumber alloc] initWithDouble:0];
     hyc.percentPrice = [[NSDecimalNumber alloc] initWithDouble:0];
     hyc.allprice = [[NSDecimalNumber alloc] initWithDouble:0];
+    hyc.deduct = [[NSDecimalNumber alloc] initWithDouble:0];
     hyc.salesList = _json;
     
-    NSArray *pelist = [self.kkM getPeListByUserID:self.userLogin.user_id];
-    
-    NSArray *temppercentlist = [self.kkM getAllPercentByUserID:self.userLogin.user_id];
-    
-    for (NSDictionary *dic in pelist)
-    {
-        NSMutableDictionary *perDic = [[NSMutableDictionary alloc] init];
-        NSString *modelName = [self findModelNameByID:[dic objectForKey:@"addon2"]];
-        [perDic setValue:modelName forKey:@"modelname"];
-        [perDic setValue:[dic objectForKey:@"name"] forKey:@"percent"];
-        [perDic setValue:[dic objectForKey:@"addon1"] forKey:@"percentStyle"];
-        [hyc.percentList addObject:perDic];
+    for (NSDictionary *dic in _json) {
+        //计算提成
+        NSDecimalNumber *tempdeduct = [dic objectForKey:@"deduct"];
+        NSLog(@"tempNum %.2f", [tempdeduct doubleValue]);
+        hyc.deduct = [hyc.deduct decimalNumberByAdding:[[NSDecimalNumber alloc] initWithDouble:[tempdeduct doubleValue]]];
+        NSLog(@"pernum %.2f", [hyc.deduct doubleValue]);
+        
+        //计算总价
+        NSDecimalNumber *tempallprice = [dic objectForKey:@"all_price"];
+        hyc.allprice = [hyc.allprice decimalNumberByAdding:[[NSDecimalNumber alloc] initWithDouble:[tempallprice doubleValue]]];
     }
     
-    for (NSDictionary *dic in temppercentlist)
-    {
-        NSMutableDictionary *perDic = [[NSMutableDictionary alloc] init];
-        [perDic setValue:[dic objectForKey:@"model_name"] forKey:@"modelname"];
-        [perDic setValue:[dic objectForKey:@"percent"] forKey:@"percent"];
-        [perDic setValue:[dic objectForKey:@"percent_style"] forKey:@"percentStyle"];
-        [hyc.percentList addObject:perDic];
-    }
+    hyc.allnum = [[NSNumber alloc] initWithInt:[_json count]];
     
-    [hyc cal];
+    
+//    NSArray *pelist = [self.kkM getPeListByUserID:self.userLogin.user_id];
+//    
+//    NSArray *temppercentlist = [self.kkM getAllPercentByUserID:self.userLogin.user_id];
+//    
+//    for (NSDictionary *dic in pelist)
+//    {
+//        NSMutableDictionary *perDic = [[NSMutableDictionary alloc] init];
+//        NSString *modelName = [self findModelNameByID:[dic objectForKey:@"addon2"]];
+//        [perDic setValue:modelName forKey:@"modelname"];
+//        [perDic setValue:[dic objectForKey:@"name"] forKey:@"percent"];
+//        [perDic setValue:[dic objectForKey:@"addon1"] forKey:@"percentStyle"];
+//        [hyc.percentList addObject:perDic];
+//    }
+//    
+//    for (NSDictionary *dic in temppercentlist)
+//    {
+//        NSMutableDictionary *perDic = [[NSMutableDictionary alloc] init];
+//        [perDic setValue:[dic objectForKey:@"model_name"] forKey:@"modelname"];
+//        [perDic setValue:[dic objectForKey:@"percent"] forKey:@"percent"];
+//        [perDic setValue:[dic objectForKey:@"percent_style"] forKey:@"percentStyle"];
+//        [hyc.percentList addObject:perDic];
+//    }
+//    
+//    [hyc cal];
     
     [hyc calCellPercentList];
     
     
     self.uiNumLabel.text = [[hyc.allnum stringValue] stringByAppendingString:@"台"];
-    self.uiPercentageLabel.text = [[NSString stringWithFormat:@"%.2f", [hyc.percentPrice doubleValue]] stringByAppendingString:@"元"];
+    self.uiPercentageLabel.text = [[NSString stringWithFormat:@"%.2f", [hyc.deduct doubleValue]] stringByAppendingString:@"元"];
     self.uiPriceLabel.text = [[NSString stringWithFormat:@"%.2f", [hyc.allprice doubleValue]] stringByAppendingString:@"元"];
 }
 
