@@ -53,6 +53,8 @@
 		184E77A0184EF3F000AE03E0 /* HYRetailDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E779E184EF3F000AE03E0 /* HYRetailDetailsViewController.xib */; };
 		184E77A2184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E77A1184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib */; };
 		184E77A4184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184E77A3184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib */; };
+		185666911860224B0070D450 /* main_btn_skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 185666901860224B0070D450 /* main_btn_skip.png */; };
+		185666A4186022640070D450 /* news_default.png in Resources */ = {isa = PBXBuildFile; fileRef = 185666A3186022640070D450 /* news_default.png */; };
 		1870193917D463B30020DC25 /* 下发文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870193517D463B30020DC25 /* 下发文件.png */; };
 		1870193A17D463B30020DC25 /* 已审文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870193617D463B30020DC25 /* 已审文件.png */; };
 		1870193B17D463B30020DC25 /* 待审文件.png in Resources */ = {isa = PBXBuildFile; fileRef = 1870193717D463B30020DC25 /* 待审文件.png */; };
@@ -468,6 +470,8 @@
 		184E779E184EF3F000AE03E0 /* HYRetailDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsViewController.xib; sourceTree = "<group>"; };
 		184E77A1184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		184E77A3184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYRetailDetailsContentTableViewCell.xib; sourceTree = "<group>"; };
+		185666901860224B0070D450 /* main_btn_skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_btn_skip.png; sourceTree = "<group>"; };
+		185666A3186022640070D450 /* news_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = news_default.png; sourceTree = "<group>"; };
 		1870193517D463B30020DC25 /* 下发文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "下发文件.png"; sourceTree = "<group>"; };
 		1870193617D463B30020DC25 /* 已审文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "已审文件.png"; sourceTree = "<group>"; };
 		1870193717D463B30020DC25 /* 待审文件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "待审文件.png"; sourceTree = "<group>"; };
@@ -2103,6 +2107,7 @@
 		28DA278417BB63D200DDA062 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				185666A3186022640070D450 /* news_default.png */,
 				28DA279317BB648C00DDA062 /* newsbtnbg.png */,
 				28DA278517BB63D200DDA062 /* newstopbg.png */,
 				28DA278617BB63D200DDA062 /* 头部-背景.png */,
@@ -2338,6 +2343,7 @@
 		28DAE52C1783FAF700F12366 /* Universal */ = {
 			isa = PBXGroup;
 			children = (
+				185666901860224B0070D450 /* main_btn_skip.png */,
 				282020E8179A6E28000C1C44 /* Icon.png */,
 				282020E9179A6E28000C1C44 /* Icon@x2.png */,
 				28DAE52D1783FAF700F12366 /* Default-568h@2x.png */,
@@ -2827,6 +2833,7 @@
 				18AEA64C17CDA071005DB5B7 /* HYOrderRetailViewController.xib in Resources */,
 				18AEA65217CDA0DA005DB5B7 /* HYOrderVerifyListViewController.xib in Resources */,
 				18AEA65817CDC998005DB5B7 /* HYOrderAuditedViewController.xib in Resources */,
+				185666911860224B0070D450 /* main_btn_skip.png in Resources */,
 				18AEA65E17CDCD19005DB5B7 /* HYOrderByMyListViewController.xib in Resources */,
 				18AEA8FF17CDDA31005DB5B7 /* demo.css in Resources */,
 				18AEA90017CDDA31005DB5B7 /* mobile_01.html in Resources */,
@@ -2854,6 +2861,7 @@
 				1877606D17F033F900EF3257 /* HYDecisionSalesViewController.xib in Resources */,
 				1877606F17F034F200EF3257 /* HYDecisionSalesTableViewCell.xib in Resources */,
 				1877607317F04AA200EF3257 /* top1.jpg in Resources */,
+				185666A4186022640070D450 /* news_default.png in Resources */,
 				1877607417F04AA200EF3257 /* top2.jpg in Resources */,
 				1877607517F04AA200EF3257 /* top3.jpg in Resources */,
 				18FEF1DD1834AE4400AB9879 /* HYMobileHistoryViewController.xib in Resources */,

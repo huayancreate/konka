@@ -19,5 +19,12 @@
 @property (nonatomic, strong) NSMutableURLRequest *didRequest;
 @property (nonatomic, strong) NSMutableURLRequest *detailRequest;
 @property (nonatomic, strong) HYBackViewController *backView;
+@property (weak, nonatomic) IBOutlet UIButton *btnDay;
+@property (weak, nonatomic) IBOutlet UIButton *btnMonth;
+
+@property(nonatomic,strong) UIImage *selectImg;
+@property(nonatomic,strong) UIImage *unselectImg;
+- (IBAction)dayAction:(id)sender;
+- (IBAction)monthAction:(id)sender;
 
 @end

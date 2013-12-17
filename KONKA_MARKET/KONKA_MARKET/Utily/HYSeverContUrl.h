@@ -58,7 +58,9 @@
 
 #define CheckVersionApi @"/files/konka/konka-mobile-ios.ini" //自动更新地址
 
-#define SyntheticalApi @"/webservice/KonkaR3JsBackMoneySail.do" //综合数据分析
+#define SyntheticalMonthApi @"/webservice/KonkaR3JsBackMoneySail.do" //综合数据分析 按月
+
+#define SyntheticalDayApi @"/webservice/KonkaR3JsBackMoneySailForDay.do" //综合数据分析 按日
 
 #define RetailDetailsApi @"/webservice/KonkaMobileSailDataJson.do" //零售汇总
 

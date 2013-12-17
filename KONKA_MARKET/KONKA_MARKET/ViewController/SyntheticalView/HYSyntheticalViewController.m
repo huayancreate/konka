@@ -33,6 +33,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.unselectImg=[UIImage imageNamed:@"sales_unselect.png"];
+    self.selectImg=[UIImage imageNamed:@"sales_select.png"];
+    
+    [self.btnDay setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+    [self.btnMonth setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
     // Do any additional setup after loading the view from its nib.
     self.uiWebView.delegate = self;
     self.uiWebView.scrollView.delegate = self;
@@ -45,7 +51,7 @@
     }
     [_refreshHeaderView refreshLastUpdatedDate];
     
-    NSString *urlStr = [NSString stringWithFormat:@"%@%@?userpass=%@&user_id=%@", BaseURL, SyntheticalApi,self.userLogin.password,self.userLogin.user_id];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?userpass=%@&user_id=%@", BaseURL, SyntheticalDayApi,self.userLogin.password,self.userLogin.user_id];
     NSURL *url = [[NSURL alloc] initWithString:urlStr];
     
     request = [[NSMutableURLRequest alloc] initWithURL:url];
@@ -134,5 +140,31 @@
     [backView backButtonAdd:didRequest detailRequest:detailRequest uiWebView:self.uiWebView ID:self];
     return YES;
 }
+- (IBAction)dayAction:(id)sender {
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?userpass=%@&user_id=%@", BaseURL, SyntheticalDayApi,self.userLogin.password,self.userLogin.user_id];
+    NSURL *url = [[NSURL alloc] initWithString:urlStr];
+    
+    request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    NSLog(@"request url %@", urlStr);
+    [self loadPage];
+    [SVProgressHUD dismiss];
 
+}
+
+- (IBAction)monthAction:(id)sender {
+    [self.btnDay setBackgroundImage:self.unselectImg forState:UIControlStateNormal];
+    [self.btnMonth setBackgroundImage:self.selectImg forState:UIControlStateNormal];
+    NSString *urlStr = [NSString stringWithFormat:@"%@%@?userpass=%@&user_id=%@", BaseURL, SyntheticalMonthApi,self.userLogin.password,self.userLogin.user_id];
+    NSURL *url = [[NSURL alloc] initWithString:urlStr];
+    
+    request = [[NSMutableURLRequest alloc] initWithURL:url];
+    [request setHTTPMethod:@"GET"];
+    [SVProgressHUD showWithStatus:@"正在获取数据..." maskType:SVProgressHUDMaskTypeGradient];
+    NSLog(@"request url %@", urlStr);
+    [self loadPage];
+    [SVProgressHUD dismiss];
+
+}
 @end

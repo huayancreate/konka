@@ -30,11 +30,14 @@
 @property (strong, nonatomic) IBOutlet UILabel *uiLabelTittle;
 @property (strong, nonatomic) IBOutlet UILabel *uiLabelSummary;
 @property (strong, nonatomic) IBOutlet UIImageView *uiImagePath;
+@property (strong, nonatomic) IBOutlet UILabel *lblCount;
 @property (strong, nonatomic) NSMutableArray *tittleList;
 @property (strong, nonatomic) NSMutableArray *imageList;
 @property (strong, nonatomic) NSMutableArray *summaryList;
 @property (strong, nonatomic) NSMutableArray *linkList;
+@property (strong, nonatomic) NSMutableArray *viewCountList;
 @property (strong, nonatomic) UINavigationController *linkNav;
+
 -(void) loadNewsPlat;
 
 -(void)start;

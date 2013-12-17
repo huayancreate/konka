@@ -73,11 +73,11 @@
             return cell;
             break;
         case 1:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:1];
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:4];
             return cell;
             break;
         case 2:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:2];
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:1];
             return cell;
             break;
         case 3:
@@ -85,11 +85,11 @@
             return cell;
             break;
         case 4:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:4];
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:5];
             return cell;
             break;
         case 5:
-            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:5];
+            cell = [self createTabelViewCellForIndentifier:@"RetailsIdentifier" NibNamed:@"HYDecisionRetailTableViewCell" tableView:tableView index:2];
             return cell;
             break;
 
@@ -122,16 +122,16 @@
             [self.navigationController pushViewController:syntheticalSubmit animated:YES];
             break;
         case 1:
+            invoicSubmit = [[HYDecisionInvoicViewController alloc] init];
+            invoicSubmit.userLogin = self.userLogin;
+            invoicSubmit.title = @"进销存分析";
+            [self.navigationController pushViewController:invoicSubmit animated:YES];
+            break;
+        case 2:
             completeSubmit = [[HYDecisionCompleteViewController alloc] init];
             completeSubmit.userLogin = self.userLogin;
             completeSubmit.title = @"任务完成情况";
             [self.navigationController pushViewController:completeSubmit animated:YES];
-            break;
-        case 2:
-            salesSubmit = [[HYDecisionSalesViewController alloc] init];
-            salesSubmit.userLogin = self.userLogin;
-            salesSubmit.title = @"零售畅销型号";
-            [self.navigationController pushViewController:salesSubmit animated:YES];
             break;
         case 3:
             managerSubmit = [[HYDecisionManagerViewController alloc] init];
@@ -140,16 +140,16 @@
             [self.navigationController pushViewController:managerSubmit animated:YES];
             break;
         case 4:
-            invoicSubmit = [[HYDecisionInvoicViewController alloc] init];
-            invoicSubmit.userLogin = self.userLogin;
-            invoicSubmit.title = @"进销存分析";
-            [self.navigationController pushViewController:invoicSubmit animated:YES];
-            break;
-        case 5:
             retailSumbit = [[HYRetailDetailsViewController alloc] init];
             retailSumbit.userLogin = self.userLogin;
             retailSumbit.title = @"零售明细查询";
             [self.navigationController pushViewController:retailSumbit animated:YES];
+            break;
+        case 5:
+            salesSubmit = [[HYDecisionSalesViewController alloc] init];
+            salesSubmit.userLogin = self.userLogin;
+            salesSubmit.title = @"零售畅销型号";
+            [self.navigationController pushViewController:salesSubmit animated:YES];
             break;
     }
     

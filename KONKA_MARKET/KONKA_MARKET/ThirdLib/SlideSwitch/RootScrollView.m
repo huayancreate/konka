@@ -73,6 +73,7 @@
         self.imageList = [[NSMutableArray alloc] init];
         self.summaryList = [[NSMutableArray alloc] init];
         self.linkList = [[NSMutableArray alloc] init];
+        self.viewCountList = [[NSMutableArray alloc] init];
         [self initWithViews];
         [self loadNewsPlat];
     }
@@ -152,6 +153,7 @@
         [self.imageList addObject: [BaseURL stringByAppendingFormat:@"/%@",[dic objectForKey:@"img_path"]]];
         [self.summaryList addObject:[dic objectForKey:@"summary"]];
         [self.linkList addObject:[dic objectForKey:@"link_out_addr"]];
+        [self.viewCountList addObject:[dic objectForKey:@"view_count"]];
     }
     if (tittle_id == nil)
     {
@@ -230,7 +232,12 @@
         self.uiLabelSummary.text = [self.summaryList objectAtIndex:indexPath.row];
         NSLog(@"imgPath %@",[self.imageList objectAtIndex:indexPath.row]);
         NSURL *url = [[NSURL alloc] initWithString:[self.imageList objectAtIndex:indexPath.row]];
-        [self.uiImagePath setImageWithURL:url];
+        [self.uiImagePath setImageWithURL:url refreshCache:false placeholderImage:[UIImage imageNamed:@"news_default"]];
+        NSNumber *viewCount = [self.viewCountList objectAtIndex:indexPath.row];
+        NSNumberFormatter* numberFormatter = [[NSNumberFormatter alloc] init];
+        NSString *count = [numberFormatter stringFromNumber:viewCount];
+        NSLog(@"count %@",[self.viewCountList objectAtIndex:1]);
+        self.lblCount.text = [count stringByAppendingString:@"次"];
     }
 //    if ([topScrollViewTittle isEqualToString:@"全部"])
 //    {

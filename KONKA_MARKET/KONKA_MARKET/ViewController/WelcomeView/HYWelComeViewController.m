@@ -22,6 +22,9 @@
 @synthesize versionView;
 @synthesize lblTips;
 @synthesize lblVersion;
+@synthesize btnSkip;
+@synthesize skipImage;
+@synthesize timer;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,6 +45,11 @@
     
     [[[DataProcessing alloc] init] sentRequest:url Parem:params Target:self];
     
+    timer = [NSTimer scheduledTimerWithTimeInterval:7.0f
+                                         target:self
+                                       selector:@selector(delayMethod)
+                                       userInfo:nil
+                                        repeats:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -83,18 +91,20 @@
     lblVersion.text = DevVersion;
     lblVersion.textColor = [UIColor underPageBackgroundColor];
     
+    btnSkip = [[UIButton alloc] initWithFrame:CGRectMake(269, screenBounds.size.height-171, 51, 51)];
+    
+    skipImage =[UIImage imageNamed:@"main_btn_skip"];
+    [btnSkip setBackgroundImage:skipImage forState:UIControlStateNormal];
+    [btnSkip addTarget:self action:@selector(Skip:) forControlEvents:UIControlEventTouchUpInside];
+    //[skipView ba:[UIImage imageNamed:@"main_btn_skip"]];
+    
     
     [self.view addSubview:defaultView];
     [self.view addSubview:_view];
     [self.view addSubview:versionView];
     [self.view addSubview:lblTips];
     [self.view addSubview:lblVersion];
-    
-    [NSTimer scheduledTimerWithTimeInterval:7.0f
-                                     target:self
-                                   selector:@selector(delayMethod)
-                                   userInfo:nil
-                                    repeats:NO];
+    [self.view addSubview:btnSkip];
 
 }
 
@@ -122,13 +132,36 @@
 
 -(void) endFailedRequest:(NSString *)msg
 {
+    [timer invalidate];
     [super errorMsg:@"网络有问题！请联系客服！"];
-    [NSTimer scheduledTimerWithTimeInterval:2.0f
-                                     target:self
-                                   selector:@selector(delayMethod)
-                                   userInfo:nil
-                                    repeats:NO];
+    timer = [NSTimer scheduledTimerWithTimeInterval:2.0f
+                                             target:self
+                                           selector:@selector(delayMethod)
+                                           userInfo:nil
+                                            repeats:NO];
     return;
 }
+
+// 停止定时器
+- (void) stopTimer{
+    if (self.timer != nil){
+        // 定时器调用invalidate后，就会自动执行release方法。不需要在显示的调用release方法
+        [self.timer invalidate];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    
+    [timer invalidate];
+    
+}
+
+-(IBAction)Skip:(id)sender
+{
+    [timer invalidate];
+    [self delayMethod];
+}
+
+-(void) paint{}
 
 @end

@@ -14,5 +14,10 @@
 @property (strong, nonatomic) UIImageView *versionView;
 @property (strong, nonatomic) UILabel *lblTips;
 @property (strong, nonatomic) UILabel *lblVersion;
+@property (strong, nonatomic) UIButton *btnSkip;
+@property (strong, nonatomic) UIImage *skipImage;
+@property (strong, nonatomic) NSTimer *timer;
+
+
 
 @end
