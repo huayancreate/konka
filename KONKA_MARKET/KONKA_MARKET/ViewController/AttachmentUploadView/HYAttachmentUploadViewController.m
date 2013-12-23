@@ -179,28 +179,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(NSString *)timeStampAsString
-{
-    NSDate *nowDate = [NSDate date];
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"EEE-MMM-d"];
-    NSString *locationString = [df stringFromDate:nowDate];
-    return [locationString stringByAppendingFormat:@".png"];
-}
-
--(NSString *)getFileName:(NSString *)fileName
-{
-    NSArray *temp = [fileName componentsSeparatedByString:@"&ext="];
-    NSString *suffix = [temp lastObject];
-    
-    temp = [[temp objectAtIndex:0] componentsSeparatedByString:@"?id="];
-    
-    NSString *name = [temp lastObject];
-    
-    name = [name stringByAppendingFormat:@".%@",suffix];
-    return name;
-}
-
 - (void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
 {
     NSData* imageData = UIImagePNGRepresentation(tempImage);

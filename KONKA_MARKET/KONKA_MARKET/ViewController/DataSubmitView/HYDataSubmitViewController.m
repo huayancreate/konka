@@ -132,8 +132,9 @@
     [[super someButton] addTarget:self action:@selector(backButtonAction:)
                  forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
+    cellNums = nil;
     cellNums = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 7; i++) {
         [cellNums addObject:@"111"];
     }
     
@@ -160,25 +161,24 @@
 //
     
     mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, ([super screenHeight] - 100)) style:UITableViewStyleGrouped];
-    mainTableView.scrollEnabled = YES;
-    
-    mainTableView.delegate = self;
-    mainTableView.dataSource = self;
     
     zeroSubmitCheck = [[QCheckBox alloc] initWithDelegate:self];
     zeroSubmitCheck.frame = CGRectMake(15, 16, 120, 20);
     [zeroSubmitCheck setTitle:@"零销售上报" forState:UIControlStateNormal];
     [zeroSubmitCheck setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [zeroSubmitCheck.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
-    [self.view addSubview:zeroSubmitCheck];
+    if(self.userLogin.dataSubmit == nil && self.userLogin.allDataSubmit == nil)
+    {
+        [self.view addSubview:zeroSubmitCheck];
+    }
     [zeroSubmitCheck setChecked:NO];
     
     uploadCheck = [[QCheckBox alloc] initWithDelegate:self];
-    uploadCheck.frame = CGRectMake(20, 16, 150, 20);
+    uploadCheck.frame = CGRectMake(16, 16, 150, 20);
     [uploadCheck setTitle:@"是否上传附件" forState:UIControlStateNormal];
     [uploadCheck setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [uploadCheck.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
-    [zeroSubmitCheck setChecked:NO];
+    [uploadCheck setChecked:NO];
     
     self.dataID = nil;
     
@@ -442,6 +442,27 @@
 //        UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithCustomView:someButton];
 //        self.navigationItem.rightBarButtonItem  = rightButton;
 //    }
+    
+    
+    
+    if(self.userLogin.dataSubmit == nil && self.userLogin.allDataSubmit == nil)
+    {
+        UITableViewCell *cell = nil;
+        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:mainTableView index:4];
+        [cell addSubview:uploadCheck];
+        [cellNums addObject:cell];
+    }
+    
+    if(self.userLogin.dataSubmit != nil || self.userLogin.allDataSubmit != nil)
+    {
+        [self addRows];
+    }
+    
+    
+    mainTableView.scrollEnabled = YES;
+    
+    mainTableView.delegate = self;
+    mainTableView.dataSource = self;
 }
 
 -(void) getAllUsualModelNameList:(NSNumber *)user_id
@@ -610,10 +631,11 @@
         mastercode.text = nil;
         NSArray *firstSplit = [msg componentsSeparatedByString:@":"];
         self.userLogin.link_id = [firstSplit objectAtIndex:1];
-        if(!uploadCheck.checked)
+        if(uploadCheck.checked)
         {
             HYAttachmentUploadViewController *att = [[HYAttachmentUploadViewController alloc] init];
-            att.titlename = @"附件上传";
+            att.title = @"附件上传";
+            self.userLogin.preimgurl = nil;
             att.userLogin = self.userLogin;
             [self.navigationController pushViewController:att animated:YES];
         }
@@ -779,11 +801,6 @@
                         self.cellLabel4.text = @"备注";
                         return cell;
                         break;
-                    case 7:
-                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:4];
-                        [cell addSubview:uploadCheck];
-                        return cell;
-                        break;
                 }
                 break;
             case 1:
@@ -835,6 +852,9 @@
             self.cellLabel1.text = @"扫描";
             return cell;
         }
+        NSLog(@"indexPath.row %d", indexPath.row);
+        NSLog(@"cellNums objectAtIndex:indexPath.row %@", [cellNums objectAtIndex:indexPath.row]);
+        return [cellNums objectAtIndex:indexPath.row];
     }
     
     cell = [tableView dequeueReusableCellWithIdentifier:nil];
@@ -1275,6 +1295,94 @@
         self.mastercode.text = @"";
         self.mastercode.enabled = true;
     }
+}
+
+-(void)addRows{
+    
+    NSMutableArray *indexPaths = [[NSMutableArray alloc] init];
+
+    UITableViewCell *cell = nil;
+    cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:mainTableView index:3];
+    cellLabel4.text = @"已上传附件";
+    NSLog(@"[cellNums count]  1 ,%d",[cellNums count] );
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:[cellNums count] - 1 inSection:0];
+    [indexPaths addObject: indexPath];
+    [cellNums addObject:cell];
+    NSLog(@"[cellNums count]  2 ,%d",[cellNums count] );
+    
+    NSDictionary *dic = nil;
+    
+    if(self.userLogin.dataSubmit != nil)
+    {
+        dic = self.userLogin.dataSubmit;
+    }
+    if(self.userLogin.allDataSubmit != nil)
+    {
+        dic = self.userLogin.allDataSubmit;
+    }
+    NSDictionary *mapDic = [dic objectForKey:@"map"];
+    NSArray * attachmentList = [mapDic objectForKey:@"attachment"];
+    int num = [cellNums count];
+    
+    for (int i = num; i < num + [attachmentList count]; i++) {
+        UITableViewCell *cell = nil;
+        
+        UIButton *imaBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        imaBtn.frame = CGRectMake(270,10,30,30);
+        [imaBtn setBackgroundImage:[UIImage imageNamed:@"conf_wage.png"] forState:UIControlStateNormal];
+        imaBtn.tag = i - num;
+        [imaBtn addTarget:self action:@selector(selectPicAction:) forControlEvents:UIControlEventTouchUpInside];
+        NSDictionary *attDic = [attachmentList objectAtIndex: (i - num)];
+        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:mainTableView index:3];
+        cellLabel4.text = [attDic objectForKey:@"file_name"];
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+        [cell addSubview:imaBtn];
+        [indexPaths addObject: indexPath];
+        [cellNums addObject:cell];
+    }
+    
+    UITableViewCell *cell1 = nil;
+    cell1 = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:mainTableView index:4];
+    UIButton *uploadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    uploadBtn.frame = CGRectMake(40,10,240,30);
+    [uploadBtn setTitle:@"上传附件" forState:UIControlStateNormal];
+//    [uploadBtn addTarget:self action:@selector(uploadAction:) forControlEvents:UIControlEventTouchUpInside];
+    [uploadBtn setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
+    [uploadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    NSLog(@"[cellNums count]  3 ,%d",[cellNums count] );
+    NSIndexPath *indexPath1 = [NSIndexPath indexPathForRow:[cellNums count] - 1 inSection:0];
+    [indexPaths addObject: indexPath1];
+    [cell1 addSubview:uploadBtn];
+    [cellNums addObject:cell1];
+    NSLog(@"[cellNums count]  4 ,%d",[cellNums count] );
+    
+    
+    [self.mainTableView beginUpdates];
+    [self.mainTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.mainTableView endUpdates];
+}
+
+- (IBAction)selectPicAction:(id)sender {
+    UIButton *btn = (UIButton *)sender;
+    NSDictionary *dic = nil;
+    
+    if(self.userLogin.dataSubmit != nil)
+    {
+        dic = self.userLogin.dataSubmit;
+    }
+    if(self.userLogin.allDataSubmit != nil)
+    {
+        dic = self.userLogin.allDataSubmit;
+    }
+    NSDictionary *mapDic = [dic objectForKey:@"map"];
+    NSArray * attachmentList = [mapDic objectForKey:@"attachment"];
+    NSDictionary *attdic = [attachmentList objectAtIndex:btn.tag];
+    NSString *filename = [attdic objectForKey:@"save_path"];
+    self.userLogin.preimgurl = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"%@/%@", BaseURL, filename]];
+    HYAttachmentUploadViewController *att =[[HYAttachmentUploadViewController alloc] init];
+    att.title = @"附件预览";
+    att.userLogin = self.userLogin;
+    [self.navigationController pushViewController:att animated:YES];
 }
 
 @end
