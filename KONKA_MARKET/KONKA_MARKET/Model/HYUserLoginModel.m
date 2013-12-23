@@ -30,5 +30,7 @@
 @synthesize customManageList;
 @synthesize store_id;
 @synthesize mobileHistoryList;
+@synthesize link_id;
+@synthesize preimgurl;
 
 @end

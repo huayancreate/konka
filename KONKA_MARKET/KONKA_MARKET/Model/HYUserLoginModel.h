@@ -35,5 +35,7 @@
 @property (nonatomic, strong) NSDictionary *customManageList;
 @property (nonatomic, strong) NSNumber *store_id;
 @property (nonatomic, strong) NSMutableArray *mobileHistoryList;
+@property (nonatomic, strong) NSString *link_id;
+@property (nonatomic, strong) NSURL *preimgurl;
 
 @end

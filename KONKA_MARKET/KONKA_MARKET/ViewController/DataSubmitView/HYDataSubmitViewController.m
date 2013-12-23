@@ -9,6 +9,8 @@
 #import "HYDataSubmitViewController.h"
 #import "HYSalesRegistrationViewController.h"
 #import "KonkaManager.h"
+#import "QCheckBox.h"
+#import "HYAttachmentUploadViewController.h"
 
 #define NUMBERS @"-0123456789\n"
 #define NUMBERSPERIOD @"0123456789xX\n"
@@ -42,6 +44,9 @@
 @property (nonatomic, strong) NSNumber *dataID;
 @property (nonatomic, strong) NSString *dateTime;
 @property (nonatomic, strong) NSDateFormatter * dateFormatter;
+@property (nonatomic, strong) QCheckBox *zeroSubmitCheck;
+@property (nonatomic, strong) QCheckBox *uploadCheck;
+@property (nonatomic, strong) NSMutableArray *cellNums;
 
 @end
 
@@ -83,6 +88,9 @@
 @synthesize numLabel;
 @synthesize priceLabel1;
 @synthesize dateTime;
+@synthesize zeroSubmitCheck;
+@synthesize uploadCheck;
+@synthesize cellNums;
 
 - (AutocompletionTableView *)autoCompleter
 {
@@ -124,8 +132,16 @@
     [[super someButton] addTarget:self action:@selector(backButtonAction:)
                  forControlEvents:UIControlEventTouchUpInside];
     // Do any additional setup after loading the view from its nib.
+    cellNums = [[NSMutableArray alloc] init];
+    for (int i = 0; i < 8; i++) {
+        [cellNums addObject:@"111"];
+    }
+    
     
     [self getStoreList:self.userLogin.user_id];
+    
+    
+    
     
 //    self.userLogin.storeList = nil;
 //    
@@ -148,6 +164,21 @@
     
     mainTableView.delegate = self;
     mainTableView.dataSource = self;
+    
+    zeroSubmitCheck = [[QCheckBox alloc] initWithDelegate:self];
+    zeroSubmitCheck.frame = CGRectMake(15, 16, 120, 20);
+    [zeroSubmitCheck setTitle:@"零销售上报" forState:UIControlStateNormal];
+    [zeroSubmitCheck setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [zeroSubmitCheck.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [self.view addSubview:zeroSubmitCheck];
+    [zeroSubmitCheck setChecked:NO];
+    
+    uploadCheck = [[QCheckBox alloc] initWithDelegate:self];
+    uploadCheck.frame = CGRectMake(20, 16, 150, 20);
+    [uploadCheck setTitle:@"是否上传附件" forState:UIControlStateNormal];
+    [uploadCheck setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [uploadCheck.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
+    [zeroSubmitCheck setChecked:NO];
     
     self.dataID = nil;
     
@@ -433,6 +464,11 @@
     
     submitSelectChoice2 = [self.kkM findModelID:self.userLogin.user_id ByName:self.selectChoice2.text];
     
+    if(submitSelectChoice2 == nil)
+    {
+        submitSelectChoice2 = @"";
+    }
+    
     if(self.userLogin.store_id == nil)
     {
         submitStoreID = [self.kkM findStoreID:self.userLogin.user_id ByName:self.storeName.text];
@@ -503,7 +539,7 @@
     
     if (self.dataID == nil)
     {
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",nil];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",@"2",@"version",nil];
     }else
     {
         if ([self.realName.text isEqualToString:@""])
@@ -531,7 +567,7 @@
         {
             submitPhonenum = self.phoneNum.text;
         }
-        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",self.dataID,@"id",nil];
+        params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.password,@"userpass",@"DoSubmit01",@"method",[super getNowDateYYYYMMDD],@"sale_date",submitStoreID,@"store_id",submitMemo,@"memo",submitSalesCount,@"sales_count",submitSalesPrice,@"sales_price",submitRealname,@"realname",submitPhonenum,@"phonenum",submitAddress,@"addresss",submitMastercode,@"mastercode",submitSelectChoice2,@"select-choice-2",@"2",@"data_source",self.dataID,@"id",@"2",@"version",nil];
     }
     
 
@@ -553,11 +589,18 @@
 -(void) endRequest:(NSString *)msg
 {
     [SVProgressHUD dismiss];
-    if ([msg isEqualToString:@"success"])
+    NSRange foundObj=[msg rangeOfString:@"success" options:NSCaseInsensitiveSearch];
+    if(foundObj.length > 0)
     {
         [super successMsg:@"提交成功"];
         self.selectChoice2.text = nil;
-        salesCount.text = @"1";
+        if(zeroSubmitCheck.checked)
+        {
+            salesCount.text = @"0";
+        }else
+        {
+            salesCount.text = @"1";
+        }
         saleAllPrice.text = @"0.0";
         salesPrice.text = @"0.0";
         memo.text = nil;
@@ -565,6 +608,15 @@
         address.text = nil;
         phoneNum.text = nil;
         mastercode.text = nil;
+        NSArray *firstSplit = [msg componentsSeparatedByString:@":"];
+        self.userLogin.link_id = [firstSplit objectAtIndex:1];
+        if(!uploadCheck.checked)
+        {
+            HYAttachmentUploadViewController *att = [[HYAttachmentUploadViewController alloc] init];
+            att.titlename = @"附件上传";
+            att.userLogin = self.userLogin;
+            [self.navigationController pushViewController:att animated:YES];
+        }
         if (self.userLogin.dataSubmit != nil)
         {
             HYSalesRegistrationViewController *c = [self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2];
@@ -610,7 +662,7 @@
     if (tableView == mainTableView) {
         switch (section) {
             case 0:
-                return 7;
+                return [cellNums count];
                 break;
             case 1:
                 return 4;
@@ -725,6 +777,11 @@
                         cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:3];
                         cell.accessoryView = self.memo;
                         self.cellLabel4.text = @"备注";
+                        return cell;
+                        break;
+                    case 7:
+                        cell = [self createTabelViewCellForIndentifier:@"LabelTextCellIdentifier" NibNamed:@"HYTableViewCell" tableView:tableView index:4];
+                        [cell addSubview:uploadCheck];
                         return cell;
                         break;
                 }
@@ -997,6 +1054,11 @@
     NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
     NSLog(@"[f stringFromNumber:temp] ,%@",[f stringFromNumber:temp]);
     NSNumber *count = [f numberFromString:self.salesCount.text];
+    
+    if([count intValue] == 0)
+    {
+        return @"0.0";
+    }
     temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
     
     NSLog(@"[f stringFromNumber:temp] ,%@",[f stringFromNumber:temp]);
@@ -1036,9 +1098,14 @@
         [f setUsesGroupingSeparator:NO];
         NSNumber *temp = [f numberFromString:self.saleAllPrice.text];
         NSNumber *count = [f numberFromString:self.salesCount.text];
-        temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
-        
-        self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
+        if([count intValue] == 0)
+        {
+            self.salesPrice.text = [NSString stringWithFormat:@"%.2f", 0.0];
+        }else
+        {
+            temp = [NSNumber numberWithFloat:[temp floatValue] / [count intValue]];
+            self.salesPrice.text = [NSString stringWithFormat:@"%.2f", [temp floatValue]];
+        }
     }
     if (textField == self.salesPrice)
     {
@@ -1152,6 +1219,62 @@
     }
     
     return YES;
+}
+
+
+#pragma mark - QCheckBoxDelegate
+- (void)didSelectedCheckBox:(QCheckBox *)checkbox checked:(BOOL)checked {
+    if(zeroSubmitCheck.checked)
+    {
+        self.selectChoice2.text = @"";
+        self.salesCount.text = @"0";
+        self.saleAllPrice.text = @"0.0";
+        self.salesPrice.text = @"0.0";
+        self.memo.text = @"";
+        self.realName.text = @"";
+        self.phoneNum.text = @"";
+        self.address.text = @"";
+        self.mastercode.text = @"";
+        self.selectChoice2.enabled = false;
+        self.storeName.enabled = false;
+        self.salesCount.enabled = false;
+        self.saleAllPrice.enabled = false;
+        self.salesPrice.enabled = false;
+        self.memo.enabled = false;
+        
+        self.realName.enabled = false;
+        
+        self.phoneNum.enabled = false;
+        
+        self.address.enabled = false;
+        
+        self.mastercode.enabled = false;
+    }else
+    {
+        self.selectChoice2.enabled = true;
+        self.selectChoice2.text = @"";
+        self.storeName.enabled = true;
+        self.salesCount.enabled = true;
+        self.salesCount.text = @"1";
+        self.saleAllPrice.enabled = true;
+        self.saleAllPrice.text = @"0.0";
+        self.salesPrice.enabled = true;
+        self.salesPrice.text = @"0.0";
+        self.memo.enabled = true;
+        self.memo.text = @"";
+        
+        self.realName.text = @"";
+        self.realName.enabled = true;
+        
+        self.phoneNum.text = @"";
+        self.phoneNum.enabled = true;
+        
+        self.address.text = @"";
+        self.address.enabled = true;
+        
+        self.mastercode.text = @"";
+        self.mastercode.enabled = true;
+    }
 }
 
 @end

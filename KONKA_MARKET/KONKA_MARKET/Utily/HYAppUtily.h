@@ -14,6 +14,7 @@
 }
 
 +(NSString *)stringOutputForDictionary:(NSDictionary *)inputDict;
++ (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize;
 
 @end
 

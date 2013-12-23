@@ -66,4 +66,6 @@
 
 #define InvoicApi @"/webservice/KonkaMobileSailDataSearchToMob.do" //进销存
 
+#define UploadPic @"/webservice/MobileAttachment.do" //附件上传
+
 

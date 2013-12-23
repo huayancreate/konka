@@ -343,7 +343,6 @@
 		28DAE36F1783F7B300F12366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE36E1783F7B300F12366 /* Foundation.framework */; };
 		28DAE3711783F7B300F12366 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE3701783F7B300F12366 /* CoreGraphics.framework */; };
 		28DAE3731783F7B300F12366 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DAE3721783F7B300F12366 /* CoreData.framework */; };
-		28DAE3791783F7B300F12366 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 28DAE3771783F7B300F12366 /* InfoPlist.strings */; };
 		28DAE37B1783F7B300F12366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE37A1783F7B300F12366 /* main.m */; };
 		28DAE37F1783F7B300F12366 /* HYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE37E1783F7B300F12366 /* HYAppDelegate.m */; };
 		28DAE4E81783F8DD00F12366 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 28DAE4831783F8DC00F12366 /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -410,7 +409,16 @@
 		28FFABDF17A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FFABD717A64BB3009DDF28 /* WSTopLeftCoordinateLayer.m */; };
 		4F15344D17D2FB7100B63710 /* Harpy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F15344717D2FB7100B63710 /* Harpy.m */; };
 		4F15345017D2FB7100B63710 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4F15344B17D2FB7100B63710 /* README.md */; };
+		4F79B7721862911200F704BD /* HYUploadPic.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F79B7711862911200F704BD /* HYUploadPic.m */; };
+		4F79B777186297BE00F704BD /* HYAttachmentUploadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F79B775186297BE00F704BD /* HYAttachmentUploadViewController.m */; };
+		4F79B778186297BE00F704BD /* HYAttachmentUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4F79B776186297BE00F704BD /* HYAttachmentUploadViewController.xib */; };
+		4F79B78B1862A15000F704BD /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F79B78A1862A15000F704BD /* AssetsLibrary.framework */; };
 		4F8D67BC1850334E00219F13 /* btn_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F8D67BB1850334E00219F13 /* btn_search.png */; };
+		4FAAFDB51863ED4A001BEB04 /* checkbox1_checked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FAAFDAF1863ED4A001BEB04 /* checkbox1_checked.png */; };
+		4FAAFDB61863ED4A001BEB04 /* checkbox1_checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FAAFDB01863ED4A001BEB04 /* checkbox1_checked@2x.png */; };
+		4FAAFDB71863ED4A001BEB04 /* checkbox1_unchecked.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FAAFDB11863ED4A001BEB04 /* checkbox1_unchecked.png */; };
+		4FAAFDB81863ED4A001BEB04 /* checkbox1_unchecked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FAAFDB21863ED4A001BEB04 /* checkbox1_unchecked@2x.png */; };
+		4FAAFDB91863ED4A001BEB04 /* QCheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FAAFDB41863ED4A001BEB04 /* QCheckBox.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		4FD93769184C36FA00513462 /* HYWelComeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FD93767184C36FA00513462 /* HYWelComeViewController.m */; };
 		4FD9376A184C36FA00513462 /* HYWelComeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FD93768184C36FA00513462 /* HYWelComeViewController.xib */; };
 /* End PBXBuildFile section */
@@ -907,7 +915,6 @@
 		28DAE3701783F7B300F12366 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28DAE3721783F7B300F12366 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		28DAE3761783F7B300F12366 /* KONKA_MARKET-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KONKA_MARKET-Info.plist"; sourceTree = "<group>"; };
-		28DAE3781783F7B300F12366 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		28DAE37A1783F7B300F12366 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		28DAE37C1783F7B300F12366 /* KONKA_MARKET-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KONKA_MARKET-Prefix.pch"; sourceTree = "<group>"; };
 		28DAE37D1783F7B300F12366 /* HYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYAppDelegate.h; sourceTree = "<group>"; };
@@ -1028,7 +1035,19 @@
 		4F15344717D2FB7100B63710 /* Harpy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Harpy.m; sourceTree = "<group>"; };
 		4F15344817D2FB7100B63710 /* HarpyConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HarpyConstants.h; sourceTree = "<group>"; };
 		4F15344B17D2FB7100B63710 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		4F79B7701862911200F704BD /* HYUploadPic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYUploadPic.h; sourceTree = "<group>"; };
+		4F79B7711862911200F704BD /* HYUploadPic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYUploadPic.m; sourceTree = "<group>"; };
+		4F79B774186297BE00F704BD /* HYAttachmentUploadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYAttachmentUploadViewController.h; sourceTree = "<group>"; };
+		4F79B775186297BE00F704BD /* HYAttachmentUploadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYAttachmentUploadViewController.m; sourceTree = "<group>"; };
+		4F79B776186297BE00F704BD /* HYAttachmentUploadViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYAttachmentUploadViewController.xib; sourceTree = "<group>"; };
+		4F79B78A1862A15000F704BD /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		4F8D67BB1850334E00219F13 /* btn_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_search.png; sourceTree = "<group>"; };
+		4FAAFDAF1863ED4A001BEB04 /* checkbox1_checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_checked.png; sourceTree = "<group>"; };
+		4FAAFDB01863ED4A001BEB04 /* checkbox1_checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_checked@2x.png"; sourceTree = "<group>"; };
+		4FAAFDB11863ED4A001BEB04 /* checkbox1_unchecked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox1_unchecked.png; sourceTree = "<group>"; };
+		4FAAFDB21863ED4A001BEB04 /* checkbox1_unchecked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkbox1_unchecked@2x.png"; sourceTree = "<group>"; };
+		4FAAFDB31863ED4A001BEB04 /* QCheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCheckBox.h; sourceTree = "<group>"; };
+		4FAAFDB41863ED4A001BEB04 /* QCheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCheckBox.m; sourceTree = "<group>"; };
 		4FD93766184C36FA00513462 /* HYWelComeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYWelComeViewController.h; sourceTree = "<group>"; };
 		4FD93767184C36FA00513462 /* HYWelComeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYWelComeViewController.m; sourceTree = "<group>"; };
 		4FD93768184C36FA00513462 /* HYWelComeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HYWelComeViewController.xib; sourceTree = "<group>"; };
@@ -1039,6 +1058,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F79B78B1862A15000F704BD /* AssetsLibrary.framework in Frameworks */,
 				28DAE5AD1784036C00F12366 /* libicucore.dylib in Frameworks */,
 				2838BDEB179D2A22002ECDC4 /* CoreLocation.framework in Frameworks */,
 				28DAE5A51784032500F12366 /* QuartzCore.framework in Frameworks */,
@@ -2139,6 +2159,7 @@
 		28DAE36B1783F7B300F12366 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F79B78A1862A15000F704BD /* AssetsLibrary.framework */,
 				289E791017A0E65A00BA67D3 /* libCorePlot-CocoaTouch.a */,
 				2838BDEA179D2A21002ECDC4 /* CoreLocation.framework */,
 				2857426A17950F87006E2DA2 /* Security.framework */,
@@ -2186,7 +2207,6 @@
 			isa = PBXGroup;
 			children = (
 				28DAE3761783F7B300F12366 /* KONKA_MARKET-Info.plist */,
-				28DAE3771783F7B300F12366 /* InfoPlist.strings */,
 				28DAE37A1783F7B300F12366 /* main.m */,
 				28DAE37C1783F7B300F12366 /* KONKA_MARKET-Prefix.pch */,
 			);
@@ -2196,6 +2216,7 @@
 		28DAE44F1783F8DC00F12366 /* ThirdLib */ = {
 			isa = PBXGroup;
 			children = (
+				4FAAFDAE1863ED4A001BEB04 /* QCheckbox */,
 				4F15344317D2FB7100B63710 /* Harpy */,
 				284ADB8417CC3B5B00C20E98 /* UMAnalytics_Sdk_2.2.0.OpenUDID */,
 				1830B1BB17B33A5000920F8E /* WZGuideView */,
@@ -2250,6 +2271,7 @@
 		28DAE50E1783FAF700F12366 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4F79B7731862978A00F704BD /* AttachmentUploadView */,
 				18C4E233184F0FE300CA5347 /* DecisionInvoicView */,
 				187F75CE184DC75F007AF7B9 /* RetailSearchView */,
 				180DE32C184C906C003E5F65 /* RetailDetailsContentView */,
@@ -2363,6 +2385,8 @@
 				28DAE56C1783FCA800F12366 /* HYSeverContUrl.h */,
 				28DAE595178400A000F12366 /* HYAppUtily.h */,
 				28DAE596178400A000F12366 /* HYAppUtily.m */,
+				4F79B7701862911200F704BD /* HYUploadPic.h */,
+				4F79B7711862911200F704BD /* HYUploadPic.m */,
 			);
 			path = Utily;
 			sourceTree = "<group>";
@@ -2536,6 +2560,29 @@
 			path = Harpy;
 			sourceTree = "<group>";
 		};
+		4F79B7731862978A00F704BD /* AttachmentUploadView */ = {
+			isa = PBXGroup;
+			children = (
+				4F79B774186297BE00F704BD /* HYAttachmentUploadViewController.h */,
+				4F79B775186297BE00F704BD /* HYAttachmentUploadViewController.m */,
+				4F79B776186297BE00F704BD /* HYAttachmentUploadViewController.xib */,
+			);
+			path = AttachmentUploadView;
+			sourceTree = "<group>";
+		};
+		4FAAFDAE1863ED4A001BEB04 /* QCheckbox */ = {
+			isa = PBXGroup;
+			children = (
+				4FAAFDAF1863ED4A001BEB04 /* checkbox1_checked.png */,
+				4FAAFDB01863ED4A001BEB04 /* checkbox1_checked@2x.png */,
+				4FAAFDB11863ED4A001BEB04 /* checkbox1_unchecked.png */,
+				4FAAFDB21863ED4A001BEB04 /* checkbox1_unchecked@2x.png */,
+				4FAAFDB31863ED4A001BEB04 /* QCheckBox.h */,
+				4FAAFDB41863ED4A001BEB04 /* QCheckBox.m */,
+			);
+			path = QCheckbox;
+			sourceTree = "<group>";
+		};
 		4FD93765184C36BF00513462 /* WelcomeView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2602,7 +2649,6 @@
 				18AEA8EC17CDD8D4005DB5B7 /* ichart.1.2.min.js in Resources */,
 				18AEA90717CDF377005DB5B7 /* jquery-1.10.2.min.js in Resources */,
 				18AEA90917CDFB6F005DB5B7 /* test.js in Resources */,
-				28DAE3791783F7B300F12366 /* InfoPlist.strings in Resources */,
 				28DAE55E1783FAF800F12366 /* Default-568h@2x.png in Resources */,
 				28DAE55F1783FAF800F12366 /* Default.png in Resources */,
 				28DAE5601783FAF800F12366 /* Default@2x.png in Resources */,
@@ -2610,6 +2656,7 @@
 				28DA272217BB1CD600DDA062 /* headbglogo.png in Resources */,
 				18FF848617A1252600BDD590 /* model_bg_set.png in Resources */,
 				28DAE5C617840F0500F12366 /* HYLoginViewController.xib in Resources */,
+				4F79B778186297BE00F704BD /* HYAttachmentUploadViewController.xib in Resources */,
 				28DAE5CB17850E4E00F12366 /* HYRetailViewController.xib in Resources */,
 				281A8A1417856FA7006AA1C6 /* zbar-back.png in Resources */,
 				28DA274317BB218900DDA062 /* advbg.png in Resources */,
@@ -2695,6 +2742,7 @@
 				189F0BF617B21C9B00C8B394 /* blueArrow.png in Resources */,
 				189F0BF717B21C9B00C8B394 /* blueArrow@2x.png in Resources */,
 				189F0BF817B21C9B00C8B394 /* grayArrow.png in Resources */,
+				4FAAFDB71863ED4A001BEB04 /* checkbox1_unchecked.png in Resources */,
 				189F0BF917B21C9B00C8B394 /* grayArrow@2x.png in Resources */,
 				189F0BFA17B21C9B00C8B394 /* whiteArrow.png in Resources */,
 				189F0BFB17B21C9B00C8B394 /* whiteArrow@2x.png in Resources */,
@@ -2728,6 +2776,7 @@
 				1830B1D917B33B5700920F8E /* btn_nor@2x.png in Resources */,
 				1830B1DA17B33B5700920F8E /* btn_press.png in Resources */,
 				1830B1DB17B33B5700920F8E /* btn_press@2x.png in Resources */,
+				4FAAFDB51863ED4A001BEB04 /* checkbox1_checked.png in Resources */,
 				1830B1DC17B33B5700920F8E /* checkBox_blankCheck.png in Resources */,
 				1830B1DD17B33B5700920F8E /* checkBox_blankCheck@2x.png in Resources */,
 				1830B1DE17B33B5700920F8E /* checkBox_selectCheck.png in Resources */,
@@ -2824,6 +2873,7 @@
 				183C5AD917C6FB1400DB8FF6 /* menu_refresh.png in Resources */,
 				183C5ADA17C6FB1400DB8FF6 /* setting.png in Resources */,
 				183C5ADB17C6FB1400DB8FF6 /* switchuser.png in Resources */,
+				4FAAFDB61863ED4A001BEB04 /* checkbox1_checked@2x.png in Resources */,
 				183C5ADC17C6FB1400DB8FF6 /* sys_appexit.png in Resources */,
 				183C5ADD17C6FB1400DB8FF6 /* sys_exit.png in Resources */,
 				183C5ADE17C6FB1400DB8FF6 /* sys_guide.png in Resources */,
@@ -2873,6 +2923,7 @@
 				1877607F17F04E6B00EF3257 /* sys_icon_user.png in Resources */,
 				184E7796184EF2E600AE03E0 /* HYRetailSearchViewController.xib in Resources */,
 				184E779B184EF3D200AE03E0 /* HYRetailDetailsContentViewController.xib in Resources */,
+				4FAAFDB81863ED4A001BEB04 /* checkbox1_unchecked@2x.png in Resources */,
 				184E77A0184EF3F000AE03E0 /* HYRetailDetailsViewController.xib in Resources */,
 				184E77A2184EF6D000AE03E0 /* HYRetailDetailsTableViewCell.xib in Resources */,
 				184E77A4184EF72000AE03E0 /* HYRetailDetailsContentTableViewCell.xib in Resources */,
@@ -2904,6 +2955,7 @@
 				28DAE58D1783FECF00F12366 /* ASIDataDecompressor.m in Sources */,
 				28DAE58E1783FECF00F12366 /* ASIDownloadCache.m in Sources */,
 				28DAE58F1783FECF00F12366 /* ASIFormDataRequest.m in Sources */,
+				4F79B7721862911200F704BD /* HYUploadPic.m in Sources */,
 				28DAE5901783FECF00F12366 /* ASIHTTPRequest.m in Sources */,
 				28DAE5911783FECF00F12366 /* ASIInputStream.m in Sources */,
 				28DAE5921783FECF00F12366 /* ASINetworkQueue.m in Sources */,
@@ -2972,6 +3024,7 @@
 				28352CE817BC6E1E007215F9 /* HYOAApprovalListViewController.m in Sources */,
 				28352CEE17BC71A4007215F9 /* HYOAIssuedListViewController.m in Sources */,
 				18BB2C9817BDBD460096ADBB /* HYCustomManageViewController.m in Sources */,
+				4F79B777186297BE00F704BD /* HYAttachmentUploadViewController.m in Sources */,
 				18FEF1E91835CDEE00AB9879 /* HYSyntheticalViewController.m in Sources */,
 				18BB2C9E17BDBF820096ADBB /* HYCustomRetailViewController.m in Sources */,
 				183CE90B17C30B860041462B /* HYCustomR3ViewController.m in Sources */,
@@ -2985,6 +3038,7 @@
 				18AEA65D17CDCD19005DB5B7 /* HYOrderByMyListViewController.m in Sources */,
 				189A6C7D17CF442100E0A948 /* HYWageViewController.m in Sources */,
 				4F15344D17D2FB7100B63710 /* Harpy.m in Sources */,
+				4FAAFDB91863ED4A001BEB04 /* QCheckBox.m in Sources */,
 				18B619E017D4784500056575 /* HYBackViewController.m in Sources */,
 				183BFDFE17EE88A30064DDFA /* HYDecisionRetailViewController.m in Sources */,
 				183BFE0617EE94AA0064DDFA /* HYDecisionCompleteViewController.m in Sources */,
@@ -2997,17 +3051,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		28DAE3771783F7B300F12366 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				28DAE3781783F7B300F12366 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		28DAE3891783F7B300F12366 /* Debug */ = {
