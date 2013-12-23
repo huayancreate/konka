@@ -115,6 +115,12 @@
 }
 
 - (IBAction)uploadAction:(id)sender {
+    if(preImageView.image == nil)
+    {
+        [SVProgressHUD showErrorWithStatus:@"没有可以上传的图片!"];
+        return;
+    }
+    
     HYUploadPic *uploadPic = [[HYUploadPic alloc] init];
     NSDictionary *params = nil;
     params = [[NSDictionary alloc] initWithObjectsAndKeys:self.userLogin.user_name,@"username",self.userLogin.user_id,@"user_id",@"KONKA_MOBILE_SAIL_DATA",@"link_tab",self.userLogin.link_id,@"link_id",@"",@"file_desc",nil];
@@ -133,7 +139,7 @@
     
     //测试上传
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:UploadPic]];
-    //    [self testUpload:url AndFileName:imageName AndParmes:params];
+    [self testUpload:url AndFileName:imageName AndParmes:params];
     
 }
 
@@ -224,7 +230,7 @@
 
 -(void)testUpload:(NSURL *)url AndFileName:(NSString *)file AndParmes:param
 {
-    
+
     ASIFormDataRequest *request=[ASIFormDataRequest requestWithURL:url];
     NSString *imgPath = file;
     NSData *image = [[NSData alloc] initWithContentsOfFile:imgPath];

@@ -1346,7 +1346,7 @@
     UIButton *uploadBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     uploadBtn.frame = CGRectMake(40,10,240,30);
     [uploadBtn setTitle:@"上传附件" forState:UIControlStateNormal];
-//    [uploadBtn addTarget:self action:@selector(uploadAction:) forControlEvents:UIControlEventTouchUpInside];
+    [uploadBtn addTarget:self action:@selector(uploadAction:) forControlEvents:UIControlEventTouchUpInside];
     [uploadBtn setBackgroundColor:[UIColor colorWithRed:0.000 green:0.478 blue:0.882 alpha:1.0]];
     [uploadBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     NSLog(@"[cellNums count]  3 ,%d",[cellNums count] );
@@ -1360,6 +1360,15 @@
     [self.mainTableView beginUpdates];
     [self.mainTableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.mainTableView endUpdates];
+}
+
+-(IBAction)uploadAction:(id)sender
+{
+    HYAttachmentUploadViewController *att = [[HYAttachmentUploadViewController alloc] init];
+    att.title = @"附件上传";
+    self.userLogin.preimgurl = nil;
+    att.userLogin = self.userLogin;
+    [self.navigationController pushViewController:att animated:YES];
 }
 
 - (IBAction)selectPicAction:(id)sender {
