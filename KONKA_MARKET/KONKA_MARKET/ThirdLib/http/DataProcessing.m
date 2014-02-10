@@ -192,12 +192,14 @@ static DataProcessing *instance;
             if (files) {
                 NSArray *arrays = [files allKeys];
                 for (int i= 0; i <[arrays count]; i++) {
-                    [request setFile:[files objectForKey:[arrays objectAtIndex:i]] forKey:[arrays objectAtIndex:i]];
+                    [request addFile:[files objectForKey:[arrays objectAtIndex:i]] forKey:[arrays objectAtIndex:i]];
 //                    [request setFile:[files objectForKey:[arrays objectAtIndex:i]] withFileName:@"small.jpg" andContentType:@"multipart/form-data" forKey:[arrays objectAtIndex:i]];
                     //[request setData:[files objectForKey:[arrays objectAtIndex:i]] forKey:[arrays objectAtIndex:i]];
                     
                 }
             }
+            [request setRequestMethod:@"POST"];
+            [request buildPostBody];
             [request setPersistentConnectionTimeoutSeconds:15];
             [request setNumberOfTimesToRetryOnTimeout:1];
             [request startAsynchronous];

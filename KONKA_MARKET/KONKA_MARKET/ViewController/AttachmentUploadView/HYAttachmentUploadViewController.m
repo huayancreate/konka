@@ -135,7 +135,7 @@
     
     //    test.image=[UIImage imageWithContentsOfFile:imageName];
     
-    //    [uploadPic addPicWithDictionary:files Parem:params];
+    //[uploadPic addPicWithDictionary:files Parem:params];
     
     //测试上传
     NSURL *url = [[NSURL alloc] initWithString:[BaseURL stringByAppendingFormat:UploadPic]];
@@ -166,7 +166,7 @@
     UIImage* image = [info objectForKey: @"UIImagePickerControllerOriginalImage"];
     if(picker == camera)
     {
-
+        
     }
     [preImageView setImage:image];
     
@@ -187,7 +187,7 @@
 
 - (void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
 {
-    NSData* imageData = UIImagePNGRepresentation(tempImage);
+    NSData* imageData = UIImageJPEGRepresentation(tempImage, 0.3);
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     // Now we get the full path to the file
@@ -225,16 +225,17 @@
 //
 -(void) endRequest:(NSString *)msg
 {
+    [SVProgressHUD dismiss];
     NSLog(@"msg %@", msg);
+    [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:[self.navigationController.viewControllers count]- 2] animated:YES];
 }
 
 -(void)testUpload:(NSURL *)url AndFileName:(NSString *)file AndParmes:param
 {
-
+    [SVProgressHUD showWithStatus:@"正在上传图片..." maskType:SVProgressHUDMaskTypeGradient];
+    
     ASIFormDataRequest *request=[ASIFormDataRequest requestWithURL:url];
-    NSString *imgPath = file;
-    NSData *image = [[NSData alloc] initWithContentsOfFile:imgPath];
-    [request setPostValue:image forKey:@"profile_picture"];
+    [request addFile:file forKey:@"profile_picture"];
     NSArray *array = [param allKeys];
     for (int i= 0; i <[array count]; i++) {
         [request setPostValue:[param objectForKey:[array objectAtIndex:i]] forKey:[array objectAtIndex:i]];
