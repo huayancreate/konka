@@ -150,6 +150,7 @@
     
     picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
     
+    
     [self presentViewController:picker animated:YES completion:nil];
 }
 
@@ -164,12 +165,13 @@
     
     //获得编辑过的图片
     UIImage* image = [info objectForKey: @"UIImagePickerControllerOriginalImage"];
-    if(picker == camera)
-    {
-        
-    }
     [preImageView setImage:image];
     
+    CGSize imagesize = image.size;
+    imagesize.height =626;
+    imagesize.width =413;
+    
+    image = [self imageWithImage:image scaledToSize:imagesize];
     //    UIImage *midImage = [HYAppUtily imageWithImageSimple:image scaledToSize:CGSizeMake(210.0, 210.0)];
     //    UIImage *bigImage = [HYAppUtily imageWithImageSimple:image scaledToSize:CGSizeMake(440.0, 440.0)];
     
@@ -180,6 +182,26 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+//对图片尺寸进行压缩--
+-(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+{
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    
+    // Return the new image.
+    return newImage;
+}
+
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -187,7 +209,7 @@
 
 - (void)saveImage:(UIImage *)tempImage WithName:(NSString *)imageName
 {
-    NSData* imageData = UIImageJPEGRepresentation(tempImage, 0.3);
+    NSData* imageData = UIImageJPEGRepresentation(tempImage, 0.00001);
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectory = [paths objectAtIndex:0];
     // Now we get the full path to the file
@@ -234,6 +256,9 @@
 {
     [SVProgressHUD showWithStatus:@"正在上传图片..." maskType:SVProgressHUDMaskTypeGradient];
     
+    for (int i=0; i < 500000; i++) {
+    }
+    //sleep(1);
     ASIFormDataRequest *request=[ASIFormDataRequest requestWithURL:url];
     [request addFile:file forKey:@"profile_picture"];
     NSArray *array = [param allKeys];

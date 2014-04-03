@@ -1269,31 +1269,6 @@
         self.address.enabled = false;
         
         self.mastercode.enabled = false;
-    }else
-    {
-        self.selectChoice2.enabled = true;
-        self.selectChoice2.text = @"";
-        self.storeName.enabled = true;
-        self.salesCount.enabled = true;
-        self.salesCount.text = @"1";
-        self.saleAllPrice.enabled = true;
-        self.saleAllPrice.text = @"0.0";
-        self.salesPrice.enabled = true;
-        self.salesPrice.text = @"0.0";
-        self.memo.enabled = true;
-        self.memo.text = @"";
-        
-        self.realName.text = @"";
-        self.realName.enabled = true;
-        
-        self.phoneNum.text = @"";
-        self.phoneNum.enabled = true;
-        
-        self.address.text = @"";
-        self.address.enabled = true;
-        
-        self.mastercode.text = @"";
-        self.mastercode.enabled = true;
     }
 }
 
